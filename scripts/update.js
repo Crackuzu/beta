@@ -13,11 +13,11 @@ const http = require('http');
 const DATA_FILE = path.join(__dirname, '..', 'data.json');
 
 const SOURCES = {
-  onlinefix:   'https://hydralinks.cloud/sources/onlinefix.json',
-  fitgirl:     'https://hydralinks.cloud/sources/fitgirl.json',
-  dodi:        'https://hydralinks.cloud/sources/dodi.json',
-  kaoskrew:    'https://hydralinks.cloud/sources/kaoskrew.json',
-  xatab:       'https://hydralinks.cloud/sources/xatab.json',
+  onlinefix: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/onlinefix.json',
+  fitgirl:   'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/fitgirl.json',
+  dodi:      'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/dodi.json',
+  kaoskrew:  'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/kaoskrew.json',
+  xatab:     'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/xatab.json',
 };
 
 const STEAMGRIDDB_KEY = process.env.STEAMGRIDDB_API_KEY || '';
