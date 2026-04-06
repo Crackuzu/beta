@@ -16,14 +16,17 @@ jobs:
         with:
           node-version: 18
 
-      - name: Run cleaner
-        run: |
-          node clean.js
+      # Debug (tu peux enlever après)
+      - name: Debug files
+        run: ls -R
 
-      - name: Commit cleaned data
+      - name: Run cleaner
+        run: node clean.js
+
+      - name: Commit changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add data.cleaned.json
-          git commit -m "Clean data.json"
+          git add data.json
+          git commit -m "Clean game names" || echo "No changes to commit"
           git push
