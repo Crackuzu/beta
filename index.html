@@ -182,7 +182,7 @@ img{max-width:100%;height:auto}
 .mov.open{opacity:1;pointer-events:all}
 .modal{background:#0f0f0f;border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;width:100%;max-width:480px;overflow:hidden;transform:translateY(24px);transition:transform .3s}
 .mov.open .modal{transform:translateY(0)}
-.mcw{aspect-ratio:16/9;position:relative;overflow:hidden;background:#111}
+.mcw{aspect-ratio:2/3;position:relative;overflow:hidden;background:#111;max-height:340px}
 .mcw img{width:100%;height:100%;object-fit:cover}
 .mcgrad{position:absolute;inset:0;background:linear-gradient(to top,#0f0f0f,rgba(0,0,0,.4),transparent)}
 .mcx{position:absolute;top:.75rem;right:.75rem;width:32px;height:32px;border-radius:9999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);cursor:pointer;transition:all .3s;z-index:10}
@@ -282,8 +282,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;text-align
   <div class="modal">
     <div class="mcw" style="position:relative">
       <button class="mcx" onclick="closeMod()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-      <img id="mcov" src="" alt="" style="display:none">
-      <div id="mnocov" style="display:none;width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);align-items:center;justify-content:center;font-size:4rem">🎮</div>
+      <img id="mcov" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover">
+      <div id="mnocov" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);align-items:center;justify-content:center;font-size:4rem">🎮</div>
       <div class="mcgrad"></div>
     </div>
     <div class="mbody">
@@ -296,7 +296,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;text-align
         <span class="msep">•</span>
         <span id="mdt" class="mp"></span>
       </div>
-      <div class="mact">
+      <div class="mact" id="mact">
         <a id="mmag" href="#" class="btn-orange" style="flex:1;justify-content:center">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
           Télécharger avec Hydra
@@ -407,22 +407,46 @@ async function init(){
   }
 }
 
+// Nouveau format : data.games[] avec coverPortrait, coverLandscape, sources[]
 function proc(data){
   ALL=[];
-  for(const[k,v]of Object.entries(data.sources||{}))
-    (v.games||[]).forEach(g=>ALL.push({...g,_s:k}));
+  (data.games||[]).forEach(g=>{
+    // Source principale = première source du tableau
+    const src=g.sources&&g.sources[0]||{};
+    ALL.push({
+      id:            g.id,
+      name:          g.name,
+      igdbId:        g.igdbId||null,
+      coverPortrait:  g.coverPortrait||null,
+      coverLandscape: g.coverLandscape||null,
+      sources:       g.sources||[],
+      // Champs de la source principale pour compatibilité
+      _s:            src.source||'—',
+      version:       src.version||null,
+      size:          src.size||null,
+      magnet:        src.magnet||null,
+      uploadDate:    src.uploadDate||null,
+    });
+  });
   ALL.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
   FIL=[...ALL];
   buildHero();buildRecent();buildSrcRows();buildCatTags();
 }
 
+// coverPortrait pour hero background (paysage de préférence, sinon portrait)
+function heroImg(g){ return g.coverLandscape||g.coverPortrait||null; }
+// coverPortrait pour cartes verticales (portrait de préférence)
+function portraitImg(g){ return g.coverPortrait||g.coverLandscape||null; }
+// coverLandscape pour cartes horizontales (landscape de préférence)
+function landscapeImg(g){ return g.coverLandscape||g.coverPortrait||null; }
+
 function buildHero(){
-  hsl=ALL.filter(g=>g.cover).slice(0,6);
+  hsl=ALL.filter(g=>heroImg(g)).slice(0,6);
   if(!hsl.length)hsl=ALL.slice(0,6);
   if(!hsl.length)return;
   document.getElementById('hslides').innerHTML=hsl.map((g,i)=>`
     <div class="slide ${i===0?'active':''}" id="hs${i}">
-      ${g.cover?`<img src="${g.cover}" alt="${e(g.name)}" draggable="false" loading="${i===0?'eager':'lazy'}">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)"></div>`}
+      ${heroImg(g)?`<img src="${heroImg(g)}" alt="${e(g.name)}" draggable="false" loading="${i===0?'eager':'lazy'}">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)"></div>`}
     </div>`).join('');
   document.getElementById('hdots').innerHTML=hsl.map((_,i)=>`
     <button class="dot" onclick="gs(${i})"><div class="dot-bar ${i===0?'run':''}" id="db${i}"></div></button>`).join('');
@@ -456,6 +480,7 @@ function gs(i){
   if(hsl.length>1)htmr=setInterval(()=>gs((hidx+1)%hsl.length),8000);
 }
 
+// Cartes horizontales (wide) — utilise coverLandscape en priorité
 function buildRecent(){
   const g=ALL.slice(0,24);
   document.getElementById('rcnt').textContent=g.length+' jeux';
@@ -463,9 +488,10 @@ function buildRecent(){
 }
 
 function wc(g){
-  return`<div class="wc" onclick="om('${e2(g.name)}')">
+  const img=landscapeImg(g);
+  return`<div class="wc" onclick="om('${e2(g.id||g.name)}')">
     <div class="wc-img">
-      ${g.cover?`<img src="${g.cover}" alt="${e(g.name)}" loading="lazy">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:3rem">🎮</div>`}
+      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:3rem">🎮</div>`}
       <div class="wc-grad"></div>
       <div class="wc-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
     </div>
@@ -476,31 +502,42 @@ function wc(g){
   </div>`;
 }
 
+// Cartes par source (portrait) — utilise coverPortrait en priorité
 function buildSrcRows(){
   if(!RAW)return;
+  // Regrouper les jeux par source
+  const bySource={};
+  ALL.forEach(g=>{
+    (g.sources||[]).forEach(s=>{
+      if(!bySource[s.source])bySource[s.source]=[];
+      bySource[s.source].push({...g,_s:s.source,version:s.version,size:s.size,magnet:s.magnet,uploadDate:s.uploadDate});
+    });
+  });
   let h='';
-  for(const[k,v]of Object.entries(RAW.sources||{})){
-    const gs=(v.games||[]).slice(0,30);
-    if(!gs.length)continue;
+  for(const[k,gs] of Object.entries(bySource)){
+    const slice=gs.slice(0,30);
+    if(!slice.length)continue;
     h+=`<section class="section"><div class="sw">
       <div class="sh">
-        <div class="sl"><span class="se">Source · MàJ ${v.lastChecked?fd(v.lastChecked):'—'}</span><h2 class="st">${e(k)}</h2></div>
+        <div class="sl"><span class="se">Source</span><h2 class="st">${e(k)}</h2></div>
         <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.15em">${gs.length} jeux</span>
       </div>
       <div class="row-wrap">
         <button class="ra ra-l" onclick="sl('r_${k}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
         <button class="ra ra-r" onclick="sr('r_${k}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
-        <div class="row-track" id="r_${k}">${gs.map(pc).join('')}</div>
+        <div class="row-track" id="r_${k}">${slice.map(pc).join('')}</div>
       </div>
     </div></section>`;
   }
   document.getElementById('srcrows').innerHTML=h;
 }
 
+// Carte portrait — coverPortrait en priorité
 function pc(g){
-  return`<div class="pc" onclick="om('${e2(g.name)}')">
+  const img=portraitImg(g);
+  return`<div class="pc" onclick="om('${e2(g.id||g.name)}')">
     <div class="pc-img">
-      ${g.cover?`<img src="${g.cover}" alt="${e(g.name)}" loading="lazy">`:`<div class="pc-noimg">🎮</div>`}
+      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="pc-noimg">🎮</div>`}
       ${g.version?`<span class="pc-badge">v${e(g.version)}</span>`:''}
       <div class="pc-ov"><div class="pc-dl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div></div>
       <div class="pc-info"><div class="pc-name">${e(g.name)}</div><div class="pc-size">${e(g.size||'—')}</div></div>
@@ -509,15 +546,22 @@ function pc(g){
 }
 
 function buildCatTags(){
-  if(!RAW)return;
+  // Tags basés sur les sources uniques dans ALL
+  const sources=new Set();
+  ALL.forEach(g=>(g.sources||[]).forEach(s=>sources.add(s.source)));
   let h=`<button class="ctag on" id="ct_all" onclick="ss('all')">Toutes</button>`;
-  Object.keys(RAW.sources||{}).forEach(k=>h+=`<button class="ctag" id="ct_${k}" onclick="ss('${k}')">${e(k)}</button>`);
+  sources.forEach(k=>h+=`<button class="ctag" id="ct_${k}" onclick="ss('${k}')">${e(k)}</button>`);
   document.getElementById('ctags').innerHTML=h;
 }
+
 function ss(s){asrc=s;document.querySelectorAll('.ctag').forEach(el=>el.classList.remove('on'));document.getElementById('ct_'+s)?.classList.add('on');pg=1;catf();}
 function catf(){
   const q=(document.getElementById('cq')?.value||'').toLowerCase().trim();
-  FIL=ALL.filter(g=>(asrc==='all'||g._s===asrc)&&(!q||g.name.toLowerCase().includes(q)));
+  FIL=ALL.filter(g=>{
+    const srcMatch=asrc==='all'||(g.sources||[]).some(s=>s.source===asrc);
+    const nameMatch=!q||g.name.toLowerCase().includes(q);
+    return srcMatch&&nameMatch;
+  });
   pg=1;rGrid();rPag();
 }
 function rGrid(){
@@ -536,21 +580,75 @@ function rPag(){
 function pr(c,t){if(t<=7)return Array.from({length:t},(_,i)=>i+1);const r=[];if(c>3){r.push(1);if(c>4)r.push('…');}for(let i=Math.max(1,c-2);i<=Math.min(t,c+2);i++)r.push(i);if(c<t-2){if(c<t-3)r.push('…');r.push(t);}return r;}
 function gp(p){const t=Math.ceil(FIL.length/PPG);if(p<1||p>t)return;pg=p;rGrid();rPag();document.getElementById('catv').scrollIntoView({behavior:'smooth'});}
 
-function om(name){
-  const g=ALL.find(g=>g.name===name);if(!g)return;
+// Modal — adapté au nouveau format avec sources multiples
+function om(idOrName){
+  const g=ALL.find(g=>g.id===idOrName||g.name===idOrName);if(!g)return;
+
   document.getElementById('mname').textContent=g.name;
-  const v=document.getElementById('mv');v.textContent=g.version?'v'+g.version:'';v.style.display=g.version?'':'none';
-  document.getElementById('msrc').textContent=g._s;
-  document.getElementById('msz').textContent=g.size||'—';
-  document.getElementById('mdt').textContent=fd(g.uploadDate);
+
+  // Cover portrait dans la modal (format portrait 2/3 plus lisible)
+  const img=portraitImg(g);
   const cv=document.getElementById('mcov'),nc=document.getElementById('mnocov');
-  if(g.cover){cv.src=g.cover;cv.style.display='';nc.style.display='none';}else{cv.style.display='none';nc.style.display='flex';}
-  document.getElementById('mmag').href=g.magnet||'#';
+  if(img){cv.src=img;cv.style.display='';nc.style.display='none';}
+  else{cv.style.display='none';nc.style.display='flex';}
+
+  // Sources multiples
+  const src=g.sources&&g.sources[0]||{};
+  const v=document.getElementById('mv');
+  v.textContent=src.version?'v'+src.version:'';
+  v.style.display=src.version?'':'none';
+  document.getElementById('msrc').textContent=g.sources.map(s=>s.source).join(', ');
+  document.getElementById('msz').textContent=src.size||'—';
+  document.getElementById('mdt').textContent=fd(src.uploadDate);
+
+  // Si plusieurs sources → afficher plusieurs boutons magnet
+  const mact=document.getElementById('mact');
+  if(g.sources.length<=1){
+    mact.innerHTML=`
+      <a id="mmag" href="${src.magnet||'#'}" class="btn-orange" style="flex:1;justify-content:center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
+        Télécharger avec Hydra
+      </a>
+      <button class="btn-ghost" onclick="closeMod()" style="padding:.75rem 1rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>`;
+  } else {
+    // Plusieurs sources : liste déroulante + bouton
+    const opts=g.sources.map((s,i)=>`<option value="${i}">${e(s.source)}${s.size?' · '+e(s.size):''}</option>`).join('');
+    mact.innerHTML=`
+      <div style="display:flex;flex-direction:column;gap:.6rem;flex:1">
+        <select id="msrcsel" onchange="mupd(this.value)" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.5rem .75rem;border-radius:.5rem;font-size:12px;font-weight:700;font-family:Inter,sans-serif;outline:none;cursor:pointer">${opts}</select>
+        <a id="mmag" href="${src.magnet||'#'}" class="btn-orange" style="justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
+          Télécharger avec Hydra
+        </a>
+      </div>
+      <button class="btn-ghost" onclick="closeMod()" style="padding:.75rem 1rem;align-self:flex-end">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>`;
+    // Stocker les sources pour mupd
+    window._msrcs=g.sources;
+  }
+
   document.getElementById('mov').classList.add('open');document.body.style.overflow='hidden';
 }
+
+// Met à jour le magnet quand on change de source dans la modal
+function mupd(idx){
+  const s=window._msrcs&&window._msrcs[idx];
+  if(!s)return;
+  document.getElementById('mmag').href=s.magnet||'#';
+  document.getElementById('msz').textContent=s.size||'—';
+  document.getElementById('mdt').textContent=fd(s.uploadDate);
+  const v=document.getElementById('mv');
+  v.textContent=s.version?'v'+s.version:'';
+  v.style.display=s.version?'':'none';
+}
+
 function closeMod(){document.getElementById('mov').classList.remove('open');document.body.style.overflow='';}
 function movck(ev){if(ev.target===document.getElementById('mov'))closeMod();}
 
+// Recherche — utilise coverPortrait pour la miniature
 function openSrch(){document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
 function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';}
 function doSrch(q){
@@ -558,11 +656,15 @@ function doSrch(q){
   if(!q.trim()){r.innerHTML='';return;}
   const m=ALL.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,20);
   if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour "${e(q)}"</div>`;return;}
-  r.innerHTML=m.map(g=>`<div class="sri" onclick="closeSrch();om('${e2(g.name)}')">
-    ${g.cover?`<img class="sri-cov" src="${g.cover}" alt="${e(g.name)}" loading="lazy">`:`<div class="sri-cov" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎮</div>`}
-    <div class="sri-info"><div class="sri-name">${e(g.name)}</div><div class="sri-meta">${e(g._s)} · ${e(g.size||'—')} · ${fd(g.uploadDate)}</div></div>
-    <div class="sri-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
-  </div>`).join('');
+  r.innerHTML=m.map(g=>{
+    const img=portraitImg(g);
+    const src=g.sources&&g.sources[0]||{};
+    return`<div class="sri" onclick="closeSrch();om('${e2(g.id||g.name)}')">
+      ${img?`<img class="sri-cov" src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="sri-cov" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎮</div>`}
+      <div class="sri-info"><div class="sri-name">${e(g.name)}</div><div class="sri-meta">${e(g.sources.map(s=>s.source).join(', '))} · ${e(src.size||'—')} · ${fd(src.uploadDate)}</div></div>
+      <div class="sri-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
+    </div>`;
+  }).join('');
 }
 
 function goHome(e){if(e)e.preventDefault();document.getElementById('hv').style.display='block';document.getElementById('catv').classList.remove('open');sn('nH');}
