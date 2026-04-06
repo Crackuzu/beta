@@ -1,17 +1,15 @@
 name: Update Games Database
 
 on:
-  schedule:
-    # Every hour
-    - cron: '0 * * * *'
   workflow_dispatch:
-    # Allow manual trigger from GitHub UI
+    # Trigger manuel depuis l'interface GitHub uniquement
+    # (le cron sera réactivé plus tard quand la base sera complète)
 
 jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to git push
+      contents: write   # nécessaire pour git push
 
     steps:
       - name: Checkout repo
@@ -25,12 +23,14 @@ jobs:
       - name: Run update script
         env:
           STEAMGRIDDB_API_KEY: ${{ secrets.STEAMGRIDDB_API_KEY }}
+          IGDB_CLIENT_ID:      ${{ secrets.IGDB_CLIENT_ID }}
+          IGDB_CLIENT_SECRET:  ${{ secrets.IGDB_CLIENT_SECRET }}
         run: node scripts/update.js
 
-      - name: Commit & push if changed
+      - name: Commit & push si changements
         run: |
           git config user.email "bot@crackuzu.github"
           git config user.name "CrackUZU Bot"
-          git add data.json
+          git add data.json ambiguous.json || true
           git diff --staged --quiet || git commit -m "chore: update games database [$(date -u +'%Y-%m-%d %H:%M')] 🎮"
           git push
