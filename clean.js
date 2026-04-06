@@ -7,23 +7,30 @@ function cleanName(name) {
   if (!name) return name;
 
   return name
+    // 🔥 Remplacer les points par des espaces
+    .replace(/\./g, ' ')
+
     // Supprimer [ ... ] et ( ... )
     .replace(/\[.*?\]/g, '')
     .replace(/\(.*?\)/g, '')
 
+    // 🔥 Supprimer noms de repackers connus
+    .replace(/\b(KaOs|DODI|FitGirl|Decepticon|RG Mechanics|xatab)\b.*$/i, '')
+
     // Repack / sources
     .replace(/\b(Repack|REPACK)\b.*$/i, '')
-    .replace(/\b(DODI|FitGirl|Decepticon)\b.*$/i, '')
     .replace(/\bFrom\s+\w+\b/i, '')
 
     // DLC / bonus
     .replace(/\+\s*(All\s+)?DLCs?.*/i, '')
 
-    // Build / Patch
+    // Build / Patch / version parasites
     .replace(/\b(Build|Patch)\s*[\d\w]*/i, '')
+    .replace(/\bv\.\s*$/i, '')     // supprime "v."
+    .replace(/\bv\s*$/i, '')       // supprime "v"
 
-    // Editions
-    .replace(/\b(Complete Edition|Digital Deluxe Edition|Deluxe Edition|Gold Edition|Ultimate Edition)\b/i, '')
+    // Editions (supprime tout le bloc proprement)
+    .replace(/\b(Complete|Digital|Deluxe|Super|Ultimate|Gold)\b.*$/i, '')
 
     // MULTiXX
     .replace(/\bMULTi\d+\b/i, '')
@@ -31,9 +38,13 @@ function cleanName(name) {
     // Tirets longs
     .replace(/–.*/g, '')
 
-    // Nettoyage final
+    // 🔥 Nettoyage ponctuation restante
     .replace(/[,:;\-\/\\]+$/g, '')
+
+    // 🔥 Corriger espaces multiples
     .replace(/\s{2,}/g, ' ')
+
+    // 🔥 Trim final
     .trim();
 }
 
