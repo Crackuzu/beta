@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// Lire le fichier
 const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 
 function cleanName(name) {
@@ -27,7 +28,7 @@ function cleanName(name) {
     // MULTiXX
     .replace(/\bMULTi\d+\b/i, '')
 
-    // Tirets longs qui coupent le nom
+    // Tirets longs
     .replace(/–.*/g, '')
 
     // Nettoyage final
@@ -36,11 +37,30 @@ function cleanName(name) {
     .trim();
 }
 
-const cleaned = data.map(item => ({
-  ...item,
-  name: cleanName(item.name || item.title)
-}));
+// 🔥 Boucle sur toutes les sources
+for (const [sourceName, source] of Object.entries(data.sources || {})) {
+  if (!source.games) continue;
 
-fs.writeFileSync('data.cleaned.json', JSON.stringify(cleaned, null, 2));
+  console.log(`🔧 Cleaning source: ${sourceName}`);
 
-console.log('✅ Nettoyage terminé → data.cleaned.json');
+  source.games = source.games.map(game => {
+    const cleanedName = cleanName(game.name);
+
+    // Debug utile
+    if (game.name !== cleanedName) {
+      console.log('---');
+      console.log('OLD:', game.name);
+      console.log('NEW:', cleanedName);
+    }
+
+    return {
+      ...game,
+      name: cleanedName
+    };
+  });
+}
+
+// Sauvegarde (remplace directement)
+fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
+
+console.log('✅ Nettoyage terminé et sauvegardé dans data.json');
