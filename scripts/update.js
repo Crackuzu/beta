@@ -19,10 +19,10 @@ const DATA_FILE      = path.join(__dirname, '..', 'data.json');
 const AMBIGUOUS_FILE = path.join(__dirname, '..', 'ambiguous.json');
 
 const SOURCES = {
-  onlinefix: 'https://hydralinks.cloud/sources/onlinefix.json',
-  fitgirl:   'https://hydralinks.cloud/sources/fitgirl.json',
-  dodi:      'https://hydralinks.cloud/sources/dodi.json',
-  xatab:     'https://hydralinks.cloud/sources/xatab.json',
+  onlinefix: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/onlinefix.json',
+  fitgirl:   'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/fitgirl.json',
+  dodi:      'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/dodi.json',
+  xatab:     'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/xatab.json',
   steamrip:  'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/refs/heads/main/steamrip.json',
 };
 
