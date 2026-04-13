@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="CRACKUZU – Répertoire de jeux PC via Hydra Launcher.">
 <meta name="theme-color" content="#000000">
-<title>CRACKUZU – Répertoire de Jeux</title>
+<title>CRACKUZU – Répertoire de Jeux PC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -394,59 +394,67 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;text-align
 
 <script>
 const PPG=60;
-let ALL=[],FIL=[],RAW=null,pg=1,asrc='all',hidx=0,hsl=[],htmr=null;
+let ALL=[],FIL=[],pg=1,acat='all',hidx=0,hsl=[],htmr=null;
 
+// ── CHARGEMENT ──────────────────────────────────────────────────────────────
 async function init(){
   try{
     const r=await fetch('data.json?t='+Date.now());
     if(!r.ok)throw new Error(r.status);
-    RAW=await r.json();proc(RAW);
-  }catch(e){
-    document.getElementById('htitle').textContent='data.json introuvable';
-    document.getElementById('rrow').innerHTML='<div class="ldr"><span class="ltxt">Lance le workflow GitHub Actions</span></div>';
+    const raw=await r.json();
+    proc(raw);
+  }catch(err){
+    document.getElementById('htitle').textContent='Aucun jeu disponible';
+    document.getElementById('rrow').innerHTML='<div class="ldr"><span class="ltxt">data.json introuvable</span></div>';
   }
 }
 
-// Nouveau format : data.games[] avec coverPortrait, coverLandscape, sources[]
-function proc(data){
-  ALL=[];
-  (data.games||[]).forEach(g=>{
-    // Source principale = première source du tableau
-    const src=g.sources&&g.sources[0]||{};
-    ALL.push({
-      id:            g.id,
-      name:          g.name,
-      igdbId:        g.igdbId||null,
-      coverPortrait:  g.coverPortrait||null,
-      coverLandscape: g.coverLandscape||null,
-      sources:       g.sources||[],
-      // Champs de la source principale pour compatibilité
-      _s:            src.source||'—',
-      version:       src.version||null,
-      size:          src.size||null,
-      magnet:        src.magnet||null,
-      uploadDate:    src.uploadDate||null,
-    });
-  });
-  ALL.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
+// ── NORMALISATION du nouveau format admin ───────────────────────────────────
+// Nouveau data.json = tableau plat d'objets :
+//   { title, year, category, description, portrait_url, banner_url,
+//     ytb_id, magnets[], added_by, added_at }
+function proc(raw){
+  const arr=Array.isArray(raw)?raw:(raw.games||[]);
+  ALL=arr.map((g,i)=>({
+    _idx:       i,
+    // identifiant stable pour la modal
+    id:         g.title||String(i),
+    // champs affichés
+    name:       g.title||'Sans titre',
+    year:       g.year||'',
+    category:   g.category||'',
+    description:g.description||'',
+    // images
+    portrait_url: g.portrait_url||null,
+    banner_url:   g.banner_url||null,
+    // téléchargement
+    magnets:    Array.isArray(g.magnets)?g.magnets:[],
+    ytb_id:     g.ytb_id||null,
+    // meta
+    added_at:   g.added_at||null,
+    added_by:   g.added_by||null,
+  }));
+  // tri : plus récent en premier
+  ALL.sort((a,b)=>new Date(b.added_at||0)-new Date(a.added_at||0));
   FIL=[...ALL];
-  buildHero();buildRecent();buildSrcRows();buildCatTags();
+  buildHero();buildRecent();buildCatRows();buildCatTags();
 }
 
-// coverPortrait pour hero background (paysage de préférence, sinon portrait)
-function heroImg(g){ return g.coverLandscape||g.coverPortrait||null; }
-// coverPortrait pour cartes verticales (portrait de préférence)
-function portraitImg(g){ return g.coverPortrait||g.coverLandscape||null; }
-// coverLandscape pour cartes horizontales (landscape de préférence)
-function landscapeImg(g){ return g.coverLandscape||g.coverPortrait||null; }
+// ── IMAGES ──────────────────────────────────────────────────────────────────
+function portraitImg(g){ return g.portrait_url||null; }
+function landscapeImg(g){ return g.banner_url||g.portrait_url||null; }
+function heroImg(g){     return g.banner_url||g.portrait_url||null; }
 
+// ── HERO ────────────────────────────────────────────────────────────────────
 function buildHero(){
   hsl=ALL.filter(g=>heroImg(g)).slice(0,6);
   if(!hsl.length)hsl=ALL.slice(0,6);
   if(!hsl.length)return;
   document.getElementById('hslides').innerHTML=hsl.map((g,i)=>`
     <div class="slide ${i===0?'active':''}" id="hs${i}">
-      ${heroImg(g)?`<img src="${heroImg(g)}" alt="${e(g.name)}" draggable="false" loading="${i===0?'eager':'lazy'}">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)"></div>`}
+      ${heroImg(g)
+        ?`<img src="${heroImg(g)}" alt="${e(g.name)}" draggable="false" loading="${i===0?'eager':'lazy'}">`
+        :`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)"></div>`}
     </div>`).join('');
   document.getElementById('hdots').innerHTML=hsl.map((_,i)=>`
     <button class="dot" onclick="gs(${i})"><div class="dot-bar ${i===0?'run':''}" id="db${i}"></div></button>`).join('');
@@ -455,15 +463,17 @@ function buildHero(){
 }
 
 function setHI(i){
-  const g=hsl[i];if(!g)return;
+  const g=hsl[i]; if(!g)return;
   document.getElementById('htitle').textContent=g.name;
-  document.getElementById('hbsrc').textContent=g._s;
+  // badge source → catégorie ou année
+  document.getElementById('hbsrc').textContent=g.category||g.year||'—';
   const ve=document.getElementById('hver'),sep=document.getElementById('hvsep');
-  if(g.version){ve.textContent='v'+g.version;sep.style.display='';}
+  if(g.year){ve.textContent=g.year;sep.style.display='';}
   else{ve.textContent='';sep.style.display='none';}
-  document.getElementById('hsz').textContent=g.size||'—';
-  document.getElementById('hdt').textContent=fd(g.uploadDate);
-  document.getElementById('hmag').href=g.magnet||'#';
+  document.getElementById('hsz').textContent=g.category||'';
+  document.getElementById('hdt').textContent=fd(g.added_at);
+  // bouton hero → premier magnet ou #
+  document.getElementById('hmag').href=g.magnets[0]||'#';
 }
 
 function gs(i){
@@ -480,7 +490,7 @@ function gs(i){
   if(hsl.length>1)htmr=setInterval(()=>gs((hidx+1)%hsl.length),8000);
 }
 
-// Cartes horizontales (wide) — utilise coverLandscape en priorité
+// ── SECTION RÉCENTS (cartes wide) ───────────────────────────────────────────
 function buildRecent(){
   const g=ALL.slice(0,24);
   document.getElementById('rcnt').textContent=g.length+' jeux';
@@ -489,86 +499,102 @@ function buildRecent(){
 
 function wc(g){
   const img=landscapeImg(g);
-  return`<div class="wc" onclick="om('${e2(g.id||g.name)}')">
+  return`<div class="wc" onclick="om('${e2(g.id)}')">
     <div class="wc-img">
-      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:3rem">🎮</div>`}
+      ${img
+        ?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`
+        :`<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:3rem">🎮</div>`}
       <div class="wc-grad"></div>
       <div class="wc-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
     </div>
     <div class="wc-body">
       <div class="wc-name">${e(g.name)}</div>
-      <div class="wc-meta">${g.version?`<span class="wc-v">v${e(g.version)}</span>`:''}<span>${e(g.size||'—')}</span><span>·</span><span>${fd(g.uploadDate)}</span></div>
+      <div class="wc-meta">
+        ${g.year?`<span>${e(g.year)}</span><span>·</span>`:''}
+        ${g.category?`<span class="wc-v">${e(g.category)}</span>`:''}
+        <span>${fd(g.added_at)}</span>
+      </div>
     </div>
   </div>`;
 }
 
-// Cartes par source (portrait) — utilise coverPortrait en priorité
-function buildSrcRows(){
-  if(!RAW)return;
-  // Regrouper les jeux par source
-  const bySource={};
+// ── SECTIONS PAR CATÉGORIE (cartes portrait) ─────────────────────────────────
+function buildCatRows(){
+  const byCat={};
   ALL.forEach(g=>{
-    (g.sources||[]).forEach(s=>{
-      if(!bySource[s.source])bySource[s.source]=[];
-      bySource[s.source].push({...g,_s:s.source,version:s.version,size:s.size,magnet:s.magnet,uploadDate:s.uploadDate});
-    });
+    const k=g.category||'Autre';
+    if(!byCat[k])byCat[k]=[];
+    byCat[k].push(g);
   });
   let h='';
-  for(const[k,gs] of Object.entries(bySource)){
+  for(const[k,gs] of Object.entries(byCat)){
     const slice=gs.slice(0,30);
     if(!slice.length)continue;
+    const rid='r_'+k.replace(/\s+/g,'_');
     h+=`<section class="section"><div class="sw">
       <div class="sh">
-        <div class="sl"><span class="se">Source</span><h2 class="st">${e(k)}</h2></div>
+        <div class="sl"><span class="se">Catégorie</span><h2 class="st">${e(k)}</h2></div>
         <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.15em">${gs.length} jeux</span>
       </div>
       <div class="row-wrap">
-        <button class="ra ra-l" onclick="sl('r_${k}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-        <button class="ra ra-r" onclick="sr('r_${k}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
-        <div class="row-track" id="r_${k}">${slice.map(pc).join('')}</div>
+        <button class="ra ra-l" onclick="sl('${rid}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="ra ra-r" onclick="sr('${rid}')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="row-track" id="${rid}">${slice.map(pc).join('')}</div>
       </div>
     </div></section>`;
   }
-  document.getElementById('srcrows').innerHTML=h;
+  document.getElementById('srcrows').innerHTML=h||'';
 }
 
-// Carte portrait — coverPortrait en priorité
+// ── CARTE PORTRAIT ───────────────────────────────────────────────────────────
 function pc(g){
   const img=portraitImg(g);
-  return`<div class="pc" onclick="om('${e2(g.id||g.name)}')">
+  return`<div class="pc" onclick="om('${e2(g.id)}')">
     <div class="pc-img">
       ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="pc-noimg">🎮</div>`}
-      ${g.version?`<span class="pc-badge">v${e(g.version)}</span>`:''}
+      ${g.year?`<span class="pc-badge">${e(g.year)}</span>`:''}
       <div class="pc-ov"><div class="pc-dl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div></div>
-      <div class="pc-info"><div class="pc-name">${e(g.name)}</div><div class="pc-size">${e(g.size||'—')}</div></div>
+      <div class="pc-info"><div class="pc-name">${e(g.name)}</div><div class="pc-size">${e(g.category||g.year||'')}</div></div>
     </div>
   </div>`;
 }
 
+// ── TAGS CATALOGUE (par catégorie) ───────────────────────────────────────────
 function buildCatTags(){
-  // Tags basés sur les sources uniques dans ALL
-  const sources=new Set();
-  ALL.forEach(g=>(g.sources||[]).forEach(s=>sources.add(s.source)));
+  const cats=new Set();
+  ALL.forEach(g=>{ if(g.category)cats.add(g.category); });
   let h=`<button class="ctag on" id="ct_all" onclick="ss('all')">Toutes</button>`;
-  sources.forEach(k=>h+=`<button class="ctag" id="ct_${k}" onclick="ss('${k}')">${e(k)}</button>`);
+  cats.forEach(k=>{
+    const sid=k.replace(/\s+/g,'_');
+    h+=`<button class="ctag" id="ct_${sid}" onclick="ss('${e(k)}')">${e(k)}</button>`;
+  });
   document.getElementById('ctags').innerHTML=h;
 }
 
-function ss(s){asrc=s;document.querySelectorAll('.ctag').forEach(el=>el.classList.remove('on'));document.getElementById('ct_'+s)?.classList.add('on');pg=1;catf();}
+function ss(s){
+  acat=s;
+  document.querySelectorAll('.ctag').forEach(el=>el.classList.remove('on'));
+  const sid=s==='all'?'all':s.replace(/\s+/g,'_');
+  document.getElementById('ct_'+sid)?.classList.add('on');
+  pg=1;catf();
+}
+
 function catf(){
   const q=(document.getElementById('cq')?.value||'').toLowerCase().trim();
   FIL=ALL.filter(g=>{
-    const srcMatch=asrc==='all'||(g.sources||[]).some(s=>s.source===asrc);
+    const catMatch=acat==='all'||g.category===acat;
     const nameMatch=!q||g.name.toLowerCase().includes(q);
-    return srcMatch&&nameMatch;
+    return catMatch&&nameMatch;
   });
   pg=1;rGrid();rPag();
 }
+
 function rGrid(){
   const p=FIL.slice((pg-1)*PPG,pg*PPG),gr=document.getElementById('cgrid');
   if(!p.length){gr.innerHTML='<div class="ldr" style="grid-column:1/-1"><span class="ltxt">Aucun jeu</span></div>';return;}
   gr.innerHTML=p.map(pc).join('');
 }
+
 function rPag(){
   const t=Math.ceil(FIL.length/PPG),el=document.getElementById('cpag');
   if(t<=1){el.innerHTML='';return;}
@@ -580,32 +606,39 @@ function rPag(){
 function pr(c,t){if(t<=7)return Array.from({length:t},(_,i)=>i+1);const r=[];if(c>3){r.push(1);if(c>4)r.push('…');}for(let i=Math.max(1,c-2);i<=Math.min(t,c+2);i++)r.push(i);if(c<t-2){if(c<t-3)r.push('…');r.push(t);}return r;}
 function gp(p){const t=Math.ceil(FIL.length/PPG);if(p<1||p>t)return;pg=p;rGrid();rPag();document.getElementById('catv').scrollIntoView({behavior:'smooth'});}
 
-// Modal — adapté au nouveau format avec sources multiples
-function om(idOrName){
-  const g=ALL.find(g=>g.id===idOrName||g.name===idOrName);if(!g)return;
+// ── MODAL ────────────────────────────────────────────────────────────────────
+function om(id){
+  const g=ALL.find(g=>g.id===id); if(!g)return;
 
   document.getElementById('mname').textContent=g.name;
 
-  // Cover portrait dans la modal (format portrait 2/3 plus lisible)
+  // Image portrait
   const img=portraitImg(g);
   const cv=document.getElementById('mcov'),nc=document.getElementById('mnocov');
   if(img){cv.src=img;cv.style.display='';nc.style.display='none';}
   else{cv.style.display='none';nc.style.display='flex';}
 
-  // Sources multiples
-  const src=g.sources&&g.sources[0]||{};
+  // Pills : année / catégorie / date ajout
   const v=document.getElementById('mv');
-  v.textContent=src.version?'v'+src.version:'';
-  v.style.display=src.version?'':'none';
-  document.getElementById('msrc').textContent=g.sources.map(s=>s.source).join(', ');
-  document.getElementById('msz').textContent=src.size||'—';
-  document.getElementById('mdt').textContent=fd(src.uploadDate);
+  v.textContent=g.year||'';
+  v.style.display=g.year?'':'none';
+  document.getElementById('msrc').textContent=g.category||'—';
+  document.getElementById('msz').textContent=g.description?g.description.slice(0,60)+(g.description.length>60?'…':''):'—';
+  document.getElementById('mdt').textContent=fd(g.added_at);
 
-  // Si plusieurs sources → afficher plusieurs boutons magnet
+  // Boutons de téléchargement (un par magnet)
   const mact=document.getElementById('mact');
-  if(g.sources.length<=1){
+  if(!g.magnets.length){
     mact.innerHTML=`
-      <a id="mmag" href="${src.magnet||'#'}" class="btn-orange" style="flex:1;justify-content:center">
+      <span class="btn-orange" style="flex:1;justify-content:center;opacity:.4;cursor:default">
+        Aucun lien disponible
+      </span>
+      <button class="btn-ghost" onclick="closeMod()" style="padding:.75rem 1rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>`;
+  } else if(g.magnets.length===1){
+    mact.innerHTML=`
+      <a href="${e(g.magnets[0])}" class="btn-orange" style="flex:1;justify-content:center">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
         Télécharger avec Hydra
       </a>
@@ -613,12 +646,13 @@ function om(idOrName){
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>`;
   } else {
-    // Plusieurs sources : liste déroulante + bouton
-    const opts=g.sources.map((s,i)=>`<option value="${i}">${e(s.source)}${s.size?' · '+e(s.size):''}</option>`).join('');
+    // Plusieurs magnets → select
+    const opts=g.magnets.map((m,i)=>`<option value="${e(m)}">Lien ${i+1}</option>`).join('');
     mact.innerHTML=`
       <div style="display:flex;flex-direction:column;gap:.6rem;flex:1">
-        <select id="msrcsel" onchange="mupd(this.value)" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.5rem .75rem;border-radius:.5rem;font-size:12px;font-weight:700;font-family:Inter,sans-serif;outline:none;cursor:pointer">${opts}</select>
-        <a id="mmag" href="${src.magnet||'#'}" class="btn-orange" style="justify-content:center">
+        <select id="msrcsel" onchange="document.getElementById('mmag').href=this.value"
+          style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.5rem .75rem;border-radius:.5rem;font-size:12px;font-weight:700;font-family:Inter,sans-serif;outline:none;cursor:pointer">${opts}</select>
+        <a id="mmag" href="${e(g.magnets[0])}" class="btn-orange" style="justify-content:center">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
           Télécharger avec Hydra
         </a>
@@ -626,29 +660,16 @@ function om(idOrName){
       <button class="btn-ghost" onclick="closeMod()" style="padding:.75rem 1rem;align-self:flex-end">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>`;
-    // Stocker les sources pour mupd
-    window._msrcs=g.sources;
   }
 
-  document.getElementById('mov').classList.add('open');document.body.style.overflow='hidden';
-}
-
-// Met à jour le magnet quand on change de source dans la modal
-function mupd(idx){
-  const s=window._msrcs&&window._msrcs[idx];
-  if(!s)return;
-  document.getElementById('mmag').href=s.magnet||'#';
-  document.getElementById('msz').textContent=s.size||'—';
-  document.getElementById('mdt').textContent=fd(s.uploadDate);
-  const v=document.getElementById('mv');
-  v.textContent=s.version?'v'+s.version:'';
-  v.style.display=s.version?'':'none';
+  document.getElementById('mov').classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
 function closeMod(){document.getElementById('mov').classList.remove('open');document.body.style.overflow='';}
 function movck(ev){if(ev.target===document.getElementById('mov'))closeMod();}
 
-// Recherche — utilise coverPortrait pour la miniature
+// ── RECHERCHE ────────────────────────────────────────────────────────────────
 function openSrch(){document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
 function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';}
 function doSrch(q){
@@ -658,26 +679,31 @@ function doSrch(q){
   if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour "${e(q)}"</div>`;return;}
   r.innerHTML=m.map(g=>{
     const img=portraitImg(g);
-    const src=g.sources&&g.sources[0]||{};
-    return`<div class="sri" onclick="closeSrch();om('${e2(g.id||g.name)}')">
-      ${img?`<img class="sri-cov" src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="sri-cov" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎮</div>`}
-      <div class="sri-info"><div class="sri-name">${e(g.name)}</div><div class="sri-meta">${e(g.sources.map(s=>s.source).join(', '))} · ${e(src.size||'—')} · ${fd(src.uploadDate)}</div></div>
+    return`<div class="sri" onclick="closeSrch();om('${e2(g.id)}')">
+      ${img
+        ?`<img class="sri-cov" src="${img}" alt="${e(g.name)}" loading="lazy">`
+        :`<div class="sri-cov" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎮</div>`}
+      <div class="sri-info">
+        <div class="sri-name">${e(g.name)}</div>
+        <div class="sri-meta">${e(g.category||'—')} · ${e(g.year||'—')} · ${fd(g.added_at)}</div>
+      </div>
       <div class="sri-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
     </div>`;
   }).join('');
 }
 
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
 function goHome(e){if(e)e.preventDefault();document.getElementById('hv').style.display='block';document.getElementById('catv').classList.remove('open');sn('nH');}
 function goCat(e){if(e)e.preventDefault();document.getElementById('hv').style.display='none';document.getElementById('catv').classList.add('open');sn('nC');catf();window.scrollTo({top:0,behavior:'smooth'});}
 function goNew(e){if(e)e.preventDefault();goHome(null);setTimeout(()=>document.getElementById('rrow')?.closest('.section')?.scrollIntoView({behavior:'smooth'}),100);sn('nR');}
 function sn(id){document.querySelectorAll('.nav-a').forEach(el=>el.classList.remove('active'));document.getElementById(id)?.classList.add('active');}
-
 function sl(id){document.getElementById(id)?.scrollBy({left:-800,behavior:'smooth'});}
 function sr(id){document.getElementById(id)?.scrollBy({left:800,behavior:'smooth'});}
 
 window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>80));
 document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){closeSrch();closeMod();}});
 
+// ── UTILITAIRES ──────────────────────────────────────────────────────────────
 function fd(s){if(!s)return'—';const d=new Date(s);return isNaN(d)?'—':d.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});}
 function e(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function e2(s){return e(s).replace(/&#39;/g,"\\'");}
