@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRACKUZU — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,:before,:after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,sans-serif;background:#000;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+    img,svg{display:block;max-width:100%}
+    textarea,input,select{font:inherit;color:inherit}
+
+    ::-webkit-scrollbar{width:6px;height:6px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#f97316;border-radius:3px}
+
+    /* ─── LAYOUT ─── */
+    .page{min-height:100vh;background:#000;padding:5rem 1.5rem 6rem;position:relative;overflow:hidden}
+    .glow{position:fixed;top:30%;left:20%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:9999px;background:rgba(249,115,22,.04);filter:blur(140px);pointer-events:none;z-index:0}
+    .glow2{position:fixed;bottom:10%;right:10%;width:600px;height:600px;border-radius:9999px;background:rgba(249,115,22,.02);filter:blur(100px);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto}
+
+    /* ─── HEADER ─── */
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);height:60px;display:flex;align-items:center;padding:0 2rem;justify-content:space-between}
+    .logo{font-size:1.5rem;font-weight:900;letter-spacing:-.06em;text-transform:uppercase}
+    .logo span{color:rgba(255,255,255,.3)}
+    .topbar-right{display:flex;align-items:center;gap:1rem}
+    .user-pill{display:flex;align-items:center;gap:.6rem;padding:.375rem .75rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6)}
+    .user-pill b{color:#fb923c}
+    .logout-btn{padding:.375rem .875rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.4);transition:.2s}
+    .logout-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+
+    /* ─── AUTH SCREEN ─── */
+    #auth-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+    .auth-card{max-width:420px;width:100%;text-align:center;padding:3rem 2.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:2rem;backdrop-filter:blur(40px)}
+    .auth-logo{font-size:2.5rem;font-weight:900;letter-spacing:-.07em;text-transform:uppercase;margin-bottom:.5rem}
+    .auth-logo span{color:rgba(255,255,255,.3)}
+    .auth-sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.3);margin-bottom:2.5rem}
+    .auth-label{font-size:.8rem;color:rgba(255,255,255,.3);margin-bottom:1.75rem;line-height:1.6}
+    .discord-btn{display:inline-flex;align-items:center;gap:.875rem;padding:1rem 2rem;border-radius:1rem;background:#5865F2;color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;transition:.2s;border:0;cursor:pointer}
+    .discord-btn:hover{background:#4752C4;transform:scale(1.03);box-shadow:0 10px 40px rgba(88,101,242,.3)}
+    .discord-btn svg{width:18px;height:18px;flex-shrink:0}
+    .auth-err{margin-top:1.25rem;font-size:11px;color:#f87171;font-weight:600;display:none}
+
+    /* ─── MAIN CONTENT (hidden until authed) ─── */
+    #main-content{display:none}
+
+    /* ─── CARD ─── */
+    .card{max-width:64rem;margin:0 auto;padding:2.5rem 2rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(64px);-webkit-backdrop-filter:blur(64px);border-radius:2.5rem;margin-bottom:2rem}
+    .card-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.35em;color:rgba(249,115,22,.6);margin-bottom:1.5rem}
+
+    /* ─── FORM GRID ─── */
+    .form-layout{display:grid;grid-template-columns:1fr;gap:2rem}
+    @media(min-width:768px){.form-layout{grid-template-columns:200px minmax(0,1fr);gap:2.5rem}}
+    @media(min-width:1024px){.form-layout{grid-template-columns:240px minmax(0,1fr)}}
+
+    /* ─── POSTER UPLOAD ─── */
+    .poster-upload{position:relative;width:100%;aspect-ratio:2/3;border-radius:1.25rem;overflow:hidden;border:2px dashed rgba(255,255,255,.12);background:linear-gradient(180deg,#1a1210 0%,#0d0d0d 100%);cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem}
+    .poster-upload:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
+    .poster-upload img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:1.25rem}
+    .poster-upload .plus{font-size:2.5rem;color:rgba(255,255,255,.2);line-height:1;transition:.2s;z-index:1}
+    .poster-upload:hover .plus{color:rgba(249,115,22,.6)}
+    .poster-upload .up-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,.2);text-align:center;z-index:1}
+    .poster-upload.uploading::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}
+
+    /* ─── BANNER UPLOAD ─── */
+    .banner-upload{position:relative;width:100%;aspect-ratio:16/7;border-radius:1.25rem;overflow:hidden;border:2px dashed rgba(255,255,255,.12);background:linear-gradient(90deg,#1a1210 0%,#0d0d0d 100%);cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;margin-top:.5rem}
+    .banner-upload:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
+    .banner-upload img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .banner-upload .plus{font-size:2rem;color:rgba(255,255,255,.2);line-height:1;z-index:1;transition:.2s}
+    .banner-upload:hover .plus{color:rgba(249,115,22,.6)}
+    .banner-upload .up-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,.2);z-index:1}
+
+    /* ─── FORM FIELDS ─── */
+    .fields{display:flex;flex-direction:column;gap:1.25rem}
+    .field{display:flex;flex-direction:column;gap:.5rem}
+    .field label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.35)}
+    .field input,.field textarea,.field select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.75rem 1rem;font-size:.875rem;color:#fff;transition:.2s;width:100%;outline:none}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
+    .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.2)}
+    .field textarea{resize:vertical;min-height:90px}
+    .field select option{background:#111;color:#fff}
+
+    /* ─── CATEGORY PICKER ─── */
+    .cat-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
+    .cat-btn{padding:.4rem .875rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.4);cursor:pointer;transition:.2s}
+    .cat-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+    .cat-btn.active{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.4);color:#fb923c}
+
+    /* ─── ACTIONS ─── */
+    .actions{display:flex;flex-wrap:wrap;gap:1rem;padding-top:.5rem}
+    .btn{display:inline-flex;align-items:center;gap:.75rem;padding:.875rem 1.75rem;border-radius:.875rem;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;transition:.2s;cursor:pointer;border:0}
+    .btn.primary{background:#f97316;color:#000;box-shadow:0 8px 24px rgba(249,115,22,.25)}
+    .btn.primary:hover{background:#fb923c;transform:scale(1.03);box-shadow:0 12px 32px rgba(249,115,22,.35)}
+    .btn.primary:disabled{opacity:.4;pointer-events:none}
+    .btn.secondary{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff}
+    .btn.secondary:hover{background:rgba(255,255,255,.1)}
+    .btn.danger{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.2);color:#f87171}
+    .btn.danger:hover{background:rgba(239,68,68,.2)}
+
+    /* ─── UPLOAD SPINNER ─── */
+    .spinner{display:none;width:16px;height:16px;border:2px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:9999px;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ─── TOAST ─── */
+    #toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:9999;padding:.875rem 1.75rem;border-radius:1rem;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;transition:.4s cubic-bezier(.34,1.56,.64,1);pointer-events:none;backdrop-filter:blur(20px)}
+    #toast.show{transform:translateX(-50%) translateY(0)}
+    #toast.success{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#4ade80}
+    #toast.error{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#f87171}
+    #toast.info{background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#fb923c}
+
+    /* ─── GAME LIST ─── */
+    .search-bar{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:.6rem 1rem}
+    .search-bar svg{flex-shrink:0;color:rgba(255,255,255,.3)}
+    .search-bar input{background:none;border:0;outline:none;font-size:.875rem;color:#fff;width:100%}
+    .search-bar input::placeholder{color:rgba(255,255,255,.25)}
+
+    .game-list{display:flex;flex-direction:column;gap:.75rem}
+    .game-item{display:flex;align-items:center;gap:1rem;padding:.875rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:1rem;transition:.2s}
+    .game-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+    .game-thumb{width:40px;height:60px;border-radius:.5rem;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.07)}
+    .game-thumb-placeholder{width:40px;height:60px;border-radius:.5rem;background:linear-gradient(135deg,#1a1210,#0d0d0d);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+    .game-info{flex:1;min-width:0}
+    .game-title{font-size:.875rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.02em}
+    .game-meta{font-size:10px;color:rgba(255,255,255,.3);font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-top:.2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+    .game-meta span{display:inline-flex;align-items:center;gap:.3rem}
+    .cat-badge{padding:.2rem .5rem;border-radius:9999px;background:rgba(249,115,22,.1);color:#fb923c;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.15em}
+    .game-actions{display:flex;gap:.5rem;flex-shrink:0}
+    .sm-btn{padding:.4rem .75rem;border-radius:.5rem;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;transition:.15s;cursor:pointer}
+    .sm-btn.edit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+    .sm-btn.edit:hover{background:rgba(255,255,255,.12);color:#fff}
+    .sm-btn.del{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);color:#f87171}
+    .sm-btn.del:hover{background:rgba(239,68,68,.18)}
+
+    .empty-list{text-align:center;padding:3rem;color:rgba(255,255,255,.2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em}
+
+    /* ─── PENDING BADGE ─── */
+    .pending-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.25rem .625rem;border-radius:9999px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.2);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:#fb923c;margin-left:auto}
+
+    /* ─── SECTION DIVIDER ─── */
+    .divider{border:0;border-top:1px solid rgba(255,255,255,.06);margin:2rem 0}
+
+    /* ─── CONFIRM MODAL ─── */
+    .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem}
+    .modal-overlay.open{display:flex}
+    .modal-box{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:2rem;max-width:380px;width:100%;text-align:center}
+    .modal-box h3{font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:.75rem}
+    .modal-box p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:1.5rem}
+    .modal-actions{display:flex;gap:.75rem;justify-content:center}
+
+    /* ─── LOADING ─── */
+    .loading-overlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem}
+    .loading-overlay.hidden{display:none}
+    .loading-text{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.4)}
+    .big-spinner{width:32px;height:32px;border:3px solid rgba(249,115,22,.2);border-top-color:#f97316;border-radius:9999px;animation:spin .8s linear infinite}
+  </style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="big-spinner"></div>
+  <div class="loading-text">Vérification…</div>
+</div>
+
+<!-- GLOW -->
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<!-- TOPBAR -->
+<div class="topbar" id="topbar" style="display:none">
+  <div class="logo">CRACK<span>UZU</span> <span style="font-size:.75rem;letter-spacing:.1em;color:rgba(249,115,22,.6)">Admin</span></div>
+  <div class="topbar-right">
+    <div class="user-pill" id="user-pill">Connecté</div>
+    <button class="logout-btn" onclick="logout()">Déconnexion</button>
+  </div>
+</div>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">CRACK<span>UZU</span></div>
+    <div class="auth-sub">Espace Admin</div>
+    <div class="auth-label">Accès restreint. Connecte-toi avec Discord pour continuer.</div>
+    <button class="discord-btn" onclick="loginDiscord()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      Se connecter avec Discord
+    </button>
+    <div class="auth-err" id="auth-err">Accès refusé — ID Discord non autorisé.</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+  <div class="page">
+    <div class="wrap">
+
+      <!-- ═══ FORMULAIRE ═══ -->
+      <div class="card">
+        <div class="card-title" id="form-mode-label">➕ Ajouter un jeu</div>
+        <input type="hidden" id="edit-index" value="">
+
+        <div class="form-layout">
+          <!-- Poster -->
+          <div>
+            <div class="field" style="margin-bottom:1rem">
+              <label>Image portrait</label>
+            </div>
+            <div class="poster-upload" id="poster-zone" onclick="triggerPaste('portrait')">
+              <div class="plus" id="poster-plus">＋</div>
+              <div class="up-label">Coller depuis<br>le presse-papier</div>
+              <img id="poster-preview" src="" alt="" style="display:none">
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,.2);margin-top:.5rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-align:center">Clic → coller une image</div>
+          </div>
+
+          <!-- Fields -->
+          <div class="fields">
+            <div class="field">
+              <label>Titre</label>
+              <input type="text" id="f-title" placeholder="Ex: The Witcher 3" oninput="syncPreview()">
+            </div>
+            <div class="field">
+              <label>Année</label>
+              <input type="text" id="f-year" placeholder="2025" maxlength="4" oninput="syncPreview()">
+            </div>
+            <div class="field">
+              <label>Catégorie</label>
+              <div class="cat-grid" id="cat-grid"></div>
+            </div>
+            <div class="field">
+              <label>Description</label>
+              <textarea id="f-desc" rows="4" placeholder="Résumé du jeu…" oninput="syncPreview()"></textarea>
+            </div>
+            <div class="field">
+              <label>Lien YouTube (URL ou ID)</label>
+              <input type="text" id="f-ytb" placeholder="https://youtube.com/watch?v=xxx ou dQw4w9WgXcQ">
+            </div>
+            <div class="field">
+              <label>Magnets / Liens de téléchargement</label>
+              <textarea id="f-magnets" rows="3" placeholder="Un magnet par ligne (optionnel)&#10;magnet:?xt=urn:btih:..."></textarea>
+            </div>
+            <div class="field">
+              <label>Image bannière (horizontale)</label>
+              <div class="banner-upload" id="banner-zone" onclick="triggerPaste('banner')">
+                <div class="plus" id="banner-plus">＋</div>
+                <div class="up-label">Clic → coller une image</div>
+                <img id="banner-preview" src="" alt="" style="display:none">
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn primary" onclick="saveGame(false)" id="save-btn">
+                <span id="save-spinner" class="spinner"></span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Enregistrer
+              </button>
+              <button class="btn secondary" onclick="saveGame(true)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                Ajouter temporairement
+                <span class="pending-badge" id="pending-count" style="display:none">0</span>
+              </button>
+              <button class="btn secondary" onclick="resetForm()" id="cancel-edit-btn" style="display:none">Annuler</button>
+              <button class="btn primary" onclick="commitPending()" id="commit-btn" style="display:none">
+                <span id="commit-spinner" class="spinner"></span>
+                Commit groupé
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ LISTE DES JEUX ═══ -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <div class="card-title" style="margin-bottom:0">📋 10 derniers jeux</div>
+          <button class="btn secondary" onclick="loadGames()" style="padding:.5rem 1rem;font-size:9px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+            Rafraîchir
+          </button>
+        </div>
+        <div class="search-bar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="list-search" placeholder="Rechercher par titre…" oninput="renderGameList()">
+        </div>
+        <div class="game-list" id="game-list">
+          <div class="empty-list">Chargement…</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal-box">
+    <h3>Confirmer la suppression</h3>
+    <p id="confirm-text">Supprimer ce jeu définitivement ?</p>
+    <div class="modal-actions">
+      <button class="btn danger" onclick="confirmDelete()">
+        <span id="del-spinner" class="spinner"></span>
+        Supprimer
+      </button>
+      <button class="btn secondary" onclick="closeConfirm()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  CONFIG
+// ════════════════════════════════════════════════════════
+const DISCORD_CLIENT_ID = '1493055302961201264';
+const DISCORD_REDIRECT   = 'https://crackuzu.github.io/beta/admin.html';
+const ALLOWED_USER_ID    = '482466285364576266';
+const CLOUDINARY_CLOUD   = 'dijopwaix';
+const CLOUDINARY_PRESET  = 'kmorlkcl';
+const GITHUB_OWNER       = 'Crackuzu';
+const GITHUB_REPO        = 'beta';
+const DATA_JSON_URL      = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/data.json`;
+const GH_ACTION_URL      = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/dispatches`;
+// Note : le GitHub token est passé via la GitHub Action — côté client on déclenche repository_dispatch
+// Le token doit être stocké dans localStorage après que l'admin le renseigne manuellement
+// (ou récupéré via un proxy sécurisé)
+
+const CATEGORIES = ['Action','Aventure','RPG','FPS','Simulation','Sport','Course','Stratégie','Horreur','Puzzle','Plateforme','MMO','Indie','Autre'];
+
+// ════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════
+let discordToken = null;
+let discordUser  = null;
+let allGames     = [];
+let pendingGames = [];
+let deleteTarget = null;
+let portraitUrl  = '';
+let bannerUrl    = '';
+
+// ════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════
+(async function init() {
+  buildCatGrid();
+
+  // 1) Vérifier callback OAuth2 (fragment #access_token=...)
+  const hash = window.location.hash;
+  if (hash.includes('access_token=')) {
+    const params = new URLSearchParams(hash.slice(1));
+    const token  = params.get('access_token');
+    window.history.replaceState(null, '', window.location.pathname);
+    if (token) {
+      await handleToken(token);
+      return;
+    }
+  }
+
+  // 2) Token déjà en session ?
+  const saved = sessionStorage.getItem('discord_token');
+  if (saved) {
+    await handleToken(saved);
+    return;
+  }
+
+  // 3) Afficher écran auth
+  hideLoading();
+})();
+
+async function handleToken(token) {
+  discordToken = token;
+  try {
+    const res  = await fetch('https://discord.com/api/users/@me', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error('Fetch user failed');
+    const user = await res.json();
+    if (user.id !== ALLOWED_USER_ID) {
+      document.getElementById('auth-err').style.display = 'block';
+      hideLoading();
+      return;
+    }
+    discordUser = user;
+    sessionStorage.setItem('discord_token', token);
+    showAdmin(user);
+  } catch(e) {
+    hideLoading();
+  }
+}
+
+function showAdmin(user) {
+  document.getElementById('auth-screen').style.display  = 'none';
+  document.getElementById('main-content').style.display = 'block';
+  document.getElementById('topbar').style.display       = 'flex';
+  document.getElementById('user-pill').innerHTML        = `<b>${esc(user.username)}</b> #${esc(user.discriminator||'0')}`;
+  hideLoading();
+  loadGames();
+  checkGhToken();
+}
+
+function hideLoading() {
+  document.getElementById('loading-overlay').classList.add('hidden');
+}
+
+// ════════════════════════════════════════════════════════
+//  AUTH
+// ════════════════════════════════════════════════════════
+function loginDiscord() {
+  const params = new URLSearchParams({
+    client_id: DISCORD_CLIENT_ID,
+    redirect_uri: DISCORD_REDIRECT,
+    response_type: 'token',
+    scope: 'identify'
+  });
+  window.location.href = `https://discord.com/api/oauth2/authorize?${params}`;
+}
+
+function logout() {
+  sessionStorage.removeItem('discord_token');
+  location.reload();
+}
+
+// ════════════════════════════════════════════════════════
+//  GITHUB TOKEN CHECK
+// ════════════════════════════════════════════════════════
+function checkGhToken() {
+  if (!localStorage.getItem('gh_token')) {
+    const t = prompt('🔑 GitHub Personal Access Token (repo scope) :\n(Stocké uniquement en localStorage — ne partage jamais cette page)');
+    if (t) localStorage.setItem('gh_token', t.trim());
+  }
+}
+
+function getGhToken() {
+  let t = localStorage.getItem('gh_token');
+  if (!t) {
+    t = prompt('GitHub Token requis :');
+    if (t) localStorage.setItem('gh_token', t.trim());
+  }
+  return t;
+}
+
+// ════════════════════════════════════════════════════════
+//  CATEGORIES
+// ════════════════════════════════════════════════════════
+function buildCatGrid() {
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = CATEGORIES.map(c =>
+    `<button class="cat-btn" data-cat="${esc(c)}" onclick="selectCat('${esc(c)}')">${esc(c)}</button>`
+  ).join('');
+}
+
+function selectCat(cat) {
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === cat);
+  });
+  syncPreview();
+}
+
+function getSelectedCat() {
+  const active = document.querySelector('.cat-btn.active');
+  return active ? active.dataset.cat : '';
+}
+
+// ════════════════════════════════════════════════════════
+//  CLOUDINARY UPLOAD
+// ════════════════════════════════════════════════════════
+async function triggerPaste(type) {
+  try {
+    const items = await navigator.clipboard.read();
+    for (const item of items) {
+      for (const mtype of item.types) {
+        if (mtype.startsWith('image/')) {
+          const blob = await item.getType(mtype);
+          await uploadToCloudinary(blob, type);
+          return;
+        }
+      }
+    }
+    toast('Aucune image dans le presse-papier', 'error');
+  } catch(e) {
+    toast('Accès presse-papier refusé — autorise l\'accès', 'error');
+  }
+}
+
+async function uploadToCloudinary(blob, type) {
+  const zone = document.getElementById(type === 'portrait' ? 'poster-zone' : 'banner-zone');
+  zone.style.opacity = '.5';
+  zone.style.pointerEvents = 'none';
+
+  const fd = new FormData();
+  fd.append('file', blob);
+  fd.append('upload_preset', CLOUDINARY_PRESET);
+
+  try {
+    const res  = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {method:'POST',body:fd});
+    const data = await res.json();
+    if (data.secure_url) {
+      if (type === 'portrait') {
+        portraitUrl = data.secure_url;
+        const img = document.getElementById('poster-preview');
+        img.src = portraitUrl; img.style.display = 'block';
+        document.getElementById('poster-plus').style.display = 'none';
+        document.querySelector('#poster-zone .up-label').style.display = 'none';
+      } else {
+        bannerUrl = data.secure_url;
+        const img = document.getElementById('banner-preview');
+        img.src = bannerUrl; img.style.display = 'block';
+        document.getElementById('banner-plus').style.display = 'none';
+        document.querySelector('#banner-zone .up-label').style.display = 'none';
+      }
+      toast('Image uploadée ✓', 'success');
+    } else {
+      toast('Échec de l\'upload Cloudinary', 'error');
+    }
+  } catch(e) {
+    toast('Erreur réseau Cloudinary', 'error');
+  } finally {
+    zone.style.opacity = '1';
+    zone.style.pointerEvents = '';
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  YOUTUBE HELPER
+// ════════════════════════════════════════════════════════
+function extractYtbId(raw) {
+  if (!raw) return '';
+  raw = raw.trim();
+  // Already an ID (no slashes, no dots, ~11 chars)
+  if (/^[a-zA-Z0-9_-]{10,12}$/.test(raw)) return raw;
+  // URL with v= param
+  try {
+    const u = new URL(raw);
+    if (u.searchParams.get('v')) return u.searchParams.get('v');
+    // youtu.be/ID
+    if (u.hostname === 'youtu.be') return u.pathname.slice(1);
+    // /embed/ID or /v/ID
+    const m = u.pathname.match(/\/(embed|v)\/([a-zA-Z0-9_-]+)/);
+    if (m) return m[2];
+  } catch(e) {}
+  return raw;
+}
+
+// ════════════════════════════════════════════════════════
+//  BUILD GAME OBJECT
+// ════════════════════════════════════════════════════════
+function buildGameObject() {
+  const title  = document.getElementById('f-title').value.trim();
+  const year   = document.getElementById('f-year').value.trim();
+  const desc   = document.getElementById('f-desc').value.trim();
+  const ytbRaw = document.getElementById('f-ytb').value.trim();
+  const magnetsRaw = document.getElementById('f-magnets').value.trim();
+  const cat    = getSelectedCat();
+
+  if (!title) { toast('Le titre est requis', 'error'); return null; }
+
+  const magnets = magnetsRaw
+    ? magnetsRaw.split('\n').map(s=>s.trim()).filter(Boolean)
+    : [];
+
+  return {
+    title,
+    year,
+    category: cat,
+    description: desc,
+    portrait_url: portraitUrl,
+    banner_url:   bannerUrl,
+    ytb_id:       extractYtbId(ytbRaw),
+    magnets,
+    added_by:  discordUser?.id || '',
+    added_at:  new Date().toISOString()
+  };
+}
+
+// ════════════════════════════════════════════════════════
+//  SAVE GAME
+// ════════════════════════════════════════════════════════
+async function saveGame(temporary) {
+  const game = buildGameObject();
+  if (!game) return;
+
+  const editIdx = document.getElementById('edit-index').value;
+  const isEdit  = editIdx !== '';
+
+  if (temporary) {
+    if (isEdit) {
+      // Edition sur pending
+      const pi = parseInt(editIdx);
+      if (!isNaN(pi) && pi < 0) pendingGames[~pi] = game;
+      else { pendingGames.push(game); }
+    } else {
+      pendingGames.push(game);
+    }
+    updatePendingBadge();
+    toast(`"${game.title}" ajouté temporairement`, 'info');
+    resetForm();
+    return;
+  }
+
+  // Sauvegarder immédiatement via GitHub Action
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  document.getElementById('save-spinner').style.display = 'block';
+
+  try {
+    let games = [...allGames];
+    if (isEdit) {
+      const idx = parseInt(editIdx);
+      if (!isNaN(idx) && idx >= 0) games[idx] = game;
+    } else {
+      games.unshift(game);
+    }
+    await dispatchGitHubAction('upsert', games);
+    toast(isEdit ? 'Jeu modifié ✓' : 'Jeu ajouté ✓', 'success');
+    allGames = games;
+    resetForm();
+    renderGameList();
+  } catch(e) {
+    toast('Erreur GitHub : ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    document.getElementById('save-spinner').style.display = 'none';
+  }
+}
+
+async function commitPending() {
+  if (!pendingGames.length) return;
+  const btn = document.getElementById('commit-btn');
+  btn.disabled = true;
+  document.getElementById('commit-spinner').style.display = 'block';
+  try {
+    const games = [...pendingGames, ...allGames];
+    await dispatchGitHubAction('upsert', games);
+    toast(`${pendingGames.length} jeu(x) commités ✓`, 'success');
+    allGames = games;
+    pendingGames = [];
+    updatePendingBadge();
+    renderGameList();
+  } catch(e) {
+    toast('Erreur commit : ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    document.getElementById('commit-spinner').style.display = 'none';
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  GITHUB ACTION DISPATCH
+// ════════════════════════════════════════════════════════
+async function dispatchGitHubAction(action, games) {
+  const ghToken = getGhToken();
+  if (!ghToken) throw new Error('Token GitHub manquant');
+
+  const res = await fetch(GH_ACTION_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': `token ${ghToken}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      event_type: 'update-data',
+      client_payload: {
+        action,
+        discord_id: discordUser?.id,
+        games: JSON.stringify(games)
+      }
+    })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(()=>({message:res.statusText}));
+    throw new Error(err.message || res.statusText);
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  LOAD GAMES FROM data.json
+// ════════════════════════════════════════════════════════
+async function loadGames() {
+  document.getElementById('game-list').innerHTML = '<div class="empty-list">Chargement…</div>';
+  try {
+    const res  = await fetch(DATA_JSON_URL + '?t=' + Date.now());
+    const data = await res.json();
+    allGames   = Array.isArray(data) ? data : (data.games || []);
+    renderGameList();
+  } catch(e) {
+    document.getElementById('game-list').innerHTML = '<div class="empty-list">Impossible de charger data.json</div>';
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  RENDER GAME LIST
+// ════════════════════════════════════════════════════════
+function renderGameList() {
+  const q   = document.getElementById('list-search').value.toLowerCase();
+  const src = [...pendingGames.map((g,i)=>({...g,_pending:true,_pidx:i})), ...allGames];
+  const filtered = src.filter(g => !q || g.title?.toLowerCase().includes(q));
+  const shown    = filtered.slice(0, 10);
+
+  if (!shown.length) {
+    document.getElementById('game-list').innerHTML = '<div class="empty-list">Aucun jeu trouvé</div>';
+    return;
+  }
+
+  document.getElementById('game-list').innerHTML = shown.map((g,i) => {
+    const thumb = g.portrait_url
+      ? `<img class="game-thumb" src="${esc(g.portrait_url)}" alt="" loading="lazy">`
+      : `<div class="game-thumb-placeholder">🎮</div>`;
+    const editIdx = g._pending ? (~g._pidx) : allGames.indexOf(g);
+    return `<div class="game-item">
+      ${thumb}
+      <div class="game-info">
+        <div class="game-title">${esc(g.title || '—')}</div>
+        <div class="game-meta">
+          <span>${esc(g.year || '—')}</span>
+          ${g.category ? `<span><span class="cat-badge">${esc(g.category)}</span></span>` : ''}
+          ${g._pending ? '<span style="color:#fb923c">⏳ En attente</span>' : ''}
+        </div>
+      </div>
+      <div class="game-actions">
+        <button class="sm-btn edit" onclick="editGame(${editIdx})">Modifier</button>
+        <button class="sm-btn del" onclick="askDelete(${editIdx},'${esc(g.title||'ce jeu')}')">Supprimer</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════
+//  EDIT GAME
+// ════════════════════════════════════════════════════════
+function editGame(idx) {
+  let game;
+  if (idx < 0) {
+    game = pendingGames[~idx];
+  } else {
+    game = allGames[idx];
+  }
+  if (!game) return;
+
+  document.getElementById('edit-index').value = idx;
+  document.getElementById('f-title').value    = game.title || '';
+  document.getElementById('f-year').value     = game.year  || '';
+  document.getElementById('f-desc').value     = game.description || '';
+  document.getElementById('f-ytb').value      = game.ytb_id || '';
+  document.getElementById('f-magnets').value  = (game.magnets||[]).join('\n');
+
+  // Category
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === game.category);
+  });
+
+  // Portrait
+  portraitUrl = game.portrait_url || '';
+  const pp = document.getElementById('poster-preview');
+  if (portraitUrl) {
+    pp.src = portraitUrl; pp.style.display = 'block';
+    document.getElementById('poster-plus').style.display = 'none';
+    document.querySelector('#poster-zone .up-label').style.display = 'none';
+  } else {
+    pp.style.display = 'none';
+    document.getElementById('poster-plus').style.display = '';
+    document.querySelector('#poster-zone .up-label').style.display = '';
+  }
+
+  // Banner
+  bannerUrl = game.banner_url || '';
+  const bp = document.getElementById('banner-preview');
+  if (bannerUrl) {
+    bp.src = bannerUrl; bp.style.display = 'block';
+    document.getElementById('banner-plus').style.display = 'none';
+    document.querySelector('#banner-zone .up-label').style.display = 'none';
+  } else {
+    bp.style.display = 'none';
+    document.getElementById('banner-plus').style.display = '';
+    document.querySelector('#banner-zone .up-label').style.display = '';
+  }
+
+  document.getElementById('form-mode-label').textContent = '✏️ Modifier un jeu';
+  document.getElementById('cancel-edit-btn').style.display = '';
+  document.getElementById('save-btn').textContent = '';
+  // rebuild save btn content
+  document.getElementById('save-btn').innerHTML = `<span id="save-spinner" class="spinner"></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+    Enregistrer les modifications`;
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════════════
+//  DELETE
+// ════════════════════════════════════════════════════════
+function askDelete(idx, title) {
+  deleteTarget = idx;
+  document.getElementById('confirm-text').textContent = `Supprimer "${title}" définitivement ?`;
+  document.getElementById('confirm-modal').classList.add('open');
+}
+
+function closeConfirm() {
+  document.getElementById('confirm-modal').classList.remove('open');
+  deleteTarget = null;
+}
+
+async function confirmDelete() {
+  if (deleteTarget === null) return;
+  const idx = deleteTarget;
+
+  if (idx < 0) {
+    // Pending
+    pendingGames.splice(~idx, 1);
+    updatePendingBadge();
+    toast('Supprimé de la liste temporaire', 'info');
+    closeConfirm();
+    renderGameList();
+    return;
+  }
+
+  document.getElementById('del-spinner').style.display = 'block';
+  try {
+    const games = allGames.filter((_,i)=>i!==idx);
+    await dispatchGitHubAction('upsert', games);
+    allGames = games;
+    toast('Jeu supprimé ✓', 'success');
+    closeConfirm();
+    renderGameList();
+  } catch(e) {
+    toast('Erreur suppression : ' + e.message, 'error');
+  } finally {
+    document.getElementById('del-spinner').style.display = 'none';
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════
+function resetForm() {
+  document.getElementById('f-title').value   = '';
+  document.getElementById('f-year').value    = '';
+  document.getElementById('f-desc').value    = '';
+  document.getElementById('f-ytb').value     = '';
+  document.getElementById('f-magnets').value = '';
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  portraitUrl = ''; bannerUrl = '';
+  document.getElementById('poster-preview').style.display = 'none';
+  document.getElementById('poster-plus').style.display    = '';
+  document.querySelector('#poster-zone .up-label').style.display = '';
+  document.getElementById('banner-preview').style.display = 'none';
+  document.getElementById('banner-plus').style.display    = '';
+  document.querySelector('#banner-zone .up-label').style.display = '';
+  document.getElementById('edit-index').value = '';
+  document.getElementById('form-mode-label').textContent = '➕ Ajouter un jeu';
+  document.getElementById('cancel-edit-btn').style.display = 'none';
+  document.getElementById('save-btn').innerHTML = `<span id="save-spinner" class="spinner"></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+    Enregistrer`;
+}
+
+function updatePendingBadge() {
+  const badge  = document.getElementById('pending-count');
+  const commit = document.getElementById('commit-btn');
+  if (pendingGames.length > 0) {
+    badge.textContent   = pendingGames.length;
+    badge.style.display = '';
+    commit.style.display = '';
+  } else {
+    badge.style.display  = 'none';
+    commit.style.display = 'none';
+  }
+  renderGameList();
+}
+
+function syncPreview() { /* live preview hooks if needed */ }
+
+function toast(msg, type='info') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className   = `show ${type}`;
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Close modal on overlay click
+document.getElementById('confirm-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('confirm-modal')) closeConfirm();
+});
+</script>
+</body>
+</html>
