@@ -610,16 +610,15 @@ async function saveGame(temporary) {
   document.getElementById('save-spinner').style.display = 'block';
 
   try {
-    let games = [...allGames];
     if (isEdit) {
       const idx = parseInt(editIdx);
-      if (!isNaN(idx) && idx >= 0) games[idx] = game;
+      await dispatchGitHubAction('edit', { game, index: idx });
+      if (!isNaN(idx) && idx >= 0) allGames[idx] = game;
     } else {
-      games.unshift(game);
+      await dispatchGitHubAction('add', { game });
+      allGames.unshift(game);
     }
-    await dispatchGitHubAction('upsert', games);
-    toast(isEdit ? 'Jeu modifié ✓' : 'Jeu ajouté ✓', 'success');
-    allGames = games;
+    toast(isEdit ? 'Jeu modifié ✓ (attendre ~30s)' : 'Jeu ajouté ✓ (attendre ~30s)', 'success');
     resetForm();
     renderGameList();
   } catch(e) {
@@ -636,10 +635,13 @@ async function commitPending() {
   btn.disabled = true;
   document.getElementById('commit-spinner').style.display = 'block';
   try {
-    const games = [...pendingGames, ...allGames];
-    await dispatchGitHubAction('upsert', games);
-    toast(`${pendingGames.length} jeu(x) commités ✓`, 'success');
-    allGames = games;
+    // On envoie les jeux un par un pour rester sous la limite de payload
+    for (const game of pendingGames) {
+      await dispatchGitHubAction('add', { game });
+      await new Promise(r => setTimeout(r, 800)); // petit délai entre chaque dispatch
+    }
+    toast(`${pendingGames.length} jeu(x) commités ✓ (attendre ~30s)`, 'success');
+    allGames = [...pendingGames, ...allGames];
     pendingGames = [];
     updatePendingBadge();
     renderGameList();
@@ -653,10 +655,22 @@ async function commitPending() {
 
 // ════════════════════════════════════════════════════════
 //  GITHUB ACTION DISPATCH
+//  On envoie seulement 1 jeu + son action (add/edit/delete)
+//  La Action lit data.json elle-même et le modifie côté serveur
 // ════════════════════════════════════════════════════════
-async function dispatchGitHubAction(action, games) {
+async function dispatchGitHubAction(action, payload) {
+  // payload = { game, index } pour add/edit, ou { index } pour delete
   const ghToken = getGhToken();
   if (!ghToken) throw new Error('Token GitHub manquant');
+
+  const body = {
+    event_type: 'update-data',
+    client_payload: {
+      action,                        // 'add' | 'edit' | 'delete' | 'add_many'
+      discord_id: discordUser?.id,
+      ...payload                     // game (objet unique) + index si besoin
+    }
+  };
 
   const res = await fetch(GH_ACTION_URL, {
     method: 'POST',
@@ -665,14 +679,7 @@ async function dispatchGitHubAction(action, games) {
       'Accept': 'application/vnd.github+json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      event_type: 'update-data',
-      client_payload: {
-        action,
-        discord_id: discordUser?.id,
-        games: JSON.stringify(games)
-      }
-    })
+    body: JSON.stringify(body)
   });
   if (!res.ok) {
     const err = await res.json().catch(()=>({message:res.statusText}));
@@ -823,10 +830,9 @@ async function confirmDelete() {
 
   document.getElementById('del-spinner').style.display = 'block';
   try {
-    const games = allGames.filter((_,i)=>i!==idx);
-    await dispatchGitHubAction('upsert', games);
-    allGames = games;
-    toast('Jeu supprimé ✓', 'success');
+    await dispatchGitHubAction('delete', { index: idx });
+    allGames = allGames.filter((_,i)=>i!==idx);
+    toast('Jeu supprimé ✓ (attendre ~30s)', 'success');
     closeConfirm();
     renderGameList();
   } catch(e) {
