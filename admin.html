@@ -20,886 +20,929 @@
     ::-webkit-scrollbar-track{background:transparent}
     ::-webkit-scrollbar-thumb{background:#f97316;border-radius:3px}
 
-    /* ─── LAYOUT ─── */
-    .page{min-height:100vh;background:#000;padding:5rem 1.5rem 6rem;position:relative;overflow:hidden}
-    .glow{position:fixed;top:30%;left:20%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:9999px;background:rgba(249,115,22,.04);filter:blur(140px);pointer-events:none;z-index:0}
-    .glow2{position:fixed;bottom:10%;right:10%;width:600px;height:600px;border-radius:9999px;background:rgba(249,115,22,.02);filter:blur(100px);pointer-events:none;z-index:0}
-    .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto}
-
     /* ─── HEADER ─── */
-    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);height:60px;display:flex;align-items:center;padding:0 2rem;justify-content:space-between}
-    .logo{font-size:1.5rem;font-weight:900;letter-spacing:-.06em;text-transform:uppercase}
-    .logo span{color:rgba(255,255,255,.3)}
-    .topbar-right{display:flex;align-items:center;gap:1rem}
-    .user-pill{display:flex;align-items:center;gap:.6rem;padding:.375rem .75rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6)}
-    .user-pill b{color:#fb923c}
-    .logout-btn{padding:.375rem .875rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.4);transition:.2s}
-    .logout-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .5s;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.1),transparent)}
+    .header.scrolled{background:rgba(0,0,0,.4);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+    
+    .nav{max-width:1400px;margin:0 auto;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:.5rem;font-size:1.5rem;font-weight:900;letter-spacing:-.05em;text-transform:uppercase}
+    .logo span{color:#f97316}
+    .nav-user{display:flex;align-items:center;gap:1rem}
+    .user-pill{display:flex;align-items:center;gap:.75rem;padding:.5rem 1rem;border-radius:9999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .user-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover}
+    .user-name{font-size:13px;font-weight:600}
+    .logout-btn{padding:.5rem 1rem;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-radius:9999px;background:rgba(239,68,68,.2);color:#ef4444;border:1px solid rgba(239,68,68,.3);transition:all .3s}
+    .logout-btn:hover{background:rgba(239,68,68,.3)}
 
-    /* ─── AUTH SCREEN ─── */
-    #auth-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-    .auth-card{max-width:420px;width:100%;text-align:center;padding:3rem 2.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:2rem;backdrop-filter:blur(40px)}
-    .auth-logo{font-size:2.5rem;font-weight:900;letter-spacing:-.07em;text-transform:uppercase;margin-bottom:.5rem}
-    .auth-logo span{color:rgba(255,255,255,.3)}
-    .auth-sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.3);margin-bottom:2.5rem}
-    .auth-label{font-size:.8rem;color:rgba(255,255,255,.3);margin-bottom:1.75rem;line-height:1.6}
-    .discord-btn{display:inline-flex;align-items:center;gap:.875rem;padding:1rem 2rem;border-radius:1rem;background:#5865F2;color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;transition:.2s;border:0;cursor:pointer}
-    .discord-btn:hover{background:#4752C4;transform:scale(1.03);box-shadow:0 10px 40px rgba(88,101,242,.3)}
-    .discord-btn svg{width:18px;height:18px;flex-shrink:0}
-    .auth-err{margin-top:1.25rem;font-size:11px;color:#f87171;font-weight:600;display:none}
+    /* ─── LAYOUT ─── */
+    .page{min-height:100vh;background:#000;padding-top:80px;padding-bottom:3rem;position:relative;overflow-x:hidden}
+    .glow{position:fixed;top:20%;left:10%;width:600px;height:600px;border-radius:9999px;background:rgba(249,115,22,.05);filter:blur(150px);pointer-events:none;z-index:0}
+    .glow2{position:fixed;bottom:10%;right:10%;width:400px;height:400px;border-radius:9999px;background:rgba(249,115,22,.03);filter:blur(120px);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 1.5rem}
 
-    /* ─── MAIN CONTENT (hidden until authed) ─── */
-    #main-content{display:none}
+    /* ─── LOGIN SCREEN ─── */
+    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .login-card{width:100%;max-width:420px;padding:2.5rem;border-radius:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px)}
+    .login-title{font-size:1.75rem;font-weight:800;margin-bottom:.5rem;text-align:center}
+    .login-sub{color:rgba(255,255,255,.5);font-size:.875rem;text-align:center;margin-bottom:2rem}
+    .login-btn{width:100%;padding:1rem;border-radius:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem;font-size:1rem;font-weight:700;transition:all .3s;margin-bottom:1rem}
+    .discord-btn{background:#5865F2;color:#fff}
+    .discord-btn:hover{background:#4752C4;transform:translateY(-2px)}
+    .github-btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .github-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
+    .login-icon{width:24px;height:24px}
 
-    /* ─── CARD ─── */
-    .card{max-width:64rem;margin:0 auto;padding:2.5rem 2rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(64px);-webkit-backdrop-filter:blur(64px);border-radius:2.5rem;margin-bottom:2rem}
-    .card-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.35em;color:rgba(249,115,22,.6);margin-bottom:1.5rem}
+    /* ─── MAIN GRID ─── */
+    .main-grid{display:grid;grid-template-columns:350px 1fr;gap:1.5rem}
+    @media(max-width:1024px){.main-grid{grid-template-columns:1fr}}
+
+    /* ─── LEFT PANEL ─── */
+    .left-panel{display:flex;flex-direction:column;gap:1rem}
+    .panel-card{padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .panel-title{font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+
+    /* ─── GAME SEARCH ─── */
+    .search-box{position:relative;margin-bottom:1rem}
+    .search-input{width:100%;padding:.875rem 1rem .875rem 2.75rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
+    .search-input:focus{outline:none;border-color:#f97316;background:rgba(255,255,255,.08)}
+    .search-input::placeholder{color:rgba(255,255,255,.3)}
+    .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4)}
+    .search-results{max-height:300px;overflow-y:auto}
+    .search-item{padding:.875rem;border-radius:.75rem;display:flex;align-items:center;gap:.875rem;cursor:pointer;transition:all .2s;border:1px solid transparent}
+    .search-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+    .search-img{width:48px;height:48px;border-radius:.5rem;object-fit:cover;background:rgba(255,255,255,.1)}
+    .search-info{flex:1;min-width:0}
+    .search-name{font-size:.9375rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .search-meta{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.25rem}
+
+    /* ─── MAGNET SOURCES ─── */
+    .source-list{display:flex;flex-direction:column;gap:.5rem}
+    .source-item{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.75rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .2s}
+    .source-item:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+    .source-item.active{border-color:#f97316;background:rgba(249,115,22,.1)}
+    .source-dot{width:10px;height:10px;border-radius:50%;background:#22c55e}
+    .source-dot.offline{background:#ef4444}
+    .source-name{font-size:.875rem;font-weight:600}
+    .source-count{font-size:.75rem;color:rgba(255,255,255,.4);margin-left:auto}
+
+    /* ─── RIGHT PANEL ─── */
+    .right-panel{display:flex;flex-direction:column;gap:1rem}
+
+    /* ─── FORM SECTIONS ─── */
+    .form-section{padding:1.5rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+    .section-title{font-size:1.125rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+    .section-icon{width:20px;height:20px;color:#f97316}
 
     /* ─── FORM GRID ─── */
-    .form-layout{display:grid;grid-template-columns:1fr;gap:2rem}
-    @media(min-width:768px){.form-layout{grid-template-columns:200px minmax(0,1fr);gap:2.5rem}}
-    @media(min-width:1024px){.form-layout{grid-template-columns:240px minmax(0,1fr)}}
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+    .form-group{display:flex;flex-direction:column;gap:.375rem}
+    .form-label{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em}
+    .form-input{padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
+    .form-input:focus{outline:none;border-color:#f97316;background:rgba(255,255,255,.08)}
+    .form-input::placeholder{color:rgba(255,255,255,.3)}
+    textarea.form-input{min-height:100px;resize:vertical}
 
-    /* ─── POSTER UPLOAD ─── */
-    .poster-upload{position:relative;width:100%;aspect-ratio:2/3;border-radius:1.25rem;overflow:hidden;border:2px dashed rgba(255,255,255,.12);background:linear-gradient(180deg,#1a1210 0%,#0d0d0d 100%);cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem}
-    .poster-upload:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
-    .poster-upload img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:1.25rem}
-    .poster-upload .plus{font-size:2.5rem;color:rgba(255,255,255,.2);line-height:1;transition:.2s;z-index:1}
-    .poster-upload:hover .plus{color:rgba(249,115,22,.6)}
-    .poster-upload .up-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,.2);text-align:center;z-index:1}
-    .poster-upload.uploading::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}
+    /* ─── IMAGE GALLERY ─── */
+    .img-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem;margin-top:.75rem}
+    .img-item{aspect-ratio:3/4;border-radius:.75rem;overflow:hidden;cursor:pointer;position:relative;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
+    .img-item:hover{transform:scale(1.02);border-color:rgba(255,255,255,.2)}
+    .img-item.selected{border-color:#f97316;box-shadow:0 0 20px rgba(249,115,22,.3)}
+    .img-item img{width:100%;height:100%;object-fit:cover}
+    .img-check{position:absolute;top:.5rem;right:.5rem;width:24px;height:24px;border-radius:50%;background:#f97316;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .2s}
+    .img-item.selected .img-check{opacity:1}
 
-    /* ─── BANNER UPLOAD ─── */
-    .banner-upload{position:relative;width:100%;aspect-ratio:16/7;border-radius:1.25rem;overflow:hidden;border:2px dashed rgba(255,255,255,.12);background:linear-gradient(90deg,#1a1210 0%,#0d0d0d 100%);cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;margin-top:.5rem}
-    .banner-upload:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
-    .banner-upload img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .banner-upload .plus{font-size:2rem;color:rgba(255,255,255,.2);line-height:1;z-index:1;transition:.2s}
-    .banner-upload:hover .plus{color:rgba(249,115,22,.6)}
-    .banner-upload .up-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.25em;color:rgba(255,255,255,.2);z-index:1}
+    /* ─── BANNER GALLERY ─── */
+    .banner-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:.75rem}
+    .banner-item{aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;cursor:pointer;position:relative;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
+    .banner-item:hover{transform:scale(1.02);border-color:rgba(255,255,255,.2)}
+    .banner-item.selected{border-color:#f97316;box-shadow:0 0 20px rgba(249,115,22,.3)}
+    .banner-item img{width:100%;height:100%;object-fit:cover}
 
-    /* ─── FORM FIELDS ─── */
-    .fields{display:flex;flex-direction:column;gap:1.25rem}
-    .field{display:flex;flex-direction:column;gap:.5rem}
-    .field label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.35)}
-    .field input,.field textarea,.field select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.75rem 1rem;font-size:.875rem;color:#fff;transition:.2s;width:100%;outline:none}
-    .field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.04)}
-    .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.2)}
-    .field textarea{resize:vertical;min-height:90px}
-    .field select option{background:#111;color:#fff}
-
-    /* ─── CATEGORY PICKER ─── */
-    .cat-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
-    .cat-btn{padding:.4rem .875rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.4);cursor:pointer;transition:.2s}
+    /* ─── CATEGORIES ─── */
+    .cat-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+    .cat-btn{padding:.5rem 1rem;border-radius:9999px;font-size:.8125rem;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s}
     .cat-btn:hover{background:rgba(255,255,255,.1);color:#fff}
-    .cat-btn.active{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.4);color:#fb923c}
+    .cat-btn.active{background:#f97316;border-color:#f97316;color:#fff}
 
-    /* ─── ACTIONS ─── */
-    .actions{display:flex;flex-wrap:wrap;gap:1rem;padding-top:.5rem}
-    .btn{display:inline-flex;align-items:center;gap:.75rem;padding:.875rem 1.75rem;border-radius:.875rem;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;transition:.2s;cursor:pointer;border:0}
-    .btn.primary{background:#f97316;color:#000;box-shadow:0 8px 24px rgba(249,115,22,.25)}
-    .btn.primary:hover{background:#fb923c;transform:scale(1.03);box-shadow:0 12px 32px rgba(249,115,22,.35)}
-    .btn.primary:disabled{opacity:.4;pointer-events:none}
-    .btn.secondary{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff}
-    .btn.secondary:hover{background:rgba(255,255,255,.1)}
-    .btn.danger{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.2);color:#f87171}
-    .btn.danger:hover{background:rgba(239,68,68,.2)}
+    /* ─── MAGNETS ─── */
+    .magnet-list{display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem}
+    .magnet-item{display:flex;align-items:center;gap:.75rem;padding:.875rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .magnet-info{flex:1;min-width:0}
+    .magnet-name{font-size:.875rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .magnet-source{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.125rem}
+    .magnet-btn{padding:.5rem 1rem;border-radius:.5rem;font-size:.75rem;font-weight:700;background:#f97316;color:#fff;transition:all .2s}
+    .magnet-btn:hover{background:#ea580c}
+    .magnet-btn.added{background:#22c55e}
 
-    /* ─── UPLOAD SPINNER ─── */
-    .spinner{display:none;width:16px;height:16px;border:2px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:9999px;animation:spin .7s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* ─── TOAST ─── */
-    #toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:9999;padding:.875rem 1.75rem;border-radius:1rem;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;transition:.4s cubic-bezier(.34,1.56,.64,1);pointer-events:none;backdrop-filter:blur(20px)}
-    #toast.show{transform:translateX(-50%) translateY(0)}
-    #toast.success{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#4ade80}
-    #toast.error{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#f87171}
-    #toast.info{background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#fb923c}
-
-    /* ─── GAME LIST ─── */
-    .search-bar{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:.6rem 1rem}
-    .search-bar svg{flex-shrink:0;color:rgba(255,255,255,.3)}
-    .search-bar input{background:none;border:0;outline:none;font-size:.875rem;color:#fff;width:100%}
-    .search-bar input::placeholder{color:rgba(255,255,255,.25)}
-
-    .game-list{display:flex;flex-direction:column;gap:.75rem}
-    .game-item{display:flex;align-items:center;gap:1rem;padding:.875rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:1rem;transition:.2s}
-    .game-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
-    .game-thumb{width:40px;height:60px;border-radius:.5rem;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.07)}
-    .game-thumb-placeholder{width:40px;height:60px;border-radius:.5rem;background:linear-gradient(135deg,#1a1210,#0d0d0d);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-    .game-info{flex:1;min-width:0}
-    .game-title{font-size:.875rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.02em}
-    .game-meta{font-size:10px;color:rgba(255,255,255,.3);font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-top:.2rem;display:flex;gap:.75rem;flex-wrap:wrap}
-    .game-meta span{display:inline-flex;align-items:center;gap:.3rem}
-    .cat-badge{padding:.2rem .5rem;border-radius:9999px;background:rgba(249,115,22,.1);color:#fb923c;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.15em}
-    .game-actions{display:flex;gap:.5rem;flex-shrink:0}
-    .sm-btn{padding:.4rem .75rem;border-radius:.5rem;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;transition:.15s;cursor:pointer}
-    .sm-btn.edit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-    .sm-btn.edit:hover{background:rgba(255,255,255,.12);color:#fff}
-    .sm-btn.del{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);color:#f87171}
-    .sm-btn.del:hover{background:rgba(239,68,68,.18)}
-
-    .empty-list{text-align:center;padding:3rem;color:rgba(255,255,255,.2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em}
-
-    /* ─── PENDING BADGE ─── */
-    .pending-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.25rem .625rem;border-radius:9999px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.2);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:#fb923c;margin-left:auto}
-
-    /* ─── SECTION DIVIDER ─── */
-    .divider{border:0;border-top:1px solid rgba(255,255,255,.06);margin:2rem 0}
-
-    /* ─── CONFIRM MODAL ─── */
-    .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem}
-    .modal-overlay.open{display:flex}
-    .modal-box{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:2rem;max-width:380px;width:100%;text-align:center}
-    .modal-box h3{font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:.75rem}
-    .modal-box p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:1.5rem}
-    .modal-actions{display:flex;gap:.75rem;justify-content:center}
+    /* ─── ACTION BAR ─── */
+    .action-bar{display:flex;align-items:center;gap:1rem;padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .action-btn{padding:1rem 2rem;border-radius:1rem;font-size:1rem;font-weight:700;display:flex;align-items:center;gap:.5rem;transition:all .3s}
+    .btn-save{background:#f97316;color:#fff}
+    .btn-save:hover{background:#ea580c;transform:translateY(-2px)}
+    .btn-clear{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .btn-clear:hover{background:rgba(255,255,255,.15)}
+    .status-msg{font-size:.875rem;color:rgba(255,255,255,.5);margin-left:auto}
+    .status-msg.success{color:#22c55e}
+    .status-msg.error{color:#ef4444}
 
     /* ─── LOADING ─── */
-    .loading-overlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem}
-    .loading-overlay.hidden{display:none}
-    .loading-text{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.4)}
-    .big-spinner{width:32px;height:32px;border:3px solid rgba(249,115,22,.2);border-top-color:#f97316;border-radius:9999px;animation:spin .8s linear infinite}
+    .skeleton{animation:pulse 2s infinite;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%}
+    @keyframes pulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+    /* ─── STEAM PREVIEW ─── */
+    .steam-preview{display:flex;gap:1.5rem;padding:1.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:1.5rem}
+    .steam-cover{width:150px;height:225px;border-radius:.75rem;object-fit:cover;background:rgba(255,255,255,.1)}
+    .steam-info{flex:1}
+    .steam-title{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+    .steam-meta{display:flex;gap:1rem;margin-bottom:1rem;color:rgba(255,255,255,.5);font-size:.875rem}
+    .steam-desc{color:rgba(255,255,255,.7);line-height:1.6}
+
+    /* ─── TABS ─── */
+    .tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1rem}
+    .tab{padding:.75rem 1.25rem;border-radius:.75rem;font-size:.875rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s}
+    .tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+    .tab.active{color:#f97316;background:rgba(249,115,22,.1)}
+
+    /* ─── TOAST ─── */
+    .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:1rem;background:rgba(0,0,0,.9);border:1px solid rgba(255,255,255,.1);color:#fff;font-weight:600;transform:translateY(100px);opacity:0;transition:all .3s;z-index:1000}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast.success{border-color:#22c55e;color:#22c55e}
+    .toast.error{border-color:#ef4444;color:#ef4444}
   </style>
 </head>
 <body>
-
-<!-- LOADING -->
-<div class="loading-overlay" id="loading-overlay">
-  <div class="big-spinner"></div>
-  <div class="loading-text">Vérification…</div>
-</div>
-
-<!-- GLOW -->
-<div class="glow"></div>
-<div class="glow2"></div>
-
-<!-- TOPBAR -->
-<div class="topbar" id="topbar" style="display:none">
-  <div class="logo">CRACK<span>UZU</span> <span style="font-size:.75rem;letter-spacing:.1em;color:rgba(249,115,22,.6)">Admin</span></div>
-  <div class="topbar-right">
-    <div class="user-pill" id="user-pill">Connecté</div>
-    <button class="logout-btn" onclick="logout()">Déconnexion</button>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-screen" style="display:none">
+    <div class="login-card">
+      <div class="login-title">CRACKUZU <span>Admin</span></div>
+      <div class="login-sub">Connecte-toi pour gérer les jeux</div>
+      <button class="login-btn discord-btn" onclick="loginDiscord()">
+        <svg class="login-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-14.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Connexion Discord
+      </button>
+      <button class="login-btn github-btn" onclick="loginGitHub()">
+        <svg class="login-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Connexion GitHub
+      </button>
+    </div>
   </div>
-</div>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen">
-  <div class="auth-card">
-    <div class="auth-logo">CRACK<span>UZU</span></div>
-    <div class="auth-sub">Espace Admin</div>
-    <div class="auth-label">Accès restreint. Connecte-toi avec Discord pour continuer.</div>
-    <button class="discord-btn" onclick="loginDiscord()">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-      Se connecter avec Discord
-    </button>
-    <div class="auth-err" id="auth-err">Accès refusé — ID Discord non autorisé.</div>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="main-content">
-  <div class="page">
-    <div class="wrap">
-
-      <!-- ═══ FORMULAIRE ═══ -->
-      <div class="card">
-        <div class="card-title" id="form-mode-label">➕ Ajouter un jeu</div>
-        <input type="hidden" id="edit-index" value="">
-
-        <div class="form-layout">
-          <!-- Poster -->
-          <div>
-            <div class="field" style="margin-bottom:1rem">
-              <label>Image portrait</label>
-            </div>
-            <div class="poster-upload" id="poster-zone" onclick="triggerPaste('portrait')">
-              <div class="plus" id="poster-plus">＋</div>
-              <div class="up-label">Coller depuis<br>le presse-papier</div>
-              <img id="poster-preview" src="" alt="" style="display:none">
-            </div>
-            <div style="font-size:9px;color:rgba(255,255,255,.2);margin-top:.5rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-align:center">Clic → coller une image</div>
+  <!-- Main App -->
+  <div id="app" style="display:none">
+    <!-- Header -->
+    <header class="header" id="hdr">
+      <nav class="nav">
+        <div class="logo">CRACKUZU<span>.</span>ADMIN</div>
+        <div class="nav-user">
+          <div class="user-pill">
+            <img id="userAvatar" class="user-avatar" src="" alt="">
+            <span id="userName" class="user-name">...</span>
           </div>
+          <button class="logout-btn" onclick="logout()">Déconnexion</button>
+        </div>
+      </nav>
+    </header>
 
-          <!-- Fields -->
-          <div class="fields">
-            <div class="field">
-              <label>Titre</label>
-              <input type="text" id="f-title" placeholder="Ex: The Witcher 3" oninput="syncPreview()">
+    <main class="page">
+      <div class="glow"></div>
+      <div class="glow2"></div>
+      <div class="wrap">
+        <div class="main-grid">
+          <!-- Left Panel -->
+          <aside class="left-panel">
+            <!-- Steam Search -->
+            <div class="panel-card">
+              <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                Rechercher sur Steam
+              </div>
+              <div class="search-box">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." oninput="searchSteam(this.value)">
+              </div>
+              <div class="search-results" id="steamResults"></div>
             </div>
-            <div class="field">
-              <label>Année</label>
-              <input type="text" id="f-year" placeholder="2025" maxlength="4" oninput="syncPreview()">
-            </div>
-            <div class="field">
-              <label>Catégorie</label>
-              <div class="cat-grid" id="cat-grid"></div>
-            </div>
-            <div class="field">
-              <label>Description</label>
-              <textarea id="f-desc" rows="4" placeholder="Résumé du jeu…" oninput="syncPreview()"></textarea>
-            </div>
-            <div class="field">
-              <label>Lien YouTube (URL ou ID)</label>
-              <input type="text" id="f-ytb" placeholder="https://youtube.com/watch?v=xxx ou dQw4w9WgXcQ">
-            </div>
-            <div class="field">
-              <label>Magnets / Liens de téléchargement</label>
-              <textarea id="f-magnets" rows="3" placeholder="Un magnet par ligne (optionnel)&#10;magnet:?xt=urn:btih:..."></textarea>
-            </div>
-            <div class="field">
-              <label>Image bannière (horizontale)</label>
-              <div class="banner-upload" id="banner-zone" onclick="triggerPaste('banner')">
-                <div class="plus" id="banner-plus">＋</div>
-                <div class="up-label">Clic → coller une image</div>
-                <img id="banner-preview" src="" alt="" style="display:none">
+
+            <!-- Sources -->
+            <div class="panel-card">
+              <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+                Sources de magnets
+              </div>
+              <div class="source-list" id="sourceList">
+                <div class="source-item active" onclick="toggleSource('onlinefix')">
+                  <span class="source-dot" id="dot-onlinefix"></span>
+                  <span class="source-name">OnlineFix</span>
+                  <span class="source-count" id="count-onlinefix">...</span>
+                </div>
+                <div class="source-item active" onclick="toggleSource('fitgirl')">
+                  <span class="source-dot" id="dot-fitgirl"></span>
+                  <span class="source-name">FitGirl</span>
+                  <span class="source-count" id="count-fitgirl">...</span>
+                </div>
+                <div class="source-item active" onclick="toggleSource('dodi')">
+                  <span class="source-dot" id="dot-dodi"></span>
+                  <span class="source-name">DODI</span>
+                  <span class="source-count" id="count-dodi">...</span>
+                </div>
+                <div class="source-item active" onclick="toggleSource('steamrip')">
+                  <span class="source-dot" id="dot-steamrip"></span>
+                  <span class="source-name">SteamRip</span>
+                  <span class="source-count" id="count-steamrip">...</span>
+                </div>
               </div>
             </div>
-            <div class="actions">
-              <button class="btn primary" onclick="saveGame(false)" id="save-btn">
-                <span id="save-spinner" class="spinner"></span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                Enregistrer
+
+            <!-- Selected Magnets -->
+            <div class="panel-card">
+              <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Magnets sélectionnés
+              </div>
+              <div id="selectedMagnets" style="font-size:.875rem;color:rgba(255,255,255,.5);padding:1rem 0;text-align:center">
+                Aucun magnet sélectionné
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Panel -->
+          <div class="right-panel">
+            <!-- Steam Preview -->
+            <div class="steam-preview" id="steamPreview" style="display:none">
+              <img class="steam-cover" id="previewCover" src="" alt="">
+              <div class="steam-info">
+                <div class="steam-title" id="previewTitle">...</div>
+                <div class="steam-meta">
+                  <span id="previewYear">...</span>
+                  <span id="previewDev">...</span>
+                </div>
+                <div class="steam-desc" id="previewDesc">...</div>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+              <div class="tab active" onclick="setTab('images')">Images</div>
+              <div class="tab" onclick="setTab('info')">Infos</div>
+              <div class="tab" onclick="setTab('magnets')">Magnets</div>
+            </div>
+
+            <!-- Images Tab -->
+            <div id="tab-images" class="form-section">
+              <div class="section-header">
+                <div class="section-title">
+                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                  Portrait (cover)
+                </div>
+              </div>
+              <div class="img-gallery" id="portraitGallery">
+                <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+                  Recherche un jeu sur Steam pour voir les images
+                </div>
+              </div>
+
+              <div class="section-header" style="margin-top:1.5rem">
+                <div class="section-title">
+                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                  Bannière
+                </div>
+              </div>
+              <div class="banner-gallery" id="bannerGallery">
+                <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+                  Recherche un jeu sur Steam pour voir les images
+                </div>
+              </div>
+            </div>
+
+            <!-- Info Tab -->
+            <div id="tab-info" class="form-section" style="display:none">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Titre</label>
+                  <input type="text" class="form-input" id="f-title" placeholder="Nom du jeu">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Année</label>
+                  <input type="text" class="form-input" id="f-year" placeholder="2024">
+                </div>
+                <div class="form-group" style="grid-column:1/-1">
+                  <label class="form-label">Description</label>
+                  <textarea class="form-input" id="f-desc" placeholder="Description du jeu..."></textarea>
+                </div>
+                <div class="form-group" style="grid-column:1/-1">
+                  <label class="form-label">Trailer YouTube</label>
+                  <input type="text" class="form-input" id="f-ytb" placeholder="ID ou URL YouTube">
+                </div>
+              </div>
+
+              <div class="section-header" style="margin-top:1.5rem">
+                <div class="section-title">
+                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3M4 17v3h3M20 7V4h-3M20 17v3h-3M9 9h6v6H9z"/></svg>
+                  Catégories
+                </div>
+              </div>
+              <div class="cat-grid" id="catGrid">
+                <button class="cat-btn" onclick="toggleCat(this)">Action</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Aventure</button>
+                <button class="cat-btn" onclick="toggleCat(this)">RPG</button>
+                <button class="cat-btn" onclick="toggleCat(this)">FPS</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Simulation</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Stratégie</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Sport</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Course</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Horreur</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Puzzle</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Plateforme</button>
+                <button class="cat-btn" onclick="toggleCat(this)">Coopération</button>
+              </div>
+            </div>
+
+            <!-- Magnets Tab -->
+            <div id="tab-magnets" class="form-section" style="display:none">
+              <div class="section-header">
+                <div class="section-title">
+                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+                  Magnets disponibles
+                </div>
+              </div>
+              <div class="search-box" style="margin-bottom:1rem">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" class="search-input" id="magnetSearch" placeholder="Filtrer les magnets..." oninput="filterMagnets(this.value)">
+              </div>
+              <div class="magnet-list" id="magnetList">
+                <div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+                  Active des sources et recherche un jeu
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="action-bar">
+              <button class="action-btn btn-save" onclick="saveGame()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+                Sauvegarder
               </button>
-              <button class="btn secondary" onclick="saveGame(true)">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-                Ajouter temporairement
-                <span class="pending-badge" id="pending-count" style="display:none">0</span>
+              <button class="action-btn btn-clear" onclick="clearForm()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                Vider
               </button>
-              <button class="btn secondary" onclick="resetForm()" id="cancel-edit-btn" style="display:none">Annuler</button>
-              <button class="btn primary" onclick="commitPending()" id="commit-btn" style="display:none">
-                <span id="commit-spinner" class="spinner"></span>
-                Commit groupé
-              </button>
+              <span class="status-msg" id="statusMsg"></span>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- ═══ LISTE DES JEUX ═══ -->
-      <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
-          <div class="card-title" style="margin-bottom:0">📋 10 derniers jeux</div>
-          <button class="btn secondary" onclick="loadGames()" style="padding:.5rem 1rem;font-size:9px">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
-            Rafraîchir
-          </button>
-        </div>
-        <div class="search-bar">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" id="list-search" placeholder="Rechercher par titre…" oninput="renderGameList()">
-        </div>
-        <div class="game-list" id="game-list">
-          <div class="empty-list">Chargement…</div>
-        </div>
-      </div>
-
-    </div>
+    </main>
   </div>
-</div>
 
-<!-- CONFIRM MODAL -->
-<div class="modal-overlay" id="confirm-modal">
-  <div class="modal-box">
-    <h3>Confirmer la suppression</h3>
-    <p id="confirm-text">Supprimer ce jeu définitivement ?</p>
-    <div class="modal-actions">
-      <button class="btn danger" onclick="confirmDelete()">
-        <span id="del-spinner" class="spinner"></span>
-        Supprimer
-      </button>
-      <button class="btn secondary" onclick="closeConfirm()">Annuler</button>
-    </div>
-  </div>
-</div>
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
-<!-- TOAST -->
-<div id="toast"></div>
+  <script>
+  // ═══════════════════════════════════════════════════════════
+  // CONFIG & STATE
+  // ═══════════════════════════════════════════════════════════
+  const CONFIG = {
+    REPO: 'Skyfir3/CRACKUZU',
+    BRANCH: 'main',
+    DISCORD_CLIENT: '1358039944043761684'
+  };
 
-<script>
-// ════════════════════════════════════════════════════════
-//  CONFIG
-// ════════════════════════════════════════════════════════
-const DISCORD_CLIENT_ID = '1493055302961201264';
-const DISCORD_REDIRECT   = 'https://crackuzu.github.io/beta/admin.html';
-const ALLOWED_USER_ID    = '482466285364576266';
-const CLOUDINARY_CLOUD   = 'dijopwaix';
-const CLOUDINARY_PRESET  = 'kmorlkcl';
-const GITHUB_OWNER       = 'Crackuzu';
-const GITHUB_REPO        = 'beta';
-const DATA_JSON_URL      = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/data.json`;
-const GH_ACTION_URL      = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/dispatches`;
-// Note : le GitHub token est passé via la GitHub Action — côté client on déclenche repository_dispatch
-// Le token doit être stocké dans localStorage après que l'admin le renseigne manuellement
-// (ou récupéré via un proxy sécurisé)
+  const SOURCES = {
+    onlinefix: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/onlinefix.json',
+    fitgirl: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/fitgirl.json',
+    dodi: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/dodi.json',
+    steamrip: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/steamrip.json'
+  };
 
-const CATEGORIES = ['Action','Aventure','RPG','FPS','Simulation','Sport','Course','Stratégie','Horreur','Puzzle','Plateforme','MMO','Indie','Autre'];
+  let state = {
+    discordUser: null,
+    githubToken: localStorage.getItem('githubToken') || null,
+    steamData: null,
+    activeSources: new Set(['onlinefix', 'fitgirl', 'dodi', 'steamrip']),
+    sourceData: {},
+    selectedCategories: new Set(),
+    selectedPortrait: null,
+    selectedBanner: null,
+    selectedMagnets: [],
+    currentTab: 'images'
+  };
 
-// ════════════════════════════════════════════════════════
-//  STATE
-// ════════════════════════════════════════════════════════
-let discordToken = null;
-let discordUser  = null;
-let allGames     = [];
-let pendingGames = [];
-let deleteTarget = null;
-let portraitUrl  = '';
-let bannerUrl    = '';
-
-// ════════════════════════════════════════════════════════
-//  INIT
-// ════════════════════════════════════════════════════════
-(async function init() {
-  buildCatGrid();
-
-  // 1) Vérifier callback OAuth2 (fragment #access_token=...)
-  const hash = window.location.hash;
-  if (hash.includes('access_token=')) {
-    const params = new URLSearchParams(hash.slice(1));
-    const token  = params.get('access_token');
-    window.history.replaceState(null, '', window.location.pathname);
-    if (token) {
-      await handleToken(token);
-      return;
+  // ═══════════════════════════════════════════════════════════
+  // INIT
+  // ═══════════════════════════════════════════════════════════
+  window.onload = () => {
+    // Check auth
+    const hash = new URLSearchParams(location.hash.slice(1));
+    const discordToken = hash.get('access_token');
+    
+    if (discordToken) {
+      state.discordToken = discordToken;
+      loadDiscordUser();
+    } else if (state.githubToken) {
+      loadGitHubUser();
+    } else {
+      showLogin();
     }
-  }
 
-  // 2) Token déjà en session ?
-  const saved = sessionStorage.getItem('discord_token');
-  if (saved) {
-    await handleToken(saved);
-    return;
-  }
-
-  // 3) Afficher écran auth
-  hideLoading();
-})();
-
-async function handleToken(token) {
-  discordToken = token;
-  try {
-    const res  = await fetch('https://discord.com/api/users/@me', {
-      headers: { Authorization: `Bearer ${token}` }
+    // Header scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('hdr')?.classList.toggle('scrolled', scrollY > 40);
     });
-    if (!res.ok) throw new Error('Fetch user failed');
-    const user = await res.json();
-    if (user.id !== ALLOWED_USER_ID) {
-      document.getElementById('auth-err').style.display = 'block';
-      hideLoading();
+
+    // Load sources
+    loadSources();
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // AUTH
+  // ═══════════════════════════════════════════════════════════
+  function showLogin() {
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+
+  function showApp() {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+
+  function loginDiscord() {
+    const url = `https://discord.com/oauth2/authorize?client_id=${CONFIG.DISCORD_CLIENT}&response_type=token&redirect_uri=${encodeURIComponent(location.origin + location.pathname)}&scope=identify`;
+    location.href = url;
+  }
+
+  async function loadDiscordUser() {
+    try {
+      const res = await fetch('https://discord.com/api/users/@me', {
+        headers: { Authorization: `Bearer ${state.discordToken}` }
+      });
+      const user = await res.json();
+      state.discordUser = user;
+      document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+      document.getElementById('userName').textContent = user.username;
+      showApp();
+    } catch (e) {
+      showToast('Erreur Discord', 'error');
+      showLogin();
+    }
+  }
+
+  function loginGitHub() {
+    const token = prompt('Entre ton token GitHub personal access token:');
+    if (token) {
+      state.githubToken = token;
+      localStorage.setItem('githubToken', token);
+      loadGitHubUser();
+    }
+  }
+
+  async function loadGitHubUser() {
+    try {
+      const res = await fetch('https://api.github.com/user', {
+        headers: { Authorization: `token ${state.githubToken}` }
+      });
+      const user = await res.json();
+      document.getElementById('userAvatar').src = user.avatar_url;
+      document.getElementById('userName').textContent = user.login;
+      showApp();
+    } catch (e) {
+      showToast('Token GitHub invalide', 'error');
+      localStorage.removeItem('githubToken');
+      state.githubToken = null;
+      showLogin();
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('githubToken');
+    state.githubToken = null;
+    state.discordToken = null;
+    location.hash = '';
+    showLogin();
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // SOURCES
+  // ═══════════════════════════════════════════════════════════
+  async function loadSources() {
+    for (const [key, url] of Object.entries(SOURCES)) {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        state.sourceData[key] = data.list || data.games || data || [];
+        document.getElementById(`count-${key}`).textContent = state.sourceData[key].length;
+        document.getElementById(`dot-${key}`).classList.remove('offline');
+      } catch (e) {
+        document.getElementById(`count-${key}`).textContent = 'OFF';
+        document.getElementById(`dot-${key}`).classList.add('offline');
+      }
+    }
+  }
+
+  function toggleSource(source) {
+    const el = document.querySelector(`#sourceList .source-item:nth-child(${['onlinefix','fitgirl','dodi','steamrip'].indexOf(source)+1})`);
+    if (state.activeSources.has(source)) {
+      state.activeSources.delete(source);
+      el.classList.remove('active');
+    } else {
+      state.activeSources.add(source);
+      el.classList.add('active');
+    }
+    if (state.steamData) updateMagnetList();
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // STEAM SEARCH
+  // ═══════════════════════════════════════════════════════════
+  let searchTimeout;
+  async function searchSteam(query) {
+    clearTimeout(searchTimeout);
+    if (!query || query.length < 2) {
+      document.getElementById('steamResults').innerHTML = '';
       return;
     }
-    discordUser = user;
-    sessionStorage.setItem('discord_token', token);
-    showAdmin(user);
-  } catch(e) {
-    hideLoading();
-  }
-}
-
-function showAdmin(user) {
-  document.getElementById('auth-screen').style.display  = 'none';
-  document.getElementById('main-content').style.display = 'block';
-  document.getElementById('topbar').style.display       = 'flex';
-  document.getElementById('user-pill').innerHTML        = `<b>${esc(user.username)}</b> #${esc(user.discriminator||'0')}`;
-  hideLoading();
-  loadGames();
-  checkGhToken();
-}
-
-function hideLoading() {
-  document.getElementById('loading-overlay').classList.add('hidden');
-}
-
-// ════════════════════════════════════════════════════════
-//  AUTH
-// ════════════════════════════════════════════════════════
-function loginDiscord() {
-  const params = new URLSearchParams({
-    client_id: DISCORD_CLIENT_ID,
-    redirect_uri: DISCORD_REDIRECT,
-    response_type: 'token',
-    scope: 'identify'
-  });
-  window.location.href = `https://discord.com/api/oauth2/authorize?${params}`;
-}
-
-function logout() {
-  sessionStorage.removeItem('discord_token');
-  location.reload();
-}
-
-// ════════════════════════════════════════════════════════
-//  GITHUB TOKEN CHECK
-// ════════════════════════════════════════════════════════
-function checkGhToken() {
-  if (!localStorage.getItem('gh_token')) {
-    const t = prompt('🔑 GitHub Personal Access Token (repo scope) :\n(Stocké uniquement en localStorage — ne partage jamais cette page)');
-    if (t) localStorage.setItem('gh_token', t.trim());
-  }
-}
-
-function getGhToken() {
-  let t = localStorage.getItem('gh_token');
-  if (!t) {
-    t = prompt('GitHub Token requis :');
-    if (t) localStorage.setItem('gh_token', t.trim());
-  }
-  return t;
-}
-
-// ════════════════════════════════════════════════════════
-//  CATEGORIES
-// ════════════════════════════════════════════════════════
-function buildCatGrid() {
-  const grid = document.getElementById('cat-grid');
-  grid.innerHTML = CATEGORIES.map(c =>
-    `<button class="cat-btn" data-cat="${esc(c)}" onclick="selectCat('${esc(c)}')">${esc(c)}</button>`
-  ).join('');
-}
-
-function selectCat(cat) {
-  document.querySelectorAll('.cat-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.cat === cat);
-  });
-  syncPreview();
-}
-
-function getSelectedCat() {
-  const active = document.querySelector('.cat-btn.active');
-  return active ? active.dataset.cat : '';
-}
-
-// ════════════════════════════════════════════════════════
-//  CLOUDINARY UPLOAD
-// ════════════════════════════════════════════════════════
-async function triggerPaste(type) {
-  try {
-    const items = await navigator.clipboard.read();
-    for (const item of items) {
-      for (const mtype of item.types) {
-        if (mtype.startsWith('image/')) {
-          const blob = await item.getType(mtype);
-          await uploadToCloudinary(blob, type);
-          return;
-        }
+    
+    searchTimeout = setTimeout(async () => {
+      try {
+        // Use Steam search API (no key needed)
+        const res = await fetch(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
+        const data = await res.json();
+        renderSteamResults(data.slice(0, 6));
+      } catch (e) {
+        console.error('Steam search failed:', e);
       }
-    }
-    toast('Aucune image dans le presse-papier', 'error');
-  } catch(e) {
-    toast('Accès presse-papier refusé — autorise l\'accès', 'error');
-  }
-}
-
-async function uploadToCloudinary(blob, type) {
-  const zone = document.getElementById(type === 'portrait' ? 'poster-zone' : 'banner-zone');
-  zone.style.opacity = '.5';
-  zone.style.pointerEvents = 'none';
-
-  const fd = new FormData();
-  fd.append('file', blob);
-  fd.append('upload_preset', CLOUDINARY_PRESET);
-
-  try {
-    const res  = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {method:'POST',body:fd});
-    const data = await res.json();
-    if (data.secure_url) {
-      if (type === 'portrait') {
-        portraitUrl = data.secure_url;
-        const img = document.getElementById('poster-preview');
-        img.src = portraitUrl; img.style.display = 'block';
-        document.getElementById('poster-plus').style.display = 'none';
-        document.querySelector('#poster-zone .up-label').style.display = 'none';
-      } else {
-        bannerUrl = data.secure_url;
-        const img = document.getElementById('banner-preview');
-        img.src = bannerUrl; img.style.display = 'block';
-        document.getElementById('banner-plus').style.display = 'none';
-        document.querySelector('#banner-zone .up-label').style.display = 'none';
-      }
-      toast('Image uploadée ✓', 'success');
-    } else {
-      toast('Échec de l\'upload Cloudinary', 'error');
-    }
-  } catch(e) {
-    toast('Erreur réseau Cloudinary', 'error');
-  } finally {
-    zone.style.opacity = '1';
-    zone.style.pointerEvents = '';
-  }
-}
-
-// ════════════════════════════════════════════════════════
-//  YOUTUBE HELPER
-// ════════════════════════════════════════════════════════
-function extractYtbId(raw) {
-  if (!raw) return '';
-  raw = raw.trim();
-  // Already an ID (no slashes, no dots, ~11 chars)
-  if (/^[a-zA-Z0-9_-]{10,12}$/.test(raw)) return raw;
-  // URL with v= param
-  try {
-    const u = new URL(raw);
-    if (u.searchParams.get('v')) return u.searchParams.get('v');
-    // youtu.be/ID
-    if (u.hostname === 'youtu.be') return u.pathname.slice(1);
-    // /embed/ID or /v/ID
-    const m = u.pathname.match(/\/(embed|v)\/([a-zA-Z0-9_-]+)/);
-    if (m) return m[2];
-  } catch(e) {}
-  return raw;
-}
-
-// ════════════════════════════════════════════════════════
-//  BUILD GAME OBJECT
-// ════════════════════════════════════════════════════════
-function buildGameObject() {
-  const title  = document.getElementById('f-title').value.trim();
-  const year   = document.getElementById('f-year').value.trim();
-  const desc   = document.getElementById('f-desc').value.trim();
-  const ytbRaw = document.getElementById('f-ytb').value.trim();
-  const magnetsRaw = document.getElementById('f-magnets').value.trim();
-  const cat    = getSelectedCat();
-
-  if (!title) { toast('Le titre est requis', 'error'); return null; }
-
-  const magnets = magnetsRaw
-    ? magnetsRaw.split('\n').map(s=>s.trim()).filter(Boolean)
-    : [];
-
-  return {
-    title,
-    year,
-    category: cat,
-    description: desc,
-    portrait_url: portraitUrl,
-    banner_url:   bannerUrl,
-    ytb_id:       extractYtbId(ytbRaw),
-    magnets,
-    added_by:  discordUser?.id || '',
-    added_at:  new Date().toISOString()
-  };
-}
-
-// ════════════════════════════════════════════════════════
-//  SAVE GAME
-// ════════════════════════════════════════════════════════
-async function saveGame(temporary) {
-  const game = buildGameObject();
-  if (!game) return;
-
-  const editIdx = document.getElementById('edit-index').value;
-  const isEdit  = editIdx !== '';
-
-  if (temporary) {
-    if (isEdit) {
-      // Edition sur pending
-      const pi = parseInt(editIdx);
-      if (!isNaN(pi) && pi < 0) pendingGames[~pi] = game;
-      else { pendingGames.push(game); }
-    } else {
-      pendingGames.push(game);
-    }
-    updatePendingBadge();
-    toast(`"${game.title}" ajouté temporairement`, 'info');
-    resetForm();
-    return;
+    }, 300);
   }
 
-  // Sauvegarder immédiatement via GitHub Action
-  const btn = document.getElementById('save-btn');
-  btn.disabled = true;
-  document.getElementById('save-spinner').style.display = 'block';
-
-  try {
-    if (isEdit) {
-      const idx = parseInt(editIdx);
-      await dispatchGitHubAction('edit', { game, index: idx });
-      if (!isNaN(idx) && idx >= 0) allGames[idx] = game;
-    } else {
-      await dispatchGitHubAction('add', { game });
-      allGames.unshift(game);
-    }
-    toast(isEdit ? 'Jeu modifié ✓ (attendre ~30s)' : 'Jeu ajouté ✓ (attendre ~30s)', 'success');
-    resetForm();
-    renderGameList();
-  } catch(e) {
-    toast('Erreur GitHub : ' + e.message, 'error');
-  } finally {
-    btn.disabled = false;
-    document.getElementById('save-spinner').style.display = 'none';
-  }
-}
-
-async function commitPending() {
-  if (!pendingGames.length) return;
-  const btn = document.getElementById('commit-btn');
-  btn.disabled = true;
-  document.getElementById('commit-spinner').style.display = 'block';
-  try {
-    // On envoie les jeux un par un pour rester sous la limite de payload
-    for (const game of pendingGames) {
-      await dispatchGitHubAction('add', { game });
-      await new Promise(r => setTimeout(r, 800)); // petit délai entre chaque dispatch
-    }
-    toast(`${pendingGames.length} jeu(x) commités ✓ (attendre ~30s)`, 'success');
-    allGames = [...pendingGames, ...allGames];
-    pendingGames = [];
-    updatePendingBadge();
-    renderGameList();
-  } catch(e) {
-    toast('Erreur commit : ' + e.message, 'error');
-  } finally {
-    btn.disabled = false;
-    document.getElementById('commit-spinner').style.display = 'none';
-  }
-}
-
-// ════════════════════════════════════════════════════════
-//  GITHUB ACTION DISPATCH
-//  On envoie seulement 1 jeu + son action (add/edit/delete)
-//  La Action lit data.json elle-même et le modifie côté serveur
-// ════════════════════════════════════════════════════════
-async function dispatchGitHubAction(action, payload) {
-  // payload = { game, index } pour add/edit, ou { index } pour delete
-  const ghToken = getGhToken();
-  if (!ghToken) throw new Error('Token GitHub manquant');
-
-  const body = {
-    event_type: 'update-data',
-    client_payload: {
-      action,                        // 'add' | 'edit' | 'delete' | 'add_many'
-      discord_id: discordUser?.id,
-      ...payload                     // game (objet unique) + index si besoin
-    }
-  };
-
-  const res = await fetch(GH_ACTION_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': `token ${ghToken}`,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(()=>({message:res.statusText}));
-    throw new Error(err.message || res.statusText);
-  }
-}
-
-// ════════════════════════════════════════════════════════
-//  LOAD GAMES FROM data.json
-// ════════════════════════════════════════════════════════
-async function loadGames() {
-  document.getElementById('game-list').innerHTML = '<div class="empty-list">Chargement…</div>';
-  try {
-    const res  = await fetch(DATA_JSON_URL + '?t=' + Date.now());
-    const data = await res.json();
-    allGames   = Array.isArray(data) ? data : (data.games || []);
-    renderGameList();
-  } catch(e) {
-    document.getElementById('game-list').innerHTML = '<div class="empty-list">Impossible de charger data.json</div>';
-  }
-}
-
-// ════════════════════════════════════════════════════════
-//  RENDER GAME LIST
-// ════════════════════════════════════════════════════════
-function renderGameList() {
-  const q   = document.getElementById('list-search').value.toLowerCase();
-  const src = [...pendingGames.map((g,i)=>({...g,_pending:true,_pidx:i})), ...allGames];
-  const filtered = src.filter(g => !q || g.title?.toLowerCase().includes(q));
-  const shown    = filtered.slice(0, 10);
-
-  if (!shown.length) {
-    document.getElementById('game-list').innerHTML = '<div class="empty-list">Aucun jeu trouvé</div>';
-    return;
-  }
-
-  document.getElementById('game-list').innerHTML = shown.map((g,i) => {
-    const thumb = g.portrait_url
-      ? `<img class="game-thumb" src="${esc(g.portrait_url)}" alt="" loading="lazy">`
-      : `<div class="game-thumb-placeholder">🎮</div>`;
-    const editIdx = g._pending ? (~g._pidx) : allGames.indexOf(g);
-    return `<div class="game-item">
-      ${thumb}
-      <div class="game-info">
-        <div class="game-title">${esc(g.title || '—')}</div>
-        <div class="game-meta">
-          <span>${esc(g.year || '—')}</span>
-          ${g.category ? `<span><span class="cat-badge">${esc(g.category)}</span></span>` : ''}
-          ${g._pending ? '<span style="color:#fb923c">⏳ En attente</span>' : ''}
+  function renderSteamResults(games) {
+    const html = games.map(g => `
+      <div class="search-item" onclick="selectSteamGame('${g.appid}', '${esc(g.name)}')">
+        <img class="search-img" src="https://cdn.cloudflare.steamstatic.com/steam/apps/${g.appid}/capsule_184x69.jpg" alt="" onerror="this.src=''">
+        <div class="search-info">
+          <div class="search-name">${esc(g.name)}</div>
+          <div class="search-meta">AppID: ${g.appid}</div>
         </div>
       </div>
-      <div class="game-actions">
-        <button class="sm-btn edit" onclick="editGame(${editIdx})">Modifier</button>
-        <button class="sm-btn del" onclick="askDelete(${editIdx},'${esc(g.title||'ce jeu')}')">Supprimer</button>
+    `).join('');
+    document.getElementById('steamResults').innerHTML = html;
+  }
+
+  async function selectSteamGame(appid, name) {
+    showToast('Chargement des données Steam...', 'success');
+    document.getElementById('steamResults').innerHTML = '';
+    document.getElementById('steamSearch').value = name;
+
+    try {
+      // Fetch app details from Steam (no API key needed)
+      const res = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appid}`);
+      const data = await res.json();
+      const app = data[appid]?.data;
+      
+      if (!app) throw new Error('No data');
+
+      state.steamData = {
+        appid,
+        name: app.name,
+        description: app.short_description || app.about_the_game || '',
+        year: app.release_date?.date?.match(/\d{4}/)?.[0] || '',
+        developers: app.developers || [],
+        genres: app.genres?.map(g => g.description) || [],
+        screenshots: app.screenshots?.map(s => s.path_full) || [],
+        header: app.header_image,
+        background: app.background
+      };
+
+      // Update preview
+      document.getElementById('steamPreview').style.display = 'flex';
+      document.getElementById('previewTitle').textContent = state.steamData.name;
+      document.getElementById('previewYear').textContent = state.steamData.year || 'Date inconnue';
+      document.getElementById('previewDev').textContent = state.steamData.developers[0] || 'Développeur inconnu';
+      document.getElementById('previewDesc').textContent = state.steamData.description.slice(0, 300) + (state.steamData.description.length > 300 ? '...' : '');
+      document.getElementById('previewCover').src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`;
+
+      // Update form
+      document.getElementById('f-title').value = state.steamData.name;
+      document.getElementById('f-year').value = state.steamData.year;
+      document.getElementById('f-desc').value = state.steamData.description;
+
+      // Update categories
+      state.selectedCategories = new Set(state.steamData.genres.slice(0, 3));
+      updateCatButtons();
+
+      // Update galleries
+      updateGalleries(appid);
+
+      // Update magnets
+      updateMagnetList();
+
+      showToast('Données Steam chargées !', 'success');
+    } catch (e) {
+      console.error(e);
+      showToast('Erreur lors du chargement Steam', 'error');
+    }
+  }
+
+  function updateGalleries(appid) {
+    // Portrait options
+    const portraits = [
+      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
+      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
+      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/portrait.png`,
+      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`
+    ];
+    
+    document.getElementById('portraitGallery').innerHTML = portraits.map((url, i) => `
+      <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}')">
+        <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
+        <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
       </div>
-    </div>`;
-  }).join('');
-}
+    `).join('');
 
-// ════════════════════════════════════════════════════════
-//  EDIT GAME
-// ════════════════════════════════════════════════════════
-function editGame(idx) {
-  let game;
-  if (idx < 0) {
-    game = pendingGames[~idx];
-  } else {
-    game = allGames[idx];
-  }
-  if (!game) return;
+    // Banner options
+    const banners = [
+      state.steamData.header,
+      state.steamData.background,
+      ...state.steamData.screenshots.slice(0, 4)
+    ].filter(Boolean);
 
-  document.getElementById('edit-index').value = idx;
-  document.getElementById('f-title').value    = game.title || '';
-  document.getElementById('f-year').value     = game.year  || '';
-  document.getElementById('f-desc').value     = game.description || '';
-  document.getElementById('f-ytb').value      = game.ytb_id || '';
-  document.getElementById('f-magnets').value  = (game.magnets||[]).join('\n');
+    document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
+      <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}')">
+        <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
+        <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+    `).join('');
 
-  // Category
-  document.querySelectorAll('.cat-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.cat === game.category);
-  });
-
-  // Portrait
-  portraitUrl = game.portrait_url || '';
-  const pp = document.getElementById('poster-preview');
-  if (portraitUrl) {
-    pp.src = portraitUrl; pp.style.display = 'block';
-    document.getElementById('poster-plus').style.display = 'none';
-    document.querySelector('#poster-zone .up-label').style.display = 'none';
-  } else {
-    pp.style.display = 'none';
-    document.getElementById('poster-plus').style.display = '';
-    document.querySelector('#poster-zone .up-label').style.display = '';
+    // Auto-select first ones
+    if (portraits[0]) selectPortrait(portraits[0]);
+    if (banners[0]) selectBanner(banners[0]);
   }
 
-  // Banner
-  bannerUrl = game.banner_url || '';
-  const bp = document.getElementById('banner-preview');
-  if (bannerUrl) {
-    bp.src = bannerUrl; bp.style.display = 'block';
-    document.getElementById('banner-plus').style.display = 'none';
-    document.querySelector('#banner-zone .up-label').style.display = 'none';
-  } else {
-    bp.style.display = 'none';
-    document.getElementById('banner-plus').style.display = '';
-    document.querySelector('#banner-zone .up-label').style.display = '';
+  function selectPortrait(url) {
+    state.selectedPortrait = url;
+    document.querySelectorAll('#portraitGallery .img-item').forEach(el => el.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
   }
 
-  document.getElementById('form-mode-label').textContent = '✏️ Modifier un jeu';
-  document.getElementById('cancel-edit-btn').style.display = '';
-  document.getElementById('save-btn').textContent = '';
-  // rebuild save btn content
-  document.getElementById('save-btn').innerHTML = `<span id="save-spinner" class="spinner"></span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-    Enregistrer les modifications`;
-
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ════════════════════════════════════════════════════════
-//  DELETE
-// ════════════════════════════════════════════════════════
-function askDelete(idx, title) {
-  deleteTarget = idx;
-  document.getElementById('confirm-text').textContent = `Supprimer "${title}" définitivement ?`;
-  document.getElementById('confirm-modal').classList.add('open');
-}
-
-function closeConfirm() {
-  document.getElementById('confirm-modal').classList.remove('open');
-  deleteTarget = null;
-}
-
-async function confirmDelete() {
-  if (deleteTarget === null) return;
-  const idx = deleteTarget;
-
-  if (idx < 0) {
-    // Pending
-    pendingGames.splice(~idx, 1);
-    updatePendingBadge();
-    toast('Supprimé de la liste temporaire', 'info');
-    closeConfirm();
-    renderGameList();
-    return;
+  function selectBanner(url) {
+    state.selectedBanner = url;
+    document.querySelectorAll('#bannerGallery .banner-item').forEach(el => el.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
   }
 
-  document.getElementById('del-spinner').style.display = 'block';
-  try {
-    await dispatchGitHubAction('delete', { index: idx });
-    allGames = allGames.filter((_,i)=>i!==idx);
-    toast('Jeu supprimé ✓ (attendre ~30s)', 'success');
-    closeConfirm();
-    renderGameList();
-  } catch(e) {
-    toast('Erreur suppression : ' + e.message, 'error');
-  } finally {
-    document.getElementById('del-spinner').style.display = 'none';
+  // ═══════════════════════════════════════════════════════════
+  // CATEGORIES
+  // ═══════════════════════════════════════════════════════════
+  function toggleCat(btn) {
+    const cat = btn.textContent;
+    if (state.selectedCategories.has(cat)) {
+      state.selectedCategories.delete(cat);
+      btn.classList.remove('active');
+    } else {
+      state.selectedCategories.add(cat);
+      btn.classList.add('active');
+    }
   }
-}
 
-// ════════════════════════════════════════════════════════
-//  HELPERS
-// ════════════════════════════════════════════════════════
-function resetForm() {
-  document.getElementById('f-title').value   = '';
-  document.getElementById('f-year').value    = '';
-  document.getElementById('f-desc').value    = '';
-  document.getElementById('f-ytb').value     = '';
-  document.getElementById('f-magnets').value = '';
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-  portraitUrl = ''; bannerUrl = '';
-  document.getElementById('poster-preview').style.display = 'none';
-  document.getElementById('poster-plus').style.display    = '';
-  document.querySelector('#poster-zone .up-label').style.display = '';
-  document.getElementById('banner-preview').style.display = 'none';
-  document.getElementById('banner-plus').style.display    = '';
-  document.querySelector('#banner-zone .up-label').style.display = '';
-  document.getElementById('edit-index').value = '';
-  document.getElementById('form-mode-label').textContent = '➕ Ajouter un jeu';
-  document.getElementById('cancel-edit-btn').style.display = 'none';
-  document.getElementById('save-btn').innerHTML = `<span id="save-spinner" class="spinner"></span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-    Enregistrer`;
-}
-
-function updatePendingBadge() {
-  const badge  = document.getElementById('pending-count');
-  const commit = document.getElementById('commit-btn');
-  if (pendingGames.length > 0) {
-    badge.textContent   = pendingGames.length;
-    badge.style.display = '';
-    commit.style.display = '';
-  } else {
-    badge.style.display  = 'none';
-    commit.style.display = 'none';
+  function updateCatButtons() {
+    document.querySelectorAll('#catGrid .cat-btn').forEach(btn => {
+      btn.classList.toggle('active', state.selectedCategories.has(btn.textContent));
+    });
   }
-  renderGameList();
-}
 
-function syncPreview() { /* live preview hooks if needed */ }
+  // ═══════════════════════════════════════════════════════════
+  // MAGNETS
+  // ═══════════════════════════════════════════════════════════
+  function updateMagnetList() {
+    if (!state.steamData) return;
+    
+    const searchName = state.steamData.name.toLowerCase();
+    let allMagnets = [];
 
-function toast(msg, type='info') {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className   = `show ${type}`;
-  clearTimeout(el._t);
-  el._t = setTimeout(() => el.classList.remove('show'), 3200);
-}
+    for (const source of state.activeSources) {
+      const data = state.sourceData[source] || [];
+      const matches = data.filter(g => 
+        g.title?.toLowerCase().includes(searchName) ||
+        searchName.includes(g.title?.toLowerCase())
+      );
+      
+      matches.forEach(g => {
+        if (g.uris) {
+          g.uris.forEach(u => {
+            allMagnets.push({
+              name: `${g.title} [${source}]`,
+              url: u,
+              source: source,
+              size: g.fileSize || 'Unknown'
+            });
+          });
+        }
+        if (g.magnet) {
+          allMagnets.push({
+            name: `${g.title} [${source}]`,
+            url: g.magnet,
+            source: source,
+            size: g.fileSize || 'Unknown'
+          });
+        }
+      });
+    }
 
-function esc(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
+    renderMagnetList(allMagnets);
+  }
 
-// Close modal on overlay click
-document.getElementById('confirm-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('confirm-modal')) closeConfirm();
-});
-</script>
+  function renderMagnetList(magnets) {
+    const container = document.getElementById('magnetList');
+    if (!magnets.length) {
+      container.innerHTML = '<div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Aucun magnet trouvé pour ce jeu</div>';
+      return;
+    }
+
+    container.innerHTML = magnets.map(m => `
+      <div class="magnet-item">
+        <div class="magnet-info">
+          <div class="magnet-name">${esc(m.name)}</div>
+          <div class="magnet-source">${esc(m.source)} · ${esc(m.size)}</div>
+        </div>
+        <button class="magnet-btn ${state.selectedMagnets.includes(m.url) ? 'added' : ''}" 
+                onclick="toggleMagnet('${esc(m.url)}')">
+          ${state.selectedMagnets.includes(m.url) ? '✓ Ajouté' : 'Ajouter'}
+        </button>
+      </div>
+    `).join('');
+  }
+
+  function filterMagnets(query) {
+    const buttons = document.querySelectorAll('#magnetList .magnet-item');
+    buttons.forEach(item => {
+      const name = item.querySelector('.magnet-name').textContent.toLowerCase();
+      item.style.display = name.includes(query.toLowerCase()) ? 'flex' : 'none';
+    });
+  }
+
+  function toggleMagnet(url) {
+    if (state.selectedMagnets.includes(url)) {
+      state.selectedMagnets = state.selectedMagnets.filter(m => m !== url);
+    } else {
+      state.selectedMagnets.push(url);
+    }
+    updateSelectedMagnets();
+    updateMagnetList();
+  }
+
+  function updateSelectedMagnets() {
+    const container = document.getElementById('selectedMagnets');
+    if (!state.selectedMagnets.length) {
+      container.innerHTML = 'Aucun magnet sélectionné';
+      return;
+    }
+    container.innerHTML = state.selectedMagnets.map(m => `
+      <div style="padding:.5rem;background:rgba(249,115,22,.1);border-radius:.5rem;margin-bottom:.5rem;font-size:.75rem;word-break:break-all">${esc(m.slice(0, 60))}...</div>
+    `).join('');
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // TABS
+  // ═══════════════════════════════════════════════════════════
+  function setTab(tab) {
+    state.currentTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
+    document.getElementById('tab-info').style.display = tab === 'info' ? 'block' : 'none';
+    document.getElementById('tab-magnets').style.display = tab === 'magnets' ? 'block' : 'none';
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // SAVE
+  // ═══════════════════════════════════════════════════════════
+  async function saveGame() {
+    const title = document.getElementById('f-title').value.trim();
+    if (!title) {
+      showToast('Le titre est requis', 'error');
+      return;
+    }
+
+    const game = {
+      title,
+      year: document.getElementById('f-year').value.trim(),
+      description: document.getElementById('f-desc').value.trim(),
+      categories: Array.from(state.selectedCategories),
+      portrait_url: state.selectedPortrait,
+      banner_url: state.selectedBanner,
+      ytb_id: extractYoutubeId(document.getElementById('f-ytb').value.trim()),
+      magnets: state.selectedMagnets,
+      added_by: state.discordUser?.id || state.githubUser?.login || 'admin',
+      added_at: new Date().toISOString()
+    };
+
+    try {
+      // Fetch current data.json
+      const current = await fetch('data.json').then(r => r.json()).catch(() => []);
+      
+      // Check if exists
+      const exists = current.find(g => g.title?.toLowerCase() === title.toLowerCase());
+      if (exists) {
+        if (!confirm('Un jeu avec ce titre existe déjà. Remplacer ?')) return;
+        const idx = current.indexOf(exists);
+        current[idx] = game;
+      } else {
+        current.push(game);
+      }
+
+      // Save via GitHub API
+      await saveToGitHub(current);
+      
+      showToast('Jeu sauvegardé !', 'success');
+      clearForm();
+    } catch (e) {
+      console.error(e);
+      showToast('Erreur lors de la sauvegarde: ' + e.message, 'error');
+    }
+  }
+
+  async function saveToGitHub(data) {
+    if (!state.githubToken) {
+      throw new Error('GitHub token manquant');
+    }
+
+    // Get current file to get SHA
+    const getRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+      headers: { Authorization: `token ${state.githubToken}` }
+    });
+    
+    if (!getRes.ok) {
+      throw new Error('Impossible d\'accéder au repo GitHub');
+    }
+    
+    const fileInfo = await getRes.json();
+
+    // Update file
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    
+    const putRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${state.githubToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Update: ${data[data.length - 1]?.title || 'games'}`,
+        content,
+        sha: fileInfo.sha,
+        branch: CONFIG.BRANCH
+      })
+    });
+
+    if (!putRes.ok) {
+      throw new Error('Échec de la mise à jour');
+    }
+  }
+
+  function extractYoutubeId(input) {
+    if (!input) return '';
+    if (input.length === 11) return input;
+    const match = input.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : '';
+  }
+
+  function clearForm() {
+    state.steamData = null;
+    state.selectedCategories.clear();
+    state.selectedPortrait = null;
+    state.selectedBanner = null;
+    state.selectedMagnets = [];
+    
+    document.getElementById('steamSearch').value = '';
+    document.getElementById('steamResults').innerHTML = '';
+    document.getElementById('steamPreview').style.display = 'none';
+    document.getElementById('f-title').value = '';
+    document.getElementById('f-year').value = '';
+    document.getElementById('f-desc').value = '';
+    document.getElementById('f-ytb').value = '';
+    document.getElementById('portraitGallery').innerHTML = '<div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Recherche un jeu sur Steam pour voir les images</div>';
+    document.getElementById('bannerGallery').innerHTML = '<div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Recherche un jeu sur Steam pour voir les images</div>';
+    document.getElementById('magnetList').innerHTML = '<div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Active des sources et recherche un jeu</div>';
+    document.getElementById('selectedMagnets').innerHTML = 'Aucun magnet sélectionné';
+    updateCatButtons();
+    setTab('images');
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // UTILS
+  // ═══════════════════════════════════════════════════════════
+  function esc(str) {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function showToast(msg, type = 'info') {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.className = `toast ${type} show`;
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+  </script>
 </body>
 </html>
