@@ -62,11 +62,15 @@
     .panel-title{font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 
     /* ─── GAME SEARCH ─── */
-    .search-box{position:relative;margin-bottom:1rem}
+    .search-box{display:flex;gap:.5rem;margin-bottom:1rem;position:relative;align-items:center}
+    .search-input-wrapper{position:relative;flex:1}
     .search-input{width:100%;padding:.875rem 1rem .875rem 2.75rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
     .search-input:focus{outline:none;border-color:#f97316;background:rgba(255,255,255,.08)}
     .search-input::placeholder{color:rgba(255,255,255,.3)}
-    .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4)}
+    .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4);pointer-events:none}
+    .search-btn{padding:.875rem 1.25rem;border-radius:1rem;background:#f97316;color:#fff;font-size:.875rem;font-weight:600;border:none;cursor:pointer;transition:all .3s;white-space:nowrap;height:fit-content}
+    .search-btn:hover{background:#ea580c}
+    .trailer-box{display:flex;gap:.5rem;align-items:center}
     .search-results{max-height:300px;overflow-y:auto}
     .search-item{padding:.875rem;border-radius:.75rem;display:flex;align-items:center;gap:.875rem;cursor:pointer;transition:all .2s;border:1px solid transparent}
     .search-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
@@ -177,10 +181,6 @@
     <div class="login-card">
       <div class="login-title">CRACKUZU <span>Admin</span></div>
       <div class="login-sub">Connecte-toi pour gérer les jeux</div>
-      <button class="login-btn discord-btn" onclick="loginDiscord()">
-        <svg class="login-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-14.66a.061.061 0 0 0-.031-.03z"/></svg>
-        Connexion Discord
-      </button>
       <button class="login-btn github-btn" onclick="loginGitHub()">
         <svg class="login-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
         Connexion GitHub
@@ -218,8 +218,11 @@
                 Rechercher sur Steam
               </div>
               <div class="search-box">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." oninput="searchSteam(this.value)">
+                <div class="search-input-wrapper">
+                  <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." oninput="searchSteam(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();searchSteam(this.value,true)}">
+                </div>
+                <button class="search-btn" onclick="searchSteam(document.getElementById('steamSearch').value,true)">Rechercher</button>
               </div>
               <div class="search-results" id="steamResults"></div>
             </div>
@@ -262,6 +265,23 @@
               </div>
               <div id="selectedMagnets" style="font-size:.875rem;color:rgba(255,255,255,.5);padding:1rem 0;text-align:center">
                 Aucun magnet sélectionné
+              </div>
+            </div>
+
+            <!-- Recent Games -->
+            <div class="panel-card">
+              <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                Jeux récents
+              </div>
+              <div class="search-box" style="margin-bottom:1rem">
+                <div class="search-input-wrapper">
+                  <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  <input type="text" class="search-input" id="gameSearch" placeholder="Rechercher un jeu..." oninput="filterGames(this.value)">
+                </div>
+              </div>
+              <div id="recentGames" style="max-height:300px;overflow-y:auto">
+                <div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">Chargement...</div>
               </div>
             </div>
           </aside>
@@ -332,7 +352,13 @@
                 </div>
                 <div class="form-group" style="grid-column:1/-1">
                   <label class="form-label">Trailer YouTube</label>
-                  <input type="text" class="form-input" id="f-ytb" placeholder="ID ou URL YouTube">
+                  <div class="trailer-box">
+                    <input type="text" class="form-input" id="f-ytb" placeholder="ID ou URL YouTube" style="flex:1">
+                    <button class="search-btn" onclick="searchYouTubeTrailer()" title="Rechercher sur YouTube">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                      YouTube
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -403,9 +429,8 @@
   // CONFIG & STATE
   // ═══════════════════════════════════════════════════════════
   const CONFIG = {
-    REPO: 'Skyfir3/CRACKUZU',
-    BRANCH: 'main',
-    DISCORD_CLIENT: '1358039944043761684'
+    REPO: 'crackuzu/beta',
+    BRANCH: 'main'
   };
 
   const SOURCES = {
@@ -416,7 +441,6 @@
   };
 
   let state = {
-    discordUser: null,
     githubToken: localStorage.getItem('githubToken') || null,
     steamData: null,
     activeSources: new Set(['onlinefix', 'fitgirl', 'dodi', 'steamrip']),
@@ -433,13 +457,7 @@
   // ═══════════════════════════════════════════════════════════
   window.onload = () => {
     // Check auth
-    const hash = new URLSearchParams(location.hash.slice(1));
-    const discordToken = hash.get('access_token');
-    
-    if (discordToken) {
-      state.discordToken = discordToken;
-      loadDiscordUser();
-    } else if (state.githubToken) {
+    if (state.githubToken) {
       loadGitHubUser();
     } else {
       showLogin();
@@ -465,27 +483,10 @@
   function showApp() {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
-  }
-
-  function loginDiscord() {
-    const url = `https://discord.com/oauth2/authorize?client_id=${CONFIG.DISCORD_CLIENT}&response_type=token&redirect_uri=${encodeURIComponent(location.origin + location.pathname)}&scope=identify`;
-    location.href = url;
-  }
-
-  async function loadDiscordUser() {
-    try {
-      const res = await fetch('https://discord.com/api/users/@me', {
-        headers: { Authorization: `Bearer ${state.discordToken}` }
-      });
-      const user = await res.json();
-      state.discordUser = user;
-      document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
-      document.getElementById('userName').textContent = user.username;
-      showApp();
-    } catch (e) {
-      showToast('Erreur Discord', 'error');
-      showLogin();
-    }
+    // Load magnet sources
+    loadSources();
+    // Load recent games for editing
+    loadRecentGames();
   }
 
   function loginGitHub() {
@@ -517,7 +518,6 @@
   function logout() {
     localStorage.removeItem('githubToken');
     state.githubToken = null;
-    state.discordToken = null;
     location.hash = '';
     showLogin();
   }
@@ -530,10 +530,28 @@
       try {
         const res = await fetch(url);
         const data = await res.json();
-        state.sourceData[key] = data.list || data.games || data || [];
-        document.getElementById(`count-${key}`).textContent = state.sourceData[key].length;
+        console.log(`Source ${key} raw data:`, data);
+        // Handle different JSON structures
+        let games = [];
+        if (Array.isArray(data)) {
+          games = data;
+        } else if (data.list && Array.isArray(data.list)) {
+          games = data.list;
+        } else if (data.games && Array.isArray(data.games)) {
+          games = data.games;
+        } else if (data.data && Array.isArray(data.data)) {
+          games = data.data;
+        } else if (typeof data === 'object') {
+          // Try to find any array property
+          const arrProp = Object.values(data).find(v => Array.isArray(v));
+          if (arrProp) games = arrProp;
+        }
+        state.sourceData[key] = games;
+        console.log(`Source ${key} parsed:`, games.length, 'games');
+        document.getElementById(`count-${key}`).textContent = games.length;
         document.getElementById(`dot-${key}`).classList.remove('offline');
       } catch (e) {
+        console.error(`Source ${key} failed:`, e);
         document.getElementById(`count-${key}`).textContent = 'OFF';
         document.getElementById(`dot-${key}`).classList.add('offline');
       }
@@ -556,29 +574,40 @@
   // STEAM SEARCH
   // ═══════════════════════════════════════════════════════════
   let searchTimeout;
-  async function searchSteam(query) {
+  async function searchSteam(query, force = false) {
     clearTimeout(searchTimeout);
     if (!query || query.length < 2) {
       document.getElementById('steamResults').innerHTML = '';
       return;
     }
-    
-    searchTimeout = setTimeout(async () => {
-      try {
-        // Use Steam search API (no key needed)
-        const res = await fetch(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
-        const data = await res.json();
-        renderSteamResults(data.slice(0, 6));
-      } catch (e) {
-        console.error('Steam search failed:', e);
-      }
-    }, 300);
+    if (force) {
+      // Immediate search
+      await doSteamSearch(query);
+    } else {
+      searchTimeout = setTimeout(async () => {
+        await doSteamSearch(query);
+      }, 300);
+    }
+  }
+
+  async function doSteamSearch(query) {
+    try {
+      // Use Steam search API through a CORS proxy
+      const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=';
+      const steamUrl = encodeURIComponent(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
+      const res = await fetch(`${proxyUrl}${steamUrl}`);
+      const data = await res.json();
+      renderSteamResults(data.slice(0, 6));
+    } catch (e) {
+      console.error('Steam search failed:', e);
+      showToast('Erreur de recherche Steam - réessaie', 'error');
+    }
   }
 
   function renderSteamResults(games) {
     const html = games.map(g => `
       <div class="search-item" onclick="selectSteamGame('${g.appid}', '${esc(g.name)}')">
-        <img class="search-img" src="https://cdn.cloudflare.steamstatic.com/steam/apps/${g.appid}/capsule_184x69.jpg" alt="" onerror="this.src=''">
+        <img class="search-img" src="https://cdn.akamai.steamstatic.com/steam/apps/${g.appid}/capsule_sm_120.jpg" alt="" onerror="this.onerror=null;this.src='https://cdn.akamai.steamstatic.com/steam/apps/${g.appid}/header.jpg';this.onerror=function(){this.style.display='none'}">
         <div class="search-info">
           <div class="search-name">${esc(g.name)}</div>
           <div class="search-meta">AppID: ${g.appid}</div>
@@ -594,8 +623,10 @@
     document.getElementById('steamSearch').value = name;
 
     try {
-      // Fetch app details from Steam (no API key needed)
-      const res = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appid}`);
+      // Fetch app details from Steam through CORS proxy
+      const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=';
+      const steamUrl = encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${appid}`);
+      const res = await fetch(`${proxyUrl}${steamUrl}`);
       const data = await res.json();
       const app = data[appid]?.data;
       
@@ -610,7 +641,8 @@
         genres: app.genres?.map(g => g.description) || [],
         screenshots: app.screenshots?.map(s => s.path_full) || [],
         header: app.header_image,
-        background: app.background
+        background: app.background,
+        trailer: extractYoutubeId(app.movies?.[0]?.name) || null
       };
 
       // Update preview
@@ -619,15 +651,56 @@
       document.getElementById('previewYear').textContent = state.steamData.year || 'Date inconnue';
       document.getElementById('previewDev').textContent = state.steamData.developers[0] || 'Développeur inconnu';
       document.getElementById('previewDesc').textContent = state.steamData.description.slice(0, 300) + (state.steamData.description.length > 300 ? '...' : '');
-      document.getElementById('previewCover').src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`;
+      // Use Steam header image (most reliable)
+      document.getElementById('previewCover').src = state.steamData.header || `https://steamcdn-a.akamaihd.net/steam/apps/${appid}/library_600x900.jpg`;
+      
+      // Set trailer if available
+      if (state.steamData.trailer) {
+        document.getElementById('f-ytb').value = state.steamData.trailer;
+      }
 
       // Update form
       document.getElementById('f-title').value = state.steamData.name;
       document.getElementById('f-year').value = state.steamData.year;
       document.getElementById('f-desc').value = state.steamData.description;
 
-      // Update categories
-      state.selectedCategories = new Set(state.steamData.genres.slice(0, 3));
+      // Update categories - map Steam genres to our categories (multi-language)
+      const genreMap = {
+        // English
+        'Action': 'Action', 'Adventure': 'Aventure', 'RPG': 'RPG',
+        'Strategy': 'Stratégie', 'Simulation': 'Simulation', 'Sports': 'Sport',
+        'Racing': 'Course', 'Casual': 'Casual', 'Puzzle': 'Puzzle',
+        'Platformer': 'Plateforme', 'Fighting': 'Combat', 'Shooter': 'FPS',
+        'First-Person': 'FPS', 'Third-Person': 'TPS', 'Horror': 'Horreur',
+        'Survival': 'Survie', 'Open World': 'Monde ouvert', 'Multiplayer': 'Multijoueur',
+        'Co-op': 'Coopération', 'Co-Op': 'Coopération', 'Online Co-Op': 'Coopération',
+        'Battle Royale': 'Battle Royale', 'Stealth': 'Infiltration',
+        'Metroidvania': 'Metroidvania', 'Souls-like': 'Souls-like', 'Sandbox': 'Sandbox',
+        'Visual Novel': 'Visual Novel', 'Anime': 'Anime', 'Sci-fi': 'Sci-Fi',
+        'Fantasy': 'Fantasy', 'Historical': 'Historique', 'Mystery': 'Mystère',
+        'Massively Multiplayer': 'Multijoueur', 'Local Co-Op': 'Coopération',
+        // Spanish
+        'Acción': 'Action', 'Aventura': 'Aventure', 'Estrategia': 'Stratégie',
+        'Simulación': 'Simulation', 'Deportes': 'Sport', 'Carreras': 'Course',
+        // German
+        'Action': 'Action', 'Abenteuer': 'Aventure', 'Strategie': 'Stratégie',
+        // French (Steam sometimes returns French)
+        'Stratégie': 'Stratégie'
+      };
+      
+      // Get available categories
+      const availableCats = Array.from(document.querySelectorAll('.cat-btn')).map(btn => btn.textContent);
+      
+      // Map genres and filter to only available categories
+      const mappedCats = state.steamData.genres
+        .map(g => genreMap[g] || g)
+        .filter(cat => availableCats.includes(cat))
+        .slice(0, 3);
+      
+      console.log('Steam genres:', state.steamData.genres);
+      console.log('Mapped categories:', mappedCats);
+      
+      state.selectedCategories = new Set(mappedCats);
       updateCatButtons();
 
       // Update galleries
@@ -653,11 +726,16 @@
     ];
     
     document.getElementById('portraitGallery').innerHTML = portraits.map((url, i) => `
-      <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}')">
+      <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}', this)">
         <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
         <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
       </div>
     `).join('');
+
+    // Auto-select first portrait if none selected
+    if (!state.selectedPortrait && portraits[0]) {
+      state.selectedPortrait = portraits[0];
+    }
 
     // Banner options
     const banners = [
@@ -667,27 +745,31 @@
     ].filter(Boolean);
 
     document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
-      <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}')">
+      <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}', this)">
         <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
         <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
       </div>
     `).join('');
 
     // Auto-select first ones
-    if (portraits[0]) selectPortrait(portraits[0]);
-    if (banners[0]) selectBanner(banners[0]);
+    if (portraits[0]) {
+      state.selectedPortrait = portraits[0];
+    }
+    if (banners[0]) {
+      state.selectedBanner = banners[0];
+    }
   }
 
-  function selectPortrait(url) {
+  function selectPortrait(url, element) {
     state.selectedPortrait = url;
     document.querySelectorAll('#portraitGallery .img-item').forEach(el => el.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
+    if (element) element.classList.add('selected');
   }
 
-  function selectBanner(url) {
+  function selectBanner(url, element) {
     state.selectedBanner = url;
     document.querySelectorAll('#bannerGallery .banner-item').forEach(el => el.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
+    if (element) element.classList.add('selected');
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -719,12 +801,29 @@
     const searchName = state.steamData.name.toLowerCase();
     let allMagnets = [];
 
+    console.log('Searching magnets for:', searchName);
+    console.log('Active sources:', Array.from(state.activeSources));
+    console.log('Source data keys:', Object.keys(state.sourceData));
+
     for (const source of state.activeSources) {
       const data = state.sourceData[source] || [];
-      const matches = data.filter(g => 
-        g.title?.toLowerCase().includes(searchName) ||
-        searchName.includes(g.title?.toLowerCase())
-      );
+      console.log(`Source ${source}: ${data.length} games`);
+      
+      // Fuzzy matching - check if words match
+      const matches = data.filter(g => {
+        const gameTitle = g.title?.toLowerCase() || '';
+        // Direct includes
+        if (gameTitle.includes(searchName) || searchName.includes(gameTitle)) return true;
+        // Word-based matching
+        const searchWords = searchName.split(/[\s:\-\.]+/).filter(w => w.length > 2);
+        const titleWords = gameTitle.split(/[\s:\-\.]+/).filter(w => w.length > 2);
+        const matchCount = searchWords.filter(sw => 
+          titleWords.some(tw => tw.includes(sw) || sw.includes(tw))
+        ).length;
+        return matchCount >= Math.max(1, searchWords.length * 0.5); // 50% of words match
+      });
+      
+      console.log(`Source ${source}: ${matches.length} matches`);
       
       matches.forEach(g => {
         if (g.uris) {
@@ -764,9 +863,9 @@
           <div class="magnet-name">${esc(m.name)}</div>
           <div class="magnet-source">${esc(m.source)} · ${esc(m.size)}</div>
         </div>
-        <button class="magnet-btn ${state.selectedMagnets.includes(m.url) ? 'added' : ''}" 
-                onclick="toggleMagnet('${esc(m.url)}')">
-          ${state.selectedMagnets.includes(m.url) ? '✓ Ajouté' : 'Ajouter'}
+        <button class="magnet-btn ${state.selectedMagnets.find(sm => sm.url === m.url) ? 'added' : ''}" 
+                onclick='toggleMagnet(${JSON.stringify(m).replace(/'/g, "&#39;")})'>
+          ${state.selectedMagnets.find(sm => sm.url === m.url) ? '✓ Ajouté' : 'Ajouter'}
         </button>
       </div>
     `).join('');
@@ -780,11 +879,12 @@
     });
   }
 
-  function toggleMagnet(url) {
-    if (state.selectedMagnets.includes(url)) {
-      state.selectedMagnets = state.selectedMagnets.filter(m => m !== url);
+  function toggleMagnet(magnetObj) {
+    const exists = state.selectedMagnets.find(m => m.url === magnetObj.url);
+    if (exists) {
+      state.selectedMagnets = state.selectedMagnets.filter(m => m.url !== magnetObj.url);
     } else {
-      state.selectedMagnets.push(url);
+      state.selectedMagnets.push(magnetObj);
     }
     updateSelectedMagnets();
     updateMagnetList();
@@ -797,17 +897,115 @@
       return;
     }
     container.innerHTML = state.selectedMagnets.map(m => `
-      <div style="padding:.5rem;background:rgba(249,115,22,.1);border-radius:.5rem;margin-bottom:.5rem;font-size:.75rem;word-break:break-all">${esc(m.slice(0, 60))}...</div>
+      <div style="padding:.5rem;background:rgba(249,115,22,.1);border-radius:.5rem;margin-bottom:.5rem;font-size:.75rem">
+        <div style="font-weight:600;color:#fff">${esc(m.source)} · ${esc(m.size)}</div>
+        <div style="color:#94a3b8;word-break:break-all">${esc(m.url.slice(0, 50))}...</div>
+      </div>
     `).join('');
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // GAMES LIST & EDIT
+  // ═══════════════════════════════════════════════════════════
+  let allGames = [];
+  let editingGameIndex = -1;
+
+  async function loadRecentGames() {
+    try {
+      const dataRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+        headers: { Authorization: `token ${state.githubToken}` }
+      });
+      if (dataRes.ok) {
+        const fileInfo = await dataRes.json();
+        const content = atob(fileInfo.content.replace(/\s/g, ''));
+        allGames = JSON.parse(content);
+        displayRecentGames(allGames.slice(0, 5));
+      }
+    } catch (e) {
+      console.error('Failed to load games:', e);
+      document.getElementById('recentGames').innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Erreur de chargement</div>';
+    }
+  }
+
+  function displayRecentGames(games) {
+    const container = document.getElementById('recentGames');
+    if (!games || games.length === 0) {
+      container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Aucun jeu</div>';
+      return;
+    }
+    
+    container.innerHTML = games.map((game, idx) => `
+      <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:.75rem;margin-bottom:.5rem;cursor:pointer;transition:all .2s" 
+           onmouseover="this.style.background='rgba(249,115,22,.1)'" 
+           onmouseout="this.style.background='rgba(255,255,255,.05)'"
+           onclick="editGame(${allGames.indexOf(game)})">
+        <img src="${esc(game.portrait_url || '')}" style="width:40px;height:60px;object-fit:cover;border-radius:.5rem;background:#333" onerror="this.style.display='none'">
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600;color:#fff;font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(game.title)}</div>
+          <div style="font-size:.75rem;color:#94a3b8">${esc(game.year || 'N/A')}</div>
+        </div>
+        <button style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center" 
+                onmouseover="this.style.background='rgba(249,115,22,.8)'" 
+                onmouseout="this.style.background='rgba(255,255,255,.1)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+        </button>
+      </div>
+    `).join('');
+  }
+
+  function filterGames(query) {
+    if (!query.trim()) {
+      displayRecentGames(allGames.slice(0, 5));
+      return;
+    }
+    const filtered = allGames.filter(g => g.title.toLowerCase().includes(query.toLowerCase()));
+    displayRecentGames(filtered);
+  }
+
+  function editGame(index) {
+    const game = allGames[index];
+    if (!game) return;
+    
+    editingGameIndex = index;
+    state.editingGame = game;
+    
+    // Fill form
+    document.getElementById('f-title').value = game.title || '';
+    document.getElementById('f-year').value = game.year || '';
+    document.getElementById('f-desc').value = game.description || '';
+    document.getElementById('f-ytb').value = game.ytb_id || '';
+    
+    // Categories
+    state.selectedCategories.clear();
+    (game.categories || []).forEach(cat => state.selectedCategories.add(cat));
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.classList.toggle('active', state.selectedCategories.has(btn.textContent.trim()));
+    });
+    
+    // Images
+    state.selectedPortrait = game.portrait_url || null;
+    state.selectedBanner = game.banner_url || null;
+    updateGalleries();
+    
+    // Magnets
+    state.selectedMagnets = (game.magnets || []).map(m => typeof m === 'string' ? {url: m, size: '', source: ''} : m);
+    updateSelectedMagnets();
+    
+    // Show editing mode
+    showToast(`Modification de: ${game.title}`, 'success');
+    
+    // Scroll to form
+    document.querySelector('.right-panel').scrollIntoView({ behavior: 'smooth' });
   }
 
   // ═══════════════════════════════════════════════════════════
   // TABS
   // ═══════════════════════════════════════════════════════════
-  function setTab(tab) {
+  function setTab(tab, element) {
     state.currentTab = tab;
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
+    if (element) element.classList.add('active');
+    else if (typeof event !== 'undefined' && event?.target) event.target.classList.add('active');
     
     document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
     document.getElementById('tab-info').style.display = tab === 'info' ? 'block' : 'none';
@@ -832,25 +1030,53 @@
       portrait_url: state.selectedPortrait,
       banner_url: state.selectedBanner,
       ytb_id: extractYoutubeId(document.getElementById('f-ytb').value.trim()),
-      magnets: state.selectedMagnets,
-      added_by: state.discordUser?.id || state.githubUser?.login || 'admin',
+      magnets: state.selectedMagnets.map(m => ({
+        url: m.url,
+        size: m.size,
+        source: m.source
+      })),
+      added_by: state.githubUser?.login || 'admin',
       added_at: new Date().toISOString()
     };
 
     try {
-      // Fetch current data.json
-      const current = await fetch('data.json').then(r => r.json()).catch(() => []);
+      // Fetch current data.json from GitHub (not local file)
+      let current = [];
+      try {
+        const dataRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+          headers: { Authorization: `token ${state.githubToken}` }
+        });
+        if (dataRes.ok) {
+          const fileInfo = await dataRes.json();
+          const content = atob(fileInfo.content.replace(/\s/g, ''));
+          current = JSON.parse(content);
+        }
+      } catch (e) {
+        console.log('No existing data.json or error loading:', e.message);
+      }
+      console.log('Current games count:', current.length);
+      console.log('Current games:', current.map(g => g.title));
       
-      // Check if exists
-      const exists = current.find(g => g.title?.toLowerCase() === title.toLowerCase());
-      if (exists) {
-        if (!confirm('Un jeu avec ce titre existe déjà. Remplacer ?')) return;
-        const idx = current.indexOf(exists);
-        current[idx] = game;
+      // Check if editing existing game
+      if (editingGameIndex >= 0 && editingGameIndex < current.length) {
+        // Update existing game
+        current[editingGameIndex] = game;
+        console.log('Updating game at index:', editingGameIndex);
       } else {
-        current.push(game);
+        // Check if new game with same title exists
+        const exists = current.find(g => g.title?.toLowerCase() === title.toLowerCase());
+        if (exists) {
+          if (!confirm('Un jeu avec ce titre existe déjà. Remplacer ?')) return;
+          const idx = current.indexOf(exists);
+          current[idx] = game;
+          console.log('Replacing game at index:', idx);
+        } else {
+          current.push(game);
+          console.log('Adding new game, new count:', current.length);
+        }
       }
 
+      console.log('Saving data to GitHub:', current.length, 'games');
       // Save via GitHub API
       await saveToGitHub(current);
       
@@ -867,19 +1093,45 @@
       throw new Error('GitHub token manquant');
     }
 
-    // Get current file to get SHA
-    const getRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-      headers: { Authorization: `token ${state.githubToken}` }
-    });
-    
-    if (!getRes.ok) {
-      throw new Error('Impossible d\'accéder au repo GitHub');
-    }
-    
-    const fileInfo = await getRes.json();
+    console.log('Saving to GitHub:', CONFIG.REPO, CONFIG.BRANCH);
+    console.log('Token present:', !!state.githubToken);
 
-    // Update file
+    // Get current file to get SHA (if exists)
+    let fileSha = null;
+    try {
+      const getRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+        headers: { Authorization: `token ${state.githubToken}` }
+      });
+      
+      console.log('GET response status:', getRes.status);
+      
+      if (getRes.ok) {
+        const fileInfo = await getRes.json();
+        fileSha = fileInfo.sha;
+        console.log('Got file SHA:', fileSha?.slice(0, 10));
+      } else if (getRes.status === 404) {
+        console.log('File does not exist, will create new file');
+      } else {
+        const errorText = await getRes.text();
+        console.error('GitHub GET error:', getRes.status, errorText);
+        throw new Error(`Impossible d'accéder au repo GitHub (${getRes.status})`);
+      }
+    } catch (e) {
+      console.log('Error checking file:', e.message);
+    }
+
+    // Update file (or create if sha is null)
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    
+    const body = {
+      message: `Update: ${data[data.length - 1]?.title || 'games'}`,
+      content,
+      branch: CONFIG.BRANCH
+    };
+    
+    if (fileSha) {
+      body.sha = fileSha;
+    }
     
     const putRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json`, {
       method: 'PUT',
@@ -887,17 +1139,26 @@
         Authorization: `token ${state.githubToken}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        message: `Update: ${data[data.length - 1]?.title || 'games'}`,
-        content,
-        sha: fileInfo.sha,
-        branch: CONFIG.BRANCH
-      })
+      body: JSON.stringify(body)
     });
 
+    console.log('PUT response status:', putRes.status);
+
     if (!putRes.ok) {
-      throw new Error('Échec de la mise à jour');
+      const errorText = await putRes.text();
+      console.error('GitHub PUT error:', putRes.status, errorText);
+      throw new Error(`Échec de la mise à jour (${putRes.status})`);
     }
+  }
+
+  function searchYouTubeTrailer() {
+    const gameTitle = document.getElementById('f-title').value || document.getElementById('steamSearch').value;
+    if (!gameTitle) {
+      showToast('Entre d\'abord un nom de jeu', 'error');
+      return;
+    }
+    const searchQuery = encodeURIComponent(`${gameTitle} trailer`);
+    window.open(`https://www.youtube.com/results?search_query=${searchQuery}`, '_blank');
   }
 
   function extractYoutubeId(input) {
@@ -908,7 +1169,11 @@
   }
 
   function clearForm() {
-    state.steamData = null;
+    document.getElementById('f-title').value = '';
+    document.getElementById('f-year').value = '';
+    document.getElementById('f-desc').value = '';
+    document.getElementById('f-ytb').value = '';
+    
     state.selectedCategories.clear();
     state.selectedPortrait = null;
     state.selectedBanner = null;
@@ -916,15 +1181,17 @@
     
     document.getElementById('steamSearch').value = '';
     document.getElementById('steamResults').innerHTML = '';
-    document.getElementById('steamPreview').style.display = 'none';
-    document.getElementById('f-title').value = '';
-    document.getElementById('f-year').value = '';
-    document.getElementById('f-desc').value = '';
-    document.getElementById('f-ytb').value = '';
-    document.getElementById('portraitGallery').innerHTML = '<div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Recherche un jeu sur Steam pour voir les images</div>';
-    document.getElementById('bannerGallery').innerHTML = '<div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Recherche un jeu sur Steam pour voir les images</div>';
-    document.getElementById('magnetList').innerHTML = '<div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Active des sources et recherche un jeu</div>';
-    document.getElementById('selectedMagnets').innerHTML = 'Aucun magnet sélectionné';
+    
+    state.steamData = null;
+    
+    // Reset editing mode
+    editingGameIndex = -1;
+    state.editingGame = null;
+    
+    // Reset UI
+    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+    updateGalleries();
+    updateSelectedMagnets();
     updateCatButtons();
     setTab('images');
   }
