@@ -5,9 +5,9 @@
     "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1776048784/fbhrby6bajsjgykxgelg.png",
     "categories": [
       "Plateforme",
-      "CoopÃÂÃÂ©ration"
+      "CoopÃÂÃÂÃÂÃÂ©ration"
     ],
-    "description": "Commencez votre voyage dans les profondeurs de l'enfer, enchaÃÂÃÂ®nÃÂÃÂ© avec vos compagnons. Votre mission est de s'ÃÂÃÂ©chapper de l'enfer en grimpant le plus haut possible.\nChaque saut nÃÂÃÂ©cessite une coordination parfaite pour escalader les plateformes et ÃÂÃÂ©chapper ÃÂÃÂ  la chaleur brÃÂÃÂ»lante. Traversez une multitude de mondes, chacun offrant des dÃÂÃÂ©fis uniques.",
+    "description": "Commencez votre voyage dans les profondeurs de l'enfer, enchaÃÂÃÂÃÂÃÂ®nÃÂÃÂÃÂÃÂ© avec vos compagnons. Votre mission est de s'ÃÂÃÂÃÂÃÂ©chapper de l'enfer en grimpant le plus haut possible.\nChaque saut nÃÂÃÂÃÂÃÂ©cessite une coordination parfaite pour escalader les plateformes et ÃÂÃÂÃÂÃÂ©chapper ÃÂÃÂÃÂÃÂ  la chaleur brÃÂÃÂÃÂÃÂ»lante. Traversez une multitude de mondes, chacun offrant des dÃÂÃÂÃÂÃÂ©fis uniques.",
     "magnets": [
       "magnet:?xt=urn:btih:5d3fced455baab4b3e4da2279b92bb7306a456bd&dn=Chained%20Together&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969"
     ],
@@ -24,7 +24,7 @@
       "Action",
       "Aventure"
     ],
-    "description": "AprÃÂÃÂ¨s les ÃÂÃÂ©vÃÂÃÂ©nements de Marvel's Spider-Man Remastered, le jeune Miles Morales s'adapte ÃÂÃÂ  sa nouvelle vie dans les pas de son mentor, Peter Parker, en tant que nouveau Spider-Man. Quand une lutte de pouvoir menace de dÃÂÃÂ©truire sa ville, Miles doit endosser la tenue de Spider-Man et s'en montrer digne",
+    "description": "AprÃÂÃÂÃÂÃÂ¨s les ÃÂÃÂÃÂÃÂ©vÃÂÃÂÃÂÃÂ©nements de Marvel's Spider-Man Remastered, le jeune Miles Morales s'adapte ÃÂÃÂÃÂÃÂ  sa nouvelle vie dans les pas de son mentor, Peter Parker, en tant que nouveau Spider-Man. Quand une lutte de pouvoir menace de dÃÂÃÂÃÂÃÂ©truire sa ville, Miles doit endosser la tenue de Spider-Man et s'en montrer digne",
     "magnets": [
       "magnet:?xt=urn:btih:VNUPU2C3CMK2VYHTN4QYOMVNVA2CYHNR&dn=Marvels%20Spider-Man%20Miles%20Morales%20v.3.617.1.0%20(2022)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
     ],
@@ -36,10 +36,10 @@
   {
     "title": "Hello Neighbor 2",
     "year": "2022",
-    "description": "Welcome back to the eerie town of Raven Brooks! You play as Quentin, a journalist investigating the bizarre events of the original Hello Neighbor game, uncovering a larger mystery. Sneak into your creepy NeighborsÃÂ¢ÃÂÃÂ houses to dig up the truth.",
+    "description": "Welcome back to the eerie town of Raven Brooks! You play as Quentin, a journalist investigating the bizarre events of the original Hello Neighbor game, uncovering a larger mystery. Sneak into your creepy NeighborsÃÂÃÂ¢ÃÂÃÂÃÂÃÂ houses to dig up the truth.",
     "categories": [
       "Aventure",
-      "StratÃÂÃÂ©gie"
+      "StratÃÂÃÂÃÂÃÂ©gie"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1321680/library_600x900.jpg",
     "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1321680/header.jpg?t=1763986797",
@@ -67,9 +67,9 @@
     "added_at": "2026-04-15T00:14:17.927Z"
   },
   {
-    "title": "UNCHARTED™: Legacy of Thieves Collection",
+    "title": "UNCHARTEDâ¢: Legacy of Thieves Collection",
     "year": "2022",
-    "description": "Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thief’s End and UNCHARTED: The Lost Legacy.",
+    "description": "Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thiefâs End and UNCHARTED: The Lost Legacy.",
     "categories": [
       "Aventure"
     ],
@@ -90,5 +90,25 @@
     ],
     "added_by": "admin",
     "added_at": "2026-04-15T01:39:33.213Z"
+  },
+  {
+    "title": "DRAGON BALL FighterZ",
+    "year": "2018",
+    "description": "DRAGON BALL FighterZ is born from what makes the DRAGON BALL series so loved and famous: endless spectacular fights with its all-powerful fighters.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/678950/library_600x900.jpg",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/678950/header.jpg?t=1733508969",
+    "ytb_id": "YNAfOG4GfFQ",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:2709855c950e205e1dbdde9a392cced5eb03078b&dn=DRAGON+BALL+FighterZ&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "5.3 GB",
+        "source": "onlinefix"
+      }
+    ],
+    "added_by": "admin",
+    "added_at": "2026-04-15T22:34:21.000Z"
   }
 ]
