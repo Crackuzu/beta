@@ -89,31 +89,31 @@
       "Action"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/library_600x900.jpg",
-    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg?t=1770093483",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1196590/library_hero.jpg",
     "ytb_id": "tjfTxFzGh3Q",
     "magnets": [
       {
-        "url": "magnet:?xt=urn:btih:B5C63449671B04B3E50CF740D9C5413566F6FCDA&dn=Resident+Evil+Village+-+Deluxe+Edition+%28Build+6587890+%2B+All+DLCs+%2B+OST+%2B+MULTi13%29+%28From+19.6+GB%29+-+%5BEMPRESS+%2F+DODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce",
-        "size": "19.8 GB",
+        "url": "magnet:?xt=urn:btih:AA4CF1B9A868B76E8126A41047083E7CDD90E931&dn=Resident+Evil+Village%3A+Gold+Edition+%28Build+10415597+-+No+Denuvo+%2B+All+DLCs+%2B+Bonus+Content+%2B+MULTi13%29+%28From+24+GB%29+-+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
+        "size": "24.2 GB",
         "source": "dodi",
-        "name": "Resident Evil Village - Deluxe Edition (Build 6587890 + All DLCs + OST + MULTi13) (From 19.6 GB) - [EMPRESS / DODI Repack] [dodi]",
+        "name": "Resident Evil Village: Gold Edition (Build 10415597 - No Denuvo + All DLCs + Bonus Content + MULTi13) (From 24 GB) - [DODI Repack] [dodi]",
         "type": "magnet"
       },
       {
         "url": "https://gofile.io/d/ssnRsn",
-        "size": "34.8Â GB",
+        "size": "34.8 GB",
         "source": "steamrip",
         "name": "Resident Evil Village Free Download (Build 11260452) [steamrip]",
         "type": "magnet"
       }
     ],
     "added_by": "admin",
-    "added_at": "2026-04-16T20:54:00.284Z"
+    "added_at": "2026-04-16T21:08:13.481Z"
   },
   {
-    "title": "Marvel’s Spider-Man Remastered",
+    "title": "Marvelâs Spider-Man Remastered",
     "year": "2022",
-    "description": "In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+    "description": "In Marvelâs Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvelâs New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
     "categories": [
       "Action",
       "Aventure"
@@ -126,14 +126,14 @@
         "url": "magnet:?xt=urn:btih:734A16BFC8B94DB65375C577A9CD7B48BE5232A6&dn=Marvel%26rsquo%3Bs+Spider-Man+Remastered+%28v1.812.1.0+%2B+DLC+%2B+SSE+Fix%2C+MULTi21%29+%5BFitGirl+Repack%2C+Selective+Download+-+from+37.6+GB%5D&tr=udp%3A%2F%2Fopentor.org%3A2710&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
         "size": "47.4 GB",
         "source": "fitgirl",
-        "name": "Marvel’s Spider-Man Remastered (v1.812.1.0 + DLC + SSE Fix, MULTi21) [FitGirl Repack, Selective Download - from 37.6 GB] [fitgirl]",
+        "name": "Marvelâs Spider-Man Remastered (v1.812.1.0 + DLC + SSE Fix, MULTi21) [FitGirl Repack, Selective Download - from 37.6 GB] [fitgirl]",
         "type": "magnet"
       },
       {
         "url": "magnet:?xt=urn:btih:D1FE98013B65917C1F9DC5F7A2BC6841AF57D4CC&dn=Marvel%26rsquo%3Bs+Spider-Man+Remastered+%28v3.618.0.0+%2B+DLCs+%2B+Bonus+Content+%2B+MULTi22%29+%28From+38.5+GB%29+-+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
         "size": "51.3 GB",
         "source": "dodi",
-        "name": "Marvel’s Spider-Man Remastered (v3.618.0.0 + DLCs + Bonus Content + MULTi22) (From 38.5 GB) - [DODI Repack] [dodi]",
+        "name": "Marvelâs Spider-Man Remastered (v3.618.0.0 + DLCs + Bonus Content + MULTi22) (From 38.5 GB) - [DODI Repack] [dodi]",
         "type": "magnet"
       }
     ],
