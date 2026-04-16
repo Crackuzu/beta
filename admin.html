@@ -311,28 +311,21 @@
             <!-- Images Tab -->
             <div id="tab-images" class="form-section">
               <!-- Custom Image Upload -->
-              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
+              <div id="pasteZone" style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1);border-style:dashed">
                 <div style="font-weight:600;color:#fff;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                  Upload d'image
+                  Upload d'image personnalisée (Cloudinary)
                 </div>
-                
-                <!-- Drop/Paste Zone -->
-                <div id="dropZone" style="padding:1.5rem;border:2px dashed rgba(249,115,22,.3);border-radius:.75rem;text-align:center;transition:all .2s;cursor:pointer"
-                     onclick="document.getElementById('imageUpload').click()"
-                     ondragover="event.preventDefault();this.style.borderColor='#f97316';this.style.background='rgba(249,115,22,.1)'"
-                     ondragleave="this.style.borderColor='rgba(249,115,22,.3)';this.style.background=''"
-                     ondrop="handleDrop(event)">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#f97316;margin-bottom:.5rem"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                  <div style="font-size:.875rem;color:#94a3b8">
-                    <span style="color:#f97316;font-weight:600">Clique</span> pour choisir, 
-                    <span style="color:#f97316;font-weight:600">glisse-dépose</span>, ou 
-                    <span style="color:#f97316;font-weight:600">Ctrl+V</span> pour coller
-                  </div>
+                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
+                  <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
+                  <button class="search-btn" onclick="document.getElementById('imageUpload').click()" style="flex:1">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+                    Choisir une image
+                  </button>
                 </div>
-                
-                <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
-                
+                <div style="font-size:.75rem;color:#94a3b8;text-align:center;padding:.5rem;background:rgba(255,255,255,.03);border-radius:.5rem;margin-top:.5rem">
+                  <strong>OU</strong> fais <kbd style="background:rgba(255,255,255,.2);padding:.1rem .4rem;border-radius:.25rem;font-family:monospace">Ctrl+V</kbd> pour coller une image depuis le presse-papiers
+                </div>
                 <div id="uploadPreview" style="margin-top:.75rem;display:none">
                   <img id="uploadPreviewImg" style="max-height:150px;border-radius:.5rem;border:2px solid #f97316">
                   <div style="display:flex;gap:.5rem;margin-top:.5rem">
@@ -399,7 +392,11 @@
                   <label class="form-label">Trailer YouTube</label>
                   <div class="trailer-box">
                     <input type="text" class="form-input" id="f-ytb" placeholder="ID ou URL YouTube" style="flex:1">
-                    <button class="search-btn" onclick="searchYouTubeTrailer()" title="Rechercher sur YouTube">
+                    <button class="search-btn" onclick="searchYouTubeAPI()" title="Recherche automatique (sans API key)">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                      Rechercher trailer
+                    </button>
+                    <button class="search-btn" style="background:rgba(255,255,255,.1)" onclick="searchYouTubeTrailer()" title="Ouvrir YouTube manuellement">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                       YouTube
                     </button>
@@ -572,6 +569,29 @@
     loadSources();
     // Load recent games for editing
     loadRecentGames();
+    // Setup paste listener for images
+    setupPasteListener();
+  }
+
+  function setupPasteListener() {
+    document.addEventListener('paste', async (e) => {
+      // Only handle paste when on images tab
+      if (document.getElementById('tab-images').style.display === 'none') return;
+      
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      
+      for (const item of items) {
+        if (item.type.startsWith('image/')) {
+          e.preventDefault();
+          const file = item.getAsFile();
+          if (file) {
+            await handleImageFile(file);
+          }
+          break;
+        }
+      }
+    });
   }
 
   function loginGitHub() {
@@ -719,8 +739,8 @@
 
       state.steamData = {
         appid,
-        name: app.name,
-        description: app.short_description || app.about_the_game || '',
+        name: cleanText(app.name),
+        description: cleanText(app.short_description || app.about_the_game || ''),
         year: app.release_date?.date?.match(/\d{4}/)?.[0] || '',
         developers: app.developers || [],
         genres: app.genres?.map(g => g.description) || [],
@@ -822,11 +842,15 @@
       state.selectedPortrait = portraits[0];
     }
 
-    // Banner options
+    // Banner options - high quality Steam images
     const banners = [
-      state.steamData.header,
+      // High-res library hero (best quality for backgrounds)
+      appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero.jpg` : null,
+      appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg` : null,
+      // Page background (often high res)
       state.steamData.background,
-      ...state.steamData.screenshots.slice(0, 4)
+      // Screenshots (can be high res)
+      ...state.steamData.screenshots.slice(0, 3)
     ].filter(Boolean);
 
     document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
@@ -1244,10 +1268,54 @@
   // ═══════════════════════════════════════════════════════════
   let uploadedImageUrl = null;
 
-  function handleImageUpload(input) {
+  async function handleImageFile(file) {
+    if (!file) return;
+    
+    showToast('Upload vers Cloudinary en cours...', 'success');
+    
+    // Show preview immediately
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('uploadPreviewImg').src = e.target.result;
+      document.getElementById('uploadPreview').style.display = 'block';
+      // Highlight paste zone
+      const pasteZone = document.getElementById('pasteZone');
+      if (pasteZone) {
+        pasteZone.style.borderColor = '#f97316';
+        setTimeout(() => pasteZone.style.borderColor = '', 1000);
+      }
+    };
+    reader.readAsDataURL(file);
+    
+    // Upload to Cloudinary with user's account
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'kmorlkcl'); // User's unsigned preset
+    
+    try {
+      const res = await fetch('https://api.cloudinary.com/v1_1/dijopwaix/image/upload', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await res.json();
+      
+      if (data.secure_url) {
+        uploadedImageUrl = data.secure_url;
+        showToast('Image uploadée sur Cloudinary ! Clique sur "Utiliser comme..."', 'success');
+      } else {
+        showToast('Erreur upload Cloudinary: ' + (data.error?.message || 'Unknown'), 'error');
+      }
+    } catch (e) {
+      console.error('Upload error:', e);
+      showToast('Erreur lors de l\'upload Cloudinary', 'error');
+    }
+  }
+
+  async function handleImageUpload(input) {
     const file = input.files[0];
     if (!file) return;
-    processImageFile(file);
+    await handleImageFile(file);
   }
 
   function useAsPortrait() {
@@ -1287,69 +1355,6 @@
     showToast(`Image ${type} ajoutée`, 'success');
   }
 
-  // Handle drag-drop
-  function handleDrop(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const dropZone = document.getElementById('dropZone');
-    dropZone.style.borderColor = 'rgba(249,115,22,.3)';
-    dropZone.style.background = '';
-    
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      const file = files[0];
-      if (file.type.startsWith('image/')) {
-        processImageFile(file);
-      } else {
-        showToast('Veuillez déposer une image', 'error');
-      }
-    }
-  }
-
-  // Handle paste from clipboard
-  document.addEventListener('paste', (e) => {
-    // Only handle paste when on images tab
-    if (state.currentTab !== 'images') return;
-    
-    const items = e.clipboardData?.items;
-    if (!items) return;
-    
-    for (let item of items) {
-      if (item.type.startsWith('image/')) {
-        e.preventDefault();
-        const file = item.getAsFile();
-        if (file) {
-          processImageFile(file);
-          showToast('Image collée !', 'success');
-        }
-        break;
-      }
-    }
-  });
-
-  // Process image file (used by both upload, drop, and paste)
-  function processImageFile(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      showToast('Fichier invalide', 'error');
-      return;
-    }
-    
-    showToast('Chargement de l\'image...', 'success');
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      uploadedImageUrl = e.target.result;
-      document.getElementById('uploadPreviewImg').src = uploadedImageUrl;
-      document.getElementById('uploadPreview').style.display = 'block';
-      showToast('Image chargée ! Clique sur "Utiliser comme..."', 'success');
-    };
-    reader.onerror = () => {
-      showToast('Erreur lors du chargement', 'error');
-    };
-    reader.readAsDataURL(file);
-  }
-
   // ═══════════════════════════════════════════════════════════
   // TABS
   // ═══════════════════════════════════════════════════════════
@@ -1367,8 +1372,26 @@
   // ═══════════════════════════════════════════════════════════
   // SAVE
   // ═══════════════════════════════════════════════════════════
+  
+  // Clean special characters that cause encoding issues
+  function cleanText(text) {
+    if (!text) return '';
+    return text
+      .replace(/[\u2018\u2019]/g, "'")  // Curly quotes -> straight
+      .replace(/[\u201C\u201D]/g, '"')  // Curly double quotes -> straight
+      .replace(/[\u2026]/g, '...')      // Ellipsis
+      .replace(/[\u2013\u2014]/g, '-')  // En/em dash -> hyphen
+      .replace(/\u00A0/g, ' ')          // Non-breaking space
+      .replace(/[\u00E9\u00E8\u00EA\u00EB]/g, 'e') // Accented e
+      .replace(/[\u00E0\u00E2]/g, 'a')  // Accented a
+      .replace(/[\u00F9\u00FB]/g, 'u')  // Accented u
+      .replace(/[\u00EE\u00EF]/g, 'i')  // Accented i
+      .replace(/[\u00F4]/g, 'o')         // Accented o
+      .replace(/[\u00E7]/g, 'c');       // Cedilla
+  }
+  
   async function saveGame() {
-    const title = document.getElementById('f-title').value.trim();
+    const title = cleanText(document.getElementById('f-title').value.trim());
     if (!title) {
       showToast('Le titre est requis', 'error');
       return;
@@ -1377,7 +1400,7 @@
     const game = {
       title,
       year: document.getElementById('f-year').value.trim(),
-      description: document.getElementById('f-desc').value.trim(),
+      description: cleanText(document.getElementById('f-desc').value.trim()),
       categories: Array.from(state.selectedCategories),
       portrait_url: state.selectedPortrait,
       banner_url: state.selectedBanner,
@@ -1506,13 +1529,121 @@
   }
 
   function searchYouTubeTrailer() {
-    const gameTitle = document.getElementById('f-title').value || document.getElementById('steamSearch').value;
-    if (!gameTitle) {
-      showToast('Entre d\'abord un nom de jeu', 'error');
+    const title = document.getElementById('f-title').value.trim();
+    if (!title) {
+      showToast('Entre un titre de jeu d\'abord', 'error');
       return;
     }
-    const searchQuery = encodeURIComponent(`${gameTitle} trailer`);
-    window.open(`https://www.youtube.com/results?search_query=${searchQuery}`, '_blank');
+    const query = encodeURIComponent(`${title} trailer`);
+    window.open(`https://www.youtube.com/results?search_query=${query}`, '_blank');
+  }
+
+  // Search YouTube via Invidious API (no API key needed)
+  async function searchYouTubeAPI() {
+    const title = document.getElementById('f-title').value.trim();
+    if (!title) {
+      showToast('Entre un titre de jeu d\'abord', 'error');
+      return;
+    }
+    
+    showToast('Recherche via API Invidious...', 'success');
+    
+    // Try multiple Invidious instances
+    const instances = [
+      'https://vid.puffyan.us',
+      'https://iv.datura.network',
+      'https://iv.nboeck.de',
+      'https://iv.melmac.space'
+    ];
+    
+    const query = encodeURIComponent(`${title} official trailer`);
+    
+    for (const instance of instances) {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        
+        const res = await fetch(`${instance}/api/v1/search?q=${query}&type=video`, {
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        
+        if (!res.ok) continue;
+        
+        const videos = await res.json();
+        
+        if (videos.length === 0) {
+          showToast('Aucun trailer trouvé', 'error');
+          return;
+        }
+        
+        // Display results
+        const resultsHtml = videos.slice(0, 5).map(v => `
+          <div style="display:flex;gap:1rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;margin-bottom:.75rem;cursor:pointer;transition:all .2s" 
+               onmouseover="this.style.background='rgba(249,115,22,.1)'" 
+               onmouseout="this.style.background='rgba(255,255,255,.05)'"
+               onclick="selectYouTubeVideo('${v.videoId}', '${v.title.replace(/'/g, "\\'")}')">
+            <img src="${v.videoThumbnails?.[0]?.url || `https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg`}" 
+                 style="width:120px;height:68px;object-fit:cover;border-radius:.5rem;background:#333">
+            <div style="flex:1">
+              <div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem">${v.title}</div>
+              <div style="font-size:.75rem;color:#94a3b8">${v.author} • ${formatDuration(v.lengthSeconds)}</div>
+            </div>
+          </div>
+        `).join('');
+        
+        // Show modal with results
+        showYouTubeModal(resultsHtml);
+        return; // Success, exit function
+        
+      } catch (e) {
+        console.log(`Instance ${instance} failed:`, e.message);
+        continue; // Try next instance
+      }
+    }
+    
+    // All instances failed
+    showToast('API Indisponible - Utilise le bouton YouTube manuel', 'error');
+  }
+  
+  function formatDuration(seconds) {
+    if (!seconds) return '';
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+  
+  function selectYouTubeVideo(videoId, title) {
+    document.getElementById('f-ytb').value = videoId;
+    showToast(`Trailer sélectionné: ${title.substring(0, 40)}...`, 'success');
+    closeYouTubeModal();
+  }
+  
+  function showYouTubeModal(content) {
+    const modal = document.createElement('div');
+    modal.id = 'ytModal';
+    modal.innerHTML = `
+      <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9);z-index:1000;display:flex;align-items:center;justify-content:center;padding:2rem">
+        <div style="width:100%;max-width:600px;max-height:80vh;overflow-y:auto;background:rgba(20,20,20,.95);border-radius:1rem;border:1px solid rgba(255,255,255,.1);padding:1.5rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <h3 style="font-size:1.25rem;font-weight:700">Sélectionner un trailer</h3>
+            <button onclick="closeYouTubeModal()" style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer">✕</button>
+          </div>
+          ${content}
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);text-align:center">
+            <button onclick="searchYouTubeTrailer()" style="color:#f97316;font-size:.875rem;background:none;border:none;cursor:pointer;text-decoration:underline">
+              Ou ouvrir YouTube manuellement
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+  
+  function closeYouTubeModal() {
+    const modal = document.getElementById('ytModal');
+    if (modal) modal.remove();
   }
 
   function extractYoutubeId(input) {
