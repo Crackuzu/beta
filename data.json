@@ -80,5 +80,34 @@
     ],
     "added_by": "admin",
     "added_at": "2026-04-16T17:58:46.427Z"
+  },
+  {
+    "title": "Resident Evil Village",
+    "year": "2021",
+    "description": "Experience survival horror like never before in the 8th major installment in the Resident Evil franchise - Resident Evil Village. With detailed graphics, intense first-person action and masterful storytelling, the terror has never felt more realistic.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/library_600x900.jpg",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg?t=1770093483",
+    "ytb_id": "tjfTxFzGh3Q",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:B5C63449671B04B3E50CF740D9C5413566F6FCDA&dn=Resident+Evil+Village+-+Deluxe+Edition+%28Build+6587890+%2B+All+DLCs+%2B+OST+%2B+MULTi13%29+%28From+19.6+GB%29+-+%5BEMPRESS+%2F+DODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce",
+        "size": "19.8 GB",
+        "source": "dodi",
+        "name": "Resident Evil Village - Deluxe Edition (Build 6587890 + All DLCs + OST + MULTi13) (From 19.6 GB) - [EMPRESS / DODI Repack] [dodi]",
+        "type": "magnet"
+      },
+      {
+        "url": "https://gofile.io/d/ssnRsn",
+        "size": "34.8 GB",
+        "source": "steamrip",
+        "name": "Resident Evil Village Free Download (Build 11260452) [steamrip]",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin",
+    "added_at": "2026-04-16T20:54:00.284Z"
   }
 ]
