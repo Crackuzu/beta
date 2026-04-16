@@ -310,27 +310,72 @@
 
             <!-- Images Tab -->
             <div id="tab-images" class="form-section">
+              <!-- Custom Image Upload -->
+              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
+                <div style="font-weight:600;color:#fff;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+                  Upload d'image
+                </div>
+                
+                <!-- Drop/Paste Zone -->
+                <div id="dropZone" style="padding:1.5rem;border:2px dashed rgba(249,115,22,.3);border-radius:.75rem;text-align:center;transition:all .2s;cursor:pointer"
+                     onclick="document.getElementById('imageUpload').click()"
+                     ondragover="event.preventDefault();this.style.borderColor='#f97316';this.style.background='rgba(249,115,22,.1)'"
+                     ondragleave="this.style.borderColor='rgba(249,115,22,.3)';this.style.background=''"
+                     ondrop="handleDrop(event)">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#f97316;margin-bottom:.5rem"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+                  <div style="font-size:.875rem;color:#94a3b8">
+                    <span style="color:#f97316;font-weight:600">Clique</span> pour choisir, 
+                    <span style="color:#f97316;font-weight:600">glisse-dépose</span>, ou 
+                    <span style="color:#f97316;font-weight:600">Ctrl+V</span> pour coller
+                  </div>
+                </div>
+                
+                <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
+                
+                <div id="uploadPreview" style="margin-top:.75rem;display:none">
+                  <img id="uploadPreviewImg" style="max-height:150px;border-radius:.5rem;border:2px solid #f97316">
+                  <div style="display:flex;gap:.5rem;margin-top:.5rem">
+                    <button class="search-btn" onclick="useAsPortrait()">Utiliser comme Portrait</button>
+                    <button class="search-btn" onclick="useAsBanner()">Utiliser comme Bannière</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Manual URL Input -->
+              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
+                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ou entrer une URL directement</div>
+                <div style="display:flex;gap:.5rem">
+                  <input type="text" class="search-input" id="manualImageUrl" placeholder="https://..." style="flex:1">
+                  <select id="manualImageType" style="width:120px;padding:.5rem;border-radius:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff">
+                    <option value="portrait">Portrait</option>
+                    <option value="banner">Bannière</option>
+                  </select>
+                  <button class="search-btn" onclick="addManualImage()">Ajouter</button>
+                </div>
+              </div>
+
               <div class="section-header">
                 <div class="section-title">
                   <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                  Portrait (cover)
+                  Portrait (cover) - Clique pour sélectionner
                 </div>
               </div>
               <div class="img-gallery" id="portraitGallery">
                 <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Recherche un jeu sur Steam pour voir les images
+                  Recherche un jeu sur Steam, upload une image, ou entre une URL manuellement
                 </div>
               </div>
 
               <div class="section-header" style="margin-top:1.5rem">
                 <div class="section-title">
                   <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
-                  Bannière
+                  Bannière - Clique pour sélectionner
                 </div>
               </div>
               <div class="banner-gallery" id="bannerGallery">
                 <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Recherche un jeu sur Steam pour voir les images
+                  Recherche un jeu sur Steam, upload une image, ou entre une URL manuellement
                 </div>
               </div>
             </div>
@@ -389,16 +434,56 @@
               <div class="section-header">
                 <div class="section-title">
                   <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
-                  Magnets disponibles
+                  Sources de téléchargement
                 </div>
               </div>
+
+              <!-- Manual Magnet Input -->
+              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
+                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ajouter un magnet manuellement</div>
+                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
+                  <input type="text" class="search-input" id="manualMagnet" placeholder="magnet:?xt=urn:btih:..." style="flex:1">
+                  <input type="text" class="search-input" id="manualMagnetSize" placeholder="Taille (ex: 15.5 GB)" style="width:140px">
+                </div>
+                <div style="display:flex;gap:.5rem">
+                  <select class="search-input" id="manualMagnetSource" style="width:150px">
+                    <option value="Custom">Custom</option>
+                    <option value="FitGirl">FitGirl</option>
+                    <option value="DODI">DODI</option>
+                    <option value="OnlineFix">OnlineFix</option>
+                    <option value="SteamRIP">SteamRIP</option>
+                    <option value="GOG">GOG</option>
+                  </select>
+                  <button class="search-btn" onclick="addManualMagnet()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+
+              <!-- Direct Download Links -->
+              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
+                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ajouter un lien de téléchargement direct</div>
+                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
+                  <input type="text" class="search-input" id="directLinkUrl" placeholder="https://..." style="flex:1">
+                  <input type="text" class="search-input" id="directLinkSize" placeholder="Taille" style="width:100px">
+                </div>
+                <div style="display:flex;gap:.5rem">
+                  <input type="text" class="search-input" id="directLinkName" placeholder="Nom du fichier / Source" style="flex:1">
+                  <button class="search-btn" onclick="addDirectLink()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+
               <div class="search-box" style="margin-bottom:1rem">
                 <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="text" class="search-input" id="magnetSearch" placeholder="Filtrer les magnets..." oninput="filterMagnets(this.value)">
+                <input type="text" class="search-input" id="magnetSearch" placeholder="Filtrer les magnets des sources..." oninput="filterMagnets(this.value)">
               </div>
               <div class="magnet-list" id="magnetList">
                 <div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Active des sources et recherche un jeu
+                  Active des sources et recherche un jeu, ou ajoute des magnets manuellement ci-dessus
                 </div>
               </div>
             </div>
@@ -935,20 +1020,31 @@
     }
     
     container.innerHTML = games.map((game, idx) => `
-      <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:.75rem;margin-bottom:.5rem;cursor:pointer;transition:all .2s" 
-           onmouseover="this.style.background='rgba(249,115,22,.1)'" 
-           onmouseout="this.style.background='rgba(255,255,255,.05)'"
-           onclick="editGame(${allGames.indexOf(game)})">
-        <img src="${esc(game.portrait_url || '')}" style="width:40px;height:60px;object-fit:cover;border-radius:.5rem;background:#333" onerror="this.style.display='none'">
-        <div style="flex:1;min-width:0">
-          <div style="font-weight:600;color:#fff;font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(game.title)}</div>
-          <div style="font-size:.75rem;color:#94a3b8">${esc(game.year || 'N/A')}</div>
+      <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:.75rem;margin-bottom:.5rem;transition:all .2s">
+        <div style="flex:1;display:flex;align-items:center;gap:.75rem;cursor:pointer" 
+             onmouseover="this.parentElement.style.background='rgba(249,115,22,.1)'" 
+             onmouseout="this.parentElement.style.background='rgba(255,255,255,.05)'"
+             onclick="editGame(${allGames.indexOf(game)})">
+          <img src="${esc(game.portrait_url || '')}" style="width:40px;height:60px;object-fit:cover;border-radius:.5rem;background:#333" onerror="this.style.display='none'">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600;color:#fff;font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(game.title)}</div>
+            <div style="font-size:.75rem;color:#94a3b8">${esc(game.year || 'N/A')}</div>
+          </div>
         </div>
-        <button style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center" 
-                onmouseover="this.style.background='rgba(249,115,22,.8)'" 
-                onmouseout="this.style.background='rgba(255,255,255,.1)'">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-        </button>
+        <div style="display:flex;gap:.25rem">
+          <button onclick="event.stopPropagation();editGame(${allGames.indexOf(game)})" style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center" 
+                  onmouseover="this.style.background='rgba(249,115,22,.8)'" 
+                  onmouseout="this.style.background='rgba(255,255,255,.1)'"
+                  title="Modifier">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </button>
+          <button onclick="event.stopPropagation();deleteGame(${allGames.indexOf(game)})" style="width:32px;height:32px;border-radius:.5rem;background:rgba(239,68,68,.2);border:none;color:#ef4444;cursor:pointer;display:flex;align-items:center;justify-content:center" 
+                  onmouseover="this.style.background='rgba(239,68,68,.8)';this.style.color='#fff'" 
+                  onmouseout="this.style.background='rgba(239,68,68,.2)';this.style.color='#ef4444'"
+                  title="Supprimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+          </button>
+        </div>
       </div>
     `).join('');
   }
@@ -969,6 +1065,9 @@
     editingGameIndex = index;
     state.editingGame = game;
     
+    // Reset steam data since we're editing existing game
+    state.steamData = null;
+    
     // Fill form
     document.getElementById('f-title').value = game.title || '';
     document.getElementById('f-year').value = game.year || '';
@@ -977,18 +1076,70 @@
     
     // Categories
     state.selectedCategories.clear();
-    (game.categories || []).forEach(cat => state.selectedCategories.add(cat));
-    document.querySelectorAll('.cat-btn').forEach(btn => {
-      btn.classList.toggle('active', state.selectedCategories.has(btn.textContent.trim()));
+    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+    (game.categories || []).forEach(cat => {
+      state.selectedCategories.add(cat);
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.textContent.trim() === cat) btn.classList.add('active');
+      });
     });
     
-    // Images
+    // Images - show selected images in gallery
     state.selectedPortrait = game.portrait_url || null;
     state.selectedBanner = game.banner_url || null;
-    updateGalleries();
     
-    // Magnets
-    state.selectedMagnets = (game.magnets || []).map(m => typeof m === 'string' ? {url: m, size: '', source: ''} : m);
+    // Rebuild galleries with existing images
+    if (state.selectedPortrait) {
+      document.getElementById('portraitGallery').innerHTML = `
+        <div class="img-item selected" onclick="selectPortrait('${esc(state.selectedPortrait)}')" style="background-image:url('${esc(state.selectedPortrait)}')">
+          <div class="img-check">✓</div>
+        </div>
+        <div style="grid-column:1/-1;padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+          Image actuelle sélectionnée. Cherche sur Steam ou upload une nouvelle image pour plus d'options.
+        </div>
+      `;
+    } else {
+      document.getElementById('portraitGallery').innerHTML = `
+        <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+          Aucune image sélectionnée. Cherche sur Steam ou upload une image.
+        </div>
+      `;
+    }
+    
+    if (state.selectedBanner) {
+      document.getElementById('bannerGallery').innerHTML = `
+        <div class="banner-item selected" onclick="selectBanner('${esc(state.selectedBanner)}')" style="background-image:url('${esc(state.selectedBanner)}')">
+          <div class="img-check">✓</div>
+        </div>
+        <div style="grid-column:1/-1;padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+          Bannière actuelle sélectionnée. Cherche sur Steam ou upload une nouvelle image.
+        </div>
+      `;
+    } else {
+      document.getElementById('bannerGallery').innerHTML = `
+        <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
+          Aucune bannière sélectionnée. Cherche sur Steam ou upload une image.
+        </div>
+      `;
+    }
+    
+    // Magnets - properly load with all properties
+    state.selectedMagnets = [];
+    if (game.magnets && game.magnets.length > 0) {
+      state.selectedMagnets = game.magnets.map(m => {
+        if (typeof m === 'string') {
+          // Parse old format string magnet
+          return {url: m, size: '', source: 'Custom'};
+        }
+        // New format object
+        return {
+          url: m.url || '',
+          size: m.size || '',
+          source: m.source || 'Custom',
+          name: m.name || ''
+        };
+      });
+    }
     updateSelectedMagnets();
     
     // Show editing mode
@@ -996,6 +1147,207 @@
     
     // Scroll to form
     document.querySelector('.right-panel').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function deleteGame(index) {
+    const game = allGames[index];
+    if (!game) return;
+    
+    if (!confirm(`Supprimer définitivement "${game.title}" ?`)) return;
+    
+    allGames.splice(index, 1);
+    
+    // Save to GitHub
+    saveToGitHub(allGames).then(() => {
+      showToast(`Jeu supprimé: ${game.title}`, 'success');
+      loadRecentGames();
+      clearForm();
+    }).catch(err => {
+      showToast('Erreur lors de la suppression', 'error');
+      console.error(err);
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MANUAL MAGNET & DIRECT LINK FUNCTIONS
+  // ═══════════════════════════════════════════════════════════
+  function addManualMagnet() {
+    const url = document.getElementById('manualMagnet').value.trim();
+    const size = document.getElementById('manualMagnetSize').value.trim();
+    const source = document.getElementById('manualMagnetSource').value;
+    
+    if (!url) {
+      showToast('Entre un lien magnet', 'error');
+      return;
+    }
+    
+    // Validate magnet format
+    if (!url.startsWith('magnet:')) {
+      showToast('Le lien doit commencer par magnet:', 'error');
+      return;
+    }
+    
+    const magnetObj = {
+      url: url,
+      size: size || 'Inconnue',
+      source: source,
+      name: ''
+    };
+    
+    state.selectedMagnets.push(magnetObj);
+    updateSelectedMagnets();
+    
+    // Clear inputs
+    document.getElementById('manualMagnet').value = '';
+    document.getElementById('manualMagnetSize').value = '';
+    
+    showToast('Magnet ajouté', 'success');
+  }
+
+  function addDirectLink() {
+    const url = document.getElementById('directLinkUrl').value.trim();
+    const size = document.getElementById('directLinkSize').value.trim();
+    const name = document.getElementById('directLinkName').value.trim();
+    
+    if (!url) {
+      showToast('Entre une URL de téléchargement', 'error');
+      return;
+    }
+    
+    // Validate URL format
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      showToast('L\'URL doit commencer par http:// ou https://', 'error');
+      return;
+    }
+    
+    const linkObj = {
+      url: url,
+      size: size || 'Inconnue',
+      source: name || 'Lien direct',
+      name: name || 'Téléchargement direct',
+      type: 'direct'
+    };
+    
+    state.selectedMagnets.push(linkObj);
+    updateSelectedMagnets();
+    
+    // Clear inputs
+    document.getElementById('directLinkUrl').value = '';
+    document.getElementById('directLinkSize').value = '';
+    document.getElementById('directLinkName').value = '';
+    
+    showToast('Lien de téléchargement ajouté', 'success');
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // CLOUDINARY IMAGE UPLOAD FUNCTIONS
+  // ═══════════════════════════════════════════════════════════
+  let uploadedImageUrl = null;
+
+  function handleImageUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    processImageFile(file);
+  }
+
+  function useAsPortrait() {
+    if (!uploadedImageUrl) {
+      showToast('Upload d\'abord une image', 'error');
+      return;
+    }
+    selectPortrait(uploadedImageUrl);
+    showToast('Image définie comme portrait', 'success');
+  }
+
+  function useAsBanner() {
+    if (!uploadedImageUrl) {
+      showToast('Upload d\'abord une image', 'error');
+      return;
+    }
+    selectBanner(uploadedImageUrl);
+    showToast('Image définie comme bannière', 'success');
+  }
+
+  function addManualImage() {
+    const url = document.getElementById('manualImageUrl').value.trim();
+    const type = document.getElementById('manualImageType').value;
+    
+    if (!url) {
+      showToast('Entre une URL d\'image', 'error');
+      return;
+    }
+    
+    if (type === 'portrait') {
+      selectPortrait(url);
+    } else {
+      selectBanner(url);
+    }
+    
+    document.getElementById('manualImageUrl').value = '';
+    showToast(`Image ${type} ajoutée`, 'success');
+  }
+
+  // Handle drag-drop
+  function handleDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const dropZone = document.getElementById('dropZone');
+    dropZone.style.borderColor = 'rgba(249,115,22,.3)';
+    dropZone.style.background = '';
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      const file = files[0];
+      if (file.type.startsWith('image/')) {
+        processImageFile(file);
+      } else {
+        showToast('Veuillez déposer une image', 'error');
+      }
+    }
+  }
+
+  // Handle paste from clipboard
+  document.addEventListener('paste', (e) => {
+    // Only handle paste when on images tab
+    if (state.currentTab !== 'images') return;
+    
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    
+    for (let item of items) {
+      if (item.type.startsWith('image/')) {
+        e.preventDefault();
+        const file = item.getAsFile();
+        if (file) {
+          processImageFile(file);
+          showToast('Image collée !', 'success');
+        }
+        break;
+      }
+    }
+  });
+
+  // Process image file (used by both upload, drop, and paste)
+  function processImageFile(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      showToast('Fichier invalide', 'error');
+      return;
+    }
+    
+    showToast('Chargement de l\'image...', 'success');
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      uploadedImageUrl = e.target.result;
+      document.getElementById('uploadPreviewImg').src = uploadedImageUrl;
+      document.getElementById('uploadPreview').style.display = 'block';
+      showToast('Image chargée ! Clique sur "Utiliser comme..."', 'success');
+    };
+    reader.onerror = () => {
+      showToast('Erreur lors du chargement', 'error');
+    };
+    reader.readAsDataURL(file);
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -1033,7 +1385,9 @@
       magnets: state.selectedMagnets.map(m => ({
         url: m.url,
         size: m.size,
-        source: m.source
+        source: m.source,
+        name: m.name || '',
+        type: m.type || 'magnet'
       })),
       added_by: state.githubUser?.login || 'admin',
       added_at: new Date().toISOString()
