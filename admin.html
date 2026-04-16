@@ -24,15 +24,26 @@
     .header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .5s;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.1),transparent)}
     .header.scrolled{background:rgba(0,0,0,.4);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
     
-    .nav{max-width:1400px;margin:0 auto;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:center;gap:.5rem;font-size:1.5rem;font-weight:900;letter-spacing:-.05em;text-transform:uppercase}
-    .logo span{color:#f97316}
-    .nav-user{display:flex;align-items:center;gap:1rem}
-    .user-pill{display:flex;align-items:center;gap:.75rem;padding:.5rem 1rem;border-radius:9999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-    .user-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover}
-    .user-name{font-size:13px;font-weight:600}
-    .logout-btn{padding:.5rem 1rem;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-radius:9999px;background:rgba(239,68,68,.2);color:#ef4444;border:1px solid rgba(239,68,68,.3);transition:all .3s}
-    .logout-btn:hover{background:rgba(239,68,68,.3)}
+    .nav{max-width:2000px;margin:0 auto}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:68px}
+    @media(min-width:768px){.nav-inner{padding:0 2.5rem}}
+    @media(min-width:1024px){.nav-inner{padding:0 4rem}}
+    .logo-link{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+    .logo-text{font-size:1.875rem;font-weight:900;letter-spacing:-.08em;line-height:1;user-select:none;text-transform:uppercase}
+    .logo-dim{color:rgba(255,255,255,.4)}
+    .nav-links{display:none}
+    @media(min-width:1024px){.nav-links{display:flex;align-items:center}}
+    .nav-links ul{display:flex;align-items:center;gap:.5rem;list-style:none}
+    .nav-a{padding:.5rem 1rem;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;border-radius:9999px;transition:all .3s;border:1px solid transparent;color:rgba(255,255,255,.4);text-decoration:none}
+    .nav-a:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
+    .nav-a.active{color:#fff}
+    .nav-right{display:flex;align-items:center;gap:.75rem}
+    .search-pill{display:none;align-items:center;gap:.75rem;padding:.5rem 1rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);transition:all .3s;cursor:pointer;color:rgba(255,255,255,.4)}
+    @media(min-width:768px){.search-pill{display:flex}}
+    .search-pill:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
+    .search-pill span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+    .icon-btn{width:40px;height:40px;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .3s;color:rgba(255,255,255,.7)}
+    .icon-btn:hover{background:rgba(255,255,255,.1);color:#fff}
 
     /* ─── LAYOUT ─── */
     .page{min-height:100vh;background:#000;padding-top:80px;padding-bottom:3rem;position:relative;overflow-x:hidden}
@@ -192,16 +203,29 @@
   <div id="app" style="display:none">
     <!-- Header -->
     <header class="header" id="hdr">
-      <nav class="nav">
-        <div class="logo">CRACKUZU<span>.</span>ADMIN</div>
-        <div class="nav-user">
-          <div class="user-pill">
-            <img id="userAvatar" class="user-avatar" src="" alt="">
-            <span id="userName" class="user-name">...</span>
+      <div class="nav">
+        <div class="nav-inner">
+          <a class="logo-link" href="index.html">
+            <h1 class="logo-text"><span>Crack</span><span class="logo-dim">uzu</span></h1>
+          </a>
+          <div class="nav-links">
+            <ul>
+              <li><a class="nav-a" href="index.html">Accueil</a></li>
+              <li><a class="nav-a" href="Catalogue.html">Catalogue</a></li>
+              <li><a class="nav-a active" href="admin.html">Admin</a></li>
+            </ul>
           </div>
-          <button class="logout-btn" onclick="logout()">Déconnexion</button>
+          <div class="nav-right">
+            <button class="search-pill" onclick="alert('Recherche non disponible dans l\'admin')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+              <span>Rechercher</span>
+            </button>
+            <button class="icon-btn" onclick="logout()" title="Déconnexion">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            </button>
+          </div>
         </div>
-      </nav>
+      </div>
     </header>
 
     <main class="page">
@@ -608,9 +632,7 @@
       const res = await fetch('https://api.github.com/user', {
         headers: { Authorization: `token ${state.githubToken}` }
       });
-      const user = await res.json();
-      document.getElementById('userAvatar').src = user.avatar_url;
-      document.getElementById('userName').textContent = user.login;
+      if (!res.ok) throw new Error('Invalid token');
       showApp();
     } catch (e) {
       showToast('Token GitHub invalide', 'error');
