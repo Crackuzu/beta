@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRACKUZU — Admin</title>
+  <title>CRACKUZU - Admin GitHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,8 +20,12 @@
     ::-webkit-scrollbar-track{background:transparent}
     ::-webkit-scrollbar-thumb{background:#f97316;border-radius:3px}
 
+    /* ─── DEV MODE BANNER ─── */
+    .dev-banner{position:fixed;top:0;left:0;right:0;z-index:200;background:#f97316;color:#000;padding:.5rem 1rem;text-align:center;font-weight:700;font-size:.875rem}
+    .dev-banner span{background:#000;color:#f97316;padding:.25rem .5rem;border-radius:.25rem;margin-left:.5rem}
+
     /* ─── HEADER ─── */
-    .header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .5s;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.1),transparent)}
+    .header{position:fixed;top:32px;left:0;right:0;z-index:100;transition:all .5s;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.1),transparent)}
     .header.scrolled{background:rgba(0,0,0,.4);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
     
     .nav{max-width:2000px;margin:0 auto}
@@ -38,30 +42,22 @@
     .nav-a:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
     .nav-a.active{color:#fff}
     .nav-right{display:flex;align-items:center;gap:.75rem}
-    .search-pill{display:none;align-items:center;gap:.75rem;padding:.5rem 1rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);transition:all .3s;cursor:pointer;color:rgba(255,255,255,.4)}
-    @media(min-width:768px){.search-pill{display:flex}}
-    .search-pill:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
-    .search-pill span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
-    .icon-btn{width:40px;height:40px;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .3s;color:rgba(255,255,255,.7)}
-    .icon-btn:hover{background:rgba(255,255,255,.1);color:#fff}
 
     /* ─── LAYOUT ─── */
-    .page{min-height:100vh;background:#000;padding-top:80px;padding-bottom:3rem;position:relative;overflow-x:hidden}
+    .page{min-height:100vh;background:#000;padding-top:120px;padding-bottom:3rem;position:relative;overflow-x:hidden}
     .glow{position:fixed;top:20%;left:10%;width:600px;height:600px;border-radius:9999px;background:rgba(249,115,22,.05);filter:blur(150px);pointer-events:none;z-index:0}
     .glow2{position:fixed;bottom:10%;right:10%;width:400px;height:400px;border-radius:9999px;background:rgba(249,115,22,.03);filter:blur(120px);pointer-events:none;z-index:0}
     .wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 1.5rem}
 
-    /* ─── LOGIN SCREEN ─── */
-    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
-    .login-card{width:100%;max-width:420px;padding:2.5rem;border-radius:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px)}
-    .login-title{font-size:1.75rem;font-weight:800;margin-bottom:.5rem;text-align:center}
-    .login-sub{color:rgba(255,255,255,.5);font-size:.875rem;text-align:center;margin-bottom:2rem}
-    .login-btn{width:100%;padding:1rem;border-radius:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem;font-size:1rem;font-weight:700;transition:all .3s;margin-bottom:1rem}
-    .discord-btn{background:#5865F2;color:#fff}
-    .discord-btn:hover{background:#4752C4;transform:translateY(-2px)}
-    .github-btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
-    .github-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
-    .login-icon{width:24px;height:24px}
+    /* ─── EXPORT BAR ─── */
+    .export-bar{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center}
+    .export-btn{padding:.75rem 1.5rem;border-radius:1rem;font-weight:700;transition:all .3s;display:flex;align-items:center;gap:.5rem}
+    .export-btn.primary{background:#f97316;color:#fff}
+    .export-btn.primary:hover{background:#ea580c}
+    .export-btn.secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .export-btn.secondary:hover{background:rgba(255,255,255,.15)}
+    .status-badge{padding:.5rem 1rem;border-radius:9999px;background:rgba(34,197,94,.1);color:#22c55e;font-size:.875rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
+    .status-badge.modified{background:rgba(249,115,22,.1);color:#f97316}
 
     /* ─── MAIN GRID ─── */
     .main-grid{display:grid;grid-template-columns:350px 1fr;gap:1.5rem}
@@ -74,14 +70,12 @@
 
     /* ─── GAME SEARCH ─── */
     .search-box{display:flex;gap:.5rem;margin-bottom:1rem;position:relative;align-items:center}
-    .search-input-wrapper{position:relative;flex:1}
     .search-input{width:100%;padding:.875rem 1rem .875rem 2.75rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
     .search-input:focus{outline:none;border-color:#f97316;background:rgba(255,255,255,.08)}
     .search-input::placeholder{color:rgba(255,255,255,.3)}
     .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4);pointer-events:none}
     .search-btn{padding:.875rem 1.25rem;border-radius:1rem;background:#f97316;color:#fff;font-size:.875rem;font-weight:600;border:none;cursor:pointer;transition:all .3s;white-space:nowrap;height:fit-content}
     .search-btn:hover{background:#ea580c}
-    .trailer-box{display:flex;gap:.5rem;align-items:center}
     .search-results{max-height:300px;overflow-y:auto}
     .search-item{padding:.875rem;border-radius:.75rem;display:flex;align-items:center;gap:.875rem;cursor:pointer;transition:all .2s;border:1px solid transparent}
     .search-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
@@ -98,150 +92,190 @@
     .source-dot{width:10px;height:10px;border-radius:50%;background:#22c55e}
     .source-dot.offline{background:#ef4444}
     .source-name{font-size:.875rem;font-weight:600}
-    .source-count{font-size:.75rem;color:rgba(255,255,255,.4);margin-left:auto}
 
-    /* ─── RIGHT PANEL ─── */
-    .right-panel{display:flex;flex-direction:column;gap:1rem}
+    /* ─── RECENT GAMES ─── */
+    .recent-list{display:flex;flex-direction:column;gap:.5rem;max-height:400px;overflow-y:auto}
+    .recent-item{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.75rem;background:rgba(255,255,255,.05);cursor:pointer;transition:all .2s}
+    .recent-item:hover{background:rgba(249,115,22,.1)}
+    .recent-img{width:40px;height:60px;border-radius:.5rem;object-fit:cover;background:#333}
+    .recent-info{flex:1;min-width:0}
+    .recent-title{font-size:.875rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .recent-year{font-size:.75rem;color:rgba(255,255,255,.4)}
+    .recent-actions{display:flex;gap:.25rem}
+    .recent-btn{width:28px;height:28px;border-radius:.5rem;border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .recent-btn:hover{background:#f97316}
+    .recent-btn.delete:hover{background:#ef4444}
 
-    /* ─── FORM SECTIONS ─── */
-    .form-section{padding:1.5rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
-    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
-    .section-title{font-size:1.125rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
-    .section-icon{width:20px;height:20px;color:#f97316}
-
-    /* ─── FORM GRID ─── */
-    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
-    .form-group{display:flex;flex-direction:column;gap:.375rem}
-    .form-label{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em}
-    .form-input{padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
+    /* ─── FORM ─── */
+    .right-panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:1.5rem}
+    .form-title{font-size:1.5rem;font-weight:800;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+    .form-group{display:flex;flex-direction:column;gap:.5rem}
+    .form-group.full-width{grid-column:1/-1}
+    .form-label{font-size:.875rem;font-weight:600;color:rgba(255,255,255,.7)}
+    .form-input{width:100%;padding:1rem 1.25rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.9375rem;transition:all .3s}
     .form-input:focus{outline:none;border-color:#f97316;background:rgba(255,255,255,.08)}
     .form-input::placeholder{color:rgba(255,255,255,.3)}
-    textarea.form-input{min-height:100px;resize:vertical}
+    textarea.form-input{min-height:120px;resize:vertical;font-family:inherit}
+
+    /* ─── CATEGORIES ─── */
+    .category-grid{display:flex;flex-wrap:wrap;gap:.5rem}
+    .category-chip{padding:.5rem 1rem;border-radius:9999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;font-size:.875rem;font-weight:500}
+    .category-chip:hover{background:rgba(255,255,255,.1)}
+    .category-chip.active{background:#f97316;border-color:#f97316;color:#fff}
 
     /* ─── IMAGE GALLERY ─── */
-    .img-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem;margin-top:.75rem}
-    .img-item{aspect-ratio:3/4;border-radius:.75rem;overflow:hidden;cursor:pointer;position:relative;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
-    .img-item:hover{transform:scale(1.02);border-color:rgba(255,255,255,.2)}
-    .img-item.selected{border-color:#f97316;box-shadow:0 0 20px rgba(249,115,22,.3)}
+    .gallery-section{margin-bottom:1.5rem}
+    .gallery-title{font-size:1rem;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem}
+    .img-item{position:relative;aspect-ratio:3/4;border-radius:.75rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
+    .img-item:hover{border-color:rgba(255,255,255,.3)}
+    .img-item.selected{border-color:#f97316}
     .img-item img{width:100%;height:100%;object-fit:cover}
     .img-check{position:absolute;top:.5rem;right:.5rem;width:24px;height:24px;border-radius:50%;background:#f97316;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .2s}
     .img-item.selected .img-check{opacity:1}
 
     /* ─── BANNER GALLERY ─── */
-    .banner-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:.75rem}
-    .banner-item{aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;cursor:pointer;position:relative;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
-    .banner-item:hover{transform:scale(1.02);border-color:rgba(255,255,255,.2)}
-    .banner-item.selected{border-color:#f97316;box-shadow:0 0 20px rgba(249,115,22,.3)}
+    .banner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+    .banner-item{position:relative;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .2s;background:rgba(255,255,255,.05)}
+    .banner-item:hover{border-color:rgba(255,255,255,.3)}
+    .banner-item.selected{border-color:#f97316}
     .banner-item img{width:100%;height:100%;object-fit:cover}
 
-    /* ─── CATEGORIES ─── */
-    .cat-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
-    .cat-btn{padding:.5rem 1rem;border-radius:9999px;font-size:.8125rem;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s}
-    .cat-btn:hover{background:rgba(255,255,255,.1);color:#fff}
-    .cat-btn.active{background:#f97316;border-color:#f97316;color:#fff}
-
     /* ─── MAGNETS ─── */
-    .magnet-list{display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem}
-    .magnet-item{display:flex;align-items:center;gap:.75rem;padding:.875rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-    .magnet-info{flex:1;min-width:0}
-    .magnet-name{font-size:.875rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .magnet-source{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.125rem}
-    .magnet-btn{padding:.5rem 1rem;border-radius:.5rem;font-size:.75rem;font-weight:700;background:#f97316;color:#fff;transition:all .2s}
-    .magnet-btn:hover{background:#ea580c}
-    .magnet-btn.added{background:#22c55e}
+    .magnet-list{display:flex;flex-direction:column;gap:.75rem}
+    .magnet-item{display:flex;flex-direction:column;gap:.75rem;padding:1rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .magnet-row{display:flex;gap:.75rem;align-items:center}
+    .magnet-input{flex:1;padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.875rem}
+    .magnet-input:focus{outline:none;border-color:#f97316}
+    .magnet-btn{padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.1);color:#fff;border:none;cursor:pointer;transition:all .2s;font-weight:600}
+    .magnet-btn:hover{background:#f97316}
+    .magnet-select{padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:.875rem;cursor:pointer}
+    .magnet-select:focus{outline:none;border-color:#f97316}
 
-    /* ─── ACTION BAR ─── */
-    .action-bar{display:flex;align-items:center;gap:1rem;padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
-    .action-btn{padding:1rem 2rem;border-radius:1rem;font-size:1rem;font-weight:700;display:flex;align-items:center;gap:.5rem;transition:all .3s}
-    .btn-save{background:#f97316;color:#fff}
-    .btn-save:hover{background:#ea580c;transform:translateY(-2px)}
-    .btn-clear{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
-    .btn-clear:hover{background:rgba(255,255,255,.15)}
-    .status-msg{font-size:.875rem;color:rgba(255,255,255,.5);margin-left:auto}
-    .status-msg.success{color:#22c55e}
-    .status-msg.error{color:#ef4444}
-
-    /* ─── LOADING ─── */
-    .skeleton{animation:pulse 2s infinite;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%}
-    @keyframes pulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-    /* ─── STEAM PREVIEW ─── */
-    .steam-preview{display:flex;gap:1.5rem;padding:1.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:1.5rem}
-    .steam-cover{width:150px;height:225px;border-radius:.75rem;object-fit:cover;background:rgba(255,255,255,.1)}
-    .steam-info{flex:1}
-    .steam-title{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
-    .steam-meta{display:flex;gap:1rem;margin-bottom:1rem;color:rgba(255,255,255,.5);font-size:.875rem}
-    .steam-desc{color:rgba(255,255,255,.7);line-height:1.6}
+    /* ─── UPLOAD ─── */
+    .upload-zone{border:2px dashed rgba(255,255,255,.2);border-radius:1rem;padding:2rem;text-align:center;cursor:pointer;transition:all .3s}
+    .upload-zone:hover{border-color:#f97316;background:rgba(249,115,22,.05)}
+    .upload-zone.pasting{border-color:#22c55e;background:rgba(34,197,94,.1)}
+    .upload-icon{width:48px;height:48px;margin:0 auto 1rem;color:rgba(255,255,255,.4)}
+    .upload-text{color:rgba(255,255,255,.6);font-size:.9375rem}
+    .upload-text span{color:#f97316;font-weight:600}
+    .upload-preview{display:none;margin-top:1rem}
+    .upload-preview img{max-width:200px;max-height:150px;border-radius:.75rem;margin:0 auto}
+    .upload-actions{display:flex;gap:.5rem;justify-content:center;margin-top:1rem}
 
     /* ─── TABS ─── */
     .tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1rem}
-    .tab{padding:.75rem 1.25rem;border-radius:.75rem;font-size:.875rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s}
-    .tab:hover{color:#fff;background:rgba(255,255,255,.05)}
-    .tab.active{color:#f97316;background:rgba(249,115,22,.1)}
+    .tab{padding:.75rem 1.5rem;border-radius:.75rem;font-size:.9375rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;background:transparent;color:rgba(255,255,255,.5)}
+    .tab:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
+    .tab.active{color:#fff;background:#f97316}
+
+    /* ─── ACTION BAR ─── */
+    .action-bar{display:flex;gap:1rem;justify-content:flex-end;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1)}
+    .action-btn{padding:1rem 2rem;border-radius:1rem;font-size:1rem;font-weight:700;transition:all .3s;display:flex;align-items:center;gap:.75rem}
+    .btn-save{background:#f97316;color:#fff}
+    .btn-save:hover{background:#ea580c}
+    .btn-clear{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .btn-clear:hover{background:rgba(255,255,255,.15)}
+    .btn-delete{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+    .btn-delete:hover{background:rgba(239,68,68,.2)}
 
     /* ─── TOAST ─── */
-    .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:1rem;background:rgba(0,0,0,.9);border:1px solid rgba(255,255,255,.1);color:#fff;font-weight:600;transform:translateY(100px);opacity:0;transition:all .3s;z-index:1000}
-    .toast.show{transform:translateY(0);opacity:1}
-    .toast.success{border-color:#22c55e;color:#22c55e}
-    .toast.error{border-color:#ef4444;color:#ef4444}
-    
-    /* Export Bar */
-    .export-bar{display:flex;flex-wrap:wrap;gap:.75rem;padding:1rem 1.5rem;background:linear-gradient(90deg,rgba(249,115,22,.1) 0%,rgba(249,115,22,.05) 100%);border-bottom:1px solid rgba(249,115,22,.2);align-items:center}
-    .export-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border-radius:.75rem;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:all .2s;border:none}
-    .export-btn.primary{background:linear-gradient(135deg,#f97316 0%,#ea580c 100%);color:#fff;box-shadow:0 4px 15px rgba(249,115,22,.3)}
-    .export-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,115,22,.4)}
-    .export-btn.secondary{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1)}
-    .export-btn.secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
-    .status-badge{margin-left:auto;padding:.4rem 1rem;background:rgba(255,255,255,.05);border-radius:9999px;font-size:12px;font-weight:600;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:.5rem}
-    .status-badge.synced{color:#22c55e}
-    .status-badge.modified{color:#f97316}
+    .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:1rem;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:.75rem;transform:translateX(400px);transition:all .3s;z-index:1000}
+    .toast.show{transform:translateX(0)}
+    .toast.success{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:#22c55e}
+    .toast.error{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:#ef4444}
+
+    /* ─── YOUTUBE MODAL ─── */
+    .yt-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:2rem}
+    .yt-modal.show{display:flex}
+    .yt-content{width:100%;max-width:800px;max-height:90vh;overflow-y:auto;background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:1.5rem}
+    .yt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+    .yt-title{font-size:1.25rem;font-weight:700}
+    .yt-close{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .yt-close:hover{background:rgba(239,68,68,.8)}
+    .yt-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+    .yt-item{cursor:pointer;border-radius:1rem;overflow:hidden;background:rgba(255,255,255,.05);transition:all .2s}
+    .yt-item:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+    .yt-thumb{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .yt-info{padding:1rem}
+    .yt-video-title{font-size:.875rem;font-weight:600;margin-bottom:.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .yt-channel{font-size:.75rem;color:rgba(255,255,255,.5)}
+
+    /* ─── LOADING ─── */
+    .loading{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1000}
+    .loading.show{display:flex}
+    .loading-spinner{width:48px;height:48px;border:3px solid rgba(255,255,255,.1);border-top-color:#f97316;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ─── SOURCE BUTTONS ─── */
+    .source-group{margin-bottom:1rem}
+    .source-group-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);padding:.5rem 1rem;margin-bottom:.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .source-result-item{display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:.5rem;background:rgba(255,255,255,.05);cursor:pointer;transition:all .2s;margin-bottom:.5rem;border:1px solid rgba(255,255,255,.1)}
+    .source-result-item:hover{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.3);transform:translateX(4px)}
+    .source-result-item .source-icon{width:36px;height:36px;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;background:rgba(255,255,255,.1)}
+    .source-result-item .info{flex:1;min-width:0}
+    .source-result-item .name{font-size:.9375rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.25rem}
+    .source-result-item .meta{font-size:.75rem;color:rgba(255,255,255,.5);display:flex;gap:1rem;flex-wrap:wrap}
+    .source-result-item .meta span{display:flex;align-items:center;gap:.25rem}
+    .source-result-item .size{background:rgba(249,115,22,.2);color:#f97316;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:600;white-space:nowrap}
+    .source-result-item .add-btn{width:36px;height:36px;border-radius:.5rem;background:#f97316;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:700;flex-shrink:0;transition:all .2s}
+    .source-result-item .add-btn:hover{background:#ea580c;transform:scale(1.1)}
   </style>
 </head>
 <body>
-  <!-- Login Screen -->
-  <div id="loginScreen" class="login-screen" style="display:none">
-    <div class="login-card">
-      <div class="login-title">CRACKUZU <span>Admin</span></div>
-      <div class="login-sub">Connecte-toi pour gérer les jeux</div>
-      <button class="login-btn github-btn" onclick="loginGitHub()">
-        <svg class="login-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        Connexion GitHub
-      </button>
+  <!-- DEV MODE BANNER -->
+  <div class="dev-banner">
+    🛠️ MODE DÉVELOPPEMENT LOCAL <span>data.json non synchronisé avec GitHub</span>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- YOUTUBE MODAL -->
+  <div class="yt-modal" id="ytModal">
+    <div class="yt-content">
+      <div class="yt-header">
+        <div class="yt-title">🎬 Sélectionner une bande-annonce</div>
+        <button class="yt-close" onclick="closeYtModal()">✕</button>
+      </div>
+      <div class="yt-list" id="ytList"></div>
     </div>
   </div>
 
-  <!-- Main App -->
-  <div id="app" style="display:none">
-    <!-- Header -->
-    <header class="header" id="hdr">
-      <div class="nav">
-        <div class="nav-inner">
-          <a class="logo-link" href="index.html">
-            <h1 class="logo-text"><span>Crack</span><span class="logo-dim">uzu</span></h1>
-          </a>
-          <div class="nav-links">
-            <ul>
-              <li><a class="nav-a" href="index.html">Accueil</a></li>
-              <li><a class="nav-a" href="Catalogue.html">Catalogue</a></li>
-              <li><a class="nav-a active" href="admin.html">Admin</a></li>
-            </ul>
-          </div>
-          <div class="nav-right">
-            <button class="search-pill" onclick="alert('Recherche non disponible dans l\'admin')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-              <span>Rechercher</span>
-            </button>
-            <button class="icon-btn" onclick="logout()" title="Déconnexion">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20,6 9,17 4,12"/>
+    </svg>
+    <span id="toastMsg">Sauvegardé!</span>
+  </div>
 
-    <main class="page">
-      <div class="glow"></div>
-      <div class="glow2"></div>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+          <div class="logo-text">CRACK<span class="logo-dim">UZU</span></div>
+        </a>
+        <nav class="nav-links">
+          <ul>
+            <li><a href="index.html" class="nav-a">Accueil</a></li>
+            <li><a href="Catalogue.html" class="nav-a">Catalogue</a></li>
+            <li><a href="admin.html" class="nav-a active">Admin GitHub</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE -->
+  <main class="page" id="mainApp">
+    <div class="glow"></div>
+    <div class="glow2"></div>
+    <div class="wrap">
       
       <!-- EXPORT BAR -->
       <div class="export-bar">
@@ -259,1626 +293,1466 @@
             <polyline points="7,10 12,15 17,10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          🚀 Push to GitHub
+          � Push to GitHub
         </button>
-        <div class="status-badge" id="syncStatus">
-          <span>🟠</span> Non synchronisé
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importDataJson(this)">
+        <button class="export-btn secondary" onclick="document.getElementById('importFile').click()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17,8 12,3 7,8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          📥 Importer JSON
+        </button>
+        <button class="export-btn secondary" onclick="loadFromLocalStorage()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23,4 23,10 17,10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          🔄 Charger sauvegarde locale
+        </button>
+        <button class="export-btn secondary" onclick="resetToOriginal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3,6 6,3 9,6"/>
+            <path d="M6 3v12a9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9"/>
+          </svg>
+          ↩️ Reset (original)
+        </button>
+        <div class="status-badge" id="statusBadge">
+          <span>🟢</span> data.json original
         </div>
       </div>
-      
-      <div class="wrap">
-        <div class="main-grid">
-          <!-- Left Panel -->
-          <aside class="left-panel">
-            <!-- Steam Search -->
-            <div class="panel-card">
-              <div class="panel-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                Rechercher sur Steam
-              </div>
-              <div class="search-box">
-                <div class="search-input-wrapper">
-                  <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                  <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." oninput="searchSteam(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();searchSteam(this.value,true)}">
-                </div>
-                <button class="search-btn" onclick="searchSteam(document.getElementById('steamSearch').value,true)">Rechercher</button>
-              </div>
-              <div class="search-results" id="steamResults"></div>
-            </div>
 
-            <!-- Sources -->
-            <div class="panel-card">
-              <div class="panel-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
-                Sources de magnets
-              </div>
-              <div class="source-list" id="sourceList">
-                <div class="source-item active" onclick="toggleSource('onlinefix')">
-                  <span class="source-dot" id="dot-onlinefix"></span>
-                  <span class="source-name">OnlineFix</span>
-                  <span class="source-count" id="count-onlinefix">...</span>
-                </div>
-                <div class="source-item active" onclick="toggleSource('fitgirl')">
-                  <span class="source-dot" id="dot-fitgirl"></span>
-                  <span class="source-name">FitGirl</span>
-                  <span class="source-count" id="count-fitgirl">...</span>
-                </div>
-                <div class="source-item active" onclick="toggleSource('dodi')">
-                  <span class="source-dot" id="dot-dodi"></span>
-                  <span class="source-name">DODI</span>
-                  <span class="source-count" id="count-dodi">...</span>
-                </div>
-                <div class="source-item active" onclick="toggleSource('steamrip')">
-                  <span class="source-dot" id="dot-steamrip"></span>
-                  <span class="source-name">SteamRip</span>
-                  <span class="source-count" id="count-steamrip">...</span>
-                </div>
-              </div>
+      <div class="main-grid">
+        <!-- LEFT PANEL -->
+        <aside class="left-panel">
+          <!-- STEAM SEARCH -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              Recherche Steam
             </div>
-
-            <!-- Selected Magnets -->
-            <div class="panel-card">
-              <div class="panel-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                Magnets sélectionnés
+            <div class="search-box">
+              <div style="position:relative;flex:1">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." onkeydown="if(event.key==='Enter')searchSteam()">
               </div>
-              <div id="selectedMagnets" style="font-size:.875rem;color:rgba(255,255,255,.5);padding:1rem 0;text-align:center">
-                Aucun magnet sélectionné
-              </div>
+              <button class="search-btn" onclick="searchSteam()">Rechercher</button>
             </div>
+            <div class="search-results" id="steamResults"></div>
+          </div>
 
-            <!-- Recent Games -->
-            <div class="panel-card">
-              <div class="panel-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
-                Jeux récents
+          <!-- MAGNET SOURCES (Hydra) -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M2 12h20"/>
+              </svg>
+              🔍 Sources Magnets
+            </div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;padding:.5rem">
+              Clique sur l'onglet 🧲 Magnets pour voir les résultats
+            </div>
+          </div>
+
+          <!-- RECENT GAMES -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20v-6M6 20V10M18 20V4"/>
+              </svg>
+              Jeux récents (<span id="gameCount">0</span>)
+            </div>
+            <div class="recent-list" id="recentGames"></div>
+          </div>
+        </aside>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+          <div class="form-title">
+            <span id="formTitleIcon">➕</span>
+            <span id="formTitleText">Nouveau jeu</span>
+          </div>
+
+          <!-- TABS -->
+          <div class="tabs">
+            <button class="tab active" onclick="switchTab('infos')" id="tab-btn-infos">📋 Infos</button>
+            <button class="tab" onclick="switchTab('images')" id="tab-btn-images">🖼️ Images</button>
+            <button class="tab" onclick="switchTab('magnets')" id="tab-btn-magnets">🧲 Magnets</button>
+          </div>
+
+          <!-- TAB: INFOS -->
+          <div id="tab-infos">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Titre du jeu *</label>
+                <input type="text" class="form-input" id="f-title" placeholder="The Last of Us Part II...">
               </div>
-              <div class="search-box" style="margin-bottom:1rem">
-                <div class="search-input-wrapper">
-                  <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                  <input type="text" class="search-input" id="gameSearch" placeholder="Rechercher un jeu..." oninput="filterGames(this.value)">
+              <div class="form-group">
+                <label class="form-label">Année</label>
+                <input type="text" class="form-input" id="f-year" placeholder="2024">
+              </div>
+              <div class="form-group">
+                <label class="form-label">ID YouTube (Bande-annonce)</label>
+                <div style="display:flex;gap:.5rem">
+                  <input type="text" class="form-input" id="f-ytb" placeholder="dQw4w9WgXcQ" style="flex:1">
+                  <button class="search-btn" onclick="openYtModal()" title="Rechercher sur YouTube">🔍</button>
                 </div>
               </div>
-              <div id="recentGames" style="max-height:300px;overflow-y:auto">
-                <div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">Chargement...</div>
+              <div class="form-group full-width">
+                <label class="form-label">Description</label>
+                <textarea class="form-input" id="f-desc" placeholder="Description du jeu..."></textarea>
               </div>
-            </div>
-          </aside>
-
-          <!-- Right Panel -->
-          <div class="right-panel">
-            <!-- Steam Preview -->
-            <div class="steam-preview" id="steamPreview" style="display:none">
-              <img class="steam-cover" id="previewCover" src="" alt="">
-              <div class="steam-info">
-                <div class="steam-title" id="previewTitle">...</div>
-                <div class="steam-meta">
-                  <span id="previewYear">...</span>
-                  <span id="previewDev">...</span>
-                </div>
-                <div class="steam-desc" id="previewDesc">...</div>
+              <div class="form-group full-width">
+                <label class="form-label">Catégories</label>
+                <div class="category-grid" id="categoryGrid"></div>
               </div>
             </div>
+          </div>
 
-            <!-- Tabs -->
-            <div class="tabs">
-              <div class="tab active" onclick="setTab('images')">Images</div>
-              <div class="tab" onclick="setTab('info')">Infos</div>
-              <div class="tab" onclick="setTab('magnets')">Magnets</div>
+          <!-- TAB: IMAGES -->
+          <div id="tab-images" style="display:none">
+            <!-- Portrait Gallery -->
+            <div class="gallery-section">
+              <div class="gallery-title">🎴 Portrait (600x900)</div>
+              <div class="gallery-grid" id="portraitGallery"></div>
+            </div>
+            
+            <!-- Banner Gallery -->
+            <div class="gallery-section">
+              <div class="gallery-title">🖼️ Bannière (16:9)</div>
+              <div class="banner-grid" id="bannerGallery"></div>
             </div>
 
-            <!-- Images Tab -->
-            <div id="tab-images" class="form-section">
-              <!-- Custom Image Upload -->
-              <div id="pasteZone" style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1);border-style:dashed">
-                <div style="font-weight:600;color:#fff;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                  Upload d'image personnalisée (Cloudinary)
+            <!-- Upload -->
+            <div class="gallery-section">
+              <div class="gallery-title">☁️ Upload Cloudinary</div>
+              <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
                 </div>
-                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
-                  <input type="file" id="imageUpload" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
-                  <button class="search-btn" onclick="document.getElementById('imageUpload').click()" style="flex:1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                    Choisir une image
-                  </button>
+                <div class="upload-text">
+                  <span>Clique pour upload</span> ou glisse-dépose<br>
+                  <small style="color:rgba(255,255,255,.4)">Tu peux aussi coller une image (Ctrl+V)</small>
                 </div>
-                <div style="font-size:.75rem;color:#94a3b8;text-align:center;padding:.5rem;background:rgba(255,255,255,.03);border-radius:.5rem;margin-top:.5rem">
-                  <strong>OU</strong> fais <kbd style="background:rgba(255,255,255,.2);padding:.1rem .4rem;border-radius:.25rem;font-family:monospace">Ctrl+V</kbd> pour coller une image depuis le presse-papiers
-                </div>
-                <div id="uploadPreview" style="margin-top:.75rem;display:none">
-                  <img id="uploadPreviewImg" style="max-height:150px;border-radius:.5rem;border:2px solid #f97316">
-                  <div style="display:flex;gap:.5rem;margin-top:.5rem">
-                    <button class="search-btn" onclick="useAsPortrait()">Utiliser comme Portrait</button>
-                    <button class="search-btn" onclick="useAsBanner()">Utiliser comme Bannière</button>
+                <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
+                <div class="upload-preview" id="uploadPreview">
+                  <img id="uploadPreviewImg" src="" alt="">
+                  <div class="upload-actions">
+                    <button class="magnet-btn" onclick="useAsPortrait();event.stopPropagation()">Utiliser comme Portrait</button>
+                    <button class="magnet-btn" onclick="useAsBanner();event.stopPropagation()">Utiliser comme Bannière</button>
                   </div>
                 </div>
               </div>
-
-              <!-- Manual URL Input -->
-              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
-                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ou entrer une URL directement</div>
-                <div style="display:flex;gap:.5rem">
-                  <input type="text" class="search-input" id="manualImageUrl" placeholder="https://..." style="flex:1">
-                  <select id="manualImageType" style="width:120px;padding:.5rem;border-radius:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff">
-                    <option value="portrait">Portrait</option>
-                    <option value="banner">Bannière</option>
-                  </select>
-                  <button class="search-btn" onclick="addManualImage()">Ajouter</button>
-                </div>
-              </div>
-
-              <div class="section-header">
-                <div class="section-title">
-                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                  Portrait (cover) - Clique pour sélectionner
-                </div>
-              </div>
-              <div class="img-gallery" id="portraitGallery">
-                <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Recherche un jeu sur Steam, upload une image, ou entre une URL manuellement
-                </div>
-              </div>
-
-              <div class="section-header" style="margin-top:1.5rem">
-                <div class="section-title">
-                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
-                  Bannière - Clique pour sélectionner
-                </div>
-              </div>
-              <div class="banner-gallery" id="bannerGallery">
-                <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Recherche un jeu sur Steam, upload une image, ou entre une URL manuellement
-                </div>
-              </div>
             </div>
 
-            <!-- Info Tab -->
-            <div id="tab-info" class="form-section" style="display:none">
+            <!-- Manual URLs -->
+            <div class="gallery-section">
+              <div class="gallery-title">🔗 URLs manuelles</div>
               <div class="form-grid">
                 <div class="form-group">
-                  <label class="form-label">Titre</label>
-                  <input type="text" class="form-input" id="f-title" placeholder="Nom du jeu">
+                  <label class="form-label">URL Portrait</label>
+                  <input type="text" class="form-input" id="f-portrait" placeholder="https://..." onchange="state.selectedPortrait=this.value">
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Année</label>
-                  <input type="text" class="form-input" id="f-year" placeholder="2024">
+                  <label class="form-label">URL Bannière</label>
+                  <input type="text" class="form-input" id="f-banner" placeholder="https://..." onchange="state.selectedBanner=this.value">
                 </div>
-                <div class="form-group" style="grid-column:1/-1">
-                  <label class="form-label">Description</label>
-                  <textarea class="form-input" id="f-desc" placeholder="Description du jeu..."></textarea>
-                </div>
-                <div class="form-group" style="grid-column:1/-1">
-                  <label class="form-label">Trailer YouTube</label>
-                  <div class="trailer-box">
-                    <input type="text" class="form-input" id="f-ytb" placeholder="ID ou URL YouTube" style="flex:1">
-                    <button class="search-btn" onclick="searchYouTubeAPI()" title="Recherche automatique (sans API key)">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
-                      Rechercher trailer
-                    </button>
-                    <button class="search-btn" style="background:rgba(255,255,255,.1)" onclick="searchYouTubeTrailer()" title="Ouvrir YouTube manuellement">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                      YouTube
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="section-header" style="margin-top:1.5rem">
-                <div class="section-title">
-                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3M4 17v3h3M20 7V4h-3M20 17v3h-3M9 9h6v6H9z"/></svg>
-                  Catégories
-                </div>
-              </div>
-              <div class="cat-grid" id="catGrid">
-                <button class="cat-btn" onclick="toggleCat(this)">Action</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Aventure</button>
-                <button class="cat-btn" onclick="toggleCat(this)">RPG</button>
-                <button class="cat-btn" onclick="toggleCat(this)">FPS</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Simulation</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Stratégie</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Sport</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Course</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Horreur</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Puzzle</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Plateforme</button>
-                <button class="cat-btn" onclick="toggleCat(this)">Coopération</button>
               </div>
             </div>
+          </div>
 
-            <!-- Magnets Tab -->
-            <div id="tab-magnets" class="form-section" style="display:none">
-              <div class="section-header">
-                <div class="section-title">
-                  <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
-                  Sources de téléchargement
-                </div>
+          <!-- TAB: MAGNETS -->
+          <div id="tab-magnets" style="display:none">
+            <!-- Source Results -->
+            <div id="sourceResults" style="max-height:400px;overflow-y:auto;margin-bottom:1.5rem;display:none"></div>
+            <div id="sourceStatus" style="margin-bottom:1rem;font-size:.75rem;color:rgba(255,255,255,.4);text-align:center"></div>
+            
+            <!-- Search Button -->
+            <button class="search-btn" onclick="searchAllSources()" style="width:100%;margin-bottom:1.5rem" id="btn-search-all">
+              🔍 Chercher dans toutes les sources
+            </button>
+            
+            <div class="magnet-list" id="magnetList"></div>
+            
+            <!-- Upload .torrent to Catbox -->
+            <div style="margin:1rem 0;padding:1rem;border:1px dashed var(--w20);border-radius:.5rem;background:var(--w5)">
+              <div style="font-size:.8rem;font-weight:600;color:var(--w60);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em">
+                📤 Upload .torrent (Catbox.me)
               </div>
-
-              <!-- Manual Magnet Input -->
-              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
-                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ajouter un magnet manuellement</div>
-                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
-                  <input type="text" class="search-input" id="manualMagnet" placeholder="magnet:?xt=urn:btih:..." style="flex:1">
-                  <input type="text" class="search-input" id="manualMagnetSize" placeholder="Taille (ex: 15.5 GB)" style="width:140px">
+              <div style="display:flex;gap:.5rem;align-items:center">
+                <input type="file" id="torrentFile" accept=".torrent" style="display:none" onchange="uploadTorrentWithProxy(this)">
+                <button class="magnet-btn" onclick="document.getElementById('torrentFile').click()" style="background:var(--accent);color:#000;font-weight:600">
+                  📁 Choisir fichier .torrent
+                </button>
+                <span id="torrentUploadStatus" style="font-size:.8rem;color:var(--w40)"></span>
+              </div>
+              <div style="font-size:.7rem;color:var(--w40);margin-top:.5rem">
+                Essaie Litterbox (CORS activé) puis Catbox via proxy
+              </div>
+            </div>
+            
+            <div id="manualMagnetInput">
+              <div class="magnet-item">
+                <div class="magnet-row">
+                  <input type="text" class="magnet-input" id="m-url" placeholder="magnet:?xt=urn:btih:... ou https://..." style="font-family:monospace;font-size:.85rem">
                 </div>
-                <div style="display:flex;gap:.5rem">
-                  <select class="search-input" id="manualMagnetSource" style="width:150px">
-                    <option value="Custom">Custom</option>
-                    <option value="FitGirl">FitGirl</option>
-                    <option value="DODI">DODI</option>
-                    <option value="OnlineFix">OnlineFix</option>
-                    <option value="SteamRIP">SteamRIP</option>
-                    <option value="GOG">GOG</option>
+                <div class="magnet-row">
+                  <input type="text" class="magnet-input" id="m-name" placeholder="Source (ex: FitGirl, DODI, 1337x...)" style="flex:2">
+                  <input type="text" class="magnet-input" id="m-size" placeholder="Taille (ex: 15.2 GB)" style="flex:1">
+                  <select class="magnet-select" id="m-type">
+                    <option value="magnet">🧲 Magnet</option>
+                    <option value="direct">⬇️ Direct</option>
+                    <option value="torrent">📄 .torrent</option>
                   </select>
-                  <button class="search-btn" onclick="addManualMagnet()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    Ajouter
-                  </button>
-                </div>
-              </div>
-
-              <!-- Direct Download Links -->
-              <div style="margin-bottom:1.5rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;border:1px solid rgba(255,255,255,.1)">
-                <div style="font-weight:600;color:#fff;margin-bottom:.75rem">Ajouter un lien de téléchargement direct</div>
-                <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
-                  <input type="text" class="search-input" id="directLinkUrl" placeholder="https://..." style="flex:1">
-                  <input type="text" class="search-input" id="directLinkSize" placeholder="Taille" style="width:100px">
-                </div>
-                <div style="display:flex;gap:.5rem">
-                  <input type="text" class="search-input" id="directLinkName" placeholder="Nom du fichier / Source" style="flex:1">
-                  <button class="search-btn" onclick="addDirectLink()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                    Ajouter
-                  </button>
-                </div>
-              </div>
-
-              <div class="search-box" style="margin-bottom:1rem">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                <input type="text" class="search-input" id="magnetSearch" placeholder="Filtrer les magnets des sources..." oninput="filterMagnets(this.value)">
-              </div>
-              <div class="magnet-list" id="magnetList">
-                <div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-                  Active des sources et recherche un jeu, ou ajoute des magnets manuellement ci-dessus
+                  <button class="magnet-btn" onclick="addManualMagnet()">➕ Ajouter</button>
                 </div>
               </div>
             </div>
-
-            <!-- Action Bar -->
-            <div class="action-bar">
-              <button class="action-btn btn-save" onclick="saveGame()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
-                Sauvegarder
-              </button>
-              <button class="action-btn btn-clear" onclick="clearForm()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                Vider
-              </button>
-              <span class="status-msg" id="statusMsg"></span>
-            </div>
           </div>
-        </div>
-      </div>
-    </main>
-  </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast"></div>
-
-  <script>
-  // ═══════════════════════════════════════════════════════════
-  // CONFIG & STATE
-  // ═══════════════════════════════════════════════════════════
-  const CONFIG = {
-    REPO: 'crackuzu/beta',
-    BRANCH: 'main'
-  };
-
-  const SOURCES = {
-    onlinefix: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/onlinefix.json',
-    fitgirl: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/fitgirl.json',
-    dodi: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/dodi.json',
-    steamrip: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/steamrip.json'
-  };
-
-  let state = {
-    githubToken: localStorage.getItem('githubToken') || null,
-    steamData: null,
-    activeSources: new Set(['onlinefix', 'fitgirl', 'dodi', 'steamrip']),
-    sourceData: {},
-    selectedCategories: new Set(),
-    selectedPortrait: null,
-    selectedBanner: null,
-    selectedMagnets: [],
-    currentTab: 'images'
-  };
-
-  // ═══════════════════════════════════════════════════════════
-  // INIT
-  // ═══════════════════════════════════════════════════════════
-  window.onload = () => {
-    // Check auth
-    if (state.githubToken) {
-      loadGitHubUser();
-    } else {
-      showLogin();
-    }
-
-    // Header scroll
-    window.addEventListener('scroll', () => {
-      document.getElementById('hdr')?.classList.toggle('scrolled', scrollY > 40);
-    });
-
-    // Load sources
-    loadSources();
-  };
-
-  // ═══════════════════════════════════════════════════════════
-  // AUTH
-  // ═══════════════════════════════════════════════════════════
-  function showLogin() {
-    document.getElementById('loginScreen').style.display = 'flex';
-    document.getElementById('app').style.display = 'none';
-  }
-
-  function showApp() {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    // Load magnet sources
-    loadSources();
-    // Load recent games for editing
-    loadRecentGames();
-    // Setup paste listener for images
-    setupPasteListener();
-  }
-
-  function setupPasteListener() {
-    document.addEventListener('paste', async (e) => {
-      // Only handle paste when on images tab
-      if (document.getElementById('tab-images').style.display === 'none') return;
-      
-      const items = e.clipboardData?.items;
-      if (!items) return;
-      
-      for (const item of items) {
-        if (item.type.startsWith('image/')) {
-          e.preventDefault();
-          const file = item.getAsFile();
-          if (file) {
-            await handleImageFile(file);
-          }
-          break;
-        }
-      }
-    });
-  }
-
-  function loginGitHub() {
-    const token = prompt('Entre ton token GitHub personal access token:');
-    if (token) {
-      state.githubToken = token;
-      localStorage.setItem('githubToken', token);
-      loadGitHubUser();
-    }
-  }
-
-  async function loadGitHubUser() {
-    try {
-      const res = await fetch('https://api.github.com/user', {
-        headers: { Authorization: `token ${state.githubToken}` }
-      });
-      if (!res.ok) throw new Error('Invalid token');
-      showApp();
-    } catch (e) {
-      showToast('Token GitHub invalide', 'error');
-      localStorage.removeItem('githubToken');
-      state.githubToken = null;
-      showLogin();
-    }
-  }
-
-  function logout() {
-    localStorage.removeItem('githubToken');
-    state.githubToken = null;
-    location.hash = '';
-    showLogin();
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // SOURCES
-  // ═══════════════════════════════════════════════════════════
-  async function loadSources() {
-    for (const [key, url] of Object.entries(SOURCES)) {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        console.log(`Source ${key} raw data:`, data);
-        // Handle different JSON structures
-        let games = [];
-        if (Array.isArray(data)) {
-          games = data;
-        } else if (data.list && Array.isArray(data.list)) {
-          games = data.list;
-        } else if (data.games && Array.isArray(data.games)) {
-          games = data.games;
-        } else if (data.data && Array.isArray(data.data)) {
-          games = data.data;
-        } else if (typeof data === 'object') {
-          // Try to find any array property
-          const arrProp = Object.values(data).find(v => Array.isArray(v));
-          if (arrProp) games = arrProp;
-        }
-        state.sourceData[key] = games;
-        console.log(`Source ${key} parsed:`, games.length, 'games');
-        document.getElementById(`count-${key}`).textContent = games.length;
-        document.getElementById(`dot-${key}`).classList.remove('offline');
-      } catch (e) {
-        console.error(`Source ${key} failed:`, e);
-        document.getElementById(`count-${key}`).textContent = 'OFF';
-        document.getElementById(`dot-${key}`).classList.add('offline');
-      }
-    }
-  }
-
-  function toggleSource(source) {
-    const el = document.querySelector(`#sourceList .source-item:nth-child(${['onlinefix','fitgirl','dodi','steamrip'].indexOf(source)+1})`);
-    if (state.activeSources.has(source)) {
-      state.activeSources.delete(source);
-      el.classList.remove('active');
-    } else {
-      state.activeSources.add(source);
-      el.classList.add('active');
-    }
-    if (state.steamData) updateMagnetList();
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // STEAM SEARCH
-  // ═══════════════════════════════════════════════════════════
-  let searchTimeout;
-  async function searchSteam(query, force = false) {
-    clearTimeout(searchTimeout);
-    if (!query || query.length < 2) {
-      document.getElementById('steamResults').innerHTML = '';
-      return;
-    }
-    if (force) {
-      // Immediate search
-      await doSteamSearch(query);
-    } else {
-      searchTimeout = setTimeout(async () => {
-        await doSteamSearch(query);
-      }, 300);
-    }
-  }
-
-  async function doSteamSearch(query) {
-    try {
-      // Use Steam search API through a CORS proxy
-      const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=';
-      const steamUrl = encodeURIComponent(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
-      const res = await fetch(`${proxyUrl}${steamUrl}`);
-      const data = await res.json();
-      renderSteamResults(data.slice(0, 6));
-    } catch (e) {
-      console.error('Steam search failed:', e);
-      showToast('Erreur de recherche Steam - réessaie', 'error');
-    }
-  }
-
-  function renderSteamResults(games) {
-    const html = games.map(g => `
-      <div class="search-item" onclick="selectSteamGame('${g.appid}', '${esc(g.name)}')">
-        <img class="search-img" src="https://cdn.akamai.steamstatic.com/steam/apps/${g.appid}/capsule_sm_120.jpg" alt="" onerror="this.onerror=null;this.src='https://cdn.akamai.steamstatic.com/steam/apps/${g.appid}/header.jpg';this.onerror=function(){this.style.display='none'}">
-        <div class="search-info">
-          <div class="search-name">${esc(g.name)}</div>
-          <div class="search-meta">AppID: ${g.appid}</div>
-        </div>
-      </div>
-    `).join('');
-    document.getElementById('steamResults').innerHTML = html;
-  }
-
-  async function selectSteamGame(appid, name) {
-    showToast('Chargement des données Steam...', 'success');
-    document.getElementById('steamResults').innerHTML = '';
-    document.getElementById('steamSearch').value = name;
-
-    try {
-      // Fetch app details from Steam through CORS proxy
-      const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=';
-      const steamUrl = encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${appid}`);
-      const res = await fetch(`${proxyUrl}${steamUrl}`);
-      const data = await res.json();
-      const app = data[appid]?.data;
-      
-      if (!app) throw new Error('No data');
-
-      state.steamData = {
-        appid,
-        name: cleanText(app.name),
-        description: cleanText(app.short_description || app.about_the_game || ''),
-        year: app.release_date?.date?.match(/\d{4}/)?.[0] || '',
-        developers: app.developers || [],
-        genres: app.genres?.map(g => g.description) || [],
-        screenshots: app.screenshots?.map(s => s.path_full) || [],
-        header: app.header_image,
-        background: app.background,
-        trailer: extractYoutubeId(app.movies?.[0]?.name) || null
-      };
-
-      // Update preview
-      document.getElementById('steamPreview').style.display = 'flex';
-      document.getElementById('previewTitle').textContent = state.steamData.name;
-      document.getElementById('previewYear').textContent = state.steamData.year || 'Date inconnue';
-      document.getElementById('previewDev').textContent = state.steamData.developers[0] || 'Développeur inconnu';
-      document.getElementById('previewDesc').textContent = state.steamData.description.slice(0, 300) + (state.steamData.description.length > 300 ? '...' : '');
-      // Use Steam header image (most reliable)
-      document.getElementById('previewCover').src = state.steamData.header || `https://steamcdn-a.akamaihd.net/steam/apps/${appid}/library_600x900.jpg`;
-      
-      // Set trailer if available
-      if (state.steamData.trailer) {
-        document.getElementById('f-ytb').value = state.steamData.trailer;
-      }
-
-      // Update form
-      document.getElementById('f-title').value = state.steamData.name;
-      document.getElementById('f-year').value = state.steamData.year;
-      document.getElementById('f-desc').value = state.steamData.description;
-
-      // Update categories - map Steam genres to our categories (multi-language)
-      const genreMap = {
-        // English
-        'Action': 'Action', 'Adventure': 'Aventure', 'RPG': 'RPG',
-        'Strategy': 'Stratégie', 'Simulation': 'Simulation', 'Sports': 'Sport',
-        'Racing': 'Course', 'Casual': 'Casual', 'Puzzle': 'Puzzle',
-        'Platformer': 'Plateforme', 'Fighting': 'Combat', 'Shooter': 'FPS',
-        'First-Person': 'FPS', 'Third-Person': 'TPS', 'Horror': 'Horreur',
-        'Survival': 'Survie', 'Open World': 'Monde ouvert', 'Multiplayer': 'Multijoueur',
-        'Co-op': 'Coopération', 'Co-Op': 'Coopération', 'Online Co-Op': 'Coopération',
-        'Battle Royale': 'Battle Royale', 'Stealth': 'Infiltration',
-        'Metroidvania': 'Metroidvania', 'Souls-like': 'Souls-like', 'Sandbox': 'Sandbox',
-        'Visual Novel': 'Visual Novel', 'Anime': 'Anime', 'Sci-fi': 'Sci-Fi',
-        'Fantasy': 'Fantasy', 'Historical': 'Historique', 'Mystery': 'Mystère',
-        'Massively Multiplayer': 'Multijoueur', 'Local Co-Op': 'Coopération',
-        // Spanish
-        'Acción': 'Action', 'Aventura': 'Aventure', 'Estrategia': 'Stratégie',
-        'Simulación': 'Simulation', 'Deportes': 'Sport', 'Carreras': 'Course',
-        // German
-        'Action': 'Action', 'Abenteuer': 'Aventure', 'Strategie': 'Stratégie',
-        // French (Steam sometimes returns French)
-        'Stratégie': 'Stratégie'
-      };
-      
-      // Get available categories
-      const availableCats = Array.from(document.querySelectorAll('.cat-btn')).map(btn => btn.textContent);
-      
-      // Map genres and filter to only available categories
-      const mappedCats = state.steamData.genres
-        .map(g => genreMap[g] || g)
-        .filter(cat => availableCats.includes(cat))
-        .slice(0, 3);
-      
-      console.log('Steam genres:', state.steamData.genres);
-      console.log('Mapped categories:', mappedCats);
-      
-      state.selectedCategories = new Set(mappedCats);
-      updateCatButtons();
-
-      // Update galleries
-      updateGalleries(appid);
-
-      // Update magnets
-      updateMagnetList();
-
-      showToast('Données Steam chargées !', 'success');
-    } catch (e) {
-      console.error(e);
-      showToast('Erreur lors du chargement Steam', 'error');
-    }
-  }
-
-  function updateGalleries(appid) {
-    // Portrait options
-    const portraits = [
-      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
-      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
-      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/portrait.png`,
-      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`
-    ];
-    
-    document.getElementById('portraitGallery').innerHTML = portraits.map((url, i) => `
-      <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}', this)">
-        <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
-        <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-    `).join('');
-
-    // Auto-select first portrait if none selected
-    if (!state.selectedPortrait && portraits[0]) {
-      state.selectedPortrait = portraits[0];
-    }
-
-    // Banner options - high quality Steam images
-    const banners = [
-      // High-res library hero (best quality for backgrounds)
-      appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero.jpg` : null,
-      appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg` : null,
-      // Page background (often high res)
-      state.steamData.background,
-      // Screenshots (can be high res)
-      ...state.steamData.screenshots.slice(0, 3)
-    ].filter(Boolean);
-
-    document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
-      <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}', this)">
-        <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
-        <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-    `).join('');
-
-    // Auto-select first ones
-    if (portraits[0]) {
-      state.selectedPortrait = portraits[0];
-    }
-    if (banners[0]) {
-      state.selectedBanner = banners[0];
-    }
-  }
-
-  function selectPortrait(url, element) {
-    state.selectedPortrait = url;
-    document.querySelectorAll('#portraitGallery .img-item').forEach(el => el.classList.remove('selected'));
-    if (element) element.classList.add('selected');
-  }
-
-  function selectBanner(url, element) {
-    state.selectedBanner = url;
-    document.querySelectorAll('#bannerGallery .banner-item').forEach(el => el.classList.remove('selected'));
-    if (element) element.classList.add('selected');
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // CATEGORIES
-  // ═══════════════════════════════════════════════════════════
-  function toggleCat(btn) {
-    const cat = btn.textContent;
-    if (state.selectedCategories.has(cat)) {
-      state.selectedCategories.delete(cat);
-      btn.classList.remove('active');
-    } else {
-      state.selectedCategories.add(cat);
-      btn.classList.add('active');
-    }
-  }
-
-  function updateCatButtons() {
-    document.querySelectorAll('#catGrid .cat-btn').forEach(btn => {
-      btn.classList.toggle('active', state.selectedCategories.has(btn.textContent));
-    });
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // MAGNETS
-  // ═══════════════════════════════════════════════════════════
-  function updateMagnetList() {
-    if (!state.steamData) return;
-    
-    const searchName = state.steamData.name.toLowerCase();
-    let allMagnets = [];
-
-    console.log('Searching magnets for:', searchName);
-    console.log('Active sources:', Array.from(state.activeSources));
-    console.log('Source data keys:', Object.keys(state.sourceData));
-
-    for (const source of state.activeSources) {
-      const data = state.sourceData[source] || [];
-      console.log(`Source ${source}: ${data.length} games`);
-      
-      // Fuzzy matching - check if words match
-      const matches = data.filter(g => {
-        const gameTitle = g.title?.toLowerCase() || '';
-        // Direct includes
-        if (gameTitle.includes(searchName) || searchName.includes(gameTitle)) return true;
-        // Word-based matching
-        const searchWords = searchName.split(/[\s:\-\.]+/).filter(w => w.length > 2);
-        const titleWords = gameTitle.split(/[\s:\-\.]+/).filter(w => w.length > 2);
-        const matchCount = searchWords.filter(sw => 
-          titleWords.some(tw => tw.includes(sw) || sw.includes(tw))
-        ).length;
-        return matchCount >= Math.max(1, searchWords.length * 0.5); // 50% of words match
-      });
-      
-      console.log(`Source ${source}: ${matches.length} matches`);
-      
-      matches.forEach(g => {
-        if (g.uris) {
-          g.uris.forEach(u => {
-            allMagnets.push({
-              name: `${g.title} [${source}]`,
-              url: u,
-              source: source,
-              size: g.fileSize || 'Unknown'
-            });
-          });
-        }
-        if (g.magnet) {
-          allMagnets.push({
-            name: `${g.title} [${source}]`,
-            url: g.magnet,
-            source: source,
-            size: g.fileSize || 'Unknown'
-          });
-        }
-      });
-    }
-
-    renderMagnetList(allMagnets);
-  }
-
-  function renderMagnetList(magnets) {
-    const container = document.getElementById('magnetList');
-    if (!magnets.length) {
-      container.innerHTML = '<div style="padding:2rem;text-align:center;color:rgba(255,255,255,.4)">Aucun magnet trouvé pour ce jeu</div>';
-      return;
-    }
-
-    container.innerHTML = magnets.map(m => `
-      <div class="magnet-item">
-        <div class="magnet-info">
-          <div class="magnet-name">${esc(m.name)}</div>
-          <div class="magnet-source">${esc(m.source)} · ${esc(m.size)}</div>
-        </div>
-        <button class="magnet-btn ${state.selectedMagnets.find(sm => sm.url === m.url) ? 'added' : ''}" 
-                onclick='toggleMagnet(${JSON.stringify(m).replace(/'/g, "&#39;")})'>
-          ${state.selectedMagnets.find(sm => sm.url === m.url) ? '✓ Ajouté' : 'Ajouter'}
-        </button>
-      </div>
-    `).join('');
-  }
-
-  function filterMagnets(query) {
-    const buttons = document.querySelectorAll('#magnetList .magnet-item');
-    buttons.forEach(item => {
-      const name = item.querySelector('.magnet-name').textContent.toLowerCase();
-      item.style.display = name.includes(query.toLowerCase()) ? 'flex' : 'none';
-    });
-  }
-
-  function toggleMagnet(magnetObj) {
-    const exists = state.selectedMagnets.find(m => m.url === magnetObj.url);
-    if (exists) {
-      state.selectedMagnets = state.selectedMagnets.filter(m => m.url !== magnetObj.url);
-    } else {
-      state.selectedMagnets.push(magnetObj);
-    }
-    updateSelectedMagnets();
-    updateMagnetList();
-  }
-
-  function updateSelectedMagnets() {
-    const container = document.getElementById('selectedMagnets');
-    if (!state.selectedMagnets.length) {
-      container.innerHTML = 'Aucun magnet sélectionné';
-      return;
-    }
-    container.innerHTML = state.selectedMagnets.map(m => `
-      <div style="padding:.5rem;background:rgba(249,115,22,.1);border-radius:.5rem;margin-bottom:.5rem;font-size:.75rem">
-        <div style="font-weight:600;color:#fff">${esc(m.source)} · ${esc(m.size)}</div>
-        <div style="color:#94a3b8;word-break:break-all">${esc(m.url.slice(0, 50))}...</div>
-      </div>
-    `).join('');
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // GAMES LIST & EDIT
-  // ═══════════════════════════════════════════════════════════
-  let allGames = [];
-  let editingGameIndex = -1;
-
-  async function loadRecentGames() {
-    try {
-      const dataRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-        headers: { Authorization: `token ${state.githubToken}` }
-      });
-      if (dataRes.ok) {
-        const fileInfo = await dataRes.json();
-        const content = atob(fileInfo.content.replace(/\s/g, ''));
-        allGames = JSON.parse(content);
-        displayRecentGames(allGames.slice(0, 5));
-        updateSyncStatus(true, `${allGames.length} jeux chargés`);
-      }
-    } catch (e) {
-      console.error('Failed to load games:', e);
-      document.getElementById('recentGames').innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Erreur de chargement</div>';
-      updateSyncStatus(false, 'Erreur de chargement');
-    }
-  }
-
-  function displayRecentGames(games) {
-    const container = document.getElementById('recentGames');
-    if (!games || games.length === 0) {
-      container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Aucun jeu</div>';
-      return;
-    }
-    
-    container.innerHTML = games.map((game, idx) => `
-      <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:rgba(255,255,255,.05);border-radius:.75rem;margin-bottom:.5rem;transition:all .2s">
-        <div style="flex:1;display:flex;align-items:center;gap:.75rem;cursor:pointer" 
-             onmouseover="this.parentElement.style.background='rgba(249,115,22,.1)'" 
-             onmouseout="this.parentElement.style.background='rgba(255,255,255,.05)'"
-             onclick="editGame(${allGames.indexOf(game)})">
-          <img src="${esc(game.portrait_url || '')}" style="width:40px;height:60px;object-fit:cover;border-radius:.5rem;background:#333" onerror="this.style.display='none'">
-          <div style="flex:1;min-width:0">
-            <div style="font-weight:600;color:#fff;font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(game.title)}</div>
-            <div style="font-size:.75rem;color:#94a3b8">${esc(game.year || 'N/A')}</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:.25rem">
-          <button onclick="event.stopPropagation();editGame(${allGames.indexOf(game)})" style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center" 
-                  onmouseover="this.style.background='rgba(249,115,22,.8)'" 
-                  onmouseout="this.style.background='rgba(255,255,255,.1)'"
-                  title="Modifier">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-          </button>
-          <button onclick="event.stopPropagation();deleteGame(${allGames.indexOf(game)})" style="width:32px;height:32px;border-radius:.5rem;background:rgba(239,68,68,.2);border:none;color:#ef4444;cursor:pointer;display:flex;align-items:center;justify-content:center" 
-                  onmouseover="this.style.background='rgba(239,68,68,.8)';this.style.color='#fff'" 
-                  onmouseout="this.style.background='rgba(239,68,68,.2)';this.style.color='#ef4444'"
-                  title="Supprimer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function filterGames(query) {
-    if (!query.trim()) {
-      displayRecentGames(allGames.slice(0, 5));
-      return;
-    }
-    const filtered = allGames.filter(g => g.title.toLowerCase().includes(query.toLowerCase()));
-    displayRecentGames(filtered);
-  }
-
-  function editGame(index) {
-    const game = allGames[index];
-    if (!game) return;
-    
-    editingGameIndex = index;
-    state.editingGame = game;
-    
-    // Mark as modified since we're editing
-    updateSyncStatus(false, 'Modifications en cours...');
-    
-    // Reset steam data since we're editing existing game
-    state.steamData = null;
-    
-    // Fill form
-    document.getElementById('f-title').value = game.title || '';
-    document.getElementById('f-year').value = game.year || '';
-    document.getElementById('f-desc').value = game.description || '';
-    document.getElementById('f-ytb').value = game.ytb_id || '';
-    
-    // Categories
-    state.selectedCategories.clear();
-    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-    (game.categories || []).forEach(cat => {
-      state.selectedCategories.add(cat);
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        if (btn.textContent.trim() === cat) btn.classList.add('active');
-      });
-    });
-    
-    // Images - show selected images in gallery
-    state.selectedPortrait = game.portrait_url || null;
-    state.selectedBanner = game.banner_url || null;
-    
-    // Rebuild galleries with existing images
-    if (state.selectedPortrait) {
-      document.getElementById('portraitGallery').innerHTML = `
-        <div class="img-item selected" onclick="selectPortrait('${esc(state.selectedPortrait)}')" style="background-image:url('${esc(state.selectedPortrait)}')">
-          <div class="img-check">✓</div>
-        </div>
-        <div style="grid-column:1/-1;padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-          Image actuelle sélectionnée. Cherche sur Steam ou upload une nouvelle image pour plus d'options.
-        </div>
-      `;
-    } else {
-      document.getElementById('portraitGallery').innerHTML = `
-        <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-          Aucune image sélectionnée. Cherche sur Steam ou upload une image.
-        </div>
-      `;
-    }
-    
-    if (state.selectedBanner) {
-      document.getElementById('bannerGallery').innerHTML = `
-        <div class="banner-item selected" onclick="selectBanner('${esc(state.selectedBanner)}')" style="background-image:url('${esc(state.selectedBanner)}')">
-          <div class="img-check">✓</div>
-        </div>
-        <div style="grid-column:1/-1;padding:1rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-          Bannière actuelle sélectionnée. Cherche sur Steam ou upload une nouvelle image.
-        </div>
-      `;
-    } else {
-      document.getElementById('bannerGallery').innerHTML = `
-        <div style="grid-column:1/-1;padding:2rem;text-align:center;color:rgba(255,255,255,.4);font-size:.875rem">
-          Aucune bannière sélectionnée. Cherche sur Steam ou upload une image.
-        </div>
-      `;
-    }
-    
-    // Magnets - properly load with all properties
-    state.selectedMagnets = [];
-    if (game.magnets && game.magnets.length > 0) {
-      state.selectedMagnets = game.magnets.map(m => {
-        if (typeof m === 'string') {
-          // Parse old format string magnet
-          return {url: m, size: '', source: 'Custom'};
-        }
-        // New format object
-        return {
-          url: m.url || '',
-          size: m.size || '',
-          source: m.source || 'Custom',
-          name: m.name || ''
-        };
-      });
-    }
-    updateSelectedMagnets();
-    
-    // Show editing mode
-    showToast(`Modification de: ${game.title}`, 'success');
-    
-    // Scroll to form
-    document.querySelector('.right-panel').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function deleteGame(index) {
-    const game = allGames[index];
-    if (!game) return;
-    
-    if (!confirm(`Supprimer définitivement "${game.title}" ?`)) return;
-    
-    allGames.splice(index, 1);
-    
-    // Mark as modified during deletion
-    updateSyncStatus(false, 'Suppression en cours...');
-    
-    // Save to GitHub
-    saveToGitHub(allGames).then(() => {
-      showToast(`Jeu supprimé: ${game.title}`, 'success');
-      updateSyncStatus(true, 'Synchronisé avec GitHub');
-      loadRecentGames();
-      clearForm();
-    }).catch(err => {
-      showToast('Erreur lors de la suppression', 'error');
-      updateSyncStatus(false, 'Erreur de synchronisation');
-      console.error(err);
-    });
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // MANUAL MAGNET & DIRECT LINK FUNCTIONS
-  // ═══════════════════════════════════════════════════════════
-  function addManualMagnet() {
-    const url = document.getElementById('manualMagnet').value.trim();
-    const size = document.getElementById('manualMagnetSize').value.trim();
-    const source = document.getElementById('manualMagnetSource').value;
-    
-    if (!url) {
-      showToast('Entre un lien magnet', 'error');
-      return;
-    }
-    
-    // Validate magnet format
-    if (!url.startsWith('magnet:')) {
-      showToast('Le lien doit commencer par magnet:', 'error');
-      return;
-    }
-    
-    const magnetObj = {
-      url: url,
-      size: size || 'Inconnue',
-      source: source,
-      name: ''
-    };
-    
-    state.selectedMagnets.push(magnetObj);
-    updateSelectedMagnets();
-    
-    // Clear inputs
-    document.getElementById('manualMagnet').value = '';
-    document.getElementById('manualMagnetSize').value = '';
-    
-    showToast('Magnet ajouté', 'success');
-  }
-
-  function addDirectLink() {
-    const url = document.getElementById('directLinkUrl').value.trim();
-    const size = document.getElementById('directLinkSize').value.trim();
-    const name = document.getElementById('directLinkName').value.trim();
-    
-    if (!url) {
-      showToast('Entre une URL de téléchargement', 'error');
-      return;
-    }
-    
-    // Validate URL format
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      showToast('L\'URL doit commencer par http:// ou https://', 'error');
-      return;
-    }
-    
-    const linkObj = {
-      url: url,
-      size: size || 'Inconnue',
-      source: name || 'Lien direct',
-      name: name || 'Téléchargement direct',
-      type: 'direct'
-    };
-    
-    state.selectedMagnets.push(linkObj);
-    updateSelectedMagnets();
-    
-    // Clear inputs
-    document.getElementById('directLinkUrl').value = '';
-    document.getElementById('directLinkSize').value = '';
-    document.getElementById('directLinkName').value = '';
-    
-    showToast('Lien de téléchargement ajouté', 'success');
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // CLOUDINARY IMAGE UPLOAD FUNCTIONS
-  // ═══════════════════════════════════════════════════════════
-  let uploadedImageUrl = null;
-
-  async function handleImageFile(file) {
-    if (!file) return;
-    
-    showToast('Upload vers Cloudinary en cours...', 'success');
-    
-    // Show preview immediately
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      document.getElementById('uploadPreviewImg').src = e.target.result;
-      document.getElementById('uploadPreview').style.display = 'block';
-      // Highlight paste zone
-      const pasteZone = document.getElementById('pasteZone');
-      if (pasteZone) {
-        pasteZone.style.borderColor = '#f97316';
-        setTimeout(() => pasteZone.style.borderColor = '', 1000);
-      }
-    };
-    reader.readAsDataURL(file);
-    
-    // Upload to Cloudinary with user's account
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'kmorlkcl'); // User's unsigned preset
-    
-    try {
-      const res = await fetch('https://api.cloudinary.com/v1_1/dijopwaix/image/upload', {
-        method: 'POST',
-        body: formData
-      });
-      
-      const data = await res.json();
-      
-      if (data.secure_url) {
-        uploadedImageUrl = data.secure_url;
-        showToast('Image uploadée sur Cloudinary ! Clique sur "Utiliser comme..."', 'success');
-      } else {
-        showToast('Erreur upload Cloudinary: ' + (data.error?.message || 'Unknown'), 'error');
-      }
-    } catch (e) {
-      console.error('Upload error:', e);
-      showToast('Erreur lors de l\'upload Cloudinary', 'error');
-    }
-  }
-
-  async function handleImageUpload(input) {
-    const file = input.files[0];
-    if (!file) return;
-    await handleImageFile(file);
-  }
-
-  function useAsPortrait() {
-    if (!uploadedImageUrl) {
-      showToast('Upload d\'abord une image', 'error');
-      return;
-    }
-    selectPortrait(uploadedImageUrl);
-    showToast('Image définie comme portrait', 'success');
-  }
-
-  function useAsBanner() {
-    if (!uploadedImageUrl) {
-      showToast('Upload d\'abord une image', 'error');
-      return;
-    }
-    selectBanner(uploadedImageUrl);
-    showToast('Image définie comme bannière', 'success');
-  }
-
-  function addManualImage() {
-    const url = document.getElementById('manualImageUrl').value.trim();
-    const type = document.getElementById('manualImageType').value;
-    
-    if (!url) {
-      showToast('Entre une URL d\'image', 'error');
-      return;
-    }
-    
-    if (type === 'portrait') {
-      selectPortrait(url);
-    } else {
-      selectBanner(url);
-    }
-    
-    document.getElementById('manualImageUrl').value = '';
-    showToast(`Image ${type} ajoutée`, 'success');
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // TABS
-  // ═══════════════════════════════════════════════════════════
-  function setTab(tab, element) {
-    state.currentTab = tab;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    if (element) element.classList.add('active');
-    else if (typeof event !== 'undefined' && event?.target) event.target.classList.add('active');
-    
-    document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
-    document.getElementById('tab-info').style.display = tab === 'info' ? 'block' : 'none';
-    document.getElementById('tab-magnets').style.display = tab === 'magnets' ? 'block' : 'none';
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // SAVE
-  // ═══════════════════════════════════════════════════════════
-  
-  // Clean special characters that cause encoding issues
-  function cleanText(text) {
-    if (!text) return '';
-    
-    // Fix double-encoded UTF-8 (mojibake) - specific common patterns
-    // These happen when UTF-8 is misinterpreted as Latin-1 and then re-encoded
-    text = text
-      // Fix ™ (trademark) double encoding patterns
-      .replace(/Ã¢ÂÂ¢/g, '')           // Triple-encoded ™
-      .replace(/Ã¢âÂ¢/g, '')          // Another variant
-      .replace(/Ã¢ÂÂ¢/g, '')            // Another variant
-      // Fix common mojibake sequences
-      .replace(/ÃÂ©/g, 'e')             // é triple-encoded
-      .replace(/Ã©/g, 'e')               // é double-encoded
-      .replace(/Ã¨/g, 'e')               // è double-encoded
-      .replace(/Ãª/g, 'e')               // ê double-encoded
-      .replace(/Ã /g, 'a')               // à double-encoded
-      .replace(/Ã¢/g, 'a')               // â double-encoded
-      .replace(/Ã®/g, 'i')               // î double-encoded
-      .replace(/Ã¯/g, 'i')               // ï double-encoded
-      .replace(/Ã´/g, 'o')               // ô double-encoded
-      .replace(/Ã»/g, 'u')               // û double-encoded
-      .replace(/Ã¹/g, 'u')               // ù double-encoded
-      .replace(/Ã§/g, 'c')               // ç double-encoded
-      .replace(/Ã±/g, 'n')               // ñ double-encoded
-      .replace(/Ã[\s\S]?/g, '')          // Remove stray Ã and following char
-      // Remove standalone combining characters
-      .replace(/[\u00C2\u00C3\u00C4\u00C5]/g, '')  // Remove stray Â, Ã, Ä, Å
-      .replace(/[\u0080-\u009F]/g, '');  // Remove C1 control characters
-    
-    return text
-      // Trademark and special symbols - convert to empty or simple equivalent
-      .replace(/[\u2122\u00AE]/g, '')     // ™ and ® -> remove
-      .replace(/[\u2018\u2019]/g, "'")  // Curly quotes -> straight
-      .replace(/[\u201C\u201D]/g, '"')  // Curly double quotes -> straight
-      .replace(/[\u2013\u2014]/g, '-')  // En/em dash -> hyphen
-      .replace(/\u2026/g, '...')        // Ellipsis
-      .replace(/\u00A0/g, ' ')          // Non-breaking space
-      // Accented characters to ASCII
-      .replace(/[\u00C0-\u00C5]/g, 'A') // Various A accents
-      .replace(/[\u00E0-\u00E5]/g, 'a') // Various a accents
-      .replace(/[\u00C8-\u00CB]/g, 'E') // Various E accents
-      .replace(/[\u00E8-\u00EB]/g, 'e') // Various e accents
-      .replace(/[\u00CC-\u00CF]/g, 'I') // Various I accents
-      .replace(/[\u00EC-\u00EF]/g, 'i') // Various i accents
-      .replace(/[\u00D2-\u00D6]/g, 'O') // Various O accents
-      .replace(/[\u00F2-\u00F6]/g, 'o') // Various o accents
-      .replace(/[\u00D9-\u00DC]/g, 'U') // Various U accents
-      .replace(/[\u00F9-\u00FC]/g, 'u') // Various u accents
-      .replace(/\u00D1/g, 'N')           // Ñ -> N
-      .replace(/\u00F1/g, 'n')           // ñ -> n
-      .replace(/\u00C7/g, 'C')           // Ç -> C
-      .replace(/\u00E7/g, 'c')           // ç -> c
-      // Common French accented chars (duplicate range for safety)
-      .replace(/[\u00E9\u00E8\u00EA\u00EB]/g, 'e')  // All e accents
-      .replace(/[\u00C9\u00C8\u00CA\u00CB]/g, 'E')  // All E accents
-      .trim();
-  }
-
-  async function saveGame() {
-    const title = cleanText(document.getElementById('f-title').value.trim());
-    if (!title) {
-      showToast('Le titre est requis', 'error');
-      return;
-    }
-
-    const game = {
-      title,
-      year: document.getElementById('f-year').value.trim(),
-      description: cleanText(document.getElementById('f-desc').value.trim()),
-      categories: Array.from(state.selectedCategories),
-      portrait_url: state.selectedPortrait,
-      banner_url: state.selectedBanner,
-      ytb_id: extractYoutubeId(document.getElementById('f-ytb').value.trim()),
-      magnets: state.selectedMagnets.map(m => ({
-        url: m.url,
-        size: m.size,
-        source: m.source,
-        name: m.name || '',
-        type: m.type || 'magnet'
-      })),
-      added_by: state.githubUser?.login || 'admin',
-      added_at: new Date().toISOString()
-    };
-
-    try {
-      // Fetch current data.json from GitHub (not local file)
-      let current = [];
-      try {
-        const dataRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-          headers: { Authorization: `token ${state.githubToken}` }
-        });
-        if (dataRes.ok) {
-          const fileInfo = await dataRes.json();
-          const content = atob(fileInfo.content.replace(/\s/g, ''));
-          current = JSON.parse(content);
-        }
-      } catch (e) {
-        console.log('No existing data.json or error loading:', e.message);
-      }
-      console.log('Current games count:', current.length);
-      console.log('Current games:', current.map(g => g.title));
-      
-      // Check if editing existing game
-      if (editingGameIndex >= 0 && editingGameIndex < current.length) {
-        // Update existing game
-        current[editingGameIndex] = game;
-        console.log('Updating game at index:', editingGameIndex);
-      } else {
-        // Check if new game with same title exists
-        const exists = current.find(g => g.title?.toLowerCase() === title.toLowerCase());
-        if (exists) {
-          if (!confirm('Un jeu avec ce titre existe déjà. Remplacer ?')) return;
-          const idx = current.indexOf(exists);
-          current[idx] = game;
-          console.log('Replacing game at index:', idx);
-        } else {
-          current.push(game);
-          console.log('Adding new game, new count:', current.length);
-        }
-      }
-
-      console.log('Saving data to GitHub:', current.length, 'games');
-      // Save via GitHub API
-      await saveToGitHub(current);
-      
-      showToast('Jeu sauvegardé !', 'success');
-      updateSyncStatus(true, 'Synchronisé avec GitHub');
-      clearForm();
-    } catch (e) {
-      console.error(e);
-      showToast('Erreur lors de la sauvegarde: ' + e.message, 'error');
-    }
-  }
-
-  async function saveToGitHub(data) {
-    if (!state.githubToken) {
-      throw new Error('GitHub token manquant');
-    }
-
-    console.log('Saving to GitHub:', CONFIG.REPO, CONFIG.BRANCH);
-    console.log('Token present:', !!state.githubToken);
-
-    // Get current file to get SHA (if exists)
-    let fileSha = null;
-    try {
-      const getRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-        headers: { Authorization: `token ${state.githubToken}` }
-      });
-      
-      console.log('GET response status:', getRes.status);
-      
-      if (getRes.ok) {
-        const fileInfo = await getRes.json();
-        fileSha = fileInfo.sha;
-        console.log('Got file SHA:', fileSha?.slice(0, 10));
-      } else if (getRes.status === 404) {
-        console.log('File does not exist, will create new file');
-      } else {
-        const errorText = await getRes.text();
-        console.error('GitHub GET error:', getRes.status, errorText);
-        throw new Error(`Impossible d'accéder au repo GitHub (${getRes.status})`);
-      }
-    } catch (e) {
-      console.log('Error checking file:', e.message);
-    }
-
-    // Update file (or create if sha is null)
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    
-    const body = {
-      message: `Update: ${data[data.length - 1]?.title || 'games'}`,
-      content,
-      branch: CONFIG.BRANCH
-    };
-    
-    if (fileSha) {
-      body.sha = fileSha;
-    }
-    
-    const putRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json`, {
-      method: 'PUT',
-      headers: {
-        Authorization: `token ${state.githubToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-
-    console.log('PUT response status:', putRes.status);
-
-    if (!putRes.ok) {
-      const errorText = await putRes.text();
-      console.error('GitHub PUT error:', putRes.status, errorText);
-      throw new Error(`Échec de la mise à jour (${putRes.status})`);
-    }
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  // GITHUB SYNC FUNCTIONS
-  // ═══════════════════════════════════════════════════════════
-  
-  async function pullFromGitHub() {
-    if (!state.githubToken) {
-      showToast('GitHub token manquant. Connecte-toi d\'abord.', 'error');
-      return;
-    }
-    
-    showToast('Récupération des données depuis GitHub...', 'success');
-    
-    try {
-      const dataRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-        headers: { Authorization: `token ${state.githubToken}` }
-      });
-      
-      if (!dataRes.ok) {
-        if (dataRes.status === 404) {
-          showToast('Aucun data.json trouvé sur GitHub', 'error');
-          return;
-        }
-        throw new Error(`GitHub API error: ${dataRes.status}`);
-      }
-      
-      const fileInfo = await dataRes.json();
-      const content = atob(fileInfo.content.replace(/\s/g, ''));
-      allGames = JSON.parse(content);
-      
-      // Update UI
-      displayRecentGames(allGames.slice(0, 5));
-      updateSyncStatus(true, `${allGames.length} jeux chargés`);
-      showToast(`${allGames.length} jeux récupérés depuis GitHub !`, 'success');
-      
-    } catch (err) {
-      console.error('Pull error:', err);
-      showToast('Erreur lors du pull: ' + err.message, 'error');
-    }
-  }
-  
-  async function pushToGitHub() {
-    if (!state.githubToken) {
-      showToast('GitHub token manquant. Connecte-toi d\'abord.', 'error');
-      return;
-    }
-    
-    if (!allGames || allGames.length === 0) {
-      showToast('Aucun jeu à pousser. Charge d\'abord des données.', 'error');
-      return;
-    }
-    
-    showToast('Envoi des données vers GitHub...', 'success');
-    
-    try {
-      await saveToGitHub(allGames);
-      updateSyncStatus(true, 'Synchronisé avec GitHub');
-      showToast(`${allGames.length} jeux poussés vers GitHub !`, 'success');
-    } catch (err) {
-      console.error('Push error:', err);
-      showToast('Erreur lors du push: ' + err.message, 'error');
-    }
-  }
-  
-  function updateSyncStatus(synced, message) {
-    const badge = document.getElementById('syncStatus');
-    if (synced) {
-      badge.className = 'status-badge synced';
-      badge.innerHTML = `<span>🟢</span> ${message || 'Synchronisé'}`;
-    } else {
-      badge.className = 'status-badge modified';
-      badge.innerHTML = `<span>🟠</span> ${message || 'Modifications locales'}`;
-    }
-  }
-
-  function searchYouTubeTrailer() {
-    const title = document.getElementById('f-title').value.trim();
-    if (!title) {
-      showToast('Entre un titre de jeu d\'abord', 'error');
-      return;
-    }
-    const query = encodeURIComponent(`${title} trailer`);
-    window.open(`https://www.youtube.com/results?search_query=${query}`, '_blank');
-  }
-
-  // Search YouTube via Invidious API (no API key needed)
-  async function searchYouTubeAPI() {
-    const title = document.getElementById('f-title').value.trim();
-    if (!title) {
-      showToast('Entre un titre de jeu d\'abord', 'error');
-      return;
-    }
-    
-    showToast('Recherche via API Invidious...', 'success');
-    
-    // Try multiple Invidious instances
-    const instances = [
-      'https://vid.puffyan.us',
-      'https://iv.datura.network',
-      'https://iv.nboeck.de',
-      'https://iv.melmac.space'
-    ];
-    
-    const query = encodeURIComponent(`${title} official trailer`);
-    
-    for (const instance of instances) {
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 5000); // 5s timeout
-        
-        const res = await fetch(`${instance}/api/v1/search?q=${query}&type=video`, {
-          signal: controller.signal
-        });
-        clearTimeout(timeout);
-        
-        if (!res.ok) continue;
-        
-        const videos = await res.json();
-        
-        if (videos.length === 0) {
-          showToast('Aucun trailer trouvé', 'error');
-          return;
-        }
-        
-        // Display results
-        const resultsHtml = videos.slice(0, 5).map(v => `
-          <div style="display:flex;gap:1rem;padding:1rem;background:rgba(255,255,255,.05);border-radius:1rem;margin-bottom:.75rem;cursor:pointer;transition:all .2s" 
-               onmouseover="this.style.background='rgba(249,115,22,.1)'" 
-               onmouseout="this.style.background='rgba(255,255,255,.05)'"
-               onclick="selectYouTubeVideo('${v.videoId}', '${v.title.replace(/'/g, "\\'")}')">
-            <img src="${v.videoThumbnails?.[0]?.url || `https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg`}" 
-                 style="width:120px;height:68px;object-fit:cover;border-radius:.5rem;background:#333">
-            <div style="flex:1">
-              <div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem">${v.title}</div>
-              <div style="font-size:.75rem;color:#94a3b8">${v.author} • ${formatDuration(v.lengthSeconds)}</div>
-            </div>
-          </div>
-        `).join('');
-        
-        // Show modal with results
-        showYouTubeModal(resultsHtml);
-        return; // Success, exit function
-        
-      } catch (e) {
-        console.log(`Instance ${instance} failed:`, e.message);
-        continue; // Try next instance
-      }
-    }
-    
-    // All instances failed
-    showToast('API Indisponible - Utilise le bouton YouTube manuel', 'error');
-  }
-  
-  function formatDuration(seconds) {
-    if (!seconds) return '';
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  }
-  
-  function selectYouTubeVideo(videoId, title) {
-    document.getElementById('f-ytb').value = videoId;
-    showToast(`Trailer sélectionné: ${title.substring(0, 40)}...`, 'success');
-    closeYouTubeModal();
-  }
-  
-  function showYouTubeModal(content) {
-    const modal = document.createElement('div');
-    modal.id = 'ytModal';
-    modal.innerHTML = `
-      <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9);z-index:1000;display:flex;align-items:center;justify-content:center;padding:2rem">
-        <div style="width:100%;max-width:600px;max-height:80vh;overflow-y:auto;background:rgba(20,20,20,.95);border-radius:1rem;border:1px solid rgba(255,255,255,.1);padding:1.5rem">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-            <h3 style="font-size:1.25rem;font-weight:700">Sélectionner un trailer</h3>
-            <button onclick="closeYouTubeModal()" style="width:32px;height:32px;border-radius:.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;cursor:pointer">✕</button>
-          </div>
-          ${content}
-          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);text-align:center">
-            <button onclick="searchYouTubeTrailer()" style="color:#f97316;font-size:.875rem;background:none;border:none;cursor:pointer;text-decoration:underline">
-              Ou ouvrir YouTube manuellement
+          <!-- ACTION BAR -->
+          <div class="action-bar">
+            <button class="action-btn btn-clear" onclick="clearForm()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+              </svg>
+              Effacer
+            </button>
+            <button class="action-btn btn-delete" id="deleteBtn" onclick="deleteCurrentGame()" style="display:none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+              </svg>
+              Supprimer
+            </button>
+            <button class="action-btn btn-save" onclick="saveGame()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <path d="M17 21v-8H7v8"/>
+                <path d="M7 3v5h8"/>
+              </svg>
+              Sauvegarder (local)
             </button>
           </div>
         </div>
       </div>
-    `;
-    document.body.appendChild(modal);
-  }
-  
-  function closeYouTubeModal() {
-    const modal = document.getElementById('ytModal');
-    if (modal) modal.remove();
-  }
+    </div>
+  </main>
 
-  function extractYoutubeId(input) {
-    if (!input) return '';
-    if (input.length === 11) return input;
-    const match = input.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
-    return match ? match[1] : '';
-  }
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // STATE & CONFIG
+    // ═══════════════════════════════════════════════════════════
+    const state = {
+      games: [],
+      selectedCategories: new Set(),
+      selectedMagnets: [],
+      selectedPortrait: '',
+      selectedBanner: '',
+      steamData: {},
+      editingIndex: -1,
+      uploadedImageUrl: '',
+      isModified: false
+    };
 
-  function clearForm() {
-    document.getElementById('f-title').value = '';
-    document.getElementById('f-year').value = '';
-    document.getElementById('f-desc').value = '';
-    document.getElementById('f-ytb').value = '';
-    
-    state.selectedCategories.clear();
-    state.selectedPortrait = null;
-    state.selectedBanner = null;
-    state.selectedMagnets = [];
-    
-    document.getElementById('steamSearch').value = '';
-    document.getElementById('steamResults').innerHTML = '';
-    
-    state.steamData = null;
-    
-    // Reset editing mode
-    editingGameIndex = -1;
-    state.editingGame = null;
-    
-    // Reset UI
-    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-    updateGalleries();
-    updateSelectedMagnets();
-    updateCatButtons();
-    setTab('images');
-  }
+    const CONFIG = {
+      REPO: 'ton-user/ton-repo', // Remplace par ton repo GitHub
+      BRANCH: 'main',
+      GITHUB_TOKEN: localStorage.getItem('github_token') || '',
+      CATEGORIES: ['Action','Aventure','RPG','Simulation','Strategie','Sport','Course','Horreur','Puzzle','Multijoueur','FPS','Monde ouvert','Survie','Combat','Plateforme'],
+      CLOUDINARY_CLOUD: 'dijopwaix',
+      CLOUDINARY_PRESET: 'kmorlkcl',
+      SOURCES: {
+        onlinefix: {
+          name: 'Online-Fix',
+          url: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/onlinefix.json',
+          icon: '🌐'
+        },
+        fitgirl: {
+          name: 'FitGirl',
+          url: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/fitgirl.json',
+          icon: '💪'
+        },
+        dodi: {
+          name: 'DODI',
+          url: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/dodi.json',
+          icon: '⚡'
+        },
+        steamrip: {
+          name: 'SteamRip',
+          url: 'https://raw.githubusercontent.com/ArnamentGames/HydraLinks/main/steamrip.json',
+          icon: '🎮'
+        }
+      }
+    };
 
-  // ═══════════════════════════════════════════════════════════
-  // UTILS
-  // ═══════════════════════════════════════════════════════════
-  function esc(str) {
-    if (!str) return '';
-    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
+    let editingGameIndex = -1;
 
-  function showToast(msg, type = 'info') {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => toast.classList.remove('show'), 3000);
-  }
+    // ═══════════════════════════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGames();
+      renderCategories();
+      setupPasteListener();
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // DATA LOADING (LOCAL MODE)
+    // ═══════════════════════════════════════════════════════════
+    async function loadGames() {
+      try {
+        // First try to load from localStorage (saved work)
+        const localData = localStorage.getItem('crackuzu_games');
+        if (localData) {
+          state.games = JSON.parse(localData);
+          showToast('Données chargées depuis la sauvegarde locale', 'success');
+          state.isModified = true;
+          updateStatusBadge();
+        } else {
+          // Otherwise load from data.json file
+          const res = await fetch('data.json');
+          if (res.ok) {
+            state.games = await res.json();
+          } else {
+            state.games = [];
+          }
+        }
+        displayRecentGames();
+      } catch (e) {
+        console.error('Error loading games:', e);
+        state.games = [];
+        showToast('Erreur lors du chargement des jeux', 'error');
+      }
+    }
+
+    function loadFromLocalStorage() {
+      const localData = localStorage.getItem('crackuzu_games');
+      if (localData) {
+        state.games = JSON.parse(localData);
+        displayRecentGames();
+        showToast('Sauvegarde locale chargée !', 'success');
+        state.isModified = true;
+        updateStatusBadge();
+      } else {
+        showToast('Aucune sauvegarde locale trouvée', 'error');
+      }
+    }
+
+    async function resetToOriginal() {
+      if (!confirm('⚠️ Cela va remplacer toutes les modifications locales par le data.json original. Continuer ?')) return;
+      
+      try {
+        const res = await fetch('data.json');
+        if (res.ok) {
+          state.games = await res.json();
+          localStorage.removeItem('crackuzu_games');
+          displayRecentGames();
+          clearForm();
+          state.isModified = false;
+          updateStatusBadge();
+          showToast('Data.json original restauré', 'success');
+        }
+      } catch (e) {
+        showToast('Erreur lors du reset', 'error');
+      }
+    }
+
+    function updateStatusBadge() {
+      const badge = document.getElementById('statusBadge');
+      if (state.isModified) {
+        badge.className = 'status-badge modified';
+        badge.innerHTML = '<span>🟠</span> Modifications non sauvegardées sur GitHub';
+      } else {
+        badge.className = 'status-badge';
+        badge.innerHTML = '<span>🟢</span> data.json original';
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // SAVE (LOCAL MODE)
+    // ═══════════════════════════════════════════════════════════
+    async function saveGame() {
+      const title = cleanText(document.getElementById('f-title').value.trim());
+      if (!title) {
+        showToast('Le titre est requis', 'error');
+        return;
+      }
+
+      const game = {
+        title,
+        year: document.getElementById('f-year').value.trim(),
+        description: cleanText(document.getElementById('f-desc').value.trim()),
+        categories: Array.from(state.selectedCategories),
+        portrait_url: state.selectedPortrait,
+        banner_url: state.selectedBanner,
+        ytb_id: extractYoutubeId(document.getElementById('f-ytb').value.trim()),
+        magnets: state.selectedMagnets.map(m => ({
+          url: m.url,
+          size: m.size,
+          source: m.source || 'manual',
+          name: m.name || '',
+          type: m.type || 'magnet'
+        })),
+        added_by: 'admin-local',
+        added_at: new Date().toISOString()
+      };
+
+      if (editingGameIndex >= 0 && editingGameIndex < state.games.length) {
+        state.games[editingGameIndex] = game;
+      } else {
+        const exists = state.games.find(g => g.title?.toLowerCase() === title.toLowerCase());
+        if (exists) {
+          if (!confirm('Un jeu avec ce titre existe déjà. Remplacer ?')) return;
+          const idx = state.games.indexOf(exists);
+          state.games[idx] = game;
+        } else {
+          state.games.push(game);
+        }
+      }
+
+      // Save to localStorage
+      localStorage.setItem('crackuzu_games', JSON.stringify(state.games));
+      state.isModified = true;
+      updateStatusBadge();
+      
+      showToast('Jeu sauvegardé localement ! N\'oublie pas d\'exporter data.json', 'success');
+      displayRecentGames();
+    }
+
+    function exportDataJson() {
+      const dataStr = localStorage.getItem('crackuzu_games') || '[]';
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('data.json téléchargé !', 'success');
+    }
+
+    async function importDataJson(input) {
+      const file = input.files[0];
+      if (!file) return;
+      
+      try {
+        const text = await file.text();
+        const games = JSON.parse(text);
+        
+        if (!Array.isArray(games)) {
+          throw new Error('Format invalide : attendu un tableau de jeux');
+        }
+        
+        // Sauvegarder dans localStorage
+        localStorage.setItem('crackuzu_games', JSON.stringify(games));
+        
+        // Mettre à jour l'interface
+        await loadGames();
+        renderGallery();
+        updateStatusBadge();
+        
+        showToast(`${games.length} jeux importés avec succès !`, 'success');
+        input.value = '';
+      } catch (err) {
+        console.error('Import error:', err);
+        showToast('Erreur import : ' + err.message, 'error');
+        input.value = '';
+      }
+    }
+
+    function deleteCurrentGame() {
+      if (editingGameIndex < 0 || editingGameIndex >= state.games.length) return;
+      
+      if (!confirm('Supprimer ce jeu définitivement ?')) return;
+      
+      state.games.splice(editingGameIndex, 1);
+      localStorage.setItem('crackuzu_games', JSON.stringify(state.games));
+      state.isModified = true;
+      updateStatusBadge();
+      
+      showToast('Jeu supprimé', 'success');
+      displayRecentGames();
+      clearForm();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // GITHUB SYNC FUNCTIONS
+    // ═══════════════════════════════════════════════════════════
+    
+    async function pullFromGitHub() {
+      const token = prompt('Entre ton GitHub Personal Access Token:');
+      if (!token) return;
+      
+      localStorage.setItem('github_token', token);
+      CONFIG.GITHUB_TOKEN = token;
+      
+      showToast('Récupération depuis GitHub...', 'success');
+      
+      try {
+        const res = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        
+        if (!res.ok) throw new Error(`GitHub API: ${res.status}`);
+        
+        const data = await res.json();
+        const content = atob(data.content.replace(/\s/g, ''));
+        const games = JSON.parse(content);
+        
+        localStorage.setItem('crackuzu_games', JSON.stringify(games));
+        state.games = games;
+        displayRecentGames();
+        
+        showToast(`${games.length} jeux récupérés depuis GitHub !`, 'success');
+        updateStatusBadge();
+      } catch (e) {
+        console.error('Pull error:', e);
+        showToast('Erreur Pull: ' + e.message, 'error');
+      }
+    }
+    
+    async function pushToGitHub() {
+      const token = CONFIG.GITHUB_TOKEN || prompt('Entre ton GitHub Personal Access Token:');
+      if (!token) return;
+      
+      if (!CONFIG.GITHUB_TOKEN) {
+        localStorage.setItem('github_token', token);
+        CONFIG.GITHUB_TOKEN = token;
+      }
+      
+      const games = state.games;
+      if (!games || games.length === 0) {
+        showToast('Aucun jeu à pousser', 'error');
+        return;
+      }
+      
+      showToast('Envoi vers GitHub...', 'success');
+      
+      try {
+        // Get current file SHA
+        const getRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json?ref=${CONFIG.BRANCH}`, {
+          headers: { 'Authorization': `token ${token}` }
+        });
+        
+        let sha = '';
+        if (getRes.ok) {
+          const fileData = await getRes.json();
+          sha = fileData.sha;
+        }
+        
+        // Prepare content
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(games, null, 2))));
+        
+        // Commit to GitHub
+        const putRes = await fetch(`https://api.github.com/repos/${CONFIG.REPO}/contents/data.json`, {
+          method: 'PUT',
+          headers: { 
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Update data.json - ${games.length} games`,
+            content: content,
+            branch: CONFIG.BRANCH,
+            sha: sha || undefined
+          })
+        });
+        
+        if (!putRes.ok) throw new Error(`GitHub PUT: ${putRes.status}`);
+        
+        showToast(`${games.length} jeux poussés vers GitHub !`, 'success');
+        state.isModified = false;
+        updateStatusBadge();
+      } catch (e) {
+        console.error('Push error:', e);
+        showToast('Erreur Push: ' + e.message, 'error');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // CLEAN TEXT
+    // ═══════════════════════════════════════════════════════════
+    function cleanText(text) {
+      if (!text) return '';
+      
+      text = text
+        .replace(/Ã¢ÂÂ¢/g, '')
+        .replace(/Ã¢âÂ¢/g, '')
+        .replace(/Ã¢ÂÂ¢/g, '')
+        .replace(/ÃÂ©/g, 'e')
+        .replace(/Ã©/g, 'e')
+        .replace(/Ã¨/g, 'e')
+        .replace(/Ãª/g, 'e')
+        .replace(/Ã /g, 'a')
+        .replace(/Ã¢/g, 'a')
+        .replace(/Ã®/g, 'i')
+        .replace(/Ã¯/g, 'i')
+        .replace(/Ã´/g, 'o')
+        .replace(/Ã»/g, 'u')
+        .replace(/Ã¹/g, 'u')
+        .replace(/Ã§/g, 'c')
+        .replace(/Ã±/g, 'n')
+        .replace(/Ã[\s\S]?/g, '')
+        .replace(/[\u00C2\u00C3\u00C4\u00C5]/g, '')
+        .replace(/[\u0080-\u009F]/g, '');
+      
+      return text
+        .replace(/[\u2122\u00AE]/g, '')
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[\u2013\u2014]/g, '-')
+        .replace(/\u2026/g, '...')
+        .replace(/\u00A0/g, ' ')
+        .replace(/[\u00C0-\u00C5]/g, 'A')
+        .replace(/[\u00E0-\u00E5]/g, 'a')
+        .replace(/[\u00C8-\u00CB]/g, 'E')
+        .replace(/[\u00E8-\u00EB]/g, 'e')
+        .replace(/[\u00CC-\u00CF]/g, 'I')
+        .replace(/[\u00EC-\u00EF]/g, 'i')
+        .replace(/[\u00D2-\u00D6]/g, 'O')
+        .replace(/[\u00F2-\u00F6]/g, 'o')
+        .replace(/[\u00D9-\u00DC]/g, 'U')
+        .replace(/[\u00F9-\u00FC]/g, 'u')
+        .replace(/\u00D1/g, 'N')
+        .replace(/\u00F1/g, 'n')
+        .replace(/\u00C7/g, 'C')
+        .replace(/\u00E7/g, 'c')
+        .replace(/[\u00E9\u00E8\u00EA\u00EB]/g, 'e')
+        .replace(/[\u00C9\u00C8\u00CA\u00CB]/g, 'E')
+        .trim();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // STEAM SEARCH
+    // ═══════════════════════════════════════════════════════════
+    let searchTimeout;
+
+    async function searchSteam() {
+      const query = document.getElementById('steamSearch').value.trim();
+      if (!query) return;
+
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(async () => {
+        showLoading(true);
+        try {
+          // Use CORS proxy to access Steam API
+          const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
+          if (!res.ok) throw new Error('Network error');
+          
+          const data = await res.json();
+          const container = document.getElementById('steamResults');
+          
+          if (!data || !data.length) {
+            container.innerHTML = '<div style="padding:1rem;color:rgba(255,255,255,.5);text-align:center">Aucun résultat</div>';
+            return;
+          }
+
+          container.innerHTML = data.slice(0, 6).map(game => `
+            <div class="search-item" onclick="selectSteamGame(${game.appid})">
+              <img class="search-img" src="https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/capsule_sm_120.jpg" alt="" onerror="this.style.display='none'">
+              <div class="search-info">
+                <div class="search-name">${esc(game.name)}</div>
+                <div class="search-meta">AppID: ${game.appid}</div>
+              </div>
+            </div>
+          `).join('');
+        } catch (e) {
+          console.error('Steam search error:', e);
+          showToast('Erreur Steam: ' + e.message, 'error');
+        } finally {
+          showLoading(false);
+        }
+      }, 300);
+    }
+
+    async function selectSteamGame(appid) {
+      showLoading(true);
+      try {
+        // Use CORS proxy for Steam API
+        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`);
+        if (!res.ok) throw new Error('Network error');
+        
+        const data = await res.json();
+        const game = data[appid]?.data;
+        
+        if (!game) {
+          showToast('Impossible de charger les détails', 'error');
+          return;
+        }
+
+        state.steamData = {
+          screenshots: game.screenshots?.map(s => s.path_full) || [],
+          background: game.background
+        };
+
+        document.getElementById('f-title').value = cleanText(game.name);
+        document.getElementById('f-year').value = game.release_date?.date?.split('/').pop() || 
+                                                   game.release_date?.date?.split(' ').pop() || '';
+        document.getElementById('f-desc').value = cleanText(game.short_description || '');
+        
+        game.genres?.forEach(g => {
+          const cat = CONFIG.CATEGORIES.find(c => c.toLowerCase() === g.description.toLowerCase());
+          if (cat) state.selectedCategories.add(cat);
+        });
+        renderCategories();
+        
+        updateGalleries(appid);
+        searchYouTubeTrailer(game.name);
+        
+        showToast('Données Steam chargées !', 'success');
+      } catch (e) {
+        console.error('Steam details error:', e);
+        showToast('Erreur lors du chargement: ' + e.message, 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // IMAGE GALLERIES
+    // ═══════════════════════════════════════════════════════════
+    function updateGalleries(appid) {
+      const portraits = [
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/portrait.png`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`
+      ];
+      
+      document.getElementById('portraitGallery').innerHTML = portraits.map((url, i) => `
+        <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}', this)">
+          <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      `).join('');
+
+      if (!state.selectedPortrait && portraits[0]) {
+        state.selectedPortrait = portraits[0];
+      }
+
+      const banners = [
+        appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero.jpg` : null,
+        appid ? `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg` : null,
+        state.steamData.background,
+        ...state.steamData.screenshots.slice(0, 3)
+      ].filter(Boolean);
+
+      document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
+        <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}', this)">
+          <img src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      `).join('');
+
+      if (banners[0]) state.selectedBanner = banners[0];
+    }
+
+    function selectPortrait(url, el) {
+      state.selectedPortrait = url;
+      document.querySelectorAll('#portraitGallery .img-item').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('f-portrait').value = url;
+    }
+
+    function selectBanner(url, el) {
+      state.selectedBanner = url;
+      document.querySelectorAll('#bannerGallery .banner-item').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('f-banner').value = url;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // UPLOAD
+    // ═══════════════════════════════════════════════════════════
+    async function handleImageUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      await handleImageFile(file);
+    }
+
+    async function handleImageFile(file) {
+      showToast('Upload vers Cloudinary...', 'success');
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById('uploadPreviewImg').src = e.target.result;
+        document.getElementById('uploadPreview').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+      
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', CONFIG.CLOUDINARY_PRESET);
+      
+      try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CONFIG.CLOUDINARY_CLOUD}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await res.json();
+        
+        if (data.secure_url) {
+          state.uploadedImageUrl = data.secure_url;
+          showToast('Image uploadée ! Clique sur "Utiliser comme..."', 'success');
+        } else {
+          showToast('Erreur upload: ' + (data.error?.message || 'Unknown'), 'error');
+        }
+      } catch (e) {
+        showToast('Erreur upload Cloudinary', 'error');
+      }
+    }
+
+    function setupPasteListener() {
+      const uploadZone = document.getElementById('uploadZone');
+      
+      document.addEventListener('paste', (e) => {
+        const items = e.clipboardData?.items;
+        if (!items) return;
+        
+        for (const item of items) {
+          if (item.type.startsWith('image/')) {
+            const file = item.getAsFile();
+            if (file) {
+              uploadZone.classList.add('pasting');
+              setTimeout(() => uploadZone.classList.remove('pasting'), 500);
+              handleImageFile(file);
+            }
+          }
+        }
+      });
+    }
+
+    function useAsPortrait() {
+      if (!state.uploadedImageUrl) return;
+      state.selectedPortrait = state.uploadedImageUrl;
+      document.getElementById('f-portrait').value = state.uploadedImageUrl;
+      showToast('Utilisé comme portrait !', 'success');
+    }
+
+    function useAsBanner() {
+      if (!state.uploadedImageUrl) return;
+      state.selectedBanner = state.uploadedImageUrl;
+      document.getElementById('f-banner').value = state.uploadedImageUrl;
+      showToast('Utilisé comme bannière !', 'success');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // YOUTUBE
+    // ═══════════════════════════════════════════════════════════
+    function extractYoutubeId(url) {
+      if (!url) return '';
+      if (url.length === 11 && !url.includes('/')) return url;
+      const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+      return match ? match[1] : url;
+    }
+
+    async function searchYouTubeTrailer(query) {
+      document.getElementById('f-ytb').value = 'Recherche...';
+      
+      const trailers = await searchYouTubeAPI(query + ' launch trailer');
+      
+      if (trailers.length > 0) {
+        document.getElementById('f-ytb').value = trailers[0].id;
+        showToast('Bande-annonce trouvée !', 'success');
+      } else {
+        document.getElementById('f-ytb').value = '';
+      }
+    }
+
+    async function searchYouTubeAPI(query) {
+      const instances = [
+        'https://iv.datura.network',
+        'https://iv.melmac.space',
+        'https://iv.nboeck.de',
+        'https://yt.artemislena.eu'
+      ];
+      
+      for (const base of instances) {
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 5000);
+          
+          const res = await fetch(`${base}/api/v1/search?q=${encodeURIComponent(query)}&type=video`, {
+            signal: controller.signal
+          });
+          clearTimeout(timeout);
+          
+          if (res.ok) {
+            const data = await res.json();
+            return data.slice(0, 5).map(v => ({
+              id: v.videoId,
+              title: v.title,
+              author: v.author
+            }));
+          }
+        } catch (e) {
+          console.log(`Instance ${base} failed:`, e.message);
+        }
+      }
+      return [];
+    }
+
+    async function openYtModal() {
+      const title = document.getElementById('f-title').value || 'game';
+      showLoading(true);
+      
+      const results = await searchYouTubeAPI(title + ' launch trailer');
+      
+      const list = document.getElementById('ytList');
+      if (!results || results.length === 0) {
+        list.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:3rem 2rem;color:rgba(255,255,255,.5)">
+            <div style="font-size:3rem;margin-bottom:1rem">😕</div>
+            <div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem">Aucune bande-annonce trouvée</div>
+            <div style="font-size:.875rem">Les serveurs Invidious sont peut-être indisponibles.<br>Tu peux entrer l'ID YouTube manuellement dans le champ.</div>
+          </div>
+        `;
+      } else {
+        list.innerHTML = results.map(r => `
+          <div class="yt-item" onclick="selectYt('${r.id}')">
+            <img class="yt-thumb" src="https://img.youtube.com/vi/${r.id}/mqdefault.jpg">
+            <div class="yt-info">
+              <div class="yt-video-title">${esc(r.title)}</div>
+              <div class="yt-channel">${esc(r.author)}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+      
+      document.getElementById('ytModal').classList.add('show');
+      showLoading(false);
+    }
+
+    function closeYtModal() {
+      document.getElementById('ytModal').classList.remove('show');
+    }
+
+    function selectYt(id) {
+      document.getElementById('f-ytb').value = id;
+      closeYtModal();
+      showToast('Bande-annonce sélectionnée !', 'success');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // MAGNETS (Manual input only - CORS blocks automatic scraping)
+    // ═══════════════════════════════════════════════════════════
+    async function uploadTorrentWithProxy(input) {
+      const file = input.files[0];
+      if (!file) return;
+      
+      const status = document.getElementById('torrentUploadStatus');
+      status.textContent = '⏳ Upload via proxy...';
+      
+      // Try litterbox directly first (has CORS enabled)
+      try {
+        status.textContent = '⏳ Upload sur Litterbox...';
+        
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('fileToUpload', file);
+        formData.append('time', '72h');
+        
+        const response = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.ok) {
+          const url = await response.text();
+          if (url && url.startsWith('http')) {
+            document.getElementById('m-url').value = url.trim();
+            document.getElementById('m-name').value = file.name.replace('.torrent', '');
+            document.getElementById('m-type').value = 'torrent';
+            status.textContent = '✅ Upload réussi sur Litterbox !';
+            showToast('Fichier uploadé !', 'success');
+            input.value = '';
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn('Litterbox failed:', e);
+      }
+      
+      // Fallback: try with corsproxy.io for catbox
+      try {
+        status.textContent = '⏳ Essai avec Catbox+proxy...';
+        await new Promise(r => setTimeout(r, 1000));
+        
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('fileToUpload', file);
+        
+        const response = await fetch('https://corsproxy.io/?https://catbox.moe/user/api.php', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.ok) {
+          const url = await response.text();
+          if (url && url.startsWith('http')) {
+            document.getElementById('m-url').value = url.trim();
+            document.getElementById('m-name').value = file.name.replace('.torrent', '');
+            document.getElementById('m-type').value = 'torrent';
+            status.textContent = '✅ Upload réussi sur Catbox !';
+            showToast('Fichier uploadé !', 'success');
+            input.value = '';
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn('Catbox proxy failed:', e);
+      }
+      
+      status.textContent = '❌ Upload échoué';
+      showToast('Upload auto échoué. Utilise catbox.me manuellement.', 'error');
+      input.value = '';
+    }
+    
+    function addManualMagnet() {
+      const url = document.getElementById('m-url').value.trim();
+      const name = document.getElementById('m-name').value.trim();
+      const size = document.getElementById('m-size').value.trim();
+      const type = document.getElementById('m-type').value;
+      
+      if (!url) {
+        showToast('URL requise', 'error');
+        return;
+      }
+
+      state.selectedMagnets.push({ url, name, size, type, source: 'manual' });
+      renderMagnets();
+      
+      document.getElementById('m-url').value = '';
+      document.getElementById('m-name').value = '';
+      document.getElementById('m-size').value = '';
+      
+      showToast('Magnet ajouté !', 'success');
+    }
+
+    function removeMagnet(idx) {
+      state.selectedMagnets.splice(idx, 1);
+      renderMagnets();
+    }
+
+    function renderMagnets() {
+      const list = document.getElementById('magnetList');
+      list.innerHTML = state.selectedMagnets.map((m, i) => `
+        <div class="magnet-item">
+          <div class="magnet-row">
+            <span style="font-size:.875rem;font-weight:600;color:${m.type === 'direct' ? '#3b82f6' : '#f97316'}">
+              ${m.type === 'direct' ? '⬇️' : '🧲'} ${m.name || 'Sans nom'}
+            </span>
+            ${m.size ? `<span style="font-size:.75rem;color:rgba(255,255,255,.5)">${m.size}</span>` : ''}
+            <button class="recent-btn delete" onclick="removeMagnet(${i})" style="margin-left:auto">🗑️</button>
+          </div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.4);word-break:break-all">${esc(m.url)}</div>
+        </div>
+      `).join('');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // HYDRA SOURCES - All sources auto-search (no single source selection)
+    // ═══════════════════════════════════════════════════════════
+    const sourceCache = {};
+    let lastSearchResults = []; // Store results to avoid re-searching when adding
+
+    async function searchAllSources() {
+      const title = document.getElementById('f-title').value.trim();
+      if (!title) {
+        showToast('Entre un titre de jeu d\'abord', 'error');
+        return;
+      }
+
+      // Auto-switch to magnets tab
+      switchTab('magnets');
+
+      const container = document.getElementById('sourceResults');
+      const status = document.getElementById('sourceStatus');
+      
+      container.style.display = 'block';
+      container.innerHTML = `
+        <div style="padding:2rem;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:.5rem">⏳</div>
+          <div style="color:rgba(255,255,255,.5)">Chargement des sources...</div>
+        </div>
+      `;
+      status.textContent = 'Chargement des 4 sources...';
+
+      const allResults = [];
+      const sourceKeys = Object.keys(CONFIG.SOURCES);
+      let loadedCount = 0;
+
+      // Load all sources in parallel
+      await Promise.all(sourceKeys.map(async (key) => {
+        try {
+          let rawData = sourceCache[key];
+          if (!rawData) {
+            // Use CORS proxy to access GitHub raw files
+            const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(CONFIG.SOURCES[key].url)}`;
+            const res = await fetch(proxyUrl);
+            if (!res.ok) throw new Error('Failed');
+            rawData = await res.json();
+            sourceCache[key] = rawData;
+          }
+
+          // Parse different JSON structures (array, data.list, data.games, etc.)
+          let data = [];
+          if (Array.isArray(rawData)) {
+            data = rawData;
+          } else if (rawData.list && Array.isArray(rawData.list)) {
+            data = rawData.list;
+          } else if (rawData.games && Array.isArray(rawData.games)) {
+            data = rawData.games;
+          } else if (rawData.data && Array.isArray(rawData.data)) {
+            data = rawData.data;
+          } else if (typeof rawData === 'object') {
+            const arrProp = Object.values(rawData).find(v => Array.isArray(v));
+            if (arrProp) data = arrProp;
+          }
+
+          console.log(`[${key}] Loaded ${data.length} games, searching for "${title}"`);
+          const matches = searchInSource(data, title);
+          console.log(`[${key}] Found ${matches.length} matches`);
+          matches.forEach(m => {
+            allResults.push({ ...m, sourceKey: key, sourceName: CONFIG.SOURCES[key].name, sourceIcon: CONFIG.SOURCES[key].icon });
+          });
+          
+          loadedCount++;
+          status.textContent = `Chargé ${loadedCount}/${sourceKeys.length} sources • ${allResults.length} résultats trouvés`;
+        } catch (e) {
+          console.error(`[${key}] Failed to load:`, e);
+          loadedCount++;
+          status.textContent = `Chargé ${loadedCount}/${sourceKeys.length} sources • Erreur sur ${key}`;
+          showToast(`Erreur sur ${key}: ${e.message}`, 'error');
+        }
+      }));
+
+      // Store results globally for adding
+      lastSearchResults = allResults;
+      displayAllSourceResults(allResults);
+      status.textContent = `${allResults.length} résultats trouvés`;
+    }
+
+    function searchInSource(data, query) {
+      const searchName = query.toLowerCase().trim();
+      const results = [];
+      
+      for (const item of data) {
+        const gameTitle = (item.title || item.name || '').toLowerCase();
+        
+        // Direct includes - strict match
+        if (gameTitle.includes(searchName) || searchName.includes(gameTitle)) {
+          results.push(item);
+          continue;
+        }
+        
+        // Word-based matching (only if more than 2 chars)
+        const searchWords = searchName.split(/[\s:\-\.]+/).filter(w => w.length > 2);
+        const titleWords = gameTitle.split(/[\s:\-\.]+/).filter(w => w.length > 2);
+        
+        const matchCount = searchWords.filter(sw => 
+          titleWords.some(tw => tw.includes(sw) || sw.includes(tw))
+        ).length;
+        
+        // More flexible: require most words to match (not all)
+        // 1 word = must match
+        // 2 words = both must match (100%)
+        // 3+ words = at least 2/3 or 3/4 must match (75%)
+        const requiredMatches = searchWords.length <= 2 
+          ? searchWords.length 
+          : Math.ceil(searchWords.length * 0.75);
+        
+        if (matchCount >= requiredMatches && searchWords.length > 0) {
+          results.push(item);
+        }
+      }
+      return results.slice(0, 10);
+    }
+
+    function displayAllSourceResults(results) {
+      const container = document.getElementById('sourceResults');
+      container.style.display = 'block';
+      
+      if (!results.length) {
+        container.innerHTML = `
+          <div style="padding:3rem 2rem;text-align:center;color:rgba(255,255,255,.5)">
+            <div style="font-size:3rem;margin-bottom:1rem">😕</div>
+            <div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem">Aucun résultat</div>
+            <div style="font-size:.875rem;margin-bottom:1rem">Le jeu n'a pas été trouvé dans les sources Hydra.</div>
+            <div style="font-size:.75rem;opacity:.7;background:rgba(255,255,255,.1);padding:.75rem 1rem;border-radius:.5rem;display:inline-block">
+              💡 <b>Conseil:</b> Ouvre la console (F12) pour voir les détails du chargement<br>
+              ou essaie avec un titre plus simple (sans ' : -)
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // Group by source
+      const bySource = {};
+      results.forEach(r => {
+        if (!bySource[r.sourceKey]) bySource[r.sourceKey] = [];
+        bySource[r.sourceKey].push(r);
+      });
+
+      let html = '';
+      Object.keys(bySource).forEach(sourceKey => {
+        const source = CONFIG.SOURCES[sourceKey];
+        const items = bySource[sourceKey];
+        
+        html += `
+          <div class="source-group">
+            <div class="source-group-title">${source.icon} ${source.name} (${items.length})</div>
+        `;
+        
+        html += items.map((game, idx) => {
+          const title = game.title || game.name || 'Sans titre';
+          const size = game.size || game.fileSize || '';
+          const version = game.version || '';
+          const repack = game.repack || '';
+          const linkCount = game.uris?.length || 1;
+          const uniqueId = `${sourceKey}-${idx}`;
+          
+          return `
+            <div class="source-result-item" onclick="addAllSourceMagnet('${sourceKey}', ${idx})">
+              <div class="source-icon">${source.icon}</div>
+              <div class="info">
+                <div class="name">${esc(title)}</div>
+                <div class="meta">
+                  ${size ? `<span class="size">💾 ${esc(size)}</span>` : ''}
+                  ${version ? `<span>📦 ${esc(version)}</span>` : ''}
+                  ${repack ? `<span>🔧 ${esc(repack)}</span>` : ''}
+                  ${linkCount > 1 ? `<span style="color:var(--accent)">🔗 ${linkCount} liens</span>` : ''}
+                </div>
+              </div>
+              <button class="add-btn" onclick="event.stopPropagation();addAllSourceMagnet('${sourceKey}', ${idx})" title="Ajouter">+</button>
+            </div>
+          `;
+        }).join('');
+        
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    function addAllSourceMagnet(sourceKey, idx) {
+      // Get results for this specific source from last search
+      const sourceResults = lastSearchResults.filter(r => r.sourceKey === sourceKey);
+      
+      if (idx >= sourceResults.length) {
+        console.error('Index out of bounds', sourceKey, idx, sourceResults.length);
+        return;
+      }
+      
+      const game = sourceResults[idx];
+      console.log('Adding magnet from', sourceKey, 'game:', game);
+      
+      // Hydra sources use 'uris' array, check multiple property names
+      let url = '';
+      if (game.uris && Array.isArray(game.uris) && game.uris.length > 0) {
+        url = game.uris[0]; // Take first URI from array
+      } else {
+        url = game.magnet || game.url || game.link || game.download || game.torrent || game.file || game.uri || '';
+      }
+      console.log('URL found:', url, 'from properties:', Object.keys(game));
+      
+      const magnet = {
+        url: url,
+        name: game.title || game.name || game.game || CONFIG.SOURCES[sourceKey].name,
+        size: game.size || game.fileSize || game.file_size || '',
+        type: url.startsWith('magnet') ? 'magnet' : (url.startsWith('http') ? 'direct' : 'torrent'),
+        source: CONFIG.SOURCES[sourceKey].name
+      };
+      
+      if (!magnet.url) {
+        showToast('Pas de lien disponible - vérifie console (F12)', 'error');
+        return;
+      }
+      
+      state.selectedMagnets.push(magnet);
+      renderMagnets();
+      showToast(`✅ Ajouté depuis ${magnet.source}`, 'success');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // CATEGORIES
+    // ═══════════════════════════════════════════════════════════
+    function renderCategories() {
+      const grid = document.getElementById('categoryGrid');
+      grid.innerHTML = CONFIG.CATEGORIES.map(c => `
+        <div class="category-chip ${state.selectedCategories.has(c) ? 'active' : ''}" onclick="toggleCategory('${c}')">
+          ${c}
+        </div>
+      `).join('');
+    }
+
+    function toggleCategory(cat) {
+      if (state.selectedCategories.has(cat)) {
+        state.selectedCategories.delete(cat);
+      } else {
+        state.selectedCategories.add(cat);
+      }
+      renderCategories();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // RECENT GAMES
+    // ═══════════════════════════════════════════════════════════
+    function displayRecentGames() {
+      const container = document.getElementById('recentGames');
+      const games = state.games || [];
+      
+      document.getElementById('gameCount').textContent = games.length;
+      
+      if (!games.length) {
+        container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Aucun jeu</div>';
+        return;
+      }
+      
+      container.innerHTML = games.slice(-20).reverse().map((game, idx) => {
+        const realIdx = games.length - 1 - idx;
+        return `
+          <div class="recent-item" onclick="editGame(${realIdx})">
+            <img class="recent-img" src="${esc(game.portrait_url || '')}" onerror="this.style.display='none'">
+            <div class="recent-info">
+              <div class="recent-title">${esc(game.title)}</div>
+              <div class="recent-year">${esc(game.year || 'N/A')}</div>
+            </div>
+            <div class="recent-actions" onclick="event.stopPropagation()">
+              <button class="recent-btn" onclick="editGame(${realIdx})" title="Modifier">✏️</button>
+              <button class="recent-btn delete" onclick="deleteGame(${realIdx})" title="Supprimer">🗑️</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function editGame(idx) {
+      const game = state.games[idx];
+      if (!game) return;
+      
+      editingGameIndex = idx;
+      
+      document.getElementById('f-title').value = game.title || '';
+      document.getElementById('f-year').value = game.year || '';
+      document.getElementById('f-desc').value = game.description || '';
+      document.getElementById('f-ytb').value = game.ytb_id || '';
+      document.getElementById('f-portrait').value = game.portrait_url || '';
+      document.getElementById('f-banner').value = game.banner_url || '';
+      
+      state.selectedPortrait = game.portrait_url || '';
+      state.selectedBanner = game.banner_url || '';
+      state.selectedCategories = new Set(game.categories || []);
+      state.selectedMagnets = game.magnets || [];
+      
+      renderCategories();
+      renderMagnets();
+      
+      document.getElementById('formTitleIcon').textContent = '✏️';
+      document.getElementById('formTitleText').textContent = 'Modifier jeu';
+      document.getElementById('deleteBtn').style.display = 'flex';
+      
+      showToast('Jeu chargé pour modification', 'success');
+    }
+
+    function deleteGame(idx) {
+      if (!confirm('Supprimer ce jeu ?')) return;
+      
+      state.games.splice(idx, 1);
+      localStorage.setItem('crackuzu_games', JSON.stringify(state.games));
+      state.isModified = true;
+      updateStatusBadge();
+      
+      displayRecentGames();
+      showToast('Jeu supprimé', 'success');
+      
+      if (editingGameIndex === idx) {
+        clearForm();
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // FORM
+    // ═══════════════════════════════════════════════════════════
+    function clearForm() {
+      editingGameIndex = -1;
+      state.selectedCategories.clear();
+      state.selectedMagnets = [];
+      state.selectedPortrait = '';
+      state.selectedBanner = '';
+      state.steamData = {};
+      state.uploadedImageUrl = '';
+      
+      document.getElementById('f-title').value = '';
+      document.getElementById('f-year').value = '';
+      document.getElementById('f-desc').value = '';
+      document.getElementById('f-ytb').value = '';
+      document.getElementById('f-portrait').value = '';
+      document.getElementById('f-banner').value = '';
+      document.getElementById('steamSearch').value = '';
+      document.getElementById('steamResults').innerHTML = '';
+      document.getElementById('portraitGallery').innerHTML = '';
+      document.getElementById('bannerGallery').innerHTML = '';
+      document.getElementById('uploadPreview').style.display = 'none';
+      document.getElementById('uploadPreviewImg').src = '';
+      document.getElementById('m-url').value = '';
+      document.getElementById('m-name').value = '';
+      document.getElementById('m-size').value = '';
+      
+      document.getElementById('formTitleIcon').textContent = '➕';
+      document.getElementById('formTitleText').textContent = 'Nouveau jeu';
+      document.getElementById('deleteBtn').style.display = 'none';
+      
+      renderCategories();
+      renderMagnets();
+      switchTab('infos');
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(`tab-btn-${tab}`).classList.add('active');
+      
+      document.getElementById('tab-infos').style.display = tab === 'infos' ? 'block' : 'none';
+      document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
+      document.getElementById('tab-magnets').style.display = tab === 'magnets' ? 'block' : 'none';
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // UTILS
+    // ═══════════════════════════════════════════════════════════
+    function esc(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.className = `toast ${type} show`;
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function showLoading(show) {
+      document.getElementById('loading').classList.toggle('show', show);
+    }
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
   </script>
 </body>
 </html>
