@@ -745,5 +745,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-19T00:55:50.076Z"
+  },
+  {
+    "title": "REANIMAL",
+    "year": "13 févr. 2026",
+    "description": "Les createurs de Little Nightmares I et II vous emmenent accomplir un voyage tenebreux et terrifiant. Dans ce jeu d'aventure et d'horreur, un frere et une sœur traversent l'enfer pour sauver leurs amis disparus et s'echapper de l'ile qui etait autrefois leur demeure.",
+    "categories": [
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2129530/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2129530/library_hero.jpg",
+    "ytb_id": "7RfJq1YNq_c",
+    "magnets": [
+      {
+        "url": "https://litter.catbox.moe/x674rl.torrent",
+        "size": "13.2 GB",
+        "source": "manual",
+        "name": "Reanimal",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-20T19:45:31.581Z"
   }
 ]
