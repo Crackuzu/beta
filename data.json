@@ -850,5 +850,50 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-20T23:59:28.346Z"
+  },
+  {
+    "title": "Ghostrunner",
+    "year": "27 oct. 2020",
+    "description": "Ghostrunner offre une experience unique en solo : des combats violents et rapides, et un cadre original melant science-fiction a des themes post-apocalyptiques. Il raconte l'histoire d'un monde deja termine et de ses habitants qui luttent pour survivre.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1139900/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1139900/library_hero.jpg",
+    "ytb_id": "Vt8yOLn8vmo",
+    "magnets": [
+      {
+        "url": "https://litter.catbox.moe/m5ga7f.torrent",
+        "size": "16.3 GB",
+        "source": "manual",
+        "name": "Ghostrunner",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-21T01:33:15.814Z"
+  },
+  {
+    "title": "PEAK",
+    "year": "16 juin 2025",
+    "description": "PEAK est un jeu d'escalade en cooperation, ou le moindre faux pas peut etre fatal ! Apres un accident d'avion, vous vous retrouvez sur une ile mysterieuse. En solo ou avec une troupe de scouts, vous n'avez qu'une solution : vous diriger avec le sommet de la montagne. Atteindrez-vous le Pic ?",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1776731778/gg74shl0y9rhqk9owacy.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3527290/library_hero.jpg",
+    "ytb_id": "D6io5XZWBHk",
+    "magnets": [
+      {
+        "url": "https://litter.catbox.moe/bcah6b.torrent",
+        "size": "2.0 GB",
+        "source": "manual",
+        "name": "PEAK",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-21T01:36:05.210Z"
   }
 ]
