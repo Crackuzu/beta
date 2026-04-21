@@ -969,5 +969,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-21T17:45:24.518Z"
+  },
+  {
+    "title": "DRAGON BALL XENOVERSE 2",
+    "year": "27 oct. 2016",
+    "description": "DRAGON BALL XENOVERSE 2 suit les traces du titre a succes DRAGON BALL XENOVERSE, avec des graphismes ameliores pour procurer au joueur encore plus d'immersion dans l'univers Dragon Ball le plus vaste et le mieux detaille a ce jour.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/454650/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/454650/library_hero.jpg",
+    "ytb_id": "F9X6yKJmy0I",
+    "magnets": [
+      {
+        "url": "https://litter.catbox.moe/zpsf6x.torrent",
+        "size": "28.9 GB",
+        "source": "manual",
+        "name": "DRAGON.BALL.XENOVERSE.2.v1.25.02-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-21T23:44:04.475Z"
   }
 ]
