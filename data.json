@@ -993,5 +993,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-21T23:44:04.475Z"
+  },
+  {
+    "title": "In Silence",
+    "year": "29 oct. 2021",
+    "description": "In Silence est un jeu d'horreur multijoueur. Un joueur joue le role du monstre qui a des capacites auditives hypersensibles et presque completement aveugle. Les autres joueurs (2-6) jouent en tant que survivants, essayant de s'echapper ou de chasser le monstre.",
+    "categories": [
+      "Action",
+      "Horreur",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1361000/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1361000/library_hero.jpg",
+    "ytb_id": "vxs0_Opqh8w",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:10e14f6b37635de788912f03c18c5f7318e0a8c5&dn=In+Silence&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "2.8 GB",
+        "source": "Online-Fix",
+        "name": "In Silence 1.01",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-22T22:08:06.331Z"
   }
 ]
