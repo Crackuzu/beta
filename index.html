@@ -625,16 +625,25 @@ function sr(id){document.getElementById(id)?.scrollBy({left:800,behavior:'smooth
 // ── TÉLÉCHARGEMENT HERO ─────────────────────────────────────────────────────
 function openHeroDownload(ev){
   ev.preventDefault();
-  const g=hsl[hidx]; if(!g)return;
+  console.log('openHeroDownload clicked, hidx=', hidx, 'hsl=', hsl);
+  const g=hsl[hidx]; 
+  if(!g){
+    console.log('No game found at hidx');
+    return;
+  }
+  console.log('Game:', g.name, 'magnets:', g.magnets);
   if(!g.magnets||!g.magnets.length){
     alert('Aucun lien de téléchargement disponible pour ce jeu.');
     return;
   }
   if(g.magnets.length===1){
+    console.log('Redirecting to single magnet:', g.magnets[0]);
     window.location.href=g.magnets[0];
   }else{
     // Multiple sources - redirect to game page
-    window.location.href='jeux.html?id='+e2(g.id);
+    const url='jeux.html?id='+e2(g.id);
+    console.log('Redirecting to game page:', url);
+    window.location.href=url;
   }
 }
 
