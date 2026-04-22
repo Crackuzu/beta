@@ -993,5 +993,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-21T23:44:04.475Z"
+  },
+  {
+    "title": "PANICORE",
+    "year": "31 mai 2024",
+    "description": "PANICORE est un jeu de survie et d'horreur qui melange permadeath, monstres IA et experience cooperative. Essayez de vous echapper et de ne pas vous faire prendre, mais attention : ils n'entendent pas seulement vos pas, mais aussi votre voix.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2695940/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2695940/library_hero.jpg",
+    "ytb_id": "0sYnMh96qpA",
+    "magnets": [
+      {
+        "url": "https://litter.catbox.moe/9wctwf.torrent",
+        "size": "15.2 GB",
+        "source": "manual",
+        "name": "PANICORE.v1.3.1-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-22T16:10:20.149Z"
   }
 ]
