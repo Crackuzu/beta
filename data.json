@@ -1017,5 +1017,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-22T22:08:06.331Z"
+  },
+  {
+    "title": "Lunch Lady",
+    "year": "15 avr. 2021",
+    "description": "Lunch Lady est un jeu de survie et d'horreur en cooperative en ligne de 1 a 4 joueurs. Les examens finaux de l'ecole approchent et la meilleure idee que toi et tes amis avez eue est de voler les reponses des tests. Trouve les 10 pages et ne te fais pas attraper par la meurtriere Lunch Lady !",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1571440/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1571440/library_hero.jpg",
+    "ytb_id": "uceawUKMSf4",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:5b7d426607805e582a29b6f3879bbfd9d792122b&dn=Lunch+Lady&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "3.4 GB",
+        "source": "Online-Fix",
+        "name": "Lunch Lady 1.7.1",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-22T22:31:14.345Z"
   }
 ]
