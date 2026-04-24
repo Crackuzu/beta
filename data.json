@@ -1040,5 +1040,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-22T22:31:14.345Z"
+  },
+  {
+    "title": "The Outlast Trials",
+    "year": "5 mars 2024",
+    "description": "Red Barrels invites you to experience mind-numbing terror, this time with friends. Whether you go through the trials alone or in teams, if you survive long enough and complete the therapy, Murkoff will happily let you leave... but will you be the same?",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1304930/hero_capsule.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1304930/library_hero.jpg",
+    "ytb_id": "Ny1xR_4-6QA",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:a8a86e9e27de487c30a22b17b14e4bc2272204eb&dn=The.Outlast.Trials.FIXED.zip&tr=udp://opentor.org:2710/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://exodus.desync.com:6969/announce&tr=udp://tracker.moeking.me:6969/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.theoks.net:6969/announce&tr=udp://retracker.lanta-net.ru:2710/announce&tr=udp://movies.zsw.ca:6969/announce",
+        "size": "22 GB",
+        "source": "manual",
+        "name": "The Outlast Trials",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-24T21:27:19.963Z"
   }
 ]
