@@ -1434,5 +1434,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-25T23:46:07.635Z"
+  },
+  {
+    "title": "Sons Of The Forest",
+    "year": "22 févr. 2024",
+    "description": "En mission sur une ile isolee pour retrouver un milliardaire porte disparu, vous decouvrez un monde de cauchemar infeste de cannibales. Par vous-meme ou avec l'aide d'amis, fabriquez, construisez et luttez pour votre survie dans ce jeu de simulation de survie horrifique.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Horreur",
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1326470/library_hero.jpg",
+    "ytb_id": "IwvhH3islZw",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/osjsd5.torrent",
+        "size": "11.47 GB",
+        "source": "manual",
+        "name": "Sons.Of.The.Forest.Build.03102025-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T00:13:25.621Z"
   }
 ]
