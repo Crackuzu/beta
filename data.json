@@ -1070,11 +1070,12 @@
     "description": "Dark Hours est un survival-horror en coop pour 1 a 4 joueurs. Votre cambriolage est interrompu par un evenement surnaturel et votre equipe de voleurs se retrouve piegee avec un monstre. Oubliez votre plan, votre mission: survivre ! Explorez et cooperez pour vous echapper.",
     "categories": [
       "Action",
-      "Aventure"
+      "Multijoueur",
+      "Horreur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2208570/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2208570/library_hero.jpg",
-    "ytb_id": "",
+    "ytb_id": "WO_0I96BZPM",
     "magnets": [
       {
         "url": "magnet:?xt=urn:btih:RY6PQULJGRDP3I6LWVFX6RZG3SW33F5Q&dn=Dark%20Hours&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
@@ -1085,6 +1086,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T13:29:51.500Z"
+    "added_at": "2026-04-25T13:31:11.553Z"
   }
 ]
