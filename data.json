@@ -125,7 +125,7 @@
       "Aventure",
       "Simulation"
     ],
-    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2567870/library_600x900.jpg",
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777140945/q33isffa2s3bovwsxhci.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2567870/library_hero.jpg",
     "ytb_id": "lVVyMT_HEgY",
     "magnets": [
@@ -137,8 +137,8 @@
         "type": "magnet"
       }
     ],
-    "added_by": "admin",
-    "added_at": "2026-04-16T23:43:33.782Z"
+    "added_by": "admin-local",
+    "added_at": "2026-04-25T19:14:56.498Z"
   },
   {
     "title": "The Last of Us Part I",
