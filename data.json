@@ -1087,5 +1087,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-25T19:37:46.867Z"
+  },
+  {
+    "title": "Gang Beasts",
+    "year": "12 déc. 2017",
+    "description": "Gang Beasts est un jeu multijoueur loufoque avec des personnages gelatineux hargneux, des combats brutalo-comiques, et des lieux absurdement dangereux situes dans la cite de Ville-bœuf.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/285900/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/285900/library_hero.jpg",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/6jg286.torrent",
+        "size": "1.02 GB",
+        "source": "manual",
+        "name": "Gang.Beasts.v1.28.1687.0-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-25T21:02:10.197Z"
   }
 ]
