@@ -639,7 +639,7 @@
     "ytb_id": "MmB9b5njVbA",
     "magnets": [
       {
-        "url": "https://skmedix.pl/downloads",
+        "url": "https://files.catbox.moe/kwx086.zip",
         "size": "3.6 Mb",
         "source": "manual",
         "name": "Minecraft",
@@ -647,7 +647,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:37:48.428Z"
+    "added_at": "2026-04-25T20:50:33.229Z"
   },
   {
     "title": "Cuphead",
@@ -1073,8 +1073,8 @@
       "Multijoueur",
       "Horreur"
     ],
-    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2208570/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2208570/library_hero.jpg",
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2208570/library_600x900_2x.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2208570/library_hero_2x.jpg",
     "ytb_id": "WO_0I96BZPM",
     "magnets": [
       {
@@ -1086,6 +1086,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T16:59:28.876Z"
+    "added_at": "2026-04-25T19:37:46.867Z"
   }
 ]
