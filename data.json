@@ -1078,14 +1078,14 @@
     "ytb_id": "WO_0I96BZPM",
     "magnets": [
       {
-        "url": "magnet:?xt=urn:btih:RY6PQULJGRDP3I6LWVFX6RZG3SW33F5Q&dn=Dark%20Hours&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "url": "https://files.catbox.moe/cgyvoq.torrent",
         "size": "3.4 GB",
         "source": "manual",
         "name": "Online-Fix",
-        "type": "magnet"
+        "type": "torrent"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T13:31:11.553Z"
+    "added_at": "2026-04-25T16:59:28.876Z"
   }
 ]
