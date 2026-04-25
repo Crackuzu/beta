@@ -1112,5 +1112,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-25T21:05:15.504Z"
+  },
+  {
+    "title": "Schedule I",
+    "year": "24 mars 2025",
+    "description": "From small-time dope pusher to kingpin - manufacture and distribute a range of drugs throughout the grungy city of Hyland Point. Expand your empire with properties, businesses, employees and more.",
+    "categories": [
+      "Action",
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3164500/library_600x900.jpg",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3164500/cf6f4630aec1f9065da3352532e5094613b35975/ss_cf6f4630aec1f9065da3352532e5094613b35975.1920x1080.jpg?t=1773974661",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/anjmvg.torrent",
+        "size": "2.34 GB",
+        "source": "manual",
+        "name": "Schedule.I.v0.4.5f1-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-25T22:15:34.375Z"
   }
 ]
