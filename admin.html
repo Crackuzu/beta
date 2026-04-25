@@ -1050,6 +1050,36 @@
     // ═══════════════════════════════════════════════════════════
     let searchTimeout;
 
+    // Fast CORS proxy with fallback
+    async function fetchWithProxy(url) {
+      const proxies = [
+        { name: 'codetabs', url: `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`, parse: 'direct' },
+        { name: 'allorigins', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins' }
+      ];
+      
+      for (const proxy of proxies) {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000);
+          
+          const res = await fetch(proxy.url, { signal: controller.signal });
+          clearTimeout(timeoutId);
+          
+          if (!res.ok) continue;
+          
+          if (proxy.parse === 'allorigins') {
+            const result = await res.json();
+            return JSON.parse(result.contents);
+          }
+          return await res.json();
+        } catch (e) {
+          console.log(`Proxy ${proxy.name} failed:`, e.message);
+          continue;
+        }
+      }
+      throw new Error('All proxies failed');
+    }
+
     async function searchSteam() {
       const query = document.getElementById('steamSearch').value.trim();
       if (!query) return;
@@ -1058,11 +1088,8 @@
       searchTimeout = setTimeout(async () => {
         showLoading(true);
         try {
-          // Use CORS proxy to access Steam API
-          const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`)}`);
-          if (!res.ok) throw new Error('Network error');
-
-          const data = await res.json();
+          // Use proxy fallback for Steam API
+          const data = await fetchWithProxy(`https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(query)}`);
           const container = document.getElementById('steamResults');
           
           if (!data || !data.length) {
@@ -1091,11 +1118,8 @@
     async function selectSteamGame(appid) {
       showLoading(true);
       try {
-        // Use CORS proxy for Steam API
-        const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`)}`);
-        if (!res.ok) throw new Error('Network error');
-
-        const data = await res.json();
+        // Use proxy fallback for Steam API
+        const data = await fetchWithProxy(`https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`);
         const game = data[appid]?.data;
         
         if (!game) {
@@ -1213,14 +1237,11 @@
       let steamBackground = null;
       if (appid) {
         try {
-          const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`)}`);
-          if (res.ok) {
-            const result = await res.json();
-            const steamData = result[appid]?.data;
-            if (steamData) {
-              steamScreenshots = steamData.screenshots?.map(s => s.path_full) || [];
-              steamBackground = steamData.background;
-            }
+          const result = await fetchWithProxy(`https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`);
+          const steamData = result[appid]?.data;
+          if (steamData) {
+            steamScreenshots = steamData.screenshots?.map(s => s.path_full) || [];
+            steamBackground = steamData.background;
           }
         } catch (e) {
           console.log('Steam API fetch failed:', e);
