@@ -1449,9 +1449,17 @@
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777159852/neniojmuvxuyow7hgwdu.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2277560/library_hero.jpg",
     "ytb_id": "UJ0_8W3a_hY",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/wfcyc8.torrent",
+        "size": "27.94 GB",
+        "source": "manual",
+        "name": "WUCHANG: Fallen Feathers",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:29:53.388Z"
+    "added_at": "2026-04-26T00:38:53.193Z"
   },
   {
     "title": "Nioh: Complete Edition",
