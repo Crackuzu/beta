@@ -1436,28 +1436,111 @@
     "added_at": "2026-04-26T00:15:02.610Z"
   },
   {
-    "title": "Sons Of The Forest",
-    "year": "22 févr. 2024",
-    "description": "En mission sur une ile isolee pour retrouver un milliardaire porte disparu, vous decouvrez un monde de cauchemar infeste de cannibales. Par vous-meme ou avec l'aide d'amis, fabriquez, construisez et luttez pour votre survie dans ce jeu de simulation de survie horrifique.",
+    "title": "WUCHANG: Fallen Feathers",
+    "year": "23 juil. 2025",
+    "description": "RPG d'action soulslike, WUCHANG: Fallen Feathers vous fera decouvrir la sombre et chaotique periode de la fin de la dynastie Ming dans la region de Shu, gangrenee par les guerres et une mysterieuse epidemie faisant naitre des creatures monstrueuses.",
     "categories": [
       "Action",
       "Aventure",
       "Horreur",
-      "Simulation"
+      "Simulation",
+      "RPG"
     ],
-    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1326470/library_hero.jpg",
-    "ytb_id": "IwvhH3islZw",
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777159852/neniojmuvxuyow7hgwdu.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2277560/library_hero.jpg",
+    "ytb_id": "UJ0_8W3a_hY",
+    "magnets": [],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T00:29:53.388Z"
+  },
+  {
+    "title": "Nioh: Complete Edition",
+    "year": "7 nov. 2017",
+    "description": "Pret a mourir ? Venez decouvrir le nouveau jeu d'action estampille Team NINJA et Koei Tecmo Games. Incarnez William qui debarque sur les cotes du Japon feodale et decouvrez un pays infeste de guerriers et de yokai surnaturels qu'il vous faudra battre pour trouver ce que vous etes venu chercher.",
+    "categories": [
+      "Action",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/485510/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/485510/library_hero.jpg",
+    "ytb_id": "i4Nb0plrUZU",
     "magnets": [
       {
-        "url": "https://files.catbox.moe/osjsd5.torrent",
-        "size": "11.47 GB",
-        "source": "manual",
-        "name": "Sons.Of.The.Forest.Build.03102025-OFME",
-        "type": "torrent"
+        "url": "magnet:?xt=urn:btih:48e449b1e1101d119f616c8506b157ebc96fa91f&dn=Nioh+Complete+Edition&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce",
+        "size": "682.1 MB",
+        "source": "Online-Fix",
+        "name": "Nioh Complete Edition 1.21.06",
+        "type": "magnet"
+      },
+      {
+        "url": "magnet:?xt=urn:btih:979EC61CCC58C6075EE8266B79D3FEA1D3AE0BB8&dn=Nioh%3A+Complete+Edition+%28v1.21.06+%2B+All+DLCs+%2B+MULTI13%29+%26ndash%3B+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce",
+        "size": "20.9 GB",
+        "source": "DODI",
+        "name": "Nioh: Complete Edition (v1.21.06 + All DLCs + MULTI13) – [DODI Repack]",
+        "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:13:25.621Z"
+    "added_at": "2026-04-26T00:32:36.006Z"
+  },
+  {
+    "title": "Nioh 2 - The Complete Edition",
+    "year": "5 févr. 2021",
+    "description": "Combattez des hordes de yokai dans ce jeu de role d'action ultra exigeant. Creez votre protagoniste et embarquez pour une aventure a travers le Japon de l'epoque Sengoku. Servez-vous de votre nouvelle competence Mutation yokai pour vaincre les plus feroces yokai, et preparez-vous a braver les Royaumes obscurs crees par vos ennemis.",
+    "categories": [
+      "Action",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1325200/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1325200/library_hero.jpg",
+    "ytb_id": "pS0oA4P9dEg",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:57c44873f20fd09403a80171f05a2050ab3336c7&dn=Nioh+2+The+Complete+Edition&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "341.3 MB",
+        "source": "Online-Fix",
+        "name": "Nioh 2 The Complete Edition 1.28.06",
+        "type": "magnet"
+      },
+      {
+        "url": "magnet:?xt=urn:btih:5F6E3AEB06516E6BF7D4CDA0A98999C8CA2FFBED&dn=Nioh+2+-+The+Complete+Edition+%28v1.25+%2B+All+DLCs+%2B+Win+7+Fix+%2B+Multiplayer+%2B+MULTi14%29+-+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce",
+        "size": "28.8 GB",
+        "source": "DODI",
+        "name": "Nioh 2 - The Complete Edition (v1.25 + All DLCs + Win 7 Fix + Multiplayer + MULTi14) - [DODI Repack]",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T00:33:06.577Z"
+  },
+  {
+    "title": "Nioh 3",
+    "year": "5 févr. 2026",
+    "description": "Nioh est le troisieme titre de la sombre serie de RPG d'action avec des samourais. Vous devrez y utiliser les modes de combat samourai et ninja dans vos affrontements contre de terribles yokai tout en explorant un terrain ouvert palpitant.",
+    "categories": [
+      "Action",
+      "RPG"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777160078/l8ha1ojee09ti9kqlzhh.png",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/8c9333bf3f28194cb8113af455ecaf1aa45a0050/ss_8c9333bf3f28194cb8113af455ecaf1aa45a0050.1920x1080.jpg?t=1772090941",
+    "ytb_id": "CJf3dQ4ZQLY",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:57c44873f20fd09403a80171f05a2050ab3336c7&dn=Nioh+2+The+Complete+Edition&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "341.3 MB",
+        "source": "Online-Fix",
+        "name": "Nioh 2 The Complete Edition 1.28.06",
+        "type": "magnet"
+      },
+      {
+        "url": "magnet:?xt=urn:btih:5F6E3AEB06516E6BF7D4CDA0A98999C8CA2FFBED&dn=Nioh+2+-+The+Complete+Edition+%28v1.25+%2B+All+DLCs+%2B+Win+7+Fix+%2B+Multiplayer+%2B+MULTi14%29+-+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce",
+        "size": "28.8 GB",
+        "source": "DODI",
+        "name": "Nioh 2 - The Complete Edition (v1.25 + All DLCs + Win 7 Fix + Multiplayer + MULTi14) - [DODI Repack]",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T00:33:40.430Z"
   }
 ]
