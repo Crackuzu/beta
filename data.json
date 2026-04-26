@@ -1500,7 +1500,7 @@
       "RPG"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1325200/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1325200/library_hero.jpg",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1325200/page_bg_raw.jpg",
     "ytb_id": "pS0oA4P9dEg",
     "magnets": [
       {
@@ -1519,7 +1519,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:33:06.577Z"
+    "added_at": "2026-04-26T01:09:35.906Z"
   },
   {
     "title": "Nioh 3",
