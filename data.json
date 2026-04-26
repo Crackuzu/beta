@@ -1706,5 +1706,31 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T15:09:45.627Z"
+  },
+  {
+    "title": "The Forest",
+    "year": "30 avr. 2018",
+    "description": "As the lone survivor of a passenger jet crash, you find yourself in a mysterious forest battling to stay alive against a society of cannibalistic mutants. Build, explore, survive in this terrifying first person survival horror simulator.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Survie",
+      "Horreur",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/242760/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/242760/library_hero.jpg",
+    "ytb_id": "ay3tDjnBziY",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/7o2yc4.torrent",
+        "size": "3.76 GB",
+        "source": "manual",
+        "name": "The Forest",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T15:12:42.238Z"
   }
 ]
