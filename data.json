@@ -1543,5 +1543,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T00:36:17.744Z"
+  },
+  {
+    "title": "Wo Long: Fallen Dynasty",
+    "year": "3 mars 2023",
+    "description": "Un nouvel action RPG dans une dark fantasy des Trois royaumes par Team NINJA, les devs de Nioh.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1448440/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1448440/library_hero_2x.jpg",
+    "ytb_id": "SWRcZN4jMW8",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/spgibv.torrent",
+        "size": "53.0 GB",
+        "source": "manual",
+        "name": "Wo Long",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T01:16:17.398Z"
   }
 ]
