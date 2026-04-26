@@ -1662,11 +1662,14 @@
     "year": "4 nov. 2014",
     "description": "The Binding of Isaac: Rebirth is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac's form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.",
     "categories": [
-      "Action"
+      "Horreur",
+      "Multijoueur",
+      "Plateforme",
+      "Aventure"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/250900/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/250900/library_hero.jpg",
-    "ytb_id": "WfnMpFG9wrk",
+    "ytb_id": "",
     "magnets": [
       {
         "url": "magnet:?xt=urn:btih:cd1a0e65c1d3a261e1b4589a813c2827f71d49ff&dn=The+Binding+of+Isaac+Rebirth&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
@@ -1677,6 +1680,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:05:06.703Z"
+    "added_at": "2026-04-26T15:06:58.874Z"
   }
 ]
