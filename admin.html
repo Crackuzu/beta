@@ -242,14 +242,17 @@
     /* ─── DISCORD AUTH OVERLAY ─── */
     .auth-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem}
     .auth-overlay.hidden{display:none}
-    .auth-box{text-align:center;max-width:400px;padding:2rem}
-    .auth-title{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
-    .auth-subtitle{color:rgba(255,255,255,.5);font-size:.875rem;margin-bottom:1.5rem}
-    .discord-btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2rem;background:#5865F2;color:#fff;border-radius:.75rem;font-weight:700;cursor:pointer;transition:all .3s;border:none;font-size:1rem}
-    .discord-btn:hover{background:#4752C4;transform:translateY(-2px)}
-    .discord-btn svg{width:24px;height:24px}
-    .auth-error{color:#ef4444;font-size:.875rem;margin-top:1rem;padding:.75rem 1rem;background:rgba(239,68,68,.1);border-radius:.5rem;display:none}
+    .auth-box{text-align:center;max-width:420px;padding:2.5rem;border-radius:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)}
+    .auth-box::before{content:'';position:absolute;top:-100px;left:-100px;width:300px;height:300px;border-radius:9999px;background:rgba(249,115,22,.1);filter:blur(80px);pointer-events:none;z-index:-1}
+    .auth-title{font-size:2rem;font-weight:800;margin-bottom:.75rem;letter-spacing:-.02em}
+    .auth-title::before{content:'🔒';margin-right:.5rem;filter:grayscale(100%)}
+    .auth-subtitle{color:rgba(255,255,255,.4);font-size:.9375rem;margin-bottom:2rem;line-height:1.5}
+    .discord-btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2rem;background:#5865F2;color:#fff;border-radius:1rem;font-weight:700;cursor:pointer;transition:all .3s;border:none;font-size:.9375rem;box-shadow:0 4px 20px rgba(88,101,242,.3)}
+    .discord-btn:hover{background:#4752C4;transform:translateY(-2px);box-shadow:0 6px 25px rgba(88,101,242,.4)}
+    .discord-btn svg{width:22px;height:22px}
+    .auth-error{color:#ef4444;font-size:.875rem;margin-top:1rem;padding:.875rem 1rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:1rem;display:none}
     .auth-error.show{display:block}
+    .auth-footer{color:rgba(255,255,255,.25);font-size:.75rem;margin-top:1.5rem}
   </style>
 </head>
 <body>
@@ -260,19 +263,15 @@
 
   <!-- DISCORD AUTH OVERLAY -->
   <div class="auth-overlay" id="authOverlay">
-    <div class="auth-box">
-      <div class="auth-title">🔒 Accès Restreint</div>
-      <div class="auth-subtitle">Connexion avec Discord requise pour accéder à l'administration</div>
+    <div class="auth-box" style="position:relative">
+      <div class="auth-title">Accès Restreint</div>
+      <div class="auth-subtitle">Connexion avec Discord requise pour accéder à l'administration CRACKUZU</div>
       <button class="discord-btn" onclick="loginWithDiscord()">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         Se connecter avec Discord
       </button>
-      <div style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.3)">
-        <button onclick="devBypass()" style="background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;text-decoration:underline">
-          🔧 Bypass (Dev only)
-        </button>
-      </div>
       <div class="auth-error" id="authError"></div>
+      <div class="auth-footer">Seuls les administrateurs autorisés peuvent accéder à cette page</div>
     </div>
   </div>
 
@@ -706,19 +705,6 @@
       } catch (e) {
         showAuthError('Erreur de connexion: ' + e.message);
       }
-    }
-
-    // Bypass rapide pour dev (à supprimer en prod)
-    function devBypass() {
-      const user = {
-        id: '482466285364576266',
-        username: 'crackuzu'
-      };
-      localStorage.setItem('discord_user', JSON.stringify(user));
-      document.getElementById('authOverlay').classList.add('hidden');
-      loadGames();
-      renderCategories();
-      setupPasteListener();
     }
 
     function showAuthError(msg) {
