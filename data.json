@@ -1597,5 +1597,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T02:19:48.921Z"
+  },
+  {
+    "title": "Raft",
+    "year": "20 juin 2022",
+    "description": "Raft throws you and your friends into an epic oceanic adventure! Alone or together, players battle to survive a perilous voyage across a vast sea! Gather debris, scavenge reefs and build your own floating home, but be wary of the man-eating sharks!",
+    "categories": [
+      "Aventure",
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/648800/library_hero.jpg",
+    "ytb_id": "__w615A5lC4",
+    "magnets": [
+      {
+        "url": "https://pixeldrain.com/u/KvN51hr1",
+        "size": "2.62 GB",
+        "source": "manual",
+        "name": "Raft v1.1.0.7-OFME",
+        "type": "direct"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T14:46:06.846Z"
   }
 ]
