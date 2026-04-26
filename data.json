@@ -1732,5 +1732,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T15:12:42.238Z"
+  },
+  {
+    "title": "The Headliners",
+    "year": "30 janv. 2025",
+    "description": "Un jeu d'horreur cooperatif ou vous incarnez une equipe de 1 a 8 journalistes, prets a explorer New York envahie par des creatures mortelles pour capturer des images spectaculaires. Votre seul objectif : faire la une... et rester en vie pour la lire.",
+    "categories": [
+      "Action",
+      "Multijoueur",
+      "Horreur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3059070/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3059070/library_hero.jpg",
+    "ytb_id": "WzVMuDdOR8E",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/tfrauy.torrent",
+        "size": "7.59 GB",
+        "source": "manual",
+        "name": "The.Headliners.v1.2.1-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T15:25:30.899Z"
   }
 ]
