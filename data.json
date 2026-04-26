@@ -1780,5 +1780,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T15:28:49.913Z"
+  },
+  {
+    "title": "Escape the Backrooms",
+    "year": "23 oct. 2025",
+    "description": "Escape the Backrooms est un jeu d'exploration et d'horreur jouable de 1 a 4 en coop. Traversez plus de 30 etages inquietants tout en evitant les entites et autres dangers. Essayez de vous enfuir, mais sachez ceci : votre survie n'est pas garantie.",
+    "categories": [
+      "Multijoueur",
+      "Horreur",
+      "Strategie",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1943950/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1943950/library_hero.jpg",
+    "ytb_id": "6xbnqo48K2c",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/sye9es.torrent",
+        "size": "25.85 GB",
+        "source": "manual",
+        "name": "Escape.The.Backrooms.Build.23102025-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T15:36:33.943Z"
   }
 ]
