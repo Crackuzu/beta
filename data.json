@@ -123,7 +123,8 @@
     "description": "From the depths of hell, climb chained to your friends through diverse worlds. Solo or co-op, try to reach the summit and discover what awaits you there...",
     "categories": [
       "Aventure",
-      "Simulation"
+      "Simulation",
+      "Multijoueur"
     ],
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777140945/q33isffa2s3bovwsxhci.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2567870/library_hero.jpg",
@@ -138,7 +139,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T19:14:56.498Z"
+    "added_at": "2026-04-26T14:48:11.144Z"
   },
   {
     "title": "The Last of Us Part I",
@@ -454,7 +455,9 @@
     "year": "26 Feb, 2025",
     "description": "An online co-op horror game with up to 6 players. Locate valuable, fully physics-based objects and handle them with care as you retrieve and extract to satisfy your creator's desires.",
     "categories": [
-      "Action"
+      "Action",
+      "Multijoueur",
+      "Horreur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3241660/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3241660/library_hero.jpg",
@@ -469,7 +472,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T17:19:03.493Z"
+    "added_at": "2026-04-26T14:46:58.359Z"
   },
   {
     "title": "Little Nightmares",
@@ -534,7 +537,8 @@
     "year": "9 Oct, 2025",
     "description": "Little Nightmares III is an atmospheric adventure game in which you follow the journey of Low and Alone, two best friends in search of a way out of the Nowhere. In 2 players online cooperation or solo with an A.I., work together to solve puzzles and survive in this nightmarish world.",
     "categories": [
-      "Horreur"
+      "Horreur",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1392860/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1392860/library_hero.jpg",
@@ -549,7 +553,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:15:43.506Z"
+    "added_at": "2026-04-26T14:47:05.113Z"
   },
   {
     "title": "UNCHARTED: Legacy of Thieves Collection",
@@ -631,8 +635,8 @@
     "categories": [
       "Simulation",
       "Monde ouvert",
-      "Multijoueur",
-      "Aventure"
+      "Aventure",
+      "Multijoueur"
     ],
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1776479872/ejiun7deisx80zfmnle3.png",
     "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1776479895/vaxqh8p1cyn4fys7jxdp.png",
@@ -647,7 +651,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T20:50:33.229Z"
+    "added_at": "2026-04-26T14:48:00.924Z"
   },
   {
     "title": "Cuphead",
@@ -872,7 +876,8 @@
     "description": "PEAK est un jeu d'escalade en cooperation, ou le moindre faux pas peut etre fatal ! Apres un accident d'avion, vous vous retrouvez sur une ile mysterieuse. En solo ou avec une troupe de scouts, vous n'avez qu'une solution : vous diriger avec le sommet de la montagne. Atteindrez-vous le Pic ?",
     "categories": [
       "Action",
-      "Aventure"
+      "Aventure",
+      "Multijoueur"
     ],
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1776731778/gg74shl0y9rhqk9owacy.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3527290/library_hero.jpg",
@@ -887,7 +892,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T16:57:36.608Z"
+    "added_at": "2026-04-26T14:47:50.017Z"
   },
   {
     "title": "Twelve Minutes",
@@ -1095,8 +1100,8 @@
     "categories": [
       "Action",
       "Aventure",
-      "Simulation",
-      "Multijoueur"
+      "Multijoueur",
+      "Simulation"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/285900/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/285900/library_hero.jpg",
@@ -1111,7 +1116,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T21:05:15.504Z"
+    "added_at": "2026-04-26T14:47:29.658Z"
   },
   {
     "title": "Schedule I",
@@ -1604,7 +1609,8 @@
     "description": "Raft throws you and your friends into an epic oceanic adventure! Alone or together, players battle to survive a perilous voyage across a vast sea! Gather debris, scavenge reefs and build your own floating home, but be wary of the man-eating sharks!",
     "categories": [
       "Aventure",
-      "Simulation"
+      "Simulation",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/648800/library_hero.jpg",
@@ -1619,6 +1625,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:46:06.846Z"
+    "added_at": "2026-04-26T14:46:49.912Z"
   }
 ]
