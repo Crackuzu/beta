@@ -1756,5 +1756,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T15:25:30.899Z"
+  },
+  {
+    "title": "Liar's Bar",
+    "year": "2 oct. 2024",
+    "description": "Dive into this multiplayer online experience set in a sketchy bar where the games are as dangerous as the patrons. Join a table of 4 and test your skills in Liar's Dice and Liar's Deck, where lying and bluffing are key to victory. Ready for a night at Liar's Bar?",
+    "categories": [
+      "Simulation",
+      "Strategie",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3097560/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3097560/library_hero.jpg",
+    "ytb_id": "B4KkbB1hlrw",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/5z898n.torrent",
+        "size": "4.67 GB",
+        "source": "manual",
+        "name": "Liars.Bar.v0.956-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-26T15:28:49.913Z"
   }
 ]
