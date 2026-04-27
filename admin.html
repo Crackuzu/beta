@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CRACKUZU - Admin GitHub</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1133,7 +1134,10 @@
     // ═══════════════════════════════════════════════════════════
     function cleanText(text) {
       if (!text) return '';
-      
+
+      // Decode HTML entities first
+      text = decodeHTML(text);
+
       text = text
         .replace(/Ã¢ÂÂ¢/g, '')
         .replace(/Ã¢âÂ¢/g, '')
@@ -1154,7 +1158,7 @@
         .replace(/Ã[\s\S]?/g, '')
         .replace(/[\u00C2\u00C3\u00C4\u00C5]/g, '')
         .replace(/[\u0080-\u009F]/g, '');
-      
+
       return text
         .replace(/[\u2122\u00AE]/g, '')
         .replace(/[\u2018\u2019]/g, "'")
@@ -1172,13 +1176,17 @@
         .replace(/[\u00F2-\u00F6]/g, 'o')
         .replace(/[\u00D9-\u00DC]/g, 'U')
         .replace(/[\u00F9-\u00FC]/g, 'u')
-        .replace(/\u00D1/g, 'N')
-        .replace(/\u00F1/g, 'n')
-        .replace(/\u00C7/g, 'C')
-        .replace(/\u00E7/g, 'c')
-        .replace(/[\u00E9\u00E8\u00EA\u00EB]/g, 'e')
-        .replace(/[\u00C9\u00C8\u00CA\u00CB]/g, 'E')
-        .trim();
+        .replace(/[\u00C7]/g, 'C')
+        .replace(/[\u00E7]/g, 'c')
+        .replace(/[\u00D1]/g, 'N')
+        .replace(/[\u00F1]/g, 'n');
+    }
+
+    function decodeHTML(text) {
+      if (!text) return '';
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = text;
+      return textarea.value;
     }
 
     // ═══════════════════════════════════════════════════════════
