@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="CRACKUZU – Répertoire de jeux PC via Crackuzu.">
 <meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="logo.png">
 <title>CRACKUZU – Répertoire de Jeux PC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,23 +155,33 @@ img{max-width:100%;height:auto}
 .wc-meta{display:flex;align-items:center;gap:.5rem;font-size:9px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.12em;flex-wrap:wrap}
 .wc-v{background:rgba(249,115,22,.25);color:#fb923c;padding:.15rem .5rem;border-radius:.25rem;font-size:8px;font-weight:900}
 
+/* CARD */
+.card{position:relative;border-radius:.875rem;overflow:hidden;cursor:pointer;transition:all .5s cubic-bezier(.23,1,.32,1);display:block;box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transform:translateY(20px);animation:cardSpawn .5s cubic-bezier(.23,1,.32,1) forwards}
+.card:hover{transform:scale(1.035);z-index:2;box-shadow:0 20px 60px rgba(249,115,22,.15)}
+@keyframes cardSpawn{to{opacity:1;transform:translateY(0)}}
+.card-img{aspect-ratio:2/3;width:100%;position:relative;background:#0d0d0d;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1)}
+.card:hover .card-img img{transform:scale(1.08)}
+.card-noimg{width:100%;height:100%;background:linear-gradient(135deg,#1a1210,#0a0a0a);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.card-yr{position:absolute;top:.5rem;left:.5rem;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);padding:.15rem .45rem;border-radius:.25rem;font-size:7px;font-weight:900;color:rgba(255,255,255,.65);letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);z-index:10}
+.card-cat{position:absolute;top:.5rem;right:.5rem;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.25);padding:.15rem .45rem;border-radius:.25rem;font-size:7px;font-weight:900;color:#fb923c;letter-spacing:.1em;text-transform:uppercase;z-index:10;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
 /* SEARCH OVERLAY */
-.sov{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;padding:5rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:opacity .3s}
-.sov.open{opacity:1;pointer-events:all}
-.sbox{position:relative;max-width:640px;margin:0 auto;width:100%}
-.sinput{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:.875rem;padding:1rem 1rem 1rem 3rem;font-size:1.125rem;font-weight:600;color:#fff;outline:none;transition:all .3s;font-family:Inter,sans-serif}
-.sinput:focus{border-color:#f97316;background:rgba(255,255,255,.08)}
-.sinput::placeholder{color:rgba(255,255,255,.25)}
-.sico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);pointer-events:none}
-.sx{position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);cursor:pointer;transition:color .2s;background:none;border:0;padding:0}
-.sx:hover{color:#fff}
-.sres{max-width:640px;margin:1.5rem auto 0;display:flex;flex-direction:column;gap:.5rem;overflow-y:auto;max-height:calc(100vh - 16rem)}
-.sri{display:flex;align-items:center;gap:1rem;padding:.875rem;border-radius:.75rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s}
-.sri:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
-.sri-cov{width:48px;height:68px;border-radius:.5rem;object-fit:cover;flex-shrink:0;background:#222}
-.sri-info{flex:1;min-width:0}
-.sri-name{font-size:.875rem;font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:.25rem;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.sri-meta{font-size:10px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em}
+.sov{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.95);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);visibility:hidden;transform:scale(.98)}
+.sov.open{opacity:1;pointer-events:all;visibility:visible;transform:scale(1)}
+.sbox{position:relative;max-width:680px;margin:0 auto;width:100%}
+.sinput{width:100%;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:1.25rem 4rem 1.25rem 3.75rem;font-size:1.125rem;font-weight:600;color:#fff;outline:none;transition:all .3s cubic-bezier(.16,1,.3,1);font-family:Inter,sans-serif;letter-spacing:-.01em}
+.sinput:focus{border-color:rgba(249,115,22,.5);background:rgba(249,115,22,.03);box-shadow:0 0 0 4px rgba(249,115,22,.08)}
+.sinput::placeholder{color:rgba(255,255,255,.25);font-weight:500}
+.sico{position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.35);pointer-events:none;transition:all .3s}
+.sov.open .sico{color:var(--orange)}
+.sx{position:absolute;right:1.25rem;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:9999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center}
+.sx:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff;transform:translateY(-50%) scale(1.05)}
+.sres{max-width:1400px;margin:2rem auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:1.125rem;overflow-y:auto;max-height:calc(100vh - 18rem);padding-bottom:2rem}
+@media(min-width:640px){.sres{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+@media(min-width:1024px){.sres{grid-template-columns:repeat(5,1fr);gap:1.5rem}}
+@media(min-width:1280px){.sres{grid-template-columns:repeat(6,1fr);gap:1.625rem}}
+.semempty{text-align:center;padding:4rem 2rem;color:rgba(255,255,255,.2);font-size:.9rem;font-weight:600;letter-spacing:-.01em;grid-column:1/-1}
 .sri-dl{width:32px;height:32px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);flex-shrink:0;transition:all .3s}
 .sri:hover .sri-dl{background:#f97316;border-color:#f97316;color:#fff}
 .sempty{text-align:center;padding:3rem;color:rgba(255,255,255,.3);font-size:.875rem;font-weight:600}
@@ -236,10 +247,10 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;text-align
   </div>
 </header>
 
-<!-- SEARCH -->
-<div class="sov" id="sov">
+<!-- SEARCH OVERLAY -->
+<div class="sov" id="sov" onclick="if(event.target===this)closeSrch()">
   <div class="sbox">
-    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
+    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg></span>
     <input class="sinput" id="sinput" type="text" placeholder="Chercher un jeu…" autocomplete="off" oninput="doSrch(this.value)">
     <button class="sx" onclick="closeSrch()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   </div>
@@ -599,21 +610,21 @@ function closeSrch(){document.getElementById('sov').classList.remove('open');doc
 function doSrch(q){
   const r=document.getElementById('sres');
   if(!q.trim()){r.innerHTML='';return;}
-  const m=ALL.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,20);
-  if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour "${e(q)}"</div>`;return;}
-  r.innerHTML=m.map(g=>{
-    const img=portraitImg(g);
-    return`<div class="sri" onclick="closeSrch();location.href='jeux.html?id=${e2(g.id)}'" style="cursor:pointer">
-      ${img
-        ?`<img class="sri-cov" src="${img}" alt="${e(g.name)}" loading="lazy">`
-        :`<div class="sri-cov" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎮</div>`}
-      <div class="sri-info">
-        <div class="sri-name">${e(g.name)}</div>
-        <div class="sri-meta">${e(g.categories?.join(', ')||'—')} · ${e(g.year||'—')} · ${fd(g.added_at)}</div>
-      </div>
-      <div class="sri-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg></div>
-    </div>`;
-  }).join('');
+  const m=ALL.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,12);
+  if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour « ${e(q)} »</div>`;return;}
+  r.innerHTML=m.map((g,i)=>card(g,i).replace(/onclick="location\.href='jeux\.html\?id=/, 'onclick="closeSrch();location.href=\'jeux.html?id=')).join('');
+}
+
+function card(g,i=0){
+  const img=portraitImg(g);
+  const animStyle = i >= 0 ? `animation-delay:${i*0.05}s` : 'opacity:1;transform:none';
+  return`<div class="card" onclick="location.href='jeux.html?id=${e2(g.id)}'" style="cursor:pointer;${animStyle}">
+    <div class="card-img">
+      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="card-noimg">🎮</div>`}
+      ${g.year?`<div class="card-yr">${e(g.year)}</div>`:''}
+      ${g.categories?.length?`<div class="card-cat">${e(g.categories[0])}${g.categories.length>1?'+':''}</div>`:''}
+    </div>
+  </div>`;
 }
 
 // ── NAVIGATION ───────────────────────────────────────────────────────────────
