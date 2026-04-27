@@ -1808,7 +1808,7 @@
     "ytb_id": "adFNARIHlOs",
     "magnets": [
       {
-        "url": "https://files.catbox.moe/96s0pf.torrent",
+        "url": "magnet:?xt=urn:btih:ZNCJGKZEG7KGQPKOEK3X6TBR5QKHCSHP&dn=Phasmophobia&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
         "size": "16.34 GB",
         "source": "manual",
         "name": "Phasmophobia.v0.16.1.1-OFME",
@@ -1816,6 +1816,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T03:08:06.836Z"
+    "added_at": "2026-04-27T20:16:18.066Z"
   }
 ]
