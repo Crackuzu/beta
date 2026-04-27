@@ -606,15 +606,15 @@
     "ytb_id": "ZPu9yAOEYkQ",
     "magnets": [
       {
-        "url": "https://uploads.online-fix.me:2053/torrents/Palworld/",
+        "url": "magnet:?xt=urn:btih:53cb4f2b8d8c33535ee491b300c662d1cff84365&dn=Palworld&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
         "size": "25.37 GB",
         "source": "manual",
-        "name": "Palworld.v0.7.3.90464-OFME.torrent",
-        "type": "direct"
+        "name": "Palworld.v0.7.3.90464-OFME",
+        "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T14:56:36.818Z"
+    "added_at": "2026-04-27T15:00:36.551Z"
   },
   {
     "title": "Minecraft",
