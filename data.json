@@ -1805,5 +1805,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-26T15:36:33.943Z"
+  },
+  {
+    "title": "Phasmophobia",
+    "year": "18 sept. 2020",
+    "description": "Phasmophobia is a 4 player online co-op psychological horror. Paranormal activity is on the rise and it's up to you and your team to use all the ghost-hunting equipment at your disposal in order to gather as much evidence as you can.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/739630/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/739630/library_hero.jpg",
+    "ytb_id": "adFNARIHlOs",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/96s0pf.torrent",
+        "size": "16.34 GB",
+        "source": "manual",
+        "name": "Phasmophobia.v0.16.1.1-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-27T02:40:51.231Z"
   }
 ]
