@@ -596,37 +596,24 @@
     "year": "18 Jan, 2024",
     "description": "Fight, farm, build and work alongside mysterious creatures called &quot;Pals&quot; in this completely new multiplayer, open world survival and crafting game!",
     "categories": [
-      "Action",
-      "RPG"
+      "RPG",
+      "Multijoueur",
+      "Monde ouvert"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/library_hero.jpg",
     "ytb_id": "ZPu9yAOEYkQ",
     "magnets": [
       {
-        "url": "magnet:?xt=urn:btih:6cb247841ea4a3fb97cbee2ce4ef120dd7eb0ea9&dn=Palworld&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
-        "size": "17.9 GB",
-        "source": "Online-Fix",
-        "name": "Palworld 0.3.10.61184",
-        "type": "magnet"
-      },
-      {
-        "url": "magnet:?xt=urn:btih:C81B9998222115D294404A5B8DA1F48998B72D79&dn=Palworld+%28v0.4.12.64723+%2B+Bonus+Content+%2B+Multiplayer+%2B+MULTi11%29+%28From+15.5+GB%29+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
-        "size": "15.6 GB",
-        "source": "DODI",
-        "name": "Palworld (v0.4.12.64723 + Bonus Content + Multiplayer + MULTi11) (From 15.5 GB) [DODI Repack]",
-        "type": "magnet"
-      },
-      {
-        "url": "https://gofile.io/d/RY5JO4",
-        "size": "19.1 GB",
-        "source": "SteamRip",
-        "name": "Palworld Free Download (v0.3.7.58983 + Co-op)",
-        "type": "direct"
+        "url": "https://files.catbox.moe/bo3e8u.torrent",
+        "size": "25.37 GB",
+        "source": "manual",
+        "name": "Palworld.v0.7.3.90464-OFME",
+        "type": "torrent"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:26:11.364Z"
+    "added_at": "2026-04-27T13:59:03.695Z"
   },
   {
     "title": "Minecraft",
