@@ -593,12 +593,13 @@
   },
   {
     "title": "Palworld",
-    "year": "18 Jan, 2024",
-    "description": "Fight, farm, build and work alongside mysterious creatures called &quot;Pals&quot; in this completely new multiplayer, open world survival and crafting game!",
+    "year": "18 janv. 2024",
+    "description": "Un tout nouveau jeu de survie multijoueur en monde ouvert ou le but est de collectionner de mysterieuses creatures, les Pals, afin de les faire combattre, batir des structures, travailler dans les champs et faire tourner vos usines.",
     "categories": [
       "RPG",
       "Multijoueur",
-      "Monde ouvert"
+      "Monde ouvert",
+      "Aventure"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/library_hero.jpg",
@@ -613,7 +614,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T13:59:03.695Z"
+    "added_at": "2026-04-27T14:09:15.834Z"
   },
   {
     "title": "Minecraft",
@@ -1617,14 +1618,14 @@
   {
     "title": "SILENT HILL 2",
     "year": "7 oct. 2024",
-    "description": "&quot;Mon nom est... Maria,&quot; dit la femme en souriant. Son visage, sa voix... Elle lui ressemble tellement.",
+    "description": "\"Mon nom est... Maria,\" dit la femme en souriant. Son visage, sa voix... Elle lui ressemble tellement.",
     "categories": [
-      "Action",
+      "Horreur",
       "Aventure"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2124490/library_hero.jpg",
-    "ytb_id": "",
+    "ytb_id": "7f5qac5f3mE",
     "magnets": [
       {
         "url": "magnet:?xt=urn:btih:05C5B8C28C01D6DD43107512D09C8C21EC3CBCED&dn=Silent+Hill+2%3A+Remake+%282024%29+-+Digital+Deluxe+Edition+%28v1.1.236.114+%2B+All+DLCs+%2B+Bonus+Content+%2B+MULTi14%29+%28From+25.8+GB%29+%5BDODI+Repack%5D&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
@@ -1642,7 +1643,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:00:21.873Z"
+    "added_at": "2026-04-27T14:11:07.954Z"
   },
   {
     "title": "The Binding of Isaac: Rebirth",
