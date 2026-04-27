@@ -604,17 +604,9 @@
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/library_hero.jpg",
     "ytb_id": "ZPu9yAOEYkQ",
-    "magnets": [
-      {
-        "url": "https://uploads.online-fix.me:2053/torrents/Palworld/Palworld.v0.7.3.90464-OFME.torrent",
-        "size": "25.37 GB",
-        "source": "manual",
-        "name": "Palworld.v0.7.3.90464-OFME",
-        "type": "torrent"
-      }
-    ],
+    "magnets": [],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T14:51:13.678Z"
+    "added_at": "2026-04-27T14:55:26.320Z"
   },
   {
     "title": "Minecraft",
