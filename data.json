@@ -1885,5 +1885,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-28T16:03:46.592Z"
+  },
+  {
+    "title": "PICO PARK 2",
+    "year": "12 sept. 2024",
+    "description": "PICO PARK est de retour avec de nouveaux niveaux ! Jouez de 2 a 8 joueurs localement ou en ligne dans ce jeu cooperatif de puzzle et d'action !",
+    "categories": [
+      "Puzzle",
+      "Multijoueur",
+      "Plateforme",
+      "Strategie"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2644470/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2644470/library_hero.jpg",
+    "ytb_id": "4NDye1CEIo8",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:I25X5HFBZ4IUZ7ALYERDEZEQ5AQ2LQR4&dn=PICO%20PARK%202&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "156 Mo",
+        "source": "manual",
+        "name": "PICO.PARK.2.v1.04-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-28T23:27:29.268Z"
   }
 ]
