@@ -1817,5 +1817,73 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-27T20:16:18.066Z"
+  },
+  {
+    "title": "Undertale",
+    "year": "15 sept. 2015",
+    "description": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
+    "categories": [
+      "Action",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/391540/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/391540/library_hero.jpg",
+    "ytb_id": "1Hojv0m3TqA",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/it9q85.torrent",
+        "size": "0.1 GB",
+        "source": "manual",
+        "name": "Undertale",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-28T16:03:20.000Z"
+  },
+  {
+    "title": "OneShot",
+    "year": "8 déc. 2016",
+    "description": "OneShot est un jeu d'aventure/d'enigmes surrealiste en vue du dessus et dote d'un gameplay unique. Vous devez guider un enfant dans sa mission a travers un monde mysterieux : restaurer un soleil eteint depuis bien longtemps. Le monde vous attend.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/420530/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/420530/library_hero.jpg",
+    "ytb_id": "g3qZaDA4sdQ",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/vjc74n.torrent",
+        "size": "0.3 GB",
+        "source": "manual",
+        "name": "OneShot",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-28T15:59:45.187Z"
+  },
+  {
+    "title": "ULTRAKILL",
+    "year": "3 sept. 2020",
+    "description": "ULTRAKILL is a fast-paced ultra-violent retro FPS that combines the skill-based style scoring of character action games with the unadulterated carnage inspired by the best shooters of the '90s. Rip apart your foes with varied destructive weaponry and shower in their blood to regain your health.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1229490/hero_capsule.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1229490/library_hero.jpg",
+    "ytb_id": "Pw63IVgYLDc",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:c6da840d4d566b401386497dfed34d459b93231c&dn=ULTRAKILL&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "1.4 GB",
+        "source": "Online-Fix",
+        "name": "ULTRAKILL Build 24122023",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-28T16:03:46.592Z"
   }
 ]
