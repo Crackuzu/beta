@@ -1824,7 +1824,8 @@
     "description": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
     "categories": [
       "Action",
-      "RPG"
+      "RPG",
+      "Combat"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/391540/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/391540/library_hero.jpg",
@@ -1832,14 +1833,14 @@
     "magnets": [
       {
         "url": "https://files.catbox.moe/it9q85.torrent",
-        "size": "0.1 GB",
+        "size": "129 MB",
         "source": "manual",
         "name": "Undertale",
         "type": "torrent"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-28T16:03:20.000Z"
+    "added_at": "2026-04-29T03:04:40.338Z"
   },
   {
     "title": "OneShot",
@@ -1855,14 +1856,14 @@
     "magnets": [
       {
         "url": "https://files.catbox.moe/vjc74n.torrent",
-        "size": "0.3 GB",
+        "size": "327 MB",
         "source": "manual",
         "name": "OneShot",
         "type": "torrent"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-28T15:59:45.187Z"
+    "added_at": "2026-04-29T03:05:19.678Z"
   },
   {
     "title": "ULTRAKILL",
