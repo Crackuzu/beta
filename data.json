@@ -1935,5 +1935,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T15:33:31.844Z"
+  },
+  {
+    "title": "Monster Hunter Wilds",
+    "year": "27 févr. 2025",
+    "description": "Arpentez des environnements qui se transforment radicalement d'un moment a l'autre sous l'effet de la force indomptable d'une nature sans cesse dechainee. Plongez dans une histoire de monstres et d'humains luttant pour vivre en harmonie dans un monde de dualites. (PAS ONLINE)",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2246340/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2246340/library_hero.jpg",
+    "ytb_id": "a_wNFT4j6qI",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/12rijf.torrent",
+        "size": "83.37 GB",
+        "source": "manual",
+        "name": "Monster Hunter Wilds-Fitgirl Repack",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T16:07:41.064Z"
   }
 ]
