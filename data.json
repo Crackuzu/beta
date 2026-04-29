@@ -2006,5 +2006,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T16:19:27.624Z"
+  },
+  {
+    "title": "Satisfactory",
+    "year": "10 sept. 2024",
+    "description": "Satisfactory est un jeu de construction d'usines en vue a la premiere personne dans un monde ouvert avec une touche d'exploration et de combats. Jouez seul ou entre amis, explorez une planete inconnue, construisez des usines a plusieurs niveaux et des tapis roulants a l'infini !",
+    "categories": [
+      "Aventure",
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/526870/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/526870/library_hero.jpg",
+    "ytb_id": "Jt4XOPiPJHs",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/7er8lm.torrent",
+        "size": "12.75 GB",
+        "source": "manual",
+        "name": "Satisfactory.Build.19122025-OFME",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T16:26:05.602Z"
   }
 ]
