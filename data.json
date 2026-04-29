@@ -1970,7 +1970,7 @@
       "RPG"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2358720/library_hero.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2358720/library_hero_2x.jpg",
     "ytb_id": "",
     "magnets": [
       {
@@ -1982,6 +1982,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:10:49.942Z"
+    "added_at": "2026-04-29T16:11:30.797Z"
   }
 ]
