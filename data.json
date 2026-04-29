@@ -2052,5 +2052,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T16:28:15.946Z"
+  },
+  {
+    "title": "Euro Truck Simulator 2",
+    "year": "12 oct. 2012",
+    "description": "Voyagez a travers l'Europe en tant que roi de la route, un camionneur qui livre d'importantes marchandises sur des distances impressionnantes ! Avec des dizaines de villes a explorer, votre endurance, vos competences et votre vitesse seront poussees a leurs limites.",
+    "categories": [
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/227300/library_hero_blur.jpg",
+    "ytb_id": "xlTuC18xVII",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:SC2AJRDMTVGZ5FTXGSHATHCCSUFZPTKC&dn=Euro%20Truck%20Simulator%202&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "35.11 GB",
+        "source": "manual",
+        "name": "Euro.Truck.Simulator.2.v1.58.1.4s-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T16:37:00.754Z"
   }
 ]
