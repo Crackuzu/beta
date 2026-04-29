@@ -1911,5 +1911,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-28T23:27:29.268Z"
+  },
+  {
+    "title": "Assetto Corsa",
+    "year": "19 déc. 2014",
+    "description": "Assetto Corsa v1.16 introduces the new \"Laguna Seca\" laser-scanned track, 7 new cars among which the eagerly awaited Alfa Romeo Giulia Quadrifoglio! Check the changelog for further info!",
+    "categories": [
+      "Simulation",
+      "Sport",
+      "Course"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/244210/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/244210/library_hero.jpg",
+    "ytb_id": "TDFN-E30jhU",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/kh5pgq.torrent",
+        "size": "17.09 GB",
+        "source": "manual",
+        "name": "Assetto Corsa",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T15:33:31.844Z"
   }
 ]
