@@ -2030,5 +2030,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T16:26:05.602Z"
+  },
+  {
+    "title": "Microsoft Flight Simulator 2024",
+    "year": "19 nov. 2024",
+    "description": "Parcours le monde dans notre plus grande flotte d'avions et observe la simulation atteindre de nouveaux sommets tout en te faisant une place dans le monde de l'aviation dans Microsoft Flight Simulator 2024.",
+    "categories": [
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2537590/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2537590/library_hero.jpg",
+    "ytb_id": "p3xp-SnZDoY",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:7ee6c34c61f12b659b52d3e7b7618e7a81f8456a&dn=Microsoft+Flight+Simulator+2024&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "9.5 GB",
+        "source": "Online-Fix",
+        "name": "Microsoft Flight Simulator 2024 1.1.7.0",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T16:28:15.946Z"
   }
 ]
