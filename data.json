@@ -2061,7 +2061,7 @@
       "Simulation"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/227300/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/227300/library_hero_blur.jpg",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1777477240/gek3cfgoskvtftsawdge.png",
     "ytb_id": "xlTuC18xVII",
     "magnets": [
       {
@@ -2073,6 +2073,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:37:00.754Z"
+    "added_at": "2026-04-29T16:39:33.820Z"
   }
 ]
