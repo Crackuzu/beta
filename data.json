@@ -1959,5 +1959,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T16:07:41.064Z"
+  },
+  {
+    "title": "Black Myth: Wukong",
+    "year": "19 aout 2024",
+    "description": "Black Myth: Wukong est un jeu action-RPG inspire de la mythologie chinoise. Vous y incarnerez le Predestine et prendrez part a une epopee merveilleuse au cours de laquelle vous devrez affronter maints perils pour decouvrir la sombre verite d'une legende glorieuse.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2358720/library_hero.jpg",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/bij7an.torrent",
+        "size": "133.1 GB",
+        "source": "manual",
+        "name": "Black Myth: Wukong",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-04-29T16:10:49.942Z"
   }
 ]
