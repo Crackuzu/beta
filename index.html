@@ -2019,6 +2019,7 @@ function morphToJeu(el, gameId) {
     const heroImg = document.getElementById('heroImg');
     if (heroImg && heroImg.src && heroImg.complete) {
       clearInterval(checkHero);
+      clearTimeout(fallbackTimer);
       
       // Cacher uniquement l'image hero (le clone la remplace)
       heroImg.style.visibility = 'hidden';
@@ -2067,7 +2068,15 @@ function morphToJeu(el, gameId) {
     }
   }, 30);
 
-  setTimeout(() => clearInterval(checkHero), 3000);
+  // Fallback : si l'image hero n'est pas chargée après 1.5s, annuler le morph
+  const fallbackTimer = setTimeout(() => {
+    clearInterval(checkHero);
+    clone.remove();
+    document.body.classList.remove('morph-active');
+    // Afficher les éléments directement
+    document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn').forEach(el => el.classList.add('visible'));
+    _morphing = false;
+  }, 1500);
 }
 
 // ── TÉLÉCHARGEMENT HERO ─────────────────────────────────────────────────────
