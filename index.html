@@ -74,7 +74,7 @@ textarea,select{font:inherit;color:inherit}
 #spa-view.fading{opacity:0}
 
 /* Morph transition */
-.morph-clone{position:fixed;z-index:9999;overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);will-change:left,top,width,height,border-radius;-webkit-transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1);transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1)}
+.morph-clone{position:fixed;z-index:9999;transition:all .7s cubic-bezier(.16,1,.3,1);overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5)}
 .morph-clone img{width:100%;height:100%;object-fit:cover;display:block}
 .morph-clone::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.3) 100%);pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
 .morph-clone::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%);pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
@@ -2001,18 +2001,16 @@ function morphToJeu(el, gameId) {
   const clone = document.createElement('div');
   clone.className = 'morph-clone';
   const br = getComputedStyle(img).borderRadius || '0.75rem';
-  clone.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
+  clone.style.cssText = `top:${rect.top}px;left:${rect.left}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
 
   const cloneImg = document.createElement('img');
   cloneImg.src = img.src;
   cloneImg.alt = '';
-  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;';
+  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;';
   clone.appendChild(cloneImg);
   document.body.appendChild(clone);
 
-  // Forcer le paint initial
-  void clone.offsetWidth;
-
+  // Désactiver les animations AVANT le chargement du template
   document.body.classList.add('morph-active');
 
   nav('jeu', gameId);
@@ -2021,11 +2019,12 @@ function morphToJeu(el, gameId) {
     const heroImg = document.getElementById('heroImg');
     if (heroImg && heroImg.src && heroImg.complete) {
       clearInterval(checkHero);
-      clearTimeout(fallbackTimer);
       
+      // Cacher uniquement l'image hero (le clone la remplace)
       heroImg.style.visibility = 'hidden';
 
       // Démarrer les transitions juste avant la fin du morph
+      // pour qu'elles soient visibles quand le clone est retiré
       setTimeout(() => {
         const els = document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn');
         els.forEach((el, i) => {
@@ -2035,50 +2034,40 @@ function morphToJeu(el, gameId) {
 
       const heroRect = heroImg.getBoundingClientRect();
 
-      // Lancer le morph via left/top/width/height (pas de déformation d'image)
+      // Lancer le morph du clone vers la position de l'image hero
       requestAnimationFrame(() => {
-        clone.classList.add('morphing');
-        clone.style.left = heroRect.left + 'px';
-        clone.style.top = heroRect.top + 'px';
-        clone.style.width = heroRect.width + 'px';
-        clone.style.height = heroRect.height + 'px';
-        clone.style.borderRadius = '0';
-        
-        // Crossfade des images pendant le morph
-        cloneImg.style.opacity = '0';
-        const heroCloneImg = document.createElement('img');
-        heroCloneImg.src = heroImg.src;
-        heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;position:absolute;top:0;left:0;';
-        clone.appendChild(heroCloneImg);
-        
         requestAnimationFrame(() => {
-          heroCloneImg.style.opacity = '1';
+          clone.classList.add('morphing');
+          clone.style.top = heroRect.top + 'px';
+          clone.style.left = heroRect.left + 'px';
+          clone.style.width = heroRect.width + 'px';
+          clone.style.height = heroRect.height + 'px';
+          clone.style.borderRadius = '0';
+          
+          // Crossfade des images pendant le morph
+          cloneImg.style.opacity = '0';
+          const heroCloneImg = document.createElement('img');
+          heroCloneImg.src = heroImg.src;
+          heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;position:absolute;top:0;left:0;';
+          clone.appendChild(heroCloneImg);
+          
+          requestAnimationFrame(() => {
+            heroCloneImg.style.opacity = '1';
+          });
         });
       });
 
       // À la fin du morph, retirer le clone
-      const onEnd = () => {
-        clone.removeEventListener('transitionend', onEnd);
-        clearTimeout(endTimer);
+      setTimeout(() => {
         clone.remove();
         heroImg.style.visibility = 'visible';
         document.body.classList.remove('morph-active');
         _morphing = false;
-      };
-      clone.addEventListener('transitionend', onEnd);
-      // Fallback si transitionend ne fire pas
-      const endTimer = setTimeout(onEnd, 900);
+      }, 750);
     }
   }, 30);
 
-  // Fallback : si l'image hero n'est pas chargée après 1.5s, annuler le morph
-  const fallbackTimer = setTimeout(() => {
-    clearInterval(checkHero);
-    clone.remove();
-    document.body.classList.remove('morph-active');
-    document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn').forEach(el => el.classList.add('visible'));
-    _morphing = false;
-  }, 1500);
+  setTimeout(() => clearInterval(checkHero), 3000);
 }
 
 // ── TÉLÉCHARGEMENT HERO ─────────────────────────────────────────────────────
