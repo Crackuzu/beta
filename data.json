@@ -2074,5 +2074,53 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-04-29T16:39:33.820Z"
+  },
+  {
+    "title": "Lethal Company",
+    "year": "23 oct. 2023",
+    "description": "A co-op horror about scavenging at abandoned moons to sell scrap to the Company.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1966720/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1966720/library_hero.jpg",
+    "ytb_id": "Su6OsTb1w9Q",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:3SQZWGPDWZWHU2BIDN5PJOBZ53UBMDAK&dn=Lethal%20Company&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "686 Mb",
+        "source": "manual",
+        "name": "Lethal.Company.v81-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-02T16:02:16.818Z"
+  },
+  {
+    "title": "Beyond: Two Souls",
+    "year": "18 juin 2020",
+    "description": "Thriller psychologique unique et rempli d'action mettant en scene les acteurs Elliot PAGE et Willem DAFOE, Beyond: Two Souls vous embarque dans une aventure passionnante a travers le monde, en immersion dans l'incroyable vie de Jodie Holmes.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/960990/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/960990/library_hero.jpg",
+    "ytb_id": "MtEoS0MaNyA",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:93DB098AC132D17A78E196415A8487C9BBBF9B2F",
+        "size": "10.7 GB",
+        "source": "FitGirl",
+        "name": "Beyond: Two Souls – Build 5117920 + Controller Fix + Letterbox Remover",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-02T16:07:39.544Z"
   }
 ]
