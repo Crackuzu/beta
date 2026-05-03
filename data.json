@@ -2122,5 +2122,52 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-02T16:07:39.544Z"
+  },
+  {
+    "title": "Ready or Not",
+    "year": "13 déc. 2023",
+    "description": "Los Suenos : la police fait face a une flambee de violence et de crime a travers toute la metropole. Les unites SWAT ont ete envoyees pour desamorcer de nombreuses situations a risque : prises d'otage, alertes a la bombe, forcenes retranches... Civils : restez chez vous.",
+    "categories": [
+      "Horreur",
+      "FPS",
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1144200/library_hero.jpg",
+    "ytb_id": "ItUnHOY_kfw",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:OCLSWARDDKCE74XRKHO4VNS7YZYITM7J&dn=Ready%20or%20Not&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "40GB",
+        "source": "manual",
+        "name": "Ready.Or.Not.Build.20032026-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-03T17:29:31.740Z"
+  },
+  {
+    "title": "Bean There, Won That",
+    "year": "25 sept. 2024",
+    "description": "Bean There, Won That est un party game base sur la physique, concu pour tester vos competences et amities ! Participez a des mini-jeux dejantes en tirant, bottant et cognant jusqu'au sommet ! En ligne ou ecran partage, ecrasez vos amis chez vous ou dans le monde entier.",
+    "categories": [
+      "Multijoueur",
+      "Plateforme"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3130340/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3130340/library_hero.jpg",
+    "ytb_id": "FJcyP7RT1R0",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:OCLSWARDDKCE74XRKHO4VNS7YZYITM7J&dn=Ready%20or%20Not&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "1.84 GB",
+        "source": "manual",
+        "name": "Bean.There,.Won.That.v1.0.17-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-03T17:33:14.227Z"
   }
 ]
