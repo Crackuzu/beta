@@ -2128,7 +2128,6 @@
     "year": "13 déc. 2023",
     "description": "Los Suenos : la police fait face a une flambee de violence et de crime a travers toute la metropole. Les unites SWAT ont ete envoyees pour desamorcer de nombreuses situations a risque : prises d'otage, alertes a la bombe, forcenes retranches... Civils : restez chez vous.",
     "categories": [
-      "Horreur",
       "FPS",
       "Action"
     ],
@@ -2145,7 +2144,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-03T17:29:31.740Z"
+    "added_at": "2026-05-03T23:01:34.430Z"
   },
   {
     "title": "Bean There, Won That",
