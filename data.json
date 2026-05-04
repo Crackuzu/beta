@@ -2168,5 +2168,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-03T17:35:51.057Z"
+  },
+  {
+    "title": "Clair Obscur: Expedition 33",
+    "year": "24 avr. 2025",
+    "description": "A la tete de l'Expedition 33, partez eliminer la Peintresse pour que plus jamais elle ne peigne la mort. Explorez un monde rappelant la France de la Belle Epoque et affrontez des ennemis uniques dans ce RPG au tour par tour avec mecaniques de temps reel.",
+    "categories": [
+      "Action",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1903340/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1903340/library_hero.jpg",
+    "ytb_id": "ejgW-upPMgk",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/7sm9hc.torrent",
+        "size": "43.0 GB",
+        "source": "manual",
+        "name": "Clair Obscur: Expedition 33",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-04T03:46:30.583Z"
   }
 ]
