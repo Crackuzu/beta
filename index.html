@@ -74,7 +74,7 @@ textarea,select{font:inherit;color:inherit}
 #spa-view.fading{opacity:0}
 
 /* Morph transition */
-.morph-clone{position:fixed;z-index:9999;transition:all .7s cubic-bezier(.16,1,.3,1);overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5)}
+.morph-clone{position:fixed;z-index:9999;overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);will-change:left,top,width,height,border-radius;-webkit-transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1);transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1)}
 .morph-clone img{width:100%;height:100%;object-fit:cover;display:block}
 .morph-clone::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.3) 100%);pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
 .morph-clone::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%);pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
@@ -1288,6 +1288,11 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
         Se connecter avec Discord
       </button>
       <div class="auth-error" id="authError"></div>
+      <div style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.3)">
+        <button onclick="devBypass()" style="background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;text-decoration:underline">
+          🔧 Bypass (Dev only)
+        </button>
+      </div>
       <div class="auth-footer">Seuls les administrateurs autorisés peuvent accéder à cette page</div>
     </div>
   </div>
@@ -1690,8 +1695,8 @@ document.addEventListener('keydown', ev => {
   }
 });
 
-// Démarrage
-nav('accueil');
+// Démarrage différé dans DOMContentLoaded pour gérer l'auth Discord
+// nav('accueil') est appelé dans le DOMContentLoaded
 </script>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -1989,85 +1994,87 @@ function morphToJeu(el, gameId) {
       if (d) _gamesCache = JSON.parse(d);
     } catch(e) {}
   }
+  let heroUrl = null;
   if (_gamesCache) {
     const game = _gamesCache.find(g => g.id == gameId);
-    if (game) {
-      const heroUrl = game.img || game.image || game.cover || null;
-      if (heroUrl) { const p = new Image(); p.src = heroUrl; }
-    }
+    if (game) heroUrl = game.img || game.image || game.cover || null;
   }
 
   const rect = img.getBoundingClientRect();
   const clone = document.createElement('div');
   clone.className = 'morph-clone';
   const br = getComputedStyle(img).borderRadius || '0.75rem';
-  clone.style.cssText = `top:${rect.top}px;left:${rect.left}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
+  clone.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
 
   const cloneImg = document.createElement('img');
   cloneImg.src = img.src;
   cloneImg.alt = '';
-  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;';
+  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;';
   clone.appendChild(cloneImg);
   document.body.appendChild(clone);
 
-  // Désactiver les animations AVANT le chargement du template
+  // Forcer le paint initial
+  void clone.offsetWidth;
+
   document.body.classList.add('morph-active');
 
   nav('jeu', gameId);
 
-  const checkHero = setInterval(() => {
+  // Démarrer le morph immédiatement, sans attendre l'image hero
+  // Utiliser la position cible du hero (100vh) directement
+  const targetW = window.innerWidth;
+  const targetH = window.innerHeight;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      clone.classList.add('morphing');
+      clone.style.left = '0';
+      clone.style.top = '0';
+      clone.style.width = targetW + 'px';
+      clone.style.height = targetH + 'px';
+      clone.style.borderRadius = '0';
+    });
+  });
+
+  // Démarrer les transitions des éléments pendant le morph
+  setTimeout(() => {
+    const els = document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn');
+    els.forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 40);
+    });
+  }, 500);
+
+  // Crossfader vers l'image hero quand elle est chargée
+  const crossfadeHero = () => {
     const heroImg = document.getElementById('heroImg');
-    if (heroImg && heroImg.src && heroImg.complete) {
-      clearInterval(checkHero);
-      
-      // Cacher uniquement l'image hero (le clone la remplace)
+    if (heroImg && heroImg.src && heroImg.complete && heroImg.naturalWidth > 0) {
+      clearInterval(checkImg);
       heroImg.style.visibility = 'hidden';
-
-      // Démarrer les transitions juste avant la fin du morph
-      // pour qu'elles soient visibles quand le clone est retiré
-      setTimeout(() => {
-        const els = document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn');
-        els.forEach((el, i) => {
-          setTimeout(() => el.classList.add('visible'), i * 40);
-        });
-      }, 500);
-
-      const heroRect = heroImg.getBoundingClientRect();
-
-      // Lancer le morph du clone vers la position de l'image hero
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          clone.classList.add('morphing');
-          clone.style.top = heroRect.top + 'px';
-          clone.style.left = heroRect.left + 'px';
-          clone.style.width = heroRect.width + 'px';
-          clone.style.height = heroRect.height + 'px';
-          clone.style.borderRadius = '0';
-          
-          // Crossfade des images pendant le morph
-          cloneImg.style.opacity = '0';
-          const heroCloneImg = document.createElement('img');
-          heroCloneImg.src = heroImg.src;
-          heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;position:absolute;top:0;left:0;';
-          clone.appendChild(heroCloneImg);
-          
-          requestAnimationFrame(() => {
-            heroCloneImg.style.opacity = '1';
-          });
-        });
-      });
-
-      // À la fin du morph, retirer le clone
-      setTimeout(() => {
-        clone.remove();
-        heroImg.style.visibility = 'visible';
-        document.body.classList.remove('morph-active');
-        _morphing = false;
-      }, 750);
+      cloneImg.style.opacity = '0';
+      const heroCloneImg = document.createElement('img');
+      heroCloneImg.src = heroImg.src;
+      heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;position:absolute;top:0;left:0;';
+      clone.appendChild(heroCloneImg);
+      requestAnimationFrame(() => { heroCloneImg.style.opacity = '1'; });
     }
-  }, 30);
+  };
+  const checkImg = setInterval(crossfadeHero, 50);
+  // Essayer immédiatement aussi
+  crossfadeHero();
 
-  setTimeout(() => clearInterval(checkHero), 3000);
+  // À la fin du morph, nettoyer
+  const onEnd = () => {
+    clone.removeEventListener('transitionend', onEnd);
+    clearTimeout(endTimer);
+    clearInterval(checkImg);
+    clone.remove();
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) heroImg.style.visibility = 'visible';
+    document.body.classList.remove('morph-active');
+    _morphing = false;
+  };
+  clone.addEventListener('transitionend', onEnd);
+  const endTimer = setTimeout(onEnd, 900);
 }
 
 // ── TÉLÉCHARGEMENT HERO ─────────────────────────────────────────────────────
@@ -2714,6 +2721,9 @@ function initJeu(gameId) {
     }
 
     function loginWithDiscord() {
+      // Sauvegarder qu'on était sur la page admin pour y revenir après auth
+      sessionStorage.setItem('returnToAdmin', 'true');
+      
       const params = new URLSearchParams({
         client_id: DISCORD_CONFIG.CLIENT_ID,
         redirect_uri: DISCORD_CONFIG.REDIRECT_URI,
@@ -2743,11 +2753,22 @@ function initJeu(gameId) {
           localStorage.setItem('discord_user', JSON.stringify(mockUser));
           document.getElementById('authOverlay').classList.add('hidden');
 
-          // Nettoyer l'URL et continuer le chargement
+          // Nettoyer l'URL
           window.history.replaceState({}, document.title, window.location.pathname);
-          loadGames();
-          renderCategories();
-          setupPasteListener();
+          
+          // Vérifier si on doit retourner sur la page admin
+          const returnToAdmin = sessionStorage.getItem('returnToAdmin');
+          sessionStorage.removeItem('returnToAdmin');
+          
+          if (returnToAdmin) {
+            // On était sur la page admin avant l'auth, y retourner
+            nav('admin');
+          } else {
+            // Sinon continuer le chargement normal
+            loadGames();
+            renderCategories();
+            setupPasteListener();
+          }
         }
       } catch (e) {
         showAuthError('Erreur de connexion: ' + e.message);
@@ -2758,6 +2779,28 @@ function initJeu(gameId) {
       const errorEl = document.getElementById('authError');
       errorEl.textContent = msg;
       errorEl.classList.add('show');
+    }
+
+    // Bypass rapide pour dev
+    function devBypass() {
+      const user = {
+        id: '482466285364576266',
+        username: 'crackuzu'
+      };
+      localStorage.setItem('discord_user', JSON.stringify(user));
+      document.getElementById('authOverlay').classList.add('hidden');
+      
+      // Vérifier si on doit retourner sur la page admin
+      const returnToAdmin = sessionStorage.getItem('returnToAdmin');
+      sessionStorage.removeItem('returnToAdmin');
+      
+      if (returnToAdmin) {
+        nav('admin');
+      } else {
+        loadGames();
+        renderCategories();
+        setupPasteListener();
+      }
     }
 
 
@@ -2813,16 +2856,36 @@ function initJeu(gameId) {
     // INIT
     // ═══════════════════════════════════════════════════════════
     document.addEventListener('DOMContentLoaded', () => {
+      // Vérifier si on revient d'une auth Discord (code dans l'URL)
+      const params = new URLSearchParams(window.location.search);
+      const hasCode = params.get('code');
+      
       // Check Discord auth first
       const isAuth = checkDiscordAuth() || checkPassword();
+      
       if (!isAuth) {
-        // Not authenticated - show login overlay
+        // Not authenticated - show login overlay, mais charger la page d'accueil en arrière-plan
+        nav('accueil');
         return;
       }
-
-      loadGames();
-      renderCategories();
-      setupPasteListener();
+      
+      // On est authentifié
+      // Si on revient d'une auth Discord avec returnToAdmin, la nav est déjà faite dans exchangeCodeForToken
+      // Sinon, vérifier si on doit aller vers admin
+      const returnToAdmin = sessionStorage.getItem('returnToAdmin');
+      
+      if (hasCode && returnToAdmin) {
+        // On est déjà en train de gérer le retour OAuth, ne rien faire
+        // exchangeCodeForToken s'occupe de la navigation
+        sessionStorage.removeItem('returnToAdmin');
+      } else if (returnToAdmin) {
+        // Bypass utilisé ou auth existante, aller vers admin
+        sessionStorage.removeItem('returnToAdmin');
+        nav('admin');
+      } else {
+        // Navigation normale vers accueil
+        nav('accueil');
+      }
     });
 
     // ═══════════════════════════════════════════════════════════
