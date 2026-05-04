@@ -2215,5 +2215,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-04T03:51:12.510Z"
+  },
+  {
+    "title": "Overcooked! 2",
+    "year": "7 aout 2018",
+    "description": "Overcooked revient avec une toute nouvelle portion d'action culinaire chaotique ! Retournez dans le royaume Oignon et reunissez votre equipe de chefs dans ce jeu de cooperation locale ou en ligne jusqu'a 4 joueurs. A vos tabliers... il est l'heure de sauver le monde (encore une fois !)",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/728880/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/728880/library_hero.jpg",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:FK5FSJYUHKS6CH3DKYSVL35WCEF3XM7P&dn=Overcooked%202&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "6.69 GB",
+        "source": "manual",
+        "name": "Overcooked.2.Build.01102020-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-04T03:55:01.343Z"
   }
 ]
