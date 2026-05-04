@@ -74,7 +74,7 @@ textarea,select{font:inherit;color:inherit}
 #spa-view.fading{opacity:0}
 
 /* Morph transition */
-.morph-clone{position:fixed;z-index:9999;overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);will-change:left,top,width,height,border-radius;-webkit-transition:left 1.1s cubic-bezier(.16,1,.3,1),top 1.1s cubic-bezier(.16,1,.3,1),width 1.1s cubic-bezier(.16,1,.3,1),height 1.1s cubic-bezier(.16,1,.3,1),border-radius 1.1s cubic-bezier(.16,1,.3,1);transition:left 1.1s cubic-bezier(.16,1,.3,1),top 1.1s cubic-bezier(.16,1,.3,1),width 1.1s cubic-bezier(.16,1,.3,1),height 1.1s cubic-bezier(.16,1,.3,1),border-radius 1.1s cubic-bezier(.16,1,.3,1)}
+.morph-clone{position:fixed;z-index:9999;overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);will-change:left,top,width,height,border-radius;-webkit-transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1);transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1)}
 .morph-clone img{width:100%;height:100%;object-fit:cover;display:block}
 .morph-clone::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.3) 100%);pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
 .morph-clone::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%);pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
@@ -2074,7 +2074,7 @@ function morphToJeu(el, gameId) {
     _morphing = false;
   };
   clone.addEventListener('transitionend', onEnd);
-  const endTimer = setTimeout(onEnd, 1300);
+  const endTimer = setTimeout(onEnd, 900);
 }
 
 // ── TÉLÉCHARGEMENT HERO ─────────────────────────────────────────────────────
