@@ -1690,27 +1690,28 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
             <div id="sourceStatus" style="margin-bottom:1rem;font-size:.75rem;color:rgba(255,255,255,.4);text-align:center"></div>
             
             <!-- Search Button -->
-            <button class="search-btn" onclick="searchAllSources()" style="width:100%;margin-bottom:1.5rem" id="btn-search-all">
-              🔍 Chercher dans toutes les sources
+            <button class="search-btn" onclick="searchAllSources()" style="width:100%;margin-bottom:.5rem" id="btn-search-all">
+              🔍 Chercher dans les sources JSON
+            </button>
+            <button class="search-btn" onclick="searchOnlineFix()" style="width:100%;margin-bottom:1.5rem;background:linear-gradient(135deg,#22c55e,#16a34a);border-color:rgba(34,197,94,.3)" id="btn-search-onlinefix">
+              🌐 Chercher sur OnlineFix.me (live)
             </button>
             
             <div class="magnet-list" id="magnetList"></div>
             
-            <!-- Upload .torrent to Catbox -->
+            <!-- Upload .torrent -->
             <div style="margin:1rem 0;padding:1rem;border:1px dashed var(--w20);border-radius:.5rem;background:var(--w5)">
               <div style="font-size:.8rem;font-weight:600;color:var(--w60);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em">
-                📤 Upload .torrent (Catbox.me)
+                📤 Importer un .torrent
               </div>
-              <div style="display:flex;gap:.5rem;align-items:center">
-                <input type="file" id="torrentFile" accept=".torrent" style="display:none" onchange="uploadTorrentWithProxy(this)">
-                <button class="magnet-btn" onclick="document.getElementById('torrentFile').click()" style="background:var(--accent);color:#000;font-weight:600">
-                  📁 Choisir fichier .torrent
-                </button>
+              <input type="file" id="torrentFile" accept=".torrent" style="display:none" onchange="onTorrentFileSelected(this)">
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                <button onclick="document.getElementById('torrentFile').click()" style="padding:.4rem .8rem;border-radius:.375rem;background:var(--w10);border:1px solid var(--w20);color:var(--w60);cursor:pointer;font-size:.8rem">Choisir un fichier</button>
+                <button id="btnTorrentCatbox" onclick="uploadTorrentToCatbox()" style="display:none;padding:.4rem .8rem;border-radius:.375rem;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);color:#f97316;cursor:pointer;font-size:.8rem;font-weight:600">☁️ Upload Catbox</button>
+                <button id="btnTorrentMagnet" onclick="convertTorrentToMagnet()" style="display:none;padding:.4rem .8rem;border-radius:.375rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#22c55e;cursor:pointer;font-size:.8rem;font-weight:600">🧲 Convertir en magnet</button>
                 <span id="torrentUploadStatus" style="font-size:.8rem;color:var(--w40)"></span>
               </div>
-              <div style="font-size:.7rem;color:var(--w40);margin-top:.5rem">
-                Essaie Litterbox (CORS activé) puis Catbox via proxy
-              </div>
+              <div id="torrentPreview" style="display:none;margin-top:.75rem;padding:.5rem .75rem;border-radius:.375rem;background:var(--w3);border:1px solid var(--w10);font-size:.75rem;color:var(--w50)"></div>
             </div>
             
             <div id="manualMagnetInput">
@@ -4472,78 +4473,191 @@ function initJeu(gameId) {
     }
 
     // ═══════════════════════════════════════════════════════════
-    // MAGNETS (Manual input only - CORS blocks automatic scraping)
+    // TORNET FILE IMPORT (Catbox upload + Magnet conversion)
     // ═══════════════════════════════════════════════════════════
-    async function uploadTorrentWithProxy(input) {
+    let _torrentFileData = null;  // { file, name, size, infoHash, magnetUrl, trackers }
+
+    // ── Bencode parser ──────────────────────────────────────────
+    function bdecode(buf, offset) {
+      if (offset >= buf.length) throw new Error('Unexpected end');
+      const c = buf[offset];
+      if (c === 0x69) { // 'i' integer
+        const end = buf.indexOf(0x65, offset + 1); // 'e'
+        if (end === -1) throw new Error('No end for integer');
+        return [parseInt(new TextDecoder().decode(buf.slice(offset + 1, end)), 10), end + 1];
+      }
+      if (c === 0x6C) { // 'l' list
+        let pos = offset + 1, list = [];
+        while (buf[pos] !== 0x65) { const [v, n] = bdecode(buf, pos); list.push(v); pos = n; }
+        return [list, pos + 1];
+      }
+      if (c === 0x64) { // 'd' dict
+        let pos = offset + 1, dict = {};
+        while (buf[pos] !== 0x65) {
+          const [key, kn] = bdecode(buf, pos);
+          const [val, vn] = bdecode(buf, kn);
+          dict[key] = val; pos = vn;
+        }
+        return [dict, pos + 1];
+      }
+      // String: <length>:<bytes>
+      const colon = buf.indexOf(0x3A, offset);
+      if (colon === -1) throw new Error('No colon for string');
+      const len = parseInt(new TextDecoder().decode(buf.slice(offset, colon)), 10);
+      const start = colon + 1;
+      const str = new TextDecoder().decode(buf.slice(start, start + len));
+      return [str, start + len];
+    }
+
+    function bdecodeRaw(buf) {
+      const [val] = bdecode(new Uint8Array(buf), 0);
+      return val;
+    }
+
+    // Extract raw bencoded bytes for a top-level key (needed for info hash)
+    function bencodeExtractKey(buf, key) {
+      const data = new Uint8Array(buf);
+      const keyBytes = new TextEncoder().encode(key + ':');
+      // Find key in dict: scan for pattern after 'd'
+      let pos = 1; // skip 'd'
+      while (pos < data.length && data[pos] !== 0x65) {
+        // Read key string
+        const colon = data.indexOf(0x3A, pos);
+        if (colon === -1) break;
+        const kLen = parseInt(new TextDecoder().decode(data.slice(pos, colon)), 10);
+        const kStart = colon + 1;
+        const kStr = new TextDecoder().decode(data.slice(kStart, kStart + kLen));
+        // Read value - find its end by parsing it
+        const [_, valEnd] = bdecode(data, kStart + kLen);
+        if (kStr === key) return buf.slice(kStart + kLen, valEnd);
+        pos = valEnd;
+      }
+      return null;
+    }
+
+    function formatSize(bytes) {
+      if (bytes >= 1073741824) return (bytes / 1073741824).toFixed(1) + ' GB';
+      if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+      if (bytes >= 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return bytes + ' B';
+    }
+
+    async function parseTorrentFile(file) {
+      const buf = await file.arrayBuffer();
+      const data = bdecodeRaw(buf);
+
+      // Name
+      const name = data.info?.name || file.name.replace('.torrent', '');
+
+      // Total size
+      let totalSize = 0;
+      if (data.info?.length) {
+        totalSize = data.info.length;
+      } else if (data.info?.files) {
+        totalSize = data.info.files.reduce((s, f) => s + (f.length || 0), 0);
+      }
+
+      // Trackers
+      let trackers = [];
+      if (data['announce-list']) {
+        for (const tier of data['announce-list']) {
+          if (Array.isArray(tier)) trackers.push(...tier);
+          else trackers.push(tier);
+        }
+      }
+      if (data.announce && !trackers.includes(data.announce)) trackers.push(data.announce);
+
+      // Info hash (SHA-1 of bencoded info dict)
+      const infoRaw = bencodeExtractKey(buf, 'info');
+      let infoHash = '';
+      if (infoRaw) {
+        const hashBuf = await crypto.subtle.digest('SHA-1', infoRaw);
+        infoHash = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      // Build magnet URL
+      let magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(name)}`;
+      for (const tr of trackers.slice(0, 5)) {
+        magnetUrl += `&tr=${encodeURIComponent(tr)}`;
+      }
+
+      return { file, name, totalSize, infoHash, magnetUrl, trackers };
+    }
+
+    async function onTorrentFileSelected(input) {
       const file = input.files[0];
       if (!file) return;
-      
+
       const status = document.getElementById('torrentUploadStatus');
-      status.textContent = '⏳ Upload via proxy...';
-      
-      // Try litterbox directly first (has CORS enabled)
+      status.textContent = '⏳ Analyse du fichier…';
+
       try {
-        status.textContent = '⏳ Upload sur Litterbox...';
-        
+        _torrentFileData = await parseTorrentFile(file);
+
+        // Show preview
+        const preview = document.getElementById('torrentPreview');
+        preview.style.display = 'block';
+        preview.innerHTML = `<strong>${esc(_torrentFileData.name)}</strong> · ${formatSize(_torrentFileData.totalSize)} · Hash: ${_torrentFileData.infoHash.slice(0, 12)}…`;
+
+        // Show action buttons
+        document.getElementById('btnTorrentCatbox').style.display = '';
+        document.getElementById('btnTorrentMagnet').style.display = '';
+        status.textContent = '';
+      } catch (e) {
+        console.error('Torrent parse error:', e);
+        status.textContent = '❌ Fichier .torrent invalide';
+        _torrentFileData = null;
+      }
+    }
+
+    async function uploadTorrentToCatbox() {
+      if (!_torrentFileData) return;
+      const status = document.getElementById('torrentUploadStatus');
+      status.textContent = '⏳ Upload sur Catbox…';
+
+      try {
         const formData = new FormData();
         formData.append('reqtype', 'fileupload');
-        formData.append('fileToUpload', file);
-        formData.append('time', '72h');
-        
-        const response = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+        formData.append('fileToUpload', _torrentFileData.file);
+
+        const WORKER_URL = window.location.port === '3000'
+          ? 'http://localhost:3000'
+          : 'https://crackuzu-api.crackuzu.workers.dev';
+
+        const response = await fetch(`${WORKER_URL}/api/catbox-upload`, {
           method: 'POST',
           body: formData
         });
-        
-        if (response.ok) {
-          const url = await response.text();
-          if (url && url.startsWith('http')) {
-            document.getElementById('m-url').value = url.trim();
-            document.getElementById('m-name').value = file.name.replace('.torrent', '');
-            document.getElementById('m-type').value = 'torrent';
-            status.textContent = '✅ Upload réussi sur Litterbox !';
-            showToast('Fichier uploadé !', 'success');
-            input.value = '';
-            return;
-          }
+
+        const data = await response.json();
+
+        if (data.url) {
+          document.getElementById('m-url').value = data.url;
+          document.getElementById('m-name').value = _torrentFileData.file.name.replace('.torrent', '');
+          document.getElementById('m-size').value = formatSize(_torrentFileData.totalSize);
+          document.getElementById('m-type').value = 'torrent';
+          status.textContent = '✅ Upload Catbox réussi !';
+          showToast('Fichier uploadé !', 'success');
+          return;
         }
+
+        status.textContent = '❌ ' + (data.error || 'Upload échoué');
+        showToast(data.error || 'Upload échoué', 'error');
       } catch (e) {
-        console.warn('Litterbox failed:', e);
+        console.error('Catbox upload error:', e);
+        status.textContent = '❌ Erreur réseau';
+        showToast('Erreur lors de l\'upload', 'error');
       }
-      
-      // Fallback: try with corsproxy.io for catbox
-      try {
-        status.textContent = '⏳ Essai avec Catbox+proxy...';
-        await new Promise(r => setTimeout(r, 1000));
-        
-        const formData = new FormData();
-        formData.append('reqtype', 'fileupload');
-        formData.append('fileToUpload', file);
-        
-        const response = await fetch('https://corsproxy.io/?https://catbox.moe/user/api.php', {
-          method: 'POST',
-          body: formData
-        });
-        
-        if (response.ok) {
-          const url = await response.text();
-          if (url && url.startsWith('http')) {
-            document.getElementById('m-url').value = url.trim();
-            document.getElementById('m-name').value = file.name.replace('.torrent', '');
-            document.getElementById('m-type').value = 'torrent';
-            status.textContent = '✅ Upload réussi sur Catbox !';
-            showToast('Fichier uploadé !', 'success');
-            input.value = '';
-            return;
-          }
-        }
-      } catch (e) {
-        console.warn('Catbox proxy failed:', e);
-      }
-      
-      status.textContent = '❌ Upload échoué';
-      showToast('Upload auto échoué. Utilise catbox.me manuellement.', 'error');
-      input.value = '';
+    }
+
+    function convertTorrentToMagnet() {
+      if (!_torrentFileData) return;
+      document.getElementById('m-url').value = _torrentFileData.magnetUrl;
+      document.getElementById('m-name').value = _torrentFileData.file.name.replace('.torrent', '');
+      document.getElementById('m-size').value = formatSize(_torrentFileData.totalSize);
+      document.getElementById('m-type').value = 'magnet';
+      document.getElementById('torrentUploadStatus').textContent = '✅ Magnet généré !';
+      showToast('Magnet link créé !', 'success');
     }
     
     function addManualMagnet() {
@@ -4669,6 +4783,114 @@ function initJeu(gameId) {
       lastSearchResults = allResults;
       displayAllSourceResults(allResults);
       status.textContent = `${allResults.length} résultats trouvés`;
+    }
+
+    // ── OnlineFix Live Search ──────────────────────────────────
+    async function searchOnlineFix() {
+      const title = document.getElementById('f-title').value.trim();
+      if (!title) {
+        showToast('Entre un titre de jeu d\'abord', 'error');
+        return;
+      }
+
+      switchTab('magnets');
+
+      const container = document.getElementById('sourceResults');
+      const status = document.getElementById('sourceStatus');
+
+      container.style.display = 'block';
+      container.innerHTML = `
+        <div style="padding:2rem;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:.5rem">🌐</div>
+          <div style="color:rgba(255,255,255,.5)">Recherche sur OnlineFix.me...</div>
+        </div>
+      `;
+      status.textContent = 'Recherche live sur OnlineFix.me...';
+
+      try {
+        const WORKER_URL = window.location.port === '3000'
+          ? 'http://localhost:3000'
+          : 'https://crackuzu-api.crackuzu.workers.dev';
+
+        const res = await fetch(`${WORKER_URL}/api/onlinefix-search?q=${encodeURIComponent(title)}`, { signal: AbortSignal.timeout(20000) });
+        const data = await res.json();
+
+        if (!Array.isArray(data) || !data.length) {
+          container.innerHTML = `<div style="padding:1.5rem;text-align:center;color:rgba(255,255,255,.3)">Aucun résultat sur OnlineFix.me</div>`;
+          status.textContent = 'Aucun résultat';
+          return;
+        }
+
+        // Display results with "fetch magnets" button
+        let html = `<div style="margin-bottom:.5rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#22c55e">🌐 OnlineFix.me — ${data.length} résultat${data.length > 1 ? 's' : ''}</div>`;
+        data.forEach(r => {
+          html += `
+            <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.75rem;background:rgba(34,197,94,.03);border:1px solid rgba(34,197,94,.08);margin-bottom:.5rem;transition:all .2s" onmouseover="this.style.borderColor='rgba(34,197,94,.2)'" onmouseout="this.style.borderColor='rgba(34,197,94,.08)'">
+              ${r.img ? `<img src="${esc(r.img)}" style="width:45px;height:60px;border-radius:.5rem;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">` : ''}
+              <div style="flex:1;min-width:0">
+                <div style="font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.name)}</div>
+                ${r.size ? `<div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.15rem">📦 ${esc(r.size)}</div>` : ''}
+              </div>
+              <button onclick="fetchOnlineFixPage('${esc(r.url)}','${esc(r.name)}')" style="padding:.35rem .75rem;border-radius:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.15);color:#22c55e;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🧲 Magnets</button>
+            </div>`;
+        });
+        container.innerHTML = html;
+        status.textContent = `${data.length} résultat${data.length > 1 ? 's' : ''} sur OnlineFix.me`;
+      } catch (e) {
+        console.error('OnlineFix search error:', e);
+        container.innerHTML = `<div style="padding:1.5rem;text-align:center;color:rgba(255,100,100,.5)">Erreur: ${esc(e.message)}</div>`;
+        status.textContent = 'Erreur de recherche';
+      }
+    }
+
+    async function fetchOnlineFixPage(pageUrl, gameName) {
+      const status = document.getElementById('sourceStatus');
+      status.textContent = '⏳ Extraction des magnets...';
+
+      try {
+        const WORKER_URL = window.location.port === '3000'
+          ? 'http://localhost:3000'
+          : 'https://crackuzu-api.crackuzu.workers.dev';
+
+        const res = await fetch(`${WORKER_URL}/api/onlinefix-page?url=${encodeURIComponent(pageUrl)}`, { signal: AbortSignal.timeout(20000) });
+        const data = await res.json();
+
+        if (data.error) {
+          showToast(data.error, 'error');
+          status.textContent = 'Erreur: ' + data.error;
+          return;
+        }
+
+        const allLinks = [...(data.magnets || []), ...(data.downloads || [])];
+        if (!allLinks.length) {
+          showToast('Aucun magnet/trouvé sur cette page', 'error');
+          status.textContent = 'Aucun lien trouvé';
+          return;
+        }
+
+        // Add each magnet/download as a magnet entry
+        let added = 0;
+        for (const url of allLinks) {
+          const magnet = {
+            url: url,
+            name: 'OnlineFix' + (allLinks.length > 1 ? ` ${++added}` : ''),
+            size: data.size || '',
+            type: url.startsWith('magnet') ? 'magnet' : 'direct',
+            source: 'OnlineFix'
+          };
+          state.selectedMagnets.push(magnet);
+        }
+
+        renderMagnets();
+        showToast(`${allLinks.length} lien${allLinks.length > 1 ? 's' : ''} ajouté${allLinks.length > 1 ? 's' : ''} depuis OnlineFix`, 'success');
+        status.textContent = `✅ ${allLinks.length} lien${allLinks.length > 1 ? 's' : ''} ajouté${allLinks.length > 1 ? 's' : ''}`;
+        updateStatusBadge();
+        state.isModified = true;
+      } catch (e) {
+        console.error('OnlineFix page error:', e);
+        showToast('Erreur d\'extraction', 'error');
+        status.textContent = 'Erreur';
+      }
     }
 
     function searchInSource(data, query) {
