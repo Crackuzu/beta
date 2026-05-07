@@ -4,11 +4,11 @@
     "appId": 1172620,
     "url": "https://store.steampowered.com/app/1172620",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172620/579c6d544424019a032f4add98e8f923925c1cef/header.jpg?t=1775816492",
-    "desc": "Sea of Thieves est un jeu dâaventure pirate Ã  succÃ¨s offrant l'expÃ©rience ultime de la vie de pirate avec des trÃ©sors perdus, des batailles intenses, des monstres marins Ã  affronter et plus encore. Cette Ã©dition mise Ã  jour inclut des bonus numÃ©riques.",
+    "desc": "Sea of Thieves est un jeu dÃ¢ÂÂaventure pirate ÃÂ  succÃÂ¨s offrant l'expÃÂ©rience ultime de la vie de pirate avec des trÃÂ©sors perdus, des batailles intenses, des monstres marins ÃÂ  affronter et plus encore. Cette ÃÂ©dition mise ÃÂ  jour inclut des bonus numÃÂ©riques.",
     "developers": "Rare Ltd",
     "genres": "Action, Aventure",
     "release": "3 juin 2020",
-    "price": "39,99â¬",
+    "price": "39,99Ã¢ÂÂ¬",
     "id": "mouyge77s57m",
     "requested_at": "2026-05-07T03:57:23.299Z"
   },
@@ -17,12 +17,25 @@
     "appId": 381210,
     "url": "https://store.steampowered.com/app/381210",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/381210/0d639f88506b8a695c40898ec22dadaaa6698d3e/header_alt_assets_5.jpg?t=1778102718",
-    "desc": "Piégés dans un royaume malfaisant où même la mort n'est pas une issue, quatre survivants affrontent un tueur dans une épreuve brutale. Choisissez votre camp et pénétrez dans un monde de terreur avec le meilleur jeu multijoueur asymétrique de l'horreur.",
+    "desc": "PiÃ©gÃ©s dans un royaume malfaisant oÃ¹ mÃªme la mort n'est pas une issue, quatre survivants affrontent un tueur dans une Ã©preuve brutale. Choisissez votre camp et pÃ©nÃ©trez dans un monde de terreur avec le meilleur jeu multijoueur asymÃ©trique de l'horreur.",
     "developers": "Behaviour Interactive Inc.",
     "genres": "Action",
     "release": "14 juin 2016",
-    "price": "7,99€",
+    "price": "7,99â¬",
     "id": "mouyi7j0lxgg",
     "requested_at": "2026-05-07T03:58:47.964Z"
+  },
+  {
+    "name": "Road 96 🛣️",
+    "appId": 1466640,
+    "url": "https://store.steampowered.com/app/1466640",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1466640/header.jpg?t=1776862588",
+    "desc": "Trace ta route en stop dans ce Road Trip procédural délirant créé par le studio indé français DigixArt. Personne ne prendra la même route !",
+    "developers": "Digixart",
+    "genres": "Action, Aventure, Indépendant",
+    "release": "16 aout 2021",
+    "price": "19,96€",
+    "id": "mouyohgd7qk8",
+    "requested_at": "2026-05-07T04:03:40.765Z"
   }
 ]
