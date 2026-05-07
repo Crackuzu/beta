@@ -4,12 +4,25 @@
     "appId": 3955660,
     "url": "https://store.steampowered.com/app/3955660",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3955660/bcdbe736d1fe4849853c2bf9608f59c471fd6fcd/header.jpg?t=1778141488",
-    "desc": "Faites équipe dans cette aventure automobile coopérative chaotique à 2-4 joueurs ! Naviguez sur des routes de montagne dangereuses tout en étant attachés l'un à l'autre, vous tirant mutuellement de la catastrophe. Gravissez des pentes raides, survivez aux intempéries et atteignez le sommet sans tomber dans l'abîme !",
-    "developers": "Çağatay Demir, Doğukan Şahin",
-    "genres": "Aventure, Occasionnel, Indépendant, Simulation",
+    "desc": "Faites Ã©quipe dans cette aventure automobile coopÃ©rative chaotique Ã  2-4 joueurs ! Naviguez sur des routes de montagne dangereuses tout en Ã©tant attachÃ©s l'un Ã  l'autre, vous tirant mutuellement de la catastrophe. Gravissez des pentes raides, survivez aux intempÃ©ries et atteignez le sommet sans tomber dans l'abÃ®me !",
+    "developers": "ÃaÄatay Demir, DoÄukan Åahin",
+    "genres": "Aventure, Occasionnel, IndÃ©pendant, Simulation",
     "release": "3 avr. 2026",
-    "price": "4,99€",
+    "price": "4,99â¬",
     "id": "movtj3oo6jh2",
     "requested_at": "2026-05-07T18:27:17.736Z"
+  },
+  {
+    "name": "Invincible VS",
+    "appId": 2353060,
+    "url": "https://store.steampowered.com/app/2353060",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2353060/8cd8eff0576c0503650c611cd0ef76faf905d13d/header.jpg?t=1778173415",
+    "desc": "Invincible VS est un jeu de combat de super-héros brutal en 3 contre 3 dans l'univers d'Invincible, où vous vous constituez une équipe de vos personnages préférés pour vous battre jusqu'à la mort dans des lieux emblématiques.",
+    "developers": "Quarter Up",
+    "genres": "Action, Aventure",
+    "release": "30 avr. 2026",
+    "price": "49,99€",
+    "id": "movtlmef5bl3",
+    "requested_at": "2026-05-07T18:29:15.303Z"
   }
 ]
