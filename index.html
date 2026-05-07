@@ -1316,11 +1316,6 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
         Se connecter avec Discord
       </button>
       <div class="auth-error" id="authError"></div>
-      <div style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.3)">
-        <button onclick="devBypass()" style="background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;text-decoration:underline">
-          🔧 Bypass (Dev only)
-        </button>
-      </div>
       <div class="auth-footer">Seuls les administrateurs autorisés peuvent accéder à cette page</div>
     </div>
   </div>
@@ -3122,15 +3117,6 @@ function initJeu(gameId) {
       errorEl.classList.add('show');
     }
 
-    // Bypass rapide pour dev
-    function devBypass() {
-      const user = {
-        id: '482466285364576266',
-        username: 'crackuzu'
-      };
-      localStorage.setItem('discord_user', JSON.stringify(user));
-      nav('admin');
-    }
 
 
     // ═══════════════════════════════════════════════════════════
@@ -4488,16 +4474,18 @@ function initJeu(gameId) {
 
       try {
         let requests = [];
-        // Fetch requests.json from GitHub (raw URL, no auth needed)
-        const rawUrl = `https://raw.githubusercontent.com/${localStorage.getItem('github_repo') || 'Crackuzu/beta'}/main/requests.json`;
+        // In local mode, fetch from local file; in prod, from GitHub raw
+        const reqUrl = window.location.port === '3000'
+          ? '/requests.json'
+          : `https://raw.githubusercontent.com/Crackuzu/beta/main/requests.json?t=${Date.now()}`;
 
         try {
-          const res = await fetch(rawUrl);
-          console.log('[Requests] GitHub raw status:', res.status);
+          const res = await fetch(reqUrl);
+          console.log('[Requests] status:', res.status, 'from:', reqUrl);
           if (res.ok) requests = await res.json();
-          else console.warn('[Requests] GitHub raw error:', res.status);
+          else console.warn('[Requests] error:', res.status);
         } catch(e) {
-          console.warn('[Requests] GitHub fetch failed:', e.message);
+          console.warn('[Requests] fetch failed:', e.message);
         }
 
         if (!Array.isArray(requests)) requests = [];
