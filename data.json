@@ -2441,9 +2441,17 @@
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778178496/rf1mgpir4set5fhdsms9.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3955660/library_hero.jpg",
     "ytb_id": "q2DSPrrZghs",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:d286d811a2d2cf3cd8d52d0944fb7b89eb45d389&dn=Dangerous%20Mountain%20Together&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "3.3 GB",
+        "source": "By Crackuzu",
+        "name": "Dangerous.Mountain.Together.Build.17042026-OFME",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:26:55.416Z"
+    "added_at": "2026-05-07T19:29:50.098Z"
   },
   {
     "title": "Invincible VS",
@@ -2456,8 +2464,16 @@
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778178599/qo9vyerxubtzo2tjysiy.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2353060/library_hero.jpg",
     "ytb_id": "n-G1qLmXLx0",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:e62453343a8a728320d98a4647a26534344f70af&dn=Invincible%20VS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "9.1 GB",
+        "source": "By Crackuzu",
+        "name": "Invincible.VS.v0.9.7146.0-OFME",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:28:57.023Z"
+    "added_at": "2026-05-07T19:29:25.704Z"
   }
 ]
