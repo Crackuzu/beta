@@ -2481,7 +2481,8 @@
     "year": "29 aout 2019",
     "description": "L'anthologie The Dark Pictures est une serie de jeux d'horreur autonomes a embranchements, egalement jouables en ligne avec un ami. Dans Man of Medan, cinq amis partent plonger en mer. Mais leurs vacances se transforment bientot en cauchemar.",
     "categories": [
-      "Aventure"
+      "Aventure",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/939850/library_600x900.jpg",
     "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/939850/page_bg_raw.jpg",
@@ -2496,7 +2497,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:52:38.502Z"
+    "added_at": "2026-05-07T19:56:11.041Z"
   },
   {
     "title": "Until Dawn",
