@@ -2378,5 +2378,31 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T05:48:29.069Z"
+  },
+  {
+    "title": "7 Days to Die",
+    "year": "25 juil. 2024",
+    "description": "7 Days est un jeu a monde ouvert entre le jeu de tir a la premiere personne, le survival horror, le tower defense et le RPG. Il inclut de la fabrication, de l'acquisition de butin, de l'extraction miniere, de l'exploration, et permet a votre personnage de progresser.",
+    "categories": [
+      "Aventure",
+      "Horreur",
+      "Multijoueur",
+      "Survie",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/251570/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/251570/library_hero.jpg",
+    "ytb_id": "kikTJaVBank",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:36YQUMC7JJLU2SXFFA3MHJ7W6BYMRQVF&dn=7%20Days%20To%20Die&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "15.43 GB",
+        "source": "By Crackuzu",
+        "name": "7.Days.To.Die.v2.5b23-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T15:01:10.576Z"
   }
 ]
