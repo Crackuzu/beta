@@ -2239,5 +2239,98 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-04T03:55:01.343Z"
+  },
+  {
+    "title": "Fast Food Simulator",
+    "year": "10 déc. 2024",
+    "description": "Bienvenue dans l'endroit le plus chaotique du monde ! Jouez en solo ou en cooperation jusqu'a 6 joueurs. Dirigez un fast-food et travaillez avec vos amis pour developper votre entreprise. Prenez les commandes, preparez les hamburgers et augmentez vos revenus en traitant avec les clients.",
+    "categories": [
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2916430/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2916430/library_hero.jpg",
+    "ytb_id": "KoJBZcxZ-1E",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:3PZOFDYOTKMNWBMMNVP2CRGUXPKCOOCH&dn=Fast%20Food%20Simulator&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "4.70 GB",
+        "source": "manual",
+        "name": "Fast Food Simulator",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T01:01:37.870Z"
+  },
+  {
+    "title": "Gamble With Your Friends",
+    "year": "1 mai 2026",
+    "description": "An online 1-6 player co-op \"casino crawler\" where you and your friends share one bank account and one massive debt. Gamble, buy sketchy items, make terrible decisions, and climb an ominous casino tower to hit your loan shark's daily quota in 5 minutes - or face the consequences.",
+    "categories": [
+      "Multijoueur",
+      "Simulation"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778113263/zjyglocigzx94uutjmwg.png",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3892270/46a2a2c1593b57eb3b8948a68be504e8d91d3912/ss_46a2a2c1593b57eb3b8948a68be504e8d91d3912.1920x1080.jpg?t=1778074971",
+    "ytb_id": "T9nPche0VhQ",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:FUBWTMOBU4SFR33ODBVRI64LMXTLLI4I&dn=Gamble%20With%20Your%20Friends&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "813.1 MB",
+        "source": "manual",
+        "name": "Gamble.With.Your.Friends.v1.0.4-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T01:20:19.105Z"
+  },
+  {
+    "title": "Roadside Research",
+    "year": "12 févr. 2026",
+    "description": "Roadside Research est une simulation de station-service de 1 a 4 joueurs. Sauf que vous etes des aliens, en mission d'infiltration. Faites des trucs tres humains, comme reapprovisionner les rayons, tout en preparant une invasion. Mais... ne vous faites pas prendre.",
+    "categories": [
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778113337/prxxp4xwz7hy63vvmgcx.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3643170/library_hero.jpg",
+    "ytb_id": "DygqjyalKc8",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:HE5OI2IW2DSJ7AVFIX5POYTTDNFCVNUK&dn=Roadside%20Research&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "733.1 MB",
+        "source": "manual",
+        "name": "Roadside.Research.v0.1.85-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T01:22:23.225Z"
+  },
+  {
+    "title": "Labyrinthine",
+    "year": "18 aout 2023",
+    "description": "Decouvrez les sombres secrets d'un labyrinthe envahi par la vegetation avec des amis en ligne alors que vous essayez d'echapper aux horreurs qui s'y trouvent. Resolvez des enigmes, trouvez des objets et fuir les habitants assoiffes de sang du labyrinthe pour tenter d'en sortir vivants...",
+    "categories": [
+      "Aventure",
+      "Horreur",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1302240/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1302240/library_hero.jpg",
+    "ytb_id": "skbq6geP8UI",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:RVAQBYUQXKTSKWG6I6T76SOZBQJCMAGB&dn=Labyrinthine&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "10.40 GB",
+        "source": "manual",
+        "name": "Labyrinthine.Build.11092025-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T01:23:05.897Z"
   }
 ]
