@@ -769,6 +769,35 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     .source-dot.offline{background:#ef4444}
     .source-name{font-size:.875rem;font-weight:600}
 
+    /* ─── REQUEST CARDS ─── */
+    .req-list{display:flex;flex-direction:column;gap:.75rem;max-height:500px;overflow-y:auto;padding-right:.25rem}
+    .req-list::-webkit-scrollbar{width:4px}
+    .req-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:99px}
+    .req-card{display:flex;gap:1rem;padding:1rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+    .req-card:hover{background:rgba(249,115,22,.06);border-color:rgba(249,115,22,.25);transform:translateX(4px)}
+    .req-card-img{width:56px;height:80px;border-radius:.75rem;object-fit:cover;background:#1a1a1a;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
+    .req-card-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.35rem}
+    .req-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+    .req-card-name{font-size:.9375rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+    .req-card-price{font-size:.75rem;font-weight:700;padding:.2rem .6rem;border-radius:99px;background:rgba(249,115,22,.15);color:#f97316;white-space:nowrap;flex-shrink:0}
+    .req-card-price.free{background:rgba(34,197,94,.12);color:#22c55e}
+    .req-card-dev{font-size:.75rem;color:rgba(255,255,255,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .req-card-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.15rem}
+    .req-card-tag{font-size:.65rem;font-weight:600;padding:.15rem .45rem;border-radius:99px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.06)}
+    .req-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:auto;padding-top:.25rem}
+    .req-card-date{font-size:.7rem;color:rgba(255,255,255,.25)}
+    .req-card-actions{display:flex;gap:.35rem;opacity:0;transition:opacity .2s}
+    .req-card:hover .req-card-actions{opacity:1}
+    .req-act-btn{padding:.3rem .65rem;border-radius:.5rem;font-size:.7rem;font-weight:700;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.3rem}
+    .req-act-btn.add{background:rgba(249,115,22,.15);color:#f97316;border:1px solid rgba(249,115,22,.25)}
+    .req-act-btn.add:hover{background:#f97316;color:#fff}
+    .req-act-btn.dismiss{background:rgba(255,255,255,.05);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.08)}
+    .req-act-btn.dismiss:hover{background:rgba(239,68,68,.15);color:#ef4444;border-color:rgba(239,68,68,.25)}
+    .req-empty{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2.5rem 1rem;text-align:center}
+    .req-empty-icon{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:1.5rem;border:1px solid rgba(255,255,255,.06)}
+    .req-empty-text{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.5}
+    .req-empty-sub{font-size:.75rem;color:rgba(255,255,255,.18)}
+
     /* ─── RECENT GAMES ─── */
     .recent-list{display:flex;flex-direction:column;gap:.5rem;max-height:400px;overflow-y:auto}
     .recent-item{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.75rem;background:rgba(255,255,255,.05);cursor:pointer;transition:all .2s}
@@ -932,39 +961,84 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     /* ══════════════════════════════════════════════════════════
        DEMANDE PAGE
     ══════════════════════════════════════════════════════════ */
-    .req-page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
-    .req-title{font-size:2rem;font-weight:900;letter-spacing:-.03em;margin-bottom:.25rem}
-    .req-sub{color:rgba(255,255,255,.4);font-size:.9375rem;margin-bottom:2.5rem}
-    .req-section{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:2rem;margin-bottom:1.5rem;backdrop-filter:blur(10px);overflow:visible}
-    .req-label{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:.75rem}
+    .req-page{max-width:720px;margin:0 auto;padding:120px 1.5rem 4rem;position:relative;min-height:100vh}
+    .req-page::before{content:'';position:fixed;top:10%;left:30%;width:400px;height:400px;border-radius:9999px;background:rgba(249,115,22,.04);filter:blur(120px);pointer-events:none;z-index:0}
+    .req-form{position:relative;z-index:1}
+    .req-title{font-size:2.25rem;font-weight:900;letter-spacing:-.03em;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.55) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:reqSlideDown .5s ease both}
+    .req-sub{color:rgba(255,255,255,.3);font-size:.9375rem;margin-bottom:2rem;line-height:1.6;animation:reqSlideDown .5s ease .05s both}
+    @keyframes reqSlideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    .req-section{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:1.25rem;padding:1.75rem;margin-bottom:1.25rem;backdrop-filter:blur(12px);overflow:visible;transition:all .3s;animation:reqSlideDown .5s ease .1s both}
+    .req-section:hover{border-color:rgba(255,255,255,.12)}
+    .req-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.3);margin-bottom:.75rem}
     .req-search-wrap{position:relative}
-    .req-search{width:100%;padding:1.25rem 1.25rem 1.25rem 3.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.08);color:#fff;font-size:1rem;font-weight:600;outline:none;transition:all .3s}
-    .req-search:focus{border-color:rgba(249,115,22,.5);background:rgba(249,115,22,.03);box-shadow:0 0 0 4px rgba(249,115,22,.08)}
-    .req-search::placeholder{color:rgba(255,255,255,.2);font-weight:500}
-    .req-search-icon{position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.25);pointer-events:none;transition:color .3s}
+    .req-search{width:100%;padding:1.125rem 1.125rem 1.125rem 3.25rem;border-radius:1rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.07);color:#fff;font-size:.9375rem;font-weight:600;outline:none;transition:all .3s}
+    .req-search:focus{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.02);box-shadow:0 0 0 3px rgba(249,115,22,.06)}
+    .req-search::placeholder{color:rgba(255,255,255,.18);font-weight:500}
+    .req-search-icon{position:absolute;left:1.125rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.2);pointer-events:none;transition:color .3s}
     .req-search-wrap:focus-within .req-search-icon{color:#f97316}
-    .req-preview{display:none;margin-top:1.5rem}
-    .req-preview.show{display:flex;gap:1.5rem;align-items:flex-start}
-    .req-preview-img{width:180px;aspect-ratio:2/3;object-fit:cover;border-radius:1rem;flex-shrink:0;border:2px solid rgba(255,255,255,.1)}
+    .req-preview{display:none;margin-top:1.25rem;animation:reqFadeIn .3s ease}
+    .req-preview.show{display:flex;gap:1.25rem;align-items:flex-start}
+    .req-preview-img{width:140px;aspect-ratio:2/3;object-fit:cover;border-radius:.875rem;flex-shrink:0;border:1.5px solid rgba(255,255,255,.08)}
     .req-preview-info{flex:1;min-width:0}
-    .req-preview-title{font-size:1.5rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.5rem}
-    .req-preview-meta{color:rgba(255,255,255,.4);font-size:.875rem;margin-bottom:.25rem}
-    .req-preview-desc{color:rgba(255,255,255,.5);font-size:.875rem;line-height:1.6;margin-top:.75rem;max-height:120px;overflow:hidden}
-    .req-field{width:100%;padding:1rem 1.25rem;border-radius:1rem;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.08);color:#fff;font-size:.9375rem;outline:none;transition:all .3s;resize:vertical;min-height:100px}
-    .req-field:focus{border-color:rgba(249,115,22,.5);box-shadow:0 0 0 4px rgba(249,115,22,.08)}
-    .req-field::placeholder{color:rgba(255,255,255,.2)}
-    .req-submit{width:100%;padding:1.25rem;border-radius:1rem;background:#f97316;color:#fff;font-size:1rem;font-weight:800;border:none;cursor:pointer;transition:all .3s;letter-spacing:.02em}
-    .req-submit:hover{background:#ea580c;transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.3)}
-    .req-submit:disabled{opacity:.4;pointer-events:none}
-    .req-submit.sending{background:rgba(249,115,22,.3);pointer-events:none}
+    .req-preview-title{font-size:1.25rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.4rem}
+    .req-preview-meta{color:rgba(255,255,255,.35);font-size:.8rem;margin-bottom:.2rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+    .req-preview-price{font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:99px;background:rgba(249,115,22,.12);color:#f97316;white-space:nowrap}
+    .req-preview-price.free{background:rgba(34,197,94,.1);color:#22c55e}
+    .req-preview-genres{display:flex;flex-wrap:wrap;gap:.2rem;margin:.4rem 0}
+    .req-preview-genre{font-size:.6rem;font-weight:600;padding:.12rem .4rem;border-radius:99px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.05)}
+    .req-preview-desc{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.5;margin-top:.5rem;max-height:90px;overflow:hidden}
+    .req-field{width:100%;padding:.875rem 1rem;border-radius:.875rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.07);color:#fff;font-size:.875rem;outline:none;transition:all .3s;resize:vertical;min-height:80px}
+    .req-field:focus{border-color:rgba(249,115,22,.4);box-shadow:0 0 0 3px rgba(249,115,22,.06)}
+    .req-field::placeholder{color:rgba(255,255,255,.18)}
+    .req-submit-wrap{display:flex;justify-content:center;margin-top:1.5rem;animation:reqSlideDown .5s ease .15s both}
+    .req-submit{padding:.875rem 2.5rem;border-radius:1rem;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;font-size:.9375rem;font-weight:800;border:none;cursor:pointer;transition:all .3s;letter-spacing:.02em;box-shadow:0 4px 20px rgba(249,115,22,.2)}
+    .req-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.35)}
+    .req-submit:disabled{opacity:.3;pointer-events:none;box-shadow:none;transform:none}
+    .req-submit.sending{background:rgba(249,115,22,.25);pointer-events:none;box-shadow:none}
     .req-success{text-align:center;padding:3rem 1rem;display:none}
-    .req-success.show{display:block}
-    .req-success-icon{width:64px;height:64px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;color:#22c55e}
+    .req-success.show{display:block;animation:reqFadeIn .4s ease}
+    @keyframes reqFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .req-success-icon{width:72px;height:72px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;color:#22c55e;animation:reqPop .3s ease .1s both}
+    @keyframes reqPop{from{transform:scale(0)}to{transform:scale(1)}}
     .req-success h2{font-size:1.5rem;font-weight:900;margin-bottom:.5rem}
     .req-success p{color:rgba(255,255,255,.4);font-size:.9375rem}
     .req-form.hide{display:none}
     .req-clear{margin-top:1rem;padding:.75rem 1.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:600;cursor:pointer;transition:all .2s}
     .req-clear:hover{background:rgba(255,255,255,.1);color:#fff}
+
+    /* ─── HOW IT WORKS STEPS ─── */
+    .req-steps{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem;animation:reqSlideDown .5s ease .08s both}
+    .req-step{display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1;max-width:140px}
+    .req-step-icon{width:44px;height:44px;border-radius:50%;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.15);display:flex;align-items:center;justify-content:center;color:#f97316;transition:all .3s}
+    .req-step:hover .req-step-icon{background:rgba(249,115,22,.15);transform:scale(1.1);box-shadow:0 0 20px rgba(249,115,22,.15)}
+    .req-step-num{font-size:.6rem;font-weight:800;color:rgba(249,115,22,.5);letter-spacing:.1em}
+    .req-step-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);text-align:center}
+    .req-step-line{flex:.5;max-width:60px;height:1px;background:linear-gradient(90deg,rgba(249,115,22,.2),rgba(255,255,255,.06));margin-bottom:1.5rem}
+
+    /* ─── LIVE STATS ─── */
+    .req-stats{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:2rem;padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);animation:reqSlideDown .5s ease .12s both}
+    .req-stat{text-align:center}
+    .req-stat-val{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,#f97316,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+    .req-stat-lbl{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.25);margin-top:.15rem}
+    .req-stat-sep{width:1px;height:32px;background:rgba(255,255,255,.06)}
+
+    /* ─── DUPLICATE POPUP ─── */
+    .req-popup{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;align-items:center;justify-content:center}
+    .req-popup.open{display:flex}
+    .req-popup-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+    .req-popup-box{position:relative;z-index:1;max-width:360px;width:90%;padding:2rem;border-radius:1.25rem;background:rgba(20,20,20,.95);border:1px solid rgba(255,255,255,.08);text-align:center;animation:reqPopIn .3s ease both;backdrop-filter:blur(20px)}
+    @keyframes reqPopIn{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .req-popup-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1rem}
+    .req-popup-box.exists .req-popup-icon{background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.2)}
+    .req-popup-box.pending .req-popup-icon{background:rgba(249,115,22,.1);border:1.5px solid rgba(249,115,22,.2)}
+    .req-popup-title{font-size:1.125rem;font-weight:900;margin-bottom:.35rem}
+    .req-popup-box.exists .req-popup-title{color:#22c55e}
+    .req-popup-box.pending .req-popup-title{color:#f97316}
+    .req-popup-sub{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.5;margin-bottom:1rem}
+    .req-popup-link{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem 1rem;border-radius:.75rem;background:rgba(34,197,94,.12);color:#22c55e;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;border:1px solid rgba(34,197,94,.15);margin-bottom:.75rem}
+    .req-popup-link:hover{background:rgba(34,197,94,.2);transform:translateY(-1px)}
+    .req-popup-close{padding:.5rem 1.5rem;border-radius:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+    .req-popup-close:hover{background:rgba(255,255,255,.1);color:#fff}
 </style>
 </head>
 <body>
@@ -1440,11 +1514,14 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                 </svg>
-                📩 Demandes (<span id="reqCount">0</span>)
+                📩 Demandes <span style="display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 .4rem;border-radius:99px;background:rgba(249,115,22,.15);color:#f97316;font-size:.7rem;font-weight:800" id="reqCount">0</span>
               </div>
-              <button class="magnet-btn" onclick="clearAllRequests()" style="font-size:.7rem;padding:.25rem .5rem" title="Tout supprimer">🗑️</button>
+              <div style="display:flex;gap:.35rem">
+                <button class="recent-btn" onclick="displayRequests()" title="Rafraîchir" style="font-size:.75rem">🔄</button>
+                <button class="recent-btn delete" onclick="clearAllRequests()" title="Tout supprimer" style="font-size:.7rem">🗑️</button>
+              </div>
             </div>
-            <div class="recent-list" id="requestList"></div>
+            <div class="req-list" id="requestList"></div>
           </div>
 
           <!-- RECENT GAMES -->
@@ -1668,7 +1745,52 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
 
   <div class="req-form" id="reqForm">
     <h1 class="req-title">Demander un jeu</h1>
-    <p class="req-sub">Cherche un jeu sur Steam et envoie ta demande. On l'ajoutera dès que possible.</p>
+    <p class="req-sub">Cherche un jeu sur Steam et envoie ta demande. On l'ajoutera dès que possible 🎮</p>
+
+    <!-- How it works -->
+    <div class="req-steps">
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        </div>
+        <div class="req-step-num">1</div>
+        <div class="req-step-label">Cherche ton jeu</div>
+      </div>
+      <div class="req-step-line"></div>
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        </div>
+        <div class="req-step-num">2</div>
+        <div class="req-step-label">Envoie ta demande</div>
+      </div>
+      <div class="req-step-line"></div>
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="req-step-num">3</div>
+        <div class="req-step-label">On l'ajoute !</div>
+      </div>
+    </div>
+
+    <!-- Live Stats -->
+    <div class="req-stats" id="reqStats">
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatGames">—</div>
+        <div class="req-stat-lbl">Jeux dispo</div>
+      </div>
+      <div class="req-stat-sep"></div>
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatPending">—</div>
+        <div class="req-stat-lbl">En attente</div>
+      </div>
+      <div class="req-stat-sep"></div>
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatAdded">—</div>
+        <div class="req-stat-lbl">Ajoutés</div>
+      </div>
+    </div>
 
     <!-- Steam Search -->
     <div class="req-section">
@@ -1689,8 +1811,22 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
       </div>
     </div>
 
+    <!-- Duplicate popup -->
+    <div class="req-popup" id="reqPopup">
+      <div class="req-popup-backdrop" onclick="closeReqPopup()"></div>
+      <div class="req-popup-box" id="reqPopupBox">
+        <div class="req-popup-icon" id="reqPopupIcon"></div>
+        <div class="req-popup-title" id="reqPopupTitle"></div>
+        <div class="req-popup-sub" id="reqPopupSub"></div>
+        <div id="reqPopupAction"></div>
+        <button class="req-popup-close" onclick="closeReqPopup()">OK</button>
+      </div>
+    </div>
+
     <!-- Submit -->
-    <button class="req-submit" id="reqSubmit" onclick="reqSend()" disabled>Envoyer la demande</button>
+    <div class="req-submit-wrap">
+      <button class="req-submit" id="reqSubmit" onclick="reqSend()" disabled>Envoyer la demande</button>
+    </div>
   </div>
 
   <!-- Success -->
@@ -1715,6 +1851,8 @@ function fd(s){if(!s)return'—';const d=new Date(s);return isNaN(d)?'—':d.toL
 function e(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function e2(s){return e(s).replace(/&#39;/g,"\\'");}
 function sid(s){return s.replace(/[^a-zA-Z0-9]/g,'_');}
+function timeAgo(s){if(!s)return'';const d=new Date(s),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return'À l\'instant';if(diff<3600)return Math.floor(diff/60)+' min';if(diff<86400)return Math.floor(diff/3600)+'h';if(diff<604800)return Math.floor(diff/86400)+'j';return d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});}
+function esc(str){if(!str)return'';return String(str).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 function escapeHtml(str){if(!str)return'';return str.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
 
 // ── ROUTEUR SPA ──────────────────────────────────────────────────────────────
@@ -1829,6 +1967,71 @@ function initDemande() {
   if (btn) { btn.disabled = true; btn.classList.remove('sending'); btn.textContent = 'Envoyer la demande'; }
   document.getElementById('reqForm')?.classList.remove('hide');
   document.getElementById('reqSuccess')?.classList.remove('show');
+
+  // Populate live stats & recently added
+  reqLoadStats();
+}
+
+async function reqLoadStats() {
+  try {
+    // Load games count
+    let games = [];
+    const localData = localStorage.getItem('crackuzu_games');
+    if (localData) {
+      games = JSON.parse(localData);
+    } else {
+      const r = await fetch('data.json?t=' + Date.now());
+      if (r.ok) games = await r.json();
+    }
+
+    // Animate stats counter
+    const elGames = document.getElementById('reqStatGames');
+    if (elGames) animateCount(elGames, games.length);
+
+    // Load pending requests count
+    const WORKER_URL = window.location.port === '3000' ? 'http://localhost:3000' : 'https://crackuzu-api.crackuzu.workers.dev';
+    try {
+      const rr = await fetch(`${WORKER_URL}/api/github-requests`);
+      if (rr.ok) {
+        const reqs = await rr.json();
+        const elPending = document.getElementById('reqStatPending');
+        if (elPending) animateCount(elPending, Array.isArray(reqs) ? reqs.length : 0);
+      }
+    } catch(e) { /* stats are optional */ }
+
+    // "Added" = total games minus pending (approximation)
+    const elAdded = document.getElementById('reqStatAdded');
+    if (elAdded) animateCount(elAdded, Math.max(0, games.length));
+  } catch(e) {
+    console.error('reqLoadStats error:', e);
+  }
+}
+
+function animateCount(el, target) {
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 20));
+  const interval = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(interval); }
+    el.textContent = current;
+  }, 30);
+}
+
+function showReqPopup(type, icon, title, sub, actionHtml) {
+  const popup = document.getElementById('reqPopup');
+  const box = document.getElementById('reqPopupBox');
+  if (!popup || !box) return;
+  box.className = 'req-popup-box ' + type;
+  document.getElementById('reqPopupIcon').textContent = icon;
+  document.getElementById('reqPopupTitle').textContent = title;
+  document.getElementById('reqPopupSub').textContent = sub;
+  document.getElementById('reqPopupAction').innerHTML = actionHtml || '';
+  popup.classList.add('open');
+}
+
+function closeReqPopup() {
+  const popup = document.getElementById('reqPopup');
+  if (popup) popup.classList.remove('open');
 }
 
 function reqDebounce(q) {
@@ -1907,10 +2110,66 @@ async function reqSelect(appId) {
 
     document.getElementById('reqPreviewImg').src = _reqSelected.portrait;
     document.getElementById('reqPreviewTitle').textContent = _reqSelected.name;
-    document.getElementById('reqPreviewMeta').textContent = [_reqSelected.developers, _reqSelected.release, _reqSelected.price].filter(Boolean).join(' · ');
+    const priceClass = (!_reqSelected.price || _reqSelected.price === '0') ? 'free' : '';
+    const priceText = (!_reqSelected.price || _reqSelected.price === '0') ? 'Gratuit' : _reqSelected.price;
+    const genres = (_reqSelected.genres || '').split(',').map(g => g.trim()).filter(Boolean);
+    document.getElementById('reqPreviewMeta').innerHTML = [
+      _reqSelected.developers ? `<span>${esc(_reqSelected.developers)}</span>` : '',
+      _reqSelected.release ? `<span>${esc(_reqSelected.release)}</span>` : '',
+      `<span class="req-preview-price ${priceClass}">${esc(priceText)}</span>`
+    ].filter(Boolean).join('');
+    // Genre tags
+    const existingGenres = document.getElementById('reqPreviewGenres');
+    if (existingGenres) existingGenres.remove();
+    if (genres.length) {
+      const genreDiv = document.createElement('div');
+      genreDiv.className = 'req-preview-genres';
+      genreDiv.id = 'reqPreviewGenres';
+      genreDiv.innerHTML = genres.slice(0,5).map(g => `<span class="req-preview-genre">${esc(g)}</span>`).join('');
+      document.getElementById('reqPreviewMeta').after(genreDiv);
+    }
     document.getElementById('reqPreviewDesc').textContent = _reqSelected.desc;
     document.getElementById('reqPreview').classList.add('show');
-    document.getElementById('reqSubmit').disabled = false;
+
+    // Duplicate detection
+    let duplicateFound = false;
+
+    // Check if already in catalog
+    try {
+      let catalogGames = [];
+      const localData = localStorage.getItem('crackuzu_games');
+      if (localData) {
+        catalogGames = JSON.parse(localData);
+      } else {
+        const cr = await fetch('data.json?t=' + Date.now());
+        if (cr.ok) catalogGames = await cr.json();
+      }
+      const match = catalogGames.find(g => g.appId === appId || (g.title && _reqSelected.name && g.title.toLowerCase().trim() === _reqSelected.name.toLowerCase().trim()));
+      if (match) {
+        duplicateFound = true;
+        showReqPopup('exists', '✅', 'Déjà sur le site !', 'Ce jeu est déjà disponible dans le catalogue.', `<div class="req-popup-link" onclick="closeReqPopup();nav('jeu','${e2(match.title || '')}')">🎮 Voir la fiche →</div>`);
+      }
+    } catch(e) { /* non-blocking */ }
+
+    // Check if already requested (only if not already in catalog)
+    if (!duplicateFound) {
+      try {
+        const WORKER_URL = window.location.port === '3000' ? 'http://localhost:3000' : 'https://crackuzu-api.crackuzu.workers.dev';
+        const rr = await fetch(`${WORKER_URL}/api/github-requests`);
+        if (rr.ok) {
+          const reqs = await rr.json();
+          if (Array.isArray(reqs)) {
+            const matchReq = reqs.find(r => r.appId === appId || (r.name && _reqSelected.name && r.name.toLowerCase().trim() === _reqSelected.name.toLowerCase().trim()));
+            if (matchReq) {
+              duplicateFound = true;
+              showReqPopup('pending', '⏳', 'Déjà demandé !', 'On s\'en occupe déjà, pas besoin de redemander 👍', '');
+            }
+          }
+        }
+      } catch(e) { /* non-blocking */ }
+    }
+
+    document.getElementById('reqSubmit').disabled = duplicateFound;
   } catch(e) {
     console.error('Steam detail error:', e);
   }
@@ -4433,23 +4692,39 @@ function initJeu(gameId) {
         document.getElementById('reqCount').textContent = _discordRequests.length;
 
         if (!_discordRequests.length) {
-          container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Aucune demande</div>';
+          container.innerHTML = `
+            <div class="req-empty">
+              <div class="req-empty-icon">📩</div>
+              <div class="req-empty-text">Aucune demande en attente</div>
+              <div class="req-empty-sub">Les demandes apparaîtront ici automatiquement</div>
+            </div>`;
           return;
         }
 
-        container.innerHTML = _discordRequests.map((req, idx) => `
-          <div class="recent-item" onclick="loadRequestIntoForm(${idx})" style="cursor:pointer">
-            <img class="recent-img" src="${esc(req.appId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${req.appId}/library_600x900.jpg` : req.img || '')}" onerror="this.style.display='none'">
-            <div class="recent-info">
-              <div class="recent-title">${esc(req.name)}</div>
-              <div class="recent-year">${esc(req.release || 'N/A')} · ${esc(req.genres || '')}</div>
+        container.innerHTML = _discordRequests.map((req, idx) => {
+          const genres = (req.genres || '').split(',').map(g => g.trim()).filter(Boolean);
+          const priceClass = (!req.price || req.price === '0' || req.price.toLowerCase().includes('free')) ? 'free' : '';
+          const priceText = (!req.price || req.price === '0') ? 'Gratuit' : req.price;
+          return `
+          <div class="req-card" onclick="loadRequestIntoForm(${idx})">
+            <img class="req-card-img" src="${esc(req.img || (req.appId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${req.appId}/header.jpg` : ''))}" onerror="this.src='';this.style.background='rgba(255,255,255,.05)'" loading="lazy">
+            <div class="req-card-body">
+              <div class="req-card-top">
+                <div class="req-card-name">${esc(req.name)}</div>
+                <div class="req-card-price ${priceClass}">${esc(priceText)}</div>
+              </div>
+              ${req.developers ? `<div class="req-card-dev">${esc(req.developers)}</div>` : ''}
+              ${genres.length ? `<div class="req-card-tags">${genres.slice(0,4).map(g => `<span class="req-card-tag">${esc(g)}</span>`).join('')}</div>` : ''}
+              <div class="req-card-bottom">
+                <div class="req-card-date">${timeAgo(req.requested_at)}</div>
+                <div class="req-card-actions" onclick="event.stopPropagation()">
+                  <button class="req-act-btn add" onclick="loadRequestIntoForm(${idx})" title="Ajouter au catalogue">➕ Ajouter</button>
+                  <button class="req-act-btn dismiss" onclick="dismissRequest('${req.id}')" title="Ignorer">✕</button>
+                </div>
+              </div>
             </div>
-            <div class="recent-actions" onclick="event.stopPropagation()">
-              <button class="recent-btn" onclick="loadRequestIntoForm(${idx})" title="Préremplir">✏️</button>
-              <button class="recent-btn delete" onclick="dismissRequest('${req.id}')" title="Supprimer">🗑️</button>
-            </div>
-          </div>
-        `).join('');
+          </div>`;
+        }).join('');
       } catch(e) {
         console.error('Requests fetch error:', e);
         container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Erreur de chargement des demandes</div>';
