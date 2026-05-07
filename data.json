@@ -2355,5 +2355,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T05:35:31.690Z"
+  },
+  {
+    "title": "Human Fall Flat",
+    "year": "22 juil. 2016",
+    "description": "Human Fall Flat est un jeu de plates-formes drole et divertissant situe dans des paysages oniriques, jouable seul ou avec jusqu'a 8 amis en ligne. Des niveaux gratuits recompensent sa communaute.",
+    "categories": [
+      "Aventure",
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/477160/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/477160/library_hero.jpg",
+    "ytb_id": "DOq2Ay-pueM",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:X5VWHJ46FRFBCG23FRD4LQQNLXYL7PF2&dn=Human%20Fall%20Flat&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+        "size": "1.68 GB",
+        "source": "By Crackuzu",
+        "name": "Human.Fall.Flat.v1089172-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T05:48:29.069Z"
   }
 ]
