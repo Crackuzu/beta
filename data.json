@@ -2542,5 +2542,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T22:14:51.427Z"
+  },
+  {
+    "title": "The Dark Pictures Anthology: House of Ashes",
+    "year": "21 oct. 2021",
+    "description": "A la fin de la guerre d'Irak, les Forces speciales, a la recherche d'armes de destruction massive, trouvent quelque chose de bien plus dangereux : un temple sumerien enfoui, ou nichent des creatures. Pour survivre a cette nuit sous terre, ils doivent s'allier avec leurs ennemis a la surface.",
+    "categories": [
+      "Aventure",
+      "Horreur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1281590/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1281590/library_hero.jpg",
+    "ytb_id": "QBZgZdC989c",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:7e5ff4eafc6230b2420c3f18c8a78e12fcc7fd24&dn=The%20Dark%20Pictures%20Anthology%20-%20House%20of%20Ashes&tr=http%3A%2F%2Ftr.ysagin.top%3A2710%2Fannounce&tr=http%3A%2F%2Ftr2.ysagin.top%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710",
+        "size": "47.5 GB",
+        "source": "By Crackuzu",
+        "name": "InsaneRamZes-The.Dark.Pictures.Anthology.House.of.Ashes-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T22:20:17.564Z"
   }
 ]
