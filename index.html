@@ -76,8 +76,8 @@ textarea,select{font:inherit;color:inherit}
 /* Morph transition */
 .morph-clone{position:fixed;z-index:9999;overflow:hidden;pointer-events:none;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);will-change:left,top,width,height,border-radius;-webkit-transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1);transition:left .7s cubic-bezier(.16,1,.3,1),top .7s cubic-bezier(.16,1,.3,1),width .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1)}
 .morph-clone img{width:100%;height:100%;object-fit:cover;display:block}
-.morph-clone::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.3) 100%);pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
-.morph-clone::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%);pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
+.morph-clone::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.2) 100%);pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
+.morph-clone::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.75) 0%,rgba(0,0,0,.3) 50%,transparent 100%);pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s cubic-bezier(.16,1,.3,1)}
 .morph-clone.morphing::after,.morph-clone.morphing::before{opacity:1}
 body.morph-active #spa-view{background:#000!important;min-height:100vh}
 body.morph-active .hero-content{position:relative;z-index:100000!important}
@@ -135,7 +135,7 @@ body.morph-active .back-btn{z-index:100001!important}
 .hero-meta{display:flex;flex-wrap:wrap;gap:1rem}
 .hm{font-size:11px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em}
 .hsep{color:rgba(255,255,255,.2)}
-.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;padding-top:.5rem}
+.hero-actions{display:flex;flex-wrap:nowrap;gap:1rem;padding-top:.5rem;align-items:center}
 .btn-orange{display:flex;align-items:center;gap:.5rem;padding:.75rem 2rem;background:#f97316;color:#fff;font-size:11px;font-weight:900;border-radius:.75rem;transition:all .3s;text-transform:uppercase;letter-spacing:.1em;border:0;cursor:pointer;text-decoration:none;white-space:nowrap}
 @media(min-width:768px){.btn-orange{padding:1rem 2rem;font-size:13px;border-radius:.875rem}}
 .btn-orange:hover{background:#fb923c;box-shadow:0 0 30px rgba(249,115,22,.4)}
@@ -225,7 +225,7 @@ body.morph-active .back-btn{z-index:100001!important}
 .card-cat{position:absolute;top:.5rem;right:.5rem;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.25);padding:.15rem .45rem;border-radius:.25rem;font-size:7px;font-weight:900;color:#fb923c;letter-spacing:.1em;text-transform:uppercase;z-index:10;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* SEARCH OVERLAY */
-.sov{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.95);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);visibility:hidden;transform:scale(.98)}
+.sov{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.95);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);visibility:hidden;transform:scale(.98)}
 .sov.open{opacity:1;pointer-events:all;visibility:visible;transform:scale(1)}
 .sbox{position:relative;max-width:680px;margin:0 auto;width:100%}
 .sinput{width:100%;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:1.25rem 4rem 1.25rem 3.75rem;font-size:1.125rem;font-weight:600;color:#fff;outline:none;transition:all .3s cubic-bezier(.16,1,.3,1);font-family:Inter,sans-serif;letter-spacing:-.01em}
@@ -408,7 +408,7 @@ img,svg,iframe{display:block}
 .pb.off{opacity:.25;pointer-events:none}
 
 /* ── SEARCH OVERLAY ──────────────────────────────────────── */
-.sov{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.95);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);visibility:hidden;transform:scale(.98)}
+.sov{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.95);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:6rem 1.5rem 2rem;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);visibility:hidden;transform:scale(.98)}
 .sov.open{opacity:1;pointer-events:all;visibility:visible;transform:scale(1)}
 .sbox{position:relative;max-width:680px;margin:0 auto;width:100%}
 .sinput{width:100%;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:1.25rem 4rem 1.25rem 3.75rem;font-size:1.125rem;font-weight:600;color:#fff;outline:none;transition:all .3s cubic-bezier(.16,1,.3,1);font-family:Inter,sans-serif;letter-spacing:-.01em}
@@ -619,8 +619,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
 .hero{position:relative;min-height:85vh;display:flex;align-items:flex-end;padding:24rem 0 4rem}
 .hero-bg{position:absolute;inset:0;z-index:0;top:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.3) 100%)}
-.hero-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.2) 100%)}
+.hero-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.75) 0%,rgba(0,0,0,.3) 50%,transparent 100%)}
 
 .back-btn{position:absolute;top:100px;left:1.5rem;z-index:50;display:flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;background:rgba(0,0,0,.4);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:9999px;color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;transition:all .25s;cursor:pointer}
 .back-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
@@ -928,6 +928,43 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     .auth-error{color:#ef4444;font-size:.875rem;margin-top:1rem;padding:.875rem 1rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:1rem;display:none}
     .auth-error.show{display:block}
     .auth-footer{color:rgba(255,255,255,.25);font-size:.75rem;margin-top:1.5rem}
+
+    /* ══════════════════════════════════════════════════════════
+       DEMANDE PAGE
+    ══════════════════════════════════════════════════════════ */
+    .req-page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
+    .req-title{font-size:2rem;font-weight:900;letter-spacing:-.03em;margin-bottom:.25rem}
+    .req-sub{color:rgba(255,255,255,.4);font-size:.9375rem;margin-bottom:2.5rem}
+    .req-section{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:1.25rem;padding:2rem;margin-bottom:1.5rem;backdrop-filter:blur(10px);overflow:visible}
+    .req-label{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:.75rem}
+    .req-search-wrap{position:relative}
+    .req-search{width:100%;padding:1.25rem 1.25rem 1.25rem 3.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.08);color:#fff;font-size:1rem;font-weight:600;outline:none;transition:all .3s}
+    .req-search:focus{border-color:rgba(249,115,22,.5);background:rgba(249,115,22,.03);box-shadow:0 0 0 4px rgba(249,115,22,.08)}
+    .req-search::placeholder{color:rgba(255,255,255,.2);font-weight:500}
+    .req-search-icon{position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.25);pointer-events:none;transition:color .3s}
+    .req-search-wrap:focus-within .req-search-icon{color:#f97316}
+    .req-preview{display:none;margin-top:1.5rem}
+    .req-preview.show{display:flex;gap:1.5rem;align-items:flex-start}
+    .req-preview-img{width:180px;aspect-ratio:2/3;object-fit:cover;border-radius:1rem;flex-shrink:0;border:2px solid rgba(255,255,255,.1)}
+    .req-preview-info{flex:1;min-width:0}
+    .req-preview-title{font-size:1.5rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.5rem}
+    .req-preview-meta{color:rgba(255,255,255,.4);font-size:.875rem;margin-bottom:.25rem}
+    .req-preview-desc{color:rgba(255,255,255,.5);font-size:.875rem;line-height:1.6;margin-top:.75rem;max-height:120px;overflow:hidden}
+    .req-field{width:100%;padding:1rem 1.25rem;border-radius:1rem;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.08);color:#fff;font-size:.9375rem;outline:none;transition:all .3s;resize:vertical;min-height:100px}
+    .req-field:focus{border-color:rgba(249,115,22,.5);box-shadow:0 0 0 4px rgba(249,115,22,.08)}
+    .req-field::placeholder{color:rgba(255,255,255,.2)}
+    .req-submit{width:100%;padding:1.25rem;border-radius:1rem;background:#f97316;color:#fff;font-size:1rem;font-weight:800;border:none;cursor:pointer;transition:all .3s;letter-spacing:.02em}
+    .req-submit:hover{background:#ea580c;transform:translateY(-2px);box-shadow:0 8px 30px rgba(249,115,22,.3)}
+    .req-submit:disabled{opacity:.4;pointer-events:none}
+    .req-submit.sending{background:rgba(249,115,22,.3);pointer-events:none}
+    .req-success{text-align:center;padding:3rem 1rem;display:none}
+    .req-success.show{display:block}
+    .req-success-icon{width:64px;height:64px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;color:#22c55e}
+    .req-success h2{font-size:1.5rem;font-weight:900;margin-bottom:.5rem}
+    .req-success p{color:rgba(255,255,255,.4);font-size:.9375rem}
+    .req-form.hide{display:none}
+    .req-clear{margin-top:1rem;padding:.75rem 1.5rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:600;cursor:pointer;transition:all .2s}
+    .req-clear:hover{background:rgba(255,255,255,.1);color:#fff}
 </style>
 </head>
 <body>
@@ -945,6 +982,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
         <ul>
           <li><button class="nav-a" id="nav-accueil"  onclick="nav('accueil')">Accueil</button></li>
           <li><button class="nav-a" id="nav-catalogue" onclick="nav('catalogue')">Catalogue</button></li>
+          <li><button class="nav-a" id="nav-demande" onclick="nav('demande')">Demande</button></li>
           <li><button class="nav-a" id="nav-admin"    onclick="nav('admin')">Admin</button></li>
         </ul>
       </div>
@@ -953,8 +991,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
           <span>Rechercher</span>
         </button>
-        <button class="icon-btn" onclick="openSrch()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        <button class="icon-btn" onclick="">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
         </button>
       </div>
     </div>
@@ -965,6 +1003,16 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
      ZONE DE CONTENU (swapée par le routeur)
 ════════════════════════════════════════════════════════ -->
 <div id="spa-view"></div>
+
+<!-- SEARCH OVERLAY (permanent, shared with Demande) -->
+<div class="sov" id="sov" onclick="if(event.target===this)closeSrch()">
+  <div class="sbox">
+    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg></span>
+    <input class="sinput" id="sinput" type="text" placeholder="Chercher un jeu…" autocomplete="off" oninput="doSrch(this.value)">
+    <button class="sx" onclick="closeSrch()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  </div>
+  <div class="sres" id="sres"></div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════
      FOOTER PERMANENT
@@ -979,16 +1027,6 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
      TEMPLATES DE PAGES (cachés)
 ════════════════════════════════════════════════════════ -->
 <template id="tpl-accueil">
-<!-- SEARCH OVERLAY -->
-<div class="sov" id="sov" onclick="if(event.target===this)closeSrch()">
-  <div class="sbox">
-    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg></span>
-    <input class="sinput" id="sinput" type="text" placeholder="Chercher un jeu…" autocomplete="off" oninput="doSrch(this.value)">
-    <button class="sx" onclick="closeSrch()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-  </div>
-  <div class="sres" id="sres"></div>
-</div>
-
 <!-- MODAL -->
 <div class="mov" id="mov" onclick="movck(event)">
   <div class="modal">
@@ -1086,16 +1124,6 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
 <template id="tpl-catalogue">
 <div class="glow-l"></div>
 <div class="glow-r"></div>
-
-<!-- SEARCH OVERLAY -->
-<div class="sov" id="sov" onclick="if(event.target===this)closeSrch()">
-  <div class="sbox">
-    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg></span>
-    <input class="sinput" id="sinput" type="text" placeholder="Chercher un jeu…" autocomplete="off" oninput="doSrch(this.value)">
-    <button class="sx" onclick="closeSrch()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-  </div>
-  <div class="sres" id="sres"></div>
-</div>
 
 <!-- MODAL -->
 <div class="mov" id="mov" onclick="if(event.target===this)closeMod()">
@@ -1410,6 +1438,20 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
             </div>
           </div>
 
+          <!-- GAME REQUESTS -->
+          <div class="panel-card">
+            <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                📩 Demandes (<span id="reqCount">0</span>)
+              </div>
+              <button class="magnet-btn" onclick="clearAllRequests()" style="font-size:.7rem;padding:.25rem .5rem" title="Tout supprimer">🗑️</button>
+            </div>
+            <div class="recent-list" id="requestList"></div>
+          </div>
+
           <!-- RECENT GAMES -->
           <div class="panel-card">
             <div class="panel-title">
@@ -1626,6 +1668,49 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
   </main>
 </template>
 
+<template id="tpl-demande">
+<div class="req-page">
+
+  <div class="req-form" id="reqForm">
+    <h1 class="req-title">Demander un jeu</h1>
+    <p class="req-sub">Cherche un jeu sur Steam et envoie ta demande. On l'ajoutera dès que possible.</p>
+
+    <!-- Steam Search -->
+    <div class="req-section">
+      <div class="req-label">Rechercher sur Steam</div>
+      <div class="req-search-wrap">
+        <svg class="req-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        <input class="req-search" id="reqSearch" type="text" placeholder="Nom du jeu…" autocomplete="off" onfocus="openSrchSteam()" readonly>
+      </div>
+
+      <!-- Preview -->
+      <div class="req-preview" id="reqPreview">
+        <img class="req-preview-img" id="reqPreviewImg" src="" alt="">
+        <div class="req-preview-info">
+          <div class="req-preview-title" id="reqPreviewTitle"></div>
+          <div class="req-preview-meta" id="reqPreviewMeta"></div>
+          <div class="req-preview-desc" id="reqPreviewDesc"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button class="req-submit" id="reqSubmit" onclick="reqSend()" disabled>Envoyer la demande</button>
+  </div>
+
+  <!-- Success -->
+  <div class="req-success" id="reqSuccess">
+    <div class="req-success-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h2>Demande envoyée !</h2>
+    <p>Ta demande a été envoyée avec succès. On s'en occupe ASAP.</p>
+    <button class="req-clear" onclick="reqReset()">Faire une autre demande</button>
+  </div>
+
+</div>
+</template>
+
 <!-- ═══════════════════════════════════════════════════════
      UTILITAIRES GLOBAUX (partagés par toutes les pages)
 ════════════════════════════════════════════════════════ -->
@@ -1639,12 +1724,18 @@ function escapeHtml(str){if(!str)return'';return str.toString().replace(/&/g,'&a
 
 // ── ROUTEUR SPA ──────────────────────────────────────────────────────────────
 let _currentPage = '';
+let _prevPage = 'accueil';
+let _currentParam = null;
+let _prevParam = null;
 let _pageCleanup = null;  // fonction de nettoyage de la page courante
 let _morphing = false;    // flag pour empêcher nav() de gérer l'opacité pendant un morph
 let _gamesCache = null;   // cache des jeux pour préchargement (pas de re-parse localStorage)
 
 function nav(page, param) {
   if (page === _currentPage && !param) return;
+
+  // Fermer la recherche si ouverte
+  if (typeof closeSrch === 'function') closeSrch();
 
   const view = document.getElementById('spa-view');
   if (!_morphing) view.style.opacity = '0';
@@ -1662,7 +1753,10 @@ function nav(page, param) {
     view.innerHTML = '';
     view.appendChild(tpl.content.cloneNode(true));
 
+    _prevPage = _currentPage;
+    _prevParam = _currentParam;
     _currentPage = page;
+    _currentParam = param || null;
 
     // Mettre à jour le lien actif dans le header
     document.querySelectorAll('.nav-a').forEach(el => el.classList.remove('active'));
@@ -1676,7 +1770,8 @@ function nav(page, param) {
     if (page === 'accueil')   { initAccueil(); }
     if (page === 'catalogue') { initCatalogue(); }
     if (page === 'jeu')       { initJeu(param); }
-    if (page === 'admin')     { if(typeof initAdmin==='function') initAdmin(); }
+    if (page === 'admin')     { initAdmin(); }
+    if (page === 'demande')   { if(typeof initDemande==='function') initDemande(); }
 
     if (!_morphing) view.style.opacity = '1';
   }, 120);
@@ -1695,8 +1790,190 @@ document.addEventListener('keydown', ev => {
   }
 });
 
-// Démarrage différé dans DOMContentLoaded pour gérer l'auth Discord
-// nav('accueil') est appelé dans le DOMContentLoaded
+// Démarrage : afficher l'accueil par défaut au chargement
+nav('accueil');
+
+// ── DEMANDE PAGE ─────────────────────────────────────────────────────────────
+const REQ_WEBHOOK = ''; // Notification Discord gérée par le Worker
+let _reqSelected = null;
+let _reqTimer = null;
+let _reqSearchId = 0;
+
+// CORS proxy (même logique que admin)
+async function reqFetchProxy(url) {
+  const proxies = [
+    { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct' },
+    { name: 'allorigins', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins' }
+  ];
+  for (const proxy of proxies) {
+    try {
+      const ctrl = new AbortController();
+      const tid = setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(proxy.url, { signal: ctrl.signal });
+      clearTimeout(tid);
+      if (!res.ok) continue;
+      if (proxy.parse === 'allorigins') {
+        const r = await res.json();
+        return JSON.parse(r.contents);
+      }
+      return await res.json();
+    } catch(e) { continue; }
+  }
+  throw new Error('Proxies failed');
+}
+
+function initDemande() {
+  _reqSelected = null;
+  const s = document.getElementById('reqSearch');
+  if (s) { s.value = ''; s.focus(); }
+  const r = document.getElementById('reqResults');
+  if (r) { r.innerHTML = ''; r.classList.remove('open'); }
+  const p = document.getElementById('reqPreview');
+  if (p) p.classList.remove('show');
+  const btn = document.getElementById('reqSubmit');
+  if (btn) { btn.disabled = true; btn.classList.remove('sending'); btn.textContent = 'Envoyer la demande'; }
+  document.getElementById('reqForm')?.classList.remove('hide');
+  document.getElementById('reqSuccess')?.classList.remove('show');
+}
+
+function reqDebounce(q) {
+  clearTimeout(_reqTimer);
+  if (!q.trim()) { document.getElementById('sres').innerHTML = ''; return; }
+  _reqTimer = setTimeout(() => reqSteamSearch(q), 400);
+}
+
+function reqOpenOverlay() {
+  openSrchSteam();
+}
+
+function reqSyncSearch(val) {
+  openSrchSteam();
+  document.getElementById('sinput').value = val;
+  reqDebounce(val);
+}
+
+async function reqSteamSearch(q) {
+  const grid = document.getElementById('sres');
+  if (!grid) { console.error('[Demande] sres not found'); return; }
+  const thisId = ++_reqSearchId;
+  grid.innerHTML = '<div class="sempty">Recherche en cours…</div>';
+  try {
+    const url = `https://steamcommunity.com/actions/SearchApps/${encodeURIComponent(q)}`;
+    console.log('[Demande] fetching:', url);
+    const data = await reqFetchProxy(url);
+    console.log('[Demande] results:', data);
+    if (thisId !== _reqSearchId) return;
+    if (!data || !data.length) {
+      grid.innerHTML = '<div class="sempty">Aucun résultat</div>';
+      return;
+    }
+    grid.innerHTML = data.slice(0, 8).map(it => {
+      const img = `https://cdn.cloudflare.steamstatic.com/steam/apps/${it.appid}/library_600x900.jpg`;
+      const imgH = `https://cdn.cloudflare.steamstatic.com/steam/apps/${it.appid}/header.jpg`;
+      const imgSm = `https://cdn.cloudflare.steamstatic.com/steam/apps/${it.appid}/capsule_sm_120.jpg`;
+      const name = escapeHtml(it.name);
+      return `<div class="card" onclick="reqSelect(${it.appid})" style="cursor:pointer;opacity:1!important;transform:none!important;animation:none!important">
+        <div class="card-img">
+          <img src="${img}" alt="${name}" loading="lazy" onerror="this.onerror=null;this.src='${imgH}';this.onerror=function(){this.onerror=null;this.src='${imgSm}'}">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 40%,transparent 70%);z-index:5"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:.6rem .75rem;z-index:10;font-size:10px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.01em;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${name}</div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    console.error('[Demande] search error:', e);
+    if (thisId === _reqSearchId) {
+      grid.innerHTML = '<div class="sempty">Erreur: ' + escapeHtml(e.message) + '</div>';
+    }
+  }
+}
+
+async function reqSelect(appId) {
+  closeSrch();
+
+  try {
+    const d = await reqFetchProxy(`https://store.steampowered.com/api/appdetails?appids=${appId}&l=french&cc=FR`);
+    const info = d[appId]?.data;
+    if (!info) throw new Error('no data');
+
+    _reqSelected = {
+      name: info.name,
+      appId: appId,
+      img: info.header_image || `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`,
+      portrait: `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`,
+      developers: (info.developers || []).join(', '),
+      publishers: (info.publishers || []).join(', '),
+      genres: (info.genres || []).map(g => g.description).join(', '),
+      release: info.release_date?.date || '',
+      price: info.is_free ? 'Gratuit' : (info.price_overview?.final_formatted || ''),
+      desc: info.short_description || '',
+      url: `https://store.steampowered.com/app/${appId}`
+    };
+
+    document.getElementById('reqPreviewImg').src = _reqSelected.portrait;
+    document.getElementById('reqPreviewTitle').textContent = _reqSelected.name;
+    document.getElementById('reqPreviewMeta').textContent = [_reqSelected.developers, _reqSelected.release, _reqSelected.price].filter(Boolean).join(' · ');
+    document.getElementById('reqPreviewDesc').textContent = _reqSelected.desc;
+    document.getElementById('reqPreview').classList.add('show');
+    document.getElementById('reqSubmit').disabled = false;
+  } catch(e) {
+    console.error('Steam detail error:', e);
+  }
+}
+
+async function reqSend() {
+  if (!_reqSelected) return;
+  const btn = document.getElementById('reqSubmit');
+  btn.classList.add('sending');
+  btn.textContent = 'Envoi en cours…';
+
+  const g = _reqSelected;
+
+  const requestData = {
+    name: g.name,
+    appId: g.appId,
+    url: g.url,
+    img: g.img,
+    desc: g.desc || '',
+    developers: g.developers || '',
+    genres: g.genres || '',
+    release: g.release || '',
+    price: g.price || ''
+  };
+
+  // Determine Worker URL
+  const workerBase = window.location.port === '3000'
+    ? 'http://localhost:3000/api/save-request'
+    : 'https://crackuzu-api.crackuzu.workers.dev/api/save-request';
+
+  try {
+    // Save to GitHub via Worker (Worker also sends Discord notification)
+    const r = await fetch(workerBase, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestData)
+    });
+    if (!r.ok) throw new Error(r.status);
+
+    document.getElementById('reqForm').classList.add('hide');
+    document.getElementById('reqSuccess').classList.add('show');
+  } catch(e) {
+    console.error('Request save error:', e);
+    btn.classList.remove('sending');
+    btn.textContent = 'Erreur — Réessayer';
+    setTimeout(() => { btn.textContent = 'Envoyer la demande'; btn.disabled = false; }, 2000);
+  }
+}
+
+function reqReset() {
+  initDemande();
+}
+
+// Close Steam search results on outside click
+document.addEventListener('click', ev => {
+  const box = document.getElementById('reqResults');
+  if (box && !ev.target.closest('.req-search-wrap')) box.classList.remove('open');
+});
 </script>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -1707,6 +1984,9 @@ let ALL=[],hidx=0,hsl=[],htmr=null;
 
 // ── CHARGEMENT ──────────────────────────────────────────────────────────────
 async function initAccueil(){
+  // Nettoyer l'ancien timer du carrousel
+  clearInterval(htmr); htmr=null; hidx=0; hsl=[];
+
   try{
     // Try localStorage first
     let games = [];
@@ -1787,7 +2067,8 @@ function buildHero(){
 
 function setHI(i){
   const g=hsl[i]; if(!g)return;
-  document.getElementById('htitle').textContent=g.name;
+  const el=document.getElementById('htitle'); if(!el)return;
+  el.textContent=g.name;
   // badge source → catégorie ou année
   document.getElementById('hbsrc').textContent=g.category||g.year||'—';
   const ve=document.getElementById('hver'),sep=document.getElementById('hvsep');
@@ -1822,7 +2103,7 @@ function buildRecent(){
 
 function wc(g){
   const img=landscapeImg(g);
-  return`<div class="wc" onclick="morphToJeu(this,'${e2(g.id)}')" style="cursor:pointer">
+  return`<div class="wc" onclick="morphToJeu(this,'${e2(g.id)}','${e2(img||'')}')" style="cursor:pointer">
     <div class="wc-img">
       ${img
         ?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`
@@ -1878,7 +2159,7 @@ function buildCatRows(){
 // ── CARTE PORTRAIT ───────────────────────────────────────────────────────────
 function pc(g){
   const img=portraitImg(g);
-  return`<div class="pc" onclick="morphToJeu(this,'${e2(g.id)}')" style="cursor:pointer">
+  return`<div class="pc" onclick="morphToJeu(this,'${e2(g.id)}','${e2(img||'')}')" style="cursor:pointer">
     <div class="pc-img">
       ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="pc-noimg">🎮</div>`}
       ${g.year?`<span class="pc-badge">${e(g.year)}</span>`:''}
@@ -1952,22 +2233,53 @@ function closeMod(){document.getElementById('mov').classList.remove('open');docu
 function movck(ev){if(ev.target===document.getElementById('mov'))closeMod();}
 
 // ── RECHERCHE ────────────────────────────────────────────────────────────────
-function openSrch(){document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
-function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';}
+let _srchMode = 'local'; // 'local' or 'steam'
+
+function openSrch(){
+  _srchMode = 'local';
+  document.getElementById('sinput').placeholder = 'Chercher un jeu…';
+  document.getElementById('sov').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('sinput').focus(),50);
+}
+
+function openSrchSteam(){
+  _srchMode = 'steam';
+  document.getElementById('sinput').placeholder = 'Chercher un jeu sur Steam…';
+  document.getElementById('sov').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('sinput').focus(),50);
+}
+
+function closeSrch(){
+  document.getElementById('sov').classList.remove('open');
+  document.body.style.overflow='';
+  document.getElementById('sinput').value='';
+  document.getElementById('sres').innerHTML='';
+  _srchMode = 'local';
+  document.getElementById('sinput').placeholder = 'Chercher un jeu…';
+}
+
 function doSrch(q){
+  if (_srchMode === 'steam') { reqDebounce(q); return; }
   const r=document.getElementById('sres');
   if(!q.trim()){r.innerHTML='';return;}
   const m=ALL.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,12);
   if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour « ${e(q)} »</div>`;return;}
-  r.innerHTML=m.map((g,i)=>card(g,i).replace(/onclick="morphToJeu\(this,/, 'onclick="closeSrch();morphToJeu(this,')).join('');
+  r.innerHTML=m.map((g,i)=>card(g,i)).join('');
 }
 
 function card(g,i=0){
   const img=portraitImg(g);
+  const sImg=steamImg(g);
   const animStyle = i >= 0 ? `animation-delay:${i*0.05}s` : 'opacity:1;transform:none';
-  return`<div class="card" onclick="morphToJeu(this,'${e2(g.id)}')" style="cursor:pointer;${animStyle}">
+  const m=(g.portrait_url||g.banner_url||'').match(/steam\/apps\/(\d+)/);
+  const sid=m?m[1]:null;
+  const hImg=sid?`https://cdn.cloudflare.steamstatic.com/steam/apps/${sid}/header.jpg`:'';
+  const onerr = sImg ? ` onerror="this.onerror=null;this.src='${hImg}'"` : '';
+  return`<div class="card" onclick="morphToJeu(this,'${e2(g.id)}','${e2(img||sImg||'')}')" style="cursor:pointer;${animStyle}">
     <div class="card-img">
-      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:`<div class="card-noimg">🎮</div>`}
+      ${img?`<img src="${img}" alt="${e(g.name)}" loading="lazy">`:(sImg?`<img src="${sImg}" alt="${e(g.name)}" loading="lazy"${onerr}>`:`<div class="card-noimg">🎮</div>`)}
       ${g.year?`<div class="card-yr">${e(g.year)}</div>`:''}
       ${g.categories?.length?`<div class="card-cat">${e(g.categories[0])}${g.categories.length>1?'+':''}</div>`:''}
     </div>
@@ -1981,11 +2293,21 @@ function sl(id){document.getElementById(id)?.scrollBy({left:-800,behavior:'smoot
 function sr(id){document.getElementById(id)?.scrollBy({left:800,behavior:'smooth'});}
 
 // ── MORPH TRANSITION ─────────────────────────────────────────────────────────
-function morphToJeu(el, gameId) {
+function morphToJeu(el, gameId, imgSrc) {
+  // Pas de morph si on est déjà sur une page jeu → navigation directe
+  if (_currentPage === 'jeu') { nav('jeu', gameId); return; }
+
   const img = el.querySelector('img');
-  if (!img) { nav('jeu', gameId); return; }
+  if (!img && !imgSrc) { nav('jeu', gameId); return; }
 
   _morphing = true;
+
+  // Utiliser l'image passée directement ou celle de l'élément
+  const morphImgSrc = imgSrc || img.src;
+  const morphImgRect = img ? img.getBoundingClientRect() : el.getBoundingClientRect();
+
+  // Fermer la recherche maintenant (avant de créer le clone)
+  if (typeof closeSrch === 'function') closeSrch();
 
   // Précharger l'image hero (utilise le cache, pas de re-parse)
   if (!_gamesCache) {
@@ -2000,14 +2322,14 @@ function morphToJeu(el, gameId) {
     if (game) heroUrl = game.img || game.image || game.cover || null;
   }
 
-  const rect = img.getBoundingClientRect();
+  const rect = morphImgRect;
   const clone = document.createElement('div');
   clone.className = 'morph-clone';
   const br = getComputedStyle(img).borderRadius || '0.75rem';
   clone.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
 
   const cloneImg = document.createElement('img');
-  cloneImg.src = img.src;
+  cloneImg.src = morphImgSrc;
   cloneImg.alt = '';
   cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;';
   clone.appendChild(cloneImg);
@@ -2140,6 +2462,12 @@ function catProc(raw){
 
 function pImg(g){return g.portrait_url||null;}
 function bImg(g){return g.banner_url||g.portrait_url||null;}
+function steamImg(g){
+  const m=(g.portrait_url||g.banner_url||'').match(/steam\/apps\/(\d+)/);
+  if(!m)return null;
+  const id=m[1];
+  return `https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/library_600x900.jpg`;
+}
 
 /* genres */
 function buildGenres(){
@@ -2223,10 +2551,15 @@ function renderGrid(){
 
 function catCard(g,i=0){
   const img=pImg(g);
+  const sImg=steamImg(g);
   const animStyle = i >= 0 ? `animation-delay:${i*0.05}s` : 'opacity:1;transform:none';
-  return`<div class="card" onclick="morphToJeu(this,'${e2(g.id)}')" style="cursor:pointer;${animStyle}">
+  const m=(g.portrait_url||g.banner_url||'').match(/steam\/apps\/(\d+)/);
+  const sid=m?m[1]:null;
+  const hImg=sid?`https://cdn.cloudflare.steamstatic.com/steam/apps/${sid}/header.jpg`:'';
+  const onerr = sImg ? ` onerror="this.onerror=null;this.src='${hImg}'"` : '';
+  return`<div class="card" onclick="morphToJeu(this,'${e2(g.id)}','${e2(img||sImg||'')}')" style="cursor:pointer;${animStyle}">
     <div class="card-img">
-      ${img?`<img src="${e(img)}" alt="${e(g.name)}" loading="lazy">`:`<div class="card-noimg">🎮</div>`}
+      ${img?`<img src="${e(img)}" alt="${e(g.name)}" loading="lazy">`:(sImg?`<img src="${sImg}" alt="${e(g.name)}" loading="lazy"${onerr}>`:`<div class="card-noimg">🎮</div>`)}
       ${g.year?`<div class="card-yr">${e(g.year)}</div>`:''}
       ${g.categories?.length?`<div class="card-cat">${e(g.categories[0])}${g.categories.length>1?'+':''}</div>`:''}
     </div>
@@ -2308,14 +2641,16 @@ function closeMod(){
 }
 
 /* search */
-function openSrch(){document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
-function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';}
+function openSrch(){_srchMode='local';document.getElementById('sinput').placeholder='Chercher un jeu…';document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
+function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';_srchMode='local';document.getElementById('sinput').placeholder='Chercher un jeu…';}
 function doSrch(q){
+  if(_srchMode==='steam'){reqDebounce(q);return;}
   const r=document.getElementById('sres');
   if(!q.trim()){r.innerHTML='';return;}
-  const m=CAT_ALL.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,12);
+  const pool=ALL.length?ALL:CAT_ALL;
+  const m=pool.filter(g=>g.name.toLowerCase().includes(q.toLowerCase())).slice(0,12);
   if(!m.length){r.innerHTML=`<div class="sempty">Aucun résultat pour « ${e(q)} »</div>`;return;}
-  r.innerHTML=m.map((g,i)=>catCard(g,i).replace(/onclick="nav\('jeu',/, 'onclick="closeSrch();nav(\'jeu\',')).join('');
+  r.innerHTML=m.map((g,i)=>catCard(g,i)).join('');
 }
 
 
@@ -2659,6 +2994,15 @@ function initJeu(gameId) {
   window.scrollTo({top:0,behavior:'instant'});
   loadGame();
   
+  // Si pas de morph en cours, rendre les éléments visibles directement
+  if (!_morphing) {
+    setTimeout(() => {
+      document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn').forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 300);
+  }
+  
   // Observe sections for scroll animations
   setTimeout(() => {
     const sections = document.querySelectorAll('.section, .magnets-grid, .info-grid');
@@ -2683,7 +3027,6 @@ function initJeu(gameId) {
     const DISCORD_CONFIG = {
       // Ton Discord ID - seul toi peux accéder
       ALLOWED_DISCORD_ID: '482466285364576266',
-      // Ou utiliser le username#discriminator
       ALLOWED_USERNAME: 'crackuzu',
 
       // OAuth2 config
@@ -2736,39 +3079,37 @@ function initJeu(gameId) {
 
     async function exchangeCodeForToken(code) {
       try {
-        // Solution sans backend: utiliser un proxy OAuth2
-        // Option 1: Créer un Worker Cloudflare (recommandé)
-        // Option 2: Utiliser un service tiers temporaire
+        let user = null;
 
-        // Pour l'instant, on simule l'utilisateur connecté en local (mode dev)
-        // En prod, remplace par un vrai backend
-        const mockUser = {
-          id: '482466285364576266',
-          username: 'crackuzu',
-          avatar: null
-        };
+        // Try server proxy first
+        try {
+          const res = await fetch(`/api/discord-oauth?code=${encodeURIComponent(code)}`);
+          if (res.ok) user = await res.json();
+        } catch(e) {
+          console.warn('Server OAuth proxy failed, using mock:', e);
+        }
 
-        // Vérifier que c'est bien toi (simulation)
-        if (mockUser.id === DISCORD_CONFIG.ALLOWED_DISCORD_ID) {
-          localStorage.setItem('discord_user', JSON.stringify(mockUser));
-          document.getElementById('authOverlay').classList.add('hidden');
+        // Fallback: mock user (dev)
+        if (!user || !user.id) {
+          user = {
+            id: DISCORD_CONFIG.ALLOWED_DISCORD_ID,
+            username: DISCORD_CONFIG.ALLOWED_USERNAME,
+            avatar: null
+          };
+        }
+
+        // Vérifier que c'est bien toi
+        if (user.id === DISCORD_CONFIG.ALLOWED_DISCORD_ID ||
+            user.username === DISCORD_CONFIG.ALLOWED_USERNAME) {
+          localStorage.setItem('discord_user', JSON.stringify(user));
 
           // Nettoyer l'URL
           window.history.replaceState({}, document.title, window.location.pathname);
           
-          // Vérifier si on doit retourner sur la page admin
-          const returnToAdmin = sessionStorage.getItem('returnToAdmin');
-          sessionStorage.removeItem('returnToAdmin');
-          
-          if (returnToAdmin) {
-            // On était sur la page admin avant l'auth, y retourner
-            nav('admin');
-          } else {
-            // Sinon continuer le chargement normal
-            loadGames();
-            renderCategories();
-            setupPasteListener();
-          }
+          // Naviguer vers admin — initAdmin() cachera l'overlay
+          nav('admin');
+        } else {
+          showAuthError('Accès refusé. Seul l\'administrateur peut accéder à cette page.');
         }
       } catch (e) {
         showAuthError('Erreur de connexion: ' + e.message);
@@ -2788,21 +3129,30 @@ function initJeu(gameId) {
         username: 'crackuzu'
       };
       localStorage.setItem('discord_user', JSON.stringify(user));
-      document.getElementById('authOverlay').classList.add('hidden');
-      
-      // Vérifier si on doit retourner sur la page admin
-      const returnToAdmin = sessionStorage.getItem('returnToAdmin');
-      sessionStorage.removeItem('returnToAdmin');
-      
-      if (returnToAdmin) {
-        nav('admin');
-      } else {
-        loadGames();
-        renderCategories();
-        setupPasteListener();
-      }
+      nav('admin');
     }
 
+
+    // ═══════════════════════════════════════════════════════════
+    // INIT ADMIN (called by nav() after template is cloned)
+    // ═══════════════════════════════════════════════════════════
+    function initAdmin() {
+      const discordUser = localStorage.getItem('discord_user');
+      if (discordUser) {
+        try {
+          const user = JSON.parse(discordUser);
+          if (user.id === DISCORD_CONFIG.ALLOWED_DISCORD_ID ||
+              user.username === DISCORD_CONFIG.ALLOWED_USERNAME) {
+            document.getElementById('authOverlay').classList.add('hidden');
+            loadGames();
+            renderCategories();
+            setupPasteListener();
+            return;
+          }
+        } catch(e) { localStorage.removeItem('discord_user'); }
+      }
+      // Not authenticated — overlay stays visible
+    }
 
     // ═══════════════════════════════════════════════════════════
     // STATE & CONFIG
@@ -2856,36 +3206,30 @@ function initJeu(gameId) {
     // INIT
     // ═══════════════════════════════════════════════════════════
     document.addEventListener('DOMContentLoaded', () => {
-      // Vérifier si on revient d'une auth Discord (code dans l'URL)
       const params = new URLSearchParams(window.location.search);
       const hasCode = params.get('code');
       
-      // Check Discord auth first
-      const isAuth = checkDiscordAuth() || checkPassword();
-      
-      if (!isAuth) {
-        // Not authenticated - show login overlay, mais charger la page d'accueil en arrière-plan
-        nav('accueil');
+      // Si on a un code OAuth, l'échanger puis nav('admin')
+      if (hasCode) {
+        exchangeCodeForToken(hasCode);
         return;
       }
       
-      // On est authentifié
-      // Si on revient d'une auth Discord avec returnToAdmin, la nav est déjà faite dans exchangeCodeForToken
-      // Sinon, vérifier si on doit aller vers admin
-      const returnToAdmin = sessionStorage.getItem('returnToAdmin');
-      
-      if (hasCode && returnToAdmin) {
-        // On est déjà en train de gérer le retour OAuth, ne rien faire
-        // exchangeCodeForToken s'occupe de la navigation
-        sessionStorage.removeItem('returnToAdmin');
-      } else if (returnToAdmin) {
-        // Bypass utilisé ou auth existante, aller vers admin
-        sessionStorage.removeItem('returnToAdmin');
-        nav('admin');
-      } else {
-        // Navigation normale vers accueil
-        nav('accueil');
+      // Si déjà authentifié, aller directement à admin
+      const discordUser = localStorage.getItem('discord_user');
+      if (discordUser) {
+        try {
+          const user = JSON.parse(discordUser);
+          if (user.id === DISCORD_CONFIG.ALLOWED_DISCORD_ID ||
+              user.username === DISCORD_CONFIG.ALLOWED_USERNAME) {
+            nav('admin');
+            return;
+          }
+        } catch(e) { localStorage.removeItem('discord_user'); }
       }
+      
+      // Pas authentifié — accueil normal
+      nav('accueil');
     });
 
     // ═══════════════════════════════════════════════════════════
@@ -2910,6 +3254,7 @@ function initJeu(gameId) {
           }
         }
         displayRecentGames();
+        displayRequests();
         displayAllGames();
       } catch (e) {
         console.error('Error loading games:', e);
@@ -2923,6 +3268,7 @@ function initJeu(gameId) {
       if (localData) {
         state.games = JSON.parse(localData);
         displayRecentGames();
+        displayRequests();
         displayAllGames();
         showToast('Sauvegarde locale chargée !', 'success');
         state.isModified = true;
@@ -3010,8 +3356,18 @@ function initJeu(gameId) {
       state.isModified = true;
       updateStatusBadge();
       
+      // Dismiss matching Discord request if loaded
+      if (_discordRequests.length) {
+        const match = _discordRequests.find(r => r.name?.toLowerCase() === title.toLowerCase());
+        if (match && !_dismissedIds.includes(match.id)) {
+          _dismissedIds.push(match.id);
+          localStorage.setItem('crackuzu_dismissed_reqs', JSON.stringify(_dismissedIds));
+        }
+      }
+      
       showToast('Jeu sauvegardé localement ! N\'oublie pas d\'exporter data.json', 'success');
       displayRecentGames();
+      displayRequests();
       displayAllGames();
     }
 
@@ -3144,6 +3500,7 @@ function initJeu(gameId) {
         localStorage.setItem('crackuzu_games', JSON.stringify(games));
         state.games = games;
         displayRecentGames();
+        displayRequests();
         displayAllGames();
 
         showToast(`${games.length} jeux récupérés depuis GitHub !`, 'success');
@@ -4117,6 +4474,106 @@ function initJeu(gameId) {
         state.selectedCategories.add(cat);
       }
       renderCategories();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // GAME REQUESTS (from Discord)
+    // ═══════════════════════════════════════════════════════════
+    let _discordRequests = [];
+    let _dismissedIds = JSON.parse(localStorage.getItem('crackuzu_dismissed_reqs') || '[]');
+
+    async function displayRequests() {
+      const container = document.getElementById('requestList');
+      if (!container) return;
+
+      try {
+        let requests = [];
+        // Fetch requests.json from GitHub (raw URL, no auth needed)
+        const rawUrl = `https://raw.githubusercontent.com/${localStorage.getItem('github_repo') || 'Crackuzu/beta'}/main/requests.json`;
+
+        try {
+          const res = await fetch(rawUrl);
+          console.log('[Requests] GitHub raw status:', res.status);
+          if (res.ok) requests = await res.json();
+          else console.warn('[Requests] GitHub raw error:', res.status);
+        } catch(e) {
+          console.warn('[Requests] GitHub fetch failed:', e.message);
+        }
+
+        if (!Array.isArray(requests)) requests = [];
+        console.log('[Requests] Loaded:', requests.length);
+
+        // Filter out dismissed
+        _discordRequests = requests.filter(r => !_dismissedIds.includes(r.id));
+
+        document.getElementById('reqCount').textContent = _discordRequests.length;
+
+        if (!_discordRequests.length) {
+          container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Aucune demande</div>';
+          return;
+        }
+
+        container.innerHTML = _discordRequests.map((req, idx) => `
+          <div class="recent-item" onclick="loadRequestIntoForm(${idx})" style="cursor:pointer">
+            <img class="recent-img" src="${esc(req.appId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${req.appId}/library_600x900.jpg` : req.img || '')}" onerror="this.style.display='none'">
+            <div class="recent-info">
+              <div class="recent-title">${esc(req.name)}</div>
+              <div class="recent-year">${esc(req.release || 'N/A')} · ${esc(req.genres || '')}</div>
+            </div>
+            <div class="recent-actions" onclick="event.stopPropagation()">
+              <button class="recent-btn" onclick="loadRequestIntoForm(${idx})" title="Préremplir">✏️</button>
+              <button class="recent-btn delete" onclick="dismissRequest('${req.id}')" title="Supprimer">🗑️</button>
+            </div>
+          </div>
+        `).join('');
+      } catch(e) {
+        console.error('Requests fetch error:', e);
+        container.innerHTML = '<div style="padding:1rem;text-align:center;color:rgba(255,255,255,.4)">Erreur de chargement des demandes</div>';
+      }
+    }
+
+    async function loadRequestIntoForm(idx) {
+      const req = _discordRequests[idx];
+      if (!req || !req.appId) return;
+
+      // Clear form first
+      clearForm();
+
+      // Load via selectSteamGame which fills everything + searches YouTube
+      await selectSteamGame(req.appId);
+
+      showToast(`Demande « ${req.name} » chargée dans le formulaire`, 'success');
+    }
+
+    async function dismissRequest(reqId) {
+      // Remove from GitHub via Worker
+      const workerBase = window.location.port === '3000'
+        ? 'http://localhost:3000/api/remove-request'
+        : 'https://crackuzu-api.crackuzu.workers.dev/api/remove-request';
+      try {
+        await fetch(workerBase, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: reqId })
+        });
+      } catch(e) { console.warn('Remove request failed:', e); }
+      _dismissedIds.push(reqId);
+      localStorage.setItem('crackuzu_dismissed_reqs', JSON.stringify(_dismissedIds));
+      displayRequests();
+    }
+
+    async function clearAllRequests() {
+      if (!confirm('Supprimer toutes les demandes ?')) return;
+      const workerBase = window.location.port === '3000'
+        ? 'http://localhost:3000/api/remove-request'
+        : 'https://crackuzu-api.crackuzu.workers.dev/api/remove-request';
+      for (const r of _discordRequests) {
+        try { await fetch(workerBase, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: r.id }) }); } catch(e) {}
+        _dismissedIds.push(r.id);
+      }
+      localStorage.setItem('crackuzu_dismissed_reqs', JSON.stringify(_dismissedIds));
+      displayRequests();
+      showToast('Toutes les demandes supprimées', 'success');
     }
 
     // ═══════════════════════════════════════════════════════════
