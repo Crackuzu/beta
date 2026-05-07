@@ -3156,9 +3156,8 @@ function initJeu(gameId) {
     };
 
     const CONFIG = {
-      REPO: 'ton-user/ton-repo', // Remplace par ton repo GitHub
+      REPO: 'Crackuzu/beta',
       BRANCH: 'main',
-      GITHUB_TOKEN: localStorage.getItem('github_token') || '',
       CATEGORIES: ['Action','Aventure','RPG','Simulation','Strategie','Sport','Course','Horreur','Puzzle','Multijoueur','FPS','Monde ouvert','Survie','Combat','Plateforme'],
       CLOUDINARY_CLOUD: 'dijopwaix',
       CLOUDINARY_PRESET: 'kmorlkcl',
@@ -3435,53 +3434,22 @@ function initJeu(gameId) {
       return new TextDecoder().decode(bytes);
     }
 
-    // Get or prompt for GitHub config
-    function getGitHubConfig() {
-      let repo = localStorage.getItem('github_repo') || CONFIG.REPO;
-      let token = localStorage.getItem('github_token') || CONFIG.GITHUB_TOKEN;
-
-      // If repo is still the placeholder, prompt user
-      if (!repo || repo === 'ton-user/ton-repo') {
-        repo = prompt('Entre ton repo GitHub (format: user/repo):');
-        if (!repo) return null;
-        localStorage.setItem('github_repo', repo);
-      }
-
-      if (!token) {
-        token = prompt('Entre ton GitHub Personal Access Token:');
-        if (!token) return null;
-        localStorage.setItem('github_token', token);
-      }
-
-      CONFIG.REPO = repo;
-      CONFIG.GITHUB_TOKEN = token;
-      return { repo, token };
-    }
+    // Worker URL for GitHub operations (token is server-side)
+    const WORKER_URL = window.location.port === '3000'
+      ? 'http://localhost:3000'
+      : 'https://crackuzu-api.crackuzu.workers.dev';
 
     async function pullFromGitHub() {
-      const config = getGitHubConfig();
-      if (!config) return;
-
-      const { repo, token } = config;
       showToast('Récupération depuis GitHub...', 'success');
 
       try {
-        const res = await fetch(`https://api.github.com/repos/${repo}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'X-GitHub-Api-Version': '2022-11-28'
-          }
+        const res = await fetch(`${WORKER_URL}/api/github-pull`, {
+          headers: { 'Accept': 'application/json' }
         });
 
-        if (!res.ok) {
-          const error = await res.json().catch(() => ({}));
-          throw new Error(`${res.status}: ${error.message || res.statusText}`);
-        }
-
+        if (!res.ok) throw new Error(`Erreur ${res.status}`);
         const data = await res.json();
-        const content = base64ToUtf8(data.content);
-        const games = JSON.parse(content);
+        const games = JSON.parse(base64ToUtf8(data.content));
 
         localStorage.setItem('crackuzu_games', JSON.stringify(games));
         state.games = games;
@@ -3490,6 +3458,7 @@ function initJeu(gameId) {
         displayAllGames();
 
         showToast(`${games.length} jeux récupérés depuis GitHub !`, 'success');
+        state.isModified = false;
         updateStatusBadge();
       } catch (e) {
         console.error('Pull error:', e);
@@ -3498,12 +3467,7 @@ function initJeu(gameId) {
     }
 
     async function pushToGitHub() {
-      const config = getGitHubConfig();
-      if (!config) return;
-
-      const { repo, token } = config;
       const games = state.games;
-
       if (!games || games.length === 0) {
         showToast('Aucun jeu à pousser', 'error');
         return;
@@ -3512,47 +3476,32 @@ function initJeu(gameId) {
       showToast('Envoi vers GitHub...', 'success');
 
       try {
-        // Get current file SHA
-        const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/data.json?ref=${CONFIG.BRANCH}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
+        // Get current file SHA first
+        const getRes = await fetch(`${WORKER_URL}/api/github-pull`, {
+          headers: { 'Accept': 'application/json' }
         });
+        if (!getRes.ok) throw new Error('Impossible de récupérer le SHA');
+        const fileData = await getRes.json();
+        const sha = fileData.sha;
 
-        let sha = '';
-        if (getRes.ok) {
-          const fileData = await getRes.json();
-          sha = fileData.sha;
-        } else if (getRes.status !== 404) {
-          const error = await getRes.json().catch(() => ({}));
-          throw new Error(`Get SHA failed: ${getRes.status} - ${error.message || getRes.statusText}`);
-        }
-
-        // Prepare content with proper UTF-8 encoding
+        // Prepare content
         const jsonStr = JSON.stringify(games, null, 2);
         const content = utf8ToBase64(jsonStr);
 
-        // Commit to GitHub
-        const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/data.json`, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-            'X-GitHub-Api-Version': '2022-11-28'
-          },
+        // Push via Worker
+        const putRes = await fetch(`${WORKER_URL}/api/github-push`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            message: `Update data.json - ${games.length} games`,
             content: content,
-            branch: CONFIG.BRANCH,
-            ...(sha && { sha })
+            sha: sha,
+            message: `Update data.json - ${games.length} games`
           })
         });
 
         if (!putRes.ok) {
           const error = await putRes.json().catch(() => ({}));
-          throw new Error(`${putRes.status}: ${error.message || putRes.statusText}`);
+          throw new Error(error.error || `Erreur ${putRes.status}`);
         }
 
         showToast(`${games.length} jeux poussés vers GitHub !`, 'success');
@@ -3562,14 +3511,6 @@ function initJeu(gameId) {
         console.error('Push error:', e);
         showToast('Erreur Push: ' + e.message, 'error');
       }
-    }
-
-    // Clear saved GitHub credentials
-    function clearGitHubConfig() {
-      localStorage.removeItem('github_token');
-      localStorage.removeItem('github_repo');
-      CONFIG.GITHUB_TOKEN = '';
-      showToast('Config GitHub effacée', 'success');
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -4474,18 +4415,13 @@ function initJeu(gameId) {
 
       try {
         let requests = [];
-        // In local mode, fetch from local file; in prod, from GitHub raw
-        const reqUrl = window.location.port === '3000'
-          ? '/requests.json'
-          : `https://raw.githubusercontent.com/Crackuzu/beta/main/requests.json?t=${Date.now()}`;
-
+        // Always fetch via Worker (fast, fresh, no cache issues)
         try {
-          const res = await fetch(reqUrl);
-          console.log('[Requests] status:', res.status, 'from:', reqUrl);
+          const res = await fetch(`${WORKER_URL}/api/github-requests`);
+          console.log('[Requests] Worker status:', res.status);
           if (res.ok) requests = await res.json();
-          else console.warn('[Requests] error:', res.status);
         } catch(e) {
-          console.warn('[Requests] fetch failed:', e.message);
+          console.warn('[Requests] Worker fetch failed:', e.message);
         }
 
         if (!Array.isArray(requests)) requests = [];
