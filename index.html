@@ -3315,7 +3315,7 @@ function initJeu(gameId) {
         magnets: state.selectedMagnets.map(m => ({
           url: m.url,
           size: m.size,
-          source: m.source || 'manual',
+          source: m.source || 'By Crackuzu',
           name: m.name || '',
           type: m.type || 'magnet'
         })),
@@ -4126,7 +4126,7 @@ function initJeu(gameId) {
         return;
       }
 
-      state.selectedMagnets.push({ url, name, size, type, source: 'manual' });
+      state.selectedMagnets.push({ url, name, size, type, source: 'By Crackuzu' });
       renderMagnets();
       
       document.getElementById('m-url').value = '';
