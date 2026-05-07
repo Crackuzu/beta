@@ -1693,8 +1693,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
             <button class="search-btn" onclick="searchAllSources()" style="width:100%;margin-bottom:.5rem" id="btn-search-all">
               🔍 Chercher dans les sources JSON
             </button>
-            <button class="search-btn" onclick="searchOnlineFix()" style="width:100%;margin-bottom:1.5rem;background:linear-gradient(135deg,#22c55e,#16a34a);border-color:rgba(34,197,94,.3)" id="btn-search-onlinefix">
-              🌐 Chercher sur OnlineFix.me (live)
+            <button class="search-btn" onclick="openOnlineFix()" style="width:100%;margin-bottom:1.5rem;background:linear-gradient(135deg,#22c55e,#16a34a);border-color:rgba(34,197,94,.3)" id="btn-search-onlinefix">
+              🌐 Chercher sur Online-Fix.me
             </button>
             
             <div class="magnet-list" id="magnetList"></div>
@@ -4785,112 +4785,16 @@ function initJeu(gameId) {
       status.textContent = `${allResults.length} résultats trouvés`;
     }
 
-    // ── OnlineFix Live Search ──────────────────────────────────
-    async function searchOnlineFix() {
+    // ── OnlineFix Quick Search ──────────────────────────────────
+    function openOnlineFix() {
       const title = document.getElementById('f-title').value.trim();
       if (!title) {
         showToast('Entre un titre de jeu d\'abord', 'error');
         return;
       }
-
-      switchTab('magnets');
-
-      const container = document.getElementById('sourceResults');
-      const status = document.getElementById('sourceStatus');
-
-      container.style.display = 'block';
-      container.innerHTML = `
-        <div style="padding:2rem;text-align:center">
-          <div style="font-size:1.5rem;margin-bottom:.5rem">🌐</div>
-          <div style="color:rgba(255,255,255,.5)">Recherche sur OnlineFix.me...</div>
-        </div>
-      `;
-      status.textContent = 'Recherche live sur OnlineFix.me...';
-
-      try {
-        const WORKER_URL = window.location.port === '3000'
-          ? 'http://localhost:3000'
-          : 'https://crackuzu-api.crackuzu.workers.dev';
-
-        const res = await fetch(`${WORKER_URL}/api/onlinefix-search?q=${encodeURIComponent(title)}`, { signal: AbortSignal.timeout(20000) });
-        const data = await res.json();
-
-        if (!Array.isArray(data) || !data.length) {
-          container.innerHTML = `<div style="padding:1.5rem;text-align:center;color:rgba(255,255,255,.3)">Aucun résultat sur OnlineFix.me</div>`;
-          status.textContent = 'Aucun résultat';
-          return;
-        }
-
-        // Display results with "fetch magnets" button
-        let html = `<div style="margin-bottom:.5rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#22c55e">🌐 OnlineFix.me — ${data.length} résultat${data.length > 1 ? 's' : ''}</div>`;
-        data.forEach(r => {
-          html += `
-            <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:.75rem;background:rgba(34,197,94,.03);border:1px solid rgba(34,197,94,.08);margin-bottom:.5rem;transition:all .2s" onmouseover="this.style.borderColor='rgba(34,197,94,.2)'" onmouseout="this.style.borderColor='rgba(34,197,94,.08)'">
-              ${r.img ? `<img src="${esc(r.img)}" style="width:45px;height:60px;border-radius:.5rem;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">` : ''}
-              <div style="flex:1;min-width:0">
-                <div style="font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.name)}</div>
-                ${r.size ? `<div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.15rem">📦 ${esc(r.size)}</div>` : ''}
-              </div>
-              <button onclick="fetchOnlineFixPage('${esc(r.url)}','${esc(r.name)}')" style="padding:.35rem .75rem;border-radius:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.15);color:#22c55e;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🧲 Magnets</button>
-            </div>`;
-        });
-        container.innerHTML = html;
-        status.textContent = `${data.length} résultat${data.length > 1 ? 's' : ''} sur OnlineFix.me`;
-      } catch (e) {
-        console.error('OnlineFix search error:', e);
-        container.innerHTML = `<div style="padding:1.5rem;text-align:center;color:rgba(255,100,100,.5)">Erreur: ${esc(e.message)}</div>`;
-        status.textContent = 'Erreur de recherche';
-      }
-    }
-
-    async function fetchOnlineFixPage(pageUrl, gameName) {
-      const status = document.getElementById('sourceStatus');
-      status.textContent = '⏳ Extraction des magnets...';
-
-      try {
-        const WORKER_URL = window.location.port === '3000'
-          ? 'http://localhost:3000'
-          : 'https://crackuzu-api.crackuzu.workers.dev';
-
-        const res = await fetch(`${WORKER_URL}/api/onlinefix-page?url=${encodeURIComponent(pageUrl)}`, { signal: AbortSignal.timeout(20000) });
-        const data = await res.json();
-
-        if (data.error) {
-          showToast(data.error, 'error');
-          status.textContent = 'Erreur: ' + data.error;
-          return;
-        }
-
-        const allLinks = [...(data.magnets || []), ...(data.downloads || [])];
-        if (!allLinks.length) {
-          showToast('Aucun magnet/trouvé sur cette page', 'error');
-          status.textContent = 'Aucun lien trouvé';
-          return;
-        }
-
-        // Add each magnet/download as a magnet entry
-        let added = 0;
-        for (const url of allLinks) {
-          const magnet = {
-            url: url,
-            name: 'OnlineFix' + (allLinks.length > 1 ? ` ${++added}` : ''),
-            size: data.size || '',
-            type: url.startsWith('magnet') ? 'magnet' : 'direct',
-            source: 'OnlineFix'
-          };
-          state.selectedMagnets.push(magnet);
-        }
-
-        renderMagnets();
-        showToast(`${allLinks.length} lien${allLinks.length > 1 ? 's' : ''} ajouté${allLinks.length > 1 ? 's' : ''} depuis OnlineFix`, 'success');
-        status.textContent = `✅ ${allLinks.length} lien${allLinks.length > 1 ? 's' : ''} ajouté${allLinks.length > 1 ? 's' : ''}`;
-        updateStatusBadge();
-        state.isModified = true;
-      } catch (e) {
-        console.error('OnlineFix page error:', e);
-        showToast('Erreur d\'extraction', 'error');
-        status.textContent = 'Erreur';
-      }
+      navigator.clipboard.writeText(title).catch(() => {});
+      window.open(`https://online-fix.me/index.php?do=search&subaction=search&story=${encodeURIComponent(title)}`, '_blank');
+      showToast('Nom copié ! Colle-le dans la recherche Online-Fix', 'success');
     }
 
     function searchInSource(data, query) {
