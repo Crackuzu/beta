@@ -1,27 +1,14 @@
 [
   {
-    "name": "Human Fall Flat",
-    "appId": 477160,
-    "url": "https://store.steampowered.com/app/477160",
-    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/477160/3c47b77e2d7f481e4116e6a137179c755f05931e/header_alt_assets_27_french.jpg?t=1777906900",
-    "desc": "Human Fall Flat est un jeu de plates-formes drÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ´le et divertissant situÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© dans des paysages oniriques, jouable seul ou avec jusqu'ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ  8 amis en ligne. Des niveaux gratuits rÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©compensent sa communautÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©.",
-    "developers": "No Brakes Games",
-    "genres": "Aventure, Occasionnel, IndÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©pendant, Simulation",
-    "release": "22 juil. 2016",
-    "price": "5,99ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¬",
-    "id": "mouzm4py44y5",
-    "requested_at": "2026-05-07T04:29:50.566Z"
-  },
-  {
     "name": "7 Days to Die",
     "appId": 251570,
     "url": "https://store.steampowered.com/app/251570",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/251570/header.jpg?t=1776457619",
-    "desc": "7 Days est un jeu Ã  monde ouvert entre le jeu de tir Ã  la premiÃ¨re personne, le survival horror, le tower defense et le RPG. Il inclut de la fabrication, de l'acquisition de butin, de l'extraction miniÃ¨re, de l'exploration, et permet Ã  votre personnage de progresser.",
+    "desc": "7 Days est un jeu ÃÂ  monde ouvert entre le jeu de tir ÃÂ  la premiÃÂ¨re personne, le survival horror, le tower defense et le RPG. Il inclut de la fabrication, de l'acquisition de butin, de l'extraction miniÃÂ¨re, de l'exploration, et permet ÃÂ  votre personnage de progresser.",
     "developers": "The Fun Pimps",
-    "genres": "Action, Aventure, IndÃ©pendant, RPG, Simulation, StratÃ©gie",
+    "genres": "Action, Aventure, IndÃÂ©pendant, RPG, Simulation, StratÃÂ©gie",
     "release": "25 juil. 2024",
-    "price": "43,99â¬",
+    "price": "43,99Ã¢ÂÂ¬",
     "id": "movjziif6kpn",
     "requested_at": "2026-05-07T14:00:07.287Z"
   },
@@ -30,11 +17,11 @@
     "appId": 521890,
     "url": "https://store.steampowered.com/app/521890",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/521890/header.jpg?t=1777368129",
-    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant à pénétrer en cachette dans la maison du voisin pour découvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancée qui apprend de chacun de vos mouvements. Passez à travers les fenêtres. Déjouez les pièges à ours. Vous essayez de vous échapper? Trouvez un raccourci.",
+    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant Ã  pÃ©nÃ©trer en cachette dans la maison du voisin pour dÃ©couvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancÃ©e qui apprend de chacun de vos mouvements. Passez Ã  travers les fenÃªtres. DÃ©jouez les piÃ¨ges Ã  ours. Vous essayez de vous Ã©chapper? Trouvez un raccourci.",
     "developers": "Dynamic Pixels",
-    "genres": "Aventure, Indépendant, Stratégie",
-    "release": "8 déc. 2017",
-    "price": "28,99€",
+    "genres": "Aventure, IndÃ©pendant, StratÃ©gie",
+    "release": "8 dÃ©c. 2017",
+    "price": "28,99â¬",
     "id": "movowauyfzo7",
     "requested_at": "2026-05-07T16:17:35.482Z"
   }
