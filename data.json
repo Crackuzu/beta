@@ -2404,5 +2404,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T15:01:10.576Z"
+  },
+  {
+    "title": "Cursed Companions",
+    "year": "20 nov. 2025",
+    "description": "Si nous prononcons les mauvais mots... NOUS MOURONS ! Ce jeu vous tue avec votre propre voix ! Un mode cooperatif en ligne ou chacun recoit un mot interdit : dites-le, et vous tuez vos amis. Explorez des donjons effrayants, jetez des sorts et battez des monstres grace a votre voix.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Strategie",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3265230/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3265230/library_hero.jpg",
+    "ytb_id": "R0bP_LNPMyY",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:d32261201efe6fefe800d5bbfcfb2aae0bf637c6&dn=Cursed%20Companions&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "2.1 GB",
+        "source": "By Crackuzu",
+        "name": "Cursed.Companions.v0.9.17-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T19:17:07.367Z"
   }
 ]
