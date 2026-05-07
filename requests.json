@@ -1,27 +1,14 @@
 [
   {
-    "name": "7 Days to Die",
-    "appId": 251570,
-    "url": "https://store.steampowered.com/app/251570",
-    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/251570/header.jpg?t=1776457619",
-    "desc": "7 Days est un jeu ÃÂ  monde ouvert entre le jeu de tir ÃÂ  la premiÃÂ¨re personne, le survival horror, le tower defense et le RPG. Il inclut de la fabrication, de l'acquisition de butin, de l'extraction miniÃÂ¨re, de l'exploration, et permet ÃÂ  votre personnage de progresser.",
-    "developers": "The Fun Pimps",
-    "genres": "Action, Aventure, IndÃÂ©pendant, RPG, Simulation, StratÃÂ©gie",
-    "release": "25 juil. 2024",
-    "price": "43,99Ã¢ÂÂ¬",
-    "id": "movjziif6kpn",
-    "requested_at": "2026-05-07T14:00:07.287Z"
-  },
-  {
     "name": "Hello Neighbor",
     "appId": 521890,
     "url": "https://store.steampowered.com/app/521890",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/521890/header.jpg?t=1777368129",
-    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant Ã  pÃ©nÃ©trer en cachette dans la maison du voisin pour dÃ©couvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancÃ©e qui apprend de chacun de vos mouvements. Passez Ã  travers les fenÃªtres. DÃ©jouez les piÃ¨ges Ã  ours. Vous essayez de vous Ã©chapper? Trouvez un raccourci.",
+    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant ÃÂ  pÃÂ©nÃÂ©trer en cachette dans la maison du voisin pour dÃÂ©couvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancÃÂ©e qui apprend de chacun de vos mouvements. Passez ÃÂ  travers les fenÃÂªtres. DÃÂ©jouez les piÃÂ¨ges ÃÂ  ours. Vous essayez de vous ÃÂ©chapper? Trouvez un raccourci.",
     "developers": "Dynamic Pixels",
-    "genres": "Aventure, IndÃ©pendant, StratÃ©gie",
-    "release": "8 dÃ©c. 2017",
-    "price": "28,99â¬",
+    "genres": "Aventure, IndÃÂ©pendant, StratÃÂ©gie",
+    "release": "8 dÃÂ©c. 2017",
+    "price": "28,99Ã¢ÂÂ¬",
     "id": "movowauyfzo7",
     "requested_at": "2026-05-07T16:17:35.482Z"
   }
