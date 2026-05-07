@@ -2475,5 +2475,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T19:38:52.144Z"
+  },
+  {
+    "title": "The Dark Pictures Anthology: Man of Medan",
+    "year": "29 aout 2019",
+    "description": "L'anthologie The Dark Pictures est une serie de jeux d'horreur autonomes a embranchements, egalement jouables en ligne avec un ami. Dans Man of Medan, cinq amis partent plonger en mer. Mais leurs vacances se transforment bientot en cauchemar.",
+    "categories": [
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/939850/library_600x900.jpg",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/939850/page_bg_raw.jpg",
+    "ytb_id": "OQvo4-Ly-sA",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:5d08df0ebdc043e49ae260b625cb9554b703eda9&dn=The%20Dark%20Pictures%20Anthology%20Man%20of%20Medan&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce",
+        "size": "30.7 GB",
+        "source": "By Crackuzu",
+        "name": "The Dark Pictures Anthology Man of Medan Build 27112019 OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T19:52:38.502Z"
   }
 ]
