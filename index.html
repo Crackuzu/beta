@@ -1025,20 +1025,68 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     /* ─── DUPLICATE POPUP ─── */
     .req-popup{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;align-items:center;justify-content:center}
     .req-popup.open{display:flex}
-    .req-popup-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
-    .req-popup-box{position:relative;z-index:1;max-width:360px;width:90%;padding:2rem;border-radius:1.25rem;background:rgba(20,20,20,.95);border:1px solid rgba(255,255,255,.08);text-align:center;animation:reqPopIn .3s ease both;backdrop-filter:blur(20px)}
-    @keyframes reqPopIn{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-    .req-popup-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1rem}
-    .req-popup-box.exists .req-popup-icon{background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.2)}
-    .req-popup-box.pending .req-popup-icon{background:rgba(249,115,22,.1);border:1.5px solid rgba(249,115,22,.2)}
-    .req-popup-title{font-size:1.125rem;font-weight:900;margin-bottom:.35rem}
+    .req-popup-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);animation:popBgIn .3s ease both}
+    @keyframes popBgIn{from{opacity:0}to{opacity:1}}
+    .req-popup-box{position:relative;z-index:1;max-width:520px;width:94%;padding:0;border-radius:1.75rem;background:rgba(14,14,14,.98);border:1px solid rgba(255,255,255,.06);text-align:center;animation:popBoxIn .45s cubic-bezier(.16,1,.3,1) both;backdrop-filter:blur(24px);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03) inset;overflow:hidden}
+    @keyframes popBoxIn{from{opacity:0;transform:scale(.8) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+    /* Glow behind box */
+    .req-popup-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:300px;height:200px;border-radius:9999px;filter:blur(60px);pointer-events:none;z-index:0;animation:popGlow 2s ease-in-out infinite alternate}
+    .req-popup-box.exists::before{background:rgba(34,197,94,.12)}
+    .req-popup-box.pending::before{background:rgba(249,115,22,.12)}
+    @keyframes popGlow{from{opacity:.5;transform:translateX(-50%) scale(.9)}to{opacity:1;transform:translateX(-50%) scale(1.1)}}
+
+    /* Animated border gradient */
+    .req-popup-box::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:2;animation:popBorderShimmer 3s linear infinite}
+    .req-popup-box.exists::after{background:linear-gradient(90deg,transparent,rgba(34,197,94,.4),rgba(34,197,94,.8),rgba(34,197,94,.4),transparent);background-size:200% 100%}
+    .req-popup-box.pending::after{background:linear-gradient(90deg,transparent,rgba(249,115,22,.4),rgba(249,115,22,.8),rgba(249,115,22,.4),transparent);background-size:200% 100%}
+    @keyframes popBorderShimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+
+    .req-popup-inner{position:relative;z-index:1;padding:2.5rem 2.25rem 2rem}
+
+    /* Floating particles */
+    .req-popup-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+    .req-popup-particle{position:absolute;width:3px;height:3px;border-radius:50%;opacity:0;animation:popFloat 4s ease-in-out infinite}
+    .req-popup-box.exists .req-popup-particle{background:rgba(34,197,94,.3)}
+    .req-popup-box.pending .req-popup-particle{background:rgba(249,115,22,.3)}
+    @keyframes popFloat{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:1;transform:translateY(-20px) scale(1)}80%{opacity:.5;transform:translateY(-80px) scale(.5)}100%{opacity:0;transform:translateY(-120px) scale(0)}}
+
+    /* Icon with pulse */
+    .req-popup-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.25rem;animation:popIconIn .5s cubic-bezier(.2,.8,.3,1) .15s both;position:relative}
+    .req-popup-box.exists .req-popup-icon{background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.2);box-shadow:0 0 30px rgba(34,197,94,.1)}
+    .req-popup-box.pending .req-popup-icon{background:rgba(249,115,22,.08);border:2px solid rgba(249,115,22,.2);box-shadow:0 0 30px rgba(249,115,22,.1)}
+    .req-popup-icon::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1.5px solid;opacity:0;animation:popPulse 2s ease-out infinite}
+    .req-popup-box.exists .req-popup-icon::after{border-color:rgba(34,197,94,.15)}
+    .req-popup-box.pending .req-popup-icon::after{border-color:rgba(249,115,22,.15)}
+    @keyframes popIconIn{from{opacity:0;transform:scale(0) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+    @keyframes popPulse{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+
+    .req-popup-title{font-size:1.5rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.02em;animation:popTextIn .4s ease .25s both}
     .req-popup-box.exists .req-popup-title{color:#22c55e}
     .req-popup-box.pending .req-popup-title{color:#f97316}
-    .req-popup-sub{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.5;margin-bottom:1rem}
-    .req-popup-link{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem 1rem;border-radius:.75rem;background:rgba(34,197,94,.12);color:#22c55e;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;border:1px solid rgba(34,197,94,.15);margin-bottom:.75rem}
-    .req-popup-link:hover{background:rgba(34,197,94,.2);transform:translateY(-1px)}
-    .req-popup-close{padding:.5rem 1.5rem;border-radius:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
-    .req-popup-close:hover{background:rgba(255,255,255,.1);color:#fff}
+    .req-popup-sub{font-size:.9rem;color:rgba(255,255,255,.3);line-height:1.5;margin-bottom:1.75rem;animation:popTextIn .4s ease .3s both}
+    @keyframes popTextIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Game card - bigger, with hover shine */
+    .req-popup-card{display:flex;align-items:center;gap:1.25rem;padding:1.25rem;border-radius:1.25rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:1.75rem;transition:all .3s cubic-bezier(.2,.8,.3,1);animation:popCardIn .5s cubic-bezier(.2,.8,.3,1) .35s both;position:relative;overflow:hidden}
+    .req-popup-card::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.03),transparent);transition:left .5s}
+    .req-popup-card:hover::before{left:120%}
+    .req-popup-card.clickable{cursor:pointer}
+    .req-popup-card.clickable:hover{background:rgba(34,197,94,.04);border-color:rgba(34,197,94,.15);transform:translateY(-3px);box-shadow:0 12px 35px rgba(34,197,94,.08)}
+    .req-popup-card:not(.clickable){opacity:.85}
+    @keyframes popCardIn{from{opacity:0;transform:translateY(15px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .req-popup-card-img{width:80px;height:110px;border-radius:.875rem;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
+    .req-popup-card-info{flex:1;min-width:0;text-align:left}
+    .req-popup-card-name{font-size:1.0625rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.3rem}
+    .req-popup-card-meta{font-size:.75rem;color:rgba(255,255,255,.25);margin-bottom:.5rem}
+    .req-popup-card-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;font-weight:700;padding:.25rem .65rem;border-radius:99px}
+    .req-popup-card.clickable .req-popup-card-badge{background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.1)}
+    .req-popup-card:not(.clickable) .req-popup-card-badge{background:rgba(249,115,22,.08);color:#f97316;border:1px solid rgba(249,115,22,.1)}
+    .req-popup-card-arrow{font-size:1rem;color:rgba(34,197,94,.4);flex-shrink:0;animation:popArrow 1.5s ease-in-out infinite}
+    @keyframes popArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+
+    .req-popup-close{padding:.65rem 2.25rem;border-radius:.875rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.4);font-size:.875rem;font-weight:600;cursor:pointer;transition:all .25s;animation:popTextIn .4s ease .45s both}
+    .req-popup-close:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);transform:translateY(-1px)}
 </style>
 </head>
 <body>
@@ -1815,11 +1863,14 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     <div class="req-popup" id="reqPopup">
       <div class="req-popup-backdrop" onclick="closeReqPopup()"></div>
       <div class="req-popup-box" id="reqPopupBox">
-        <div class="req-popup-icon" id="reqPopupIcon"></div>
-        <div class="req-popup-title" id="reqPopupTitle"></div>
-        <div class="req-popup-sub" id="reqPopupSub"></div>
-        <div id="reqPopupAction"></div>
-        <button class="req-popup-close" onclick="closeReqPopup()">OK</button>
+        <div class="req-popup-particles" id="reqPopupParticles"></div>
+        <div class="req-popup-inner">
+          <div class="req-popup-icon" id="reqPopupIcon"></div>
+          <div class="req-popup-title" id="reqPopupTitle"></div>
+          <div class="req-popup-sub" id="reqPopupSub"></div>
+          <div id="reqPopupAction"></div>
+          <button class="req-popup-close" onclick="closeReqPopup()">OK</button>
+        </div>
       </div>
     </div>
 
@@ -2026,12 +2077,113 @@ function showReqPopup(type, icon, title, sub, actionHtml) {
   document.getElementById('reqPopupTitle').textContent = title;
   document.getElementById('reqPopupSub').textContent = sub;
   document.getElementById('reqPopupAction').innerHTML = actionHtml || '';
+  // Generate particles
+  const pc = document.getElementById('reqPopupParticles');
+  if (pc) {
+    pc.innerHTML = '';
+    for (let i = 0; i < 8; i++) {
+      const p = document.createElement('div');
+      p.className = 'req-popup-particle';
+      p.style.left = (10 + Math.random() * 80) + '%';
+      p.style.bottom = (Math.random() * 30) + '%';
+      p.style.animationDelay = (Math.random() * 3) + 's';
+      p.style.animationDuration = (3 + Math.random() * 2) + 's';
+      p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+      pc.appendChild(p);
+    }
+  }
   popup.classList.add('open');
 }
 
 function closeReqPopup() {
   const popup = document.getElementById('reqPopup');
   if (popup) popup.classList.remove('open');
+}
+
+function morphFromPopup(cardEl, gameId, imgSrc) {
+  // Grab the card image rect before closing popup
+  const img = cardEl.querySelector('img');
+  const rect = img ? img.getBoundingClientRect() : cardEl.getBoundingClientRect();
+  const src = imgSrc || (img ? img.src : '');
+
+  // Close popup immediately
+  closeReqPopup();
+
+  // If no image, fallback to simple nav
+  if (!src) { nav('jeu', gameId); return; }
+
+  _morphing = true;
+
+  // Create morph clone at the card image position
+  const clone = document.createElement('div');
+  clone.className = 'morph-clone';
+  const br = img ? getComputedStyle(img).borderRadius : '0.75rem';
+  clone.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
+
+  const cloneImg = document.createElement('img');
+  cloneImg.src = src;
+  cloneImg.alt = '';
+  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;';
+  clone.appendChild(cloneImg);
+  document.body.appendChild(clone);
+
+  void clone.offsetWidth;
+  document.body.classList.add('morph-active');
+
+  nav('jeu', gameId);
+
+  const targetW = window.innerWidth;
+  const targetH = window.innerHeight;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      clone.classList.add('morphing');
+      clone.style.left = '0';
+      clone.style.top = '0';
+      clone.style.width = targetW + 'px';
+      clone.style.height = targetH + 'px';
+      clone.style.borderRadius = '0';
+    });
+  });
+
+  // Reveal game page elements during morph
+  setTimeout(() => {
+    const els = document.querySelectorAll('.genre,.jeu-hero-title,.meta,.synopsis,.info-item,.actions,.back-btn');
+    els.forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 35);
+    });
+  }, 400);
+
+  // Crossfade to hero image
+  const crossfadeHero = () => {
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg && heroImg.src && heroImg.complete && heroImg.naturalWidth > 0) {
+      clearInterval(checkImg);
+      heroImg.style.visibility = 'hidden';
+      cloneImg.style.opacity = '0';
+      const heroCloneImg = document.createElement('img');
+      heroCloneImg.src = heroImg.src;
+      heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;position:absolute;top:0;left:0;';
+      clone.appendChild(heroCloneImg);
+      requestAnimationFrame(() => { heroCloneImg.style.opacity = '1'; });
+    }
+  };
+  const checkImg = setInterval(crossfadeHero, 50);
+  crossfadeHero();
+
+  // Cleanup after morph
+  const onEnd = () => {
+    clone.removeEventListener('transitionend', onEnd);
+    clearTimeout(endTimer);
+    clearInterval(checkImg);
+    clone.remove();
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) heroImg.style.visibility = 'visible';
+    document.body.classList.remove('morph-active');
+    _morphing = false;
+  };
+  clone.addEventListener('transitionend', onEnd);
+  const endTimer = setTimeout(onEnd, 900);
 }
 
 function reqDebounce(q) {
@@ -2147,7 +2299,18 @@ async function reqSelect(appId) {
       const match = catalogGames.find(g => g.appId === appId || (g.title && _reqSelected.name && g.title.toLowerCase().trim() === _reqSelected.name.toLowerCase().trim()));
       if (match) {
         duplicateFound = true;
-        showReqPopup('exists', '✅', 'Déjà sur le site !', 'Ce jeu est déjà disponible dans le catalogue.', `<div class="req-popup-link" onclick="closeReqPopup();nav('jeu','${e2(match.title || '')}')">🎮 Voir la fiche →</div>`);
+        const cardImg = match.portrait_url || match.banner_url || '';
+        const gameId = match.id || match.title || '';
+        const cardHtml = `<div class="req-popup-card clickable" onclick="morphFromPopup(this,'${e2(gameId)}','${e2(cardImg)}')">
+          <img class="req-popup-card-img" src="${esc(cardImg)}" onerror="this.style.display='none'" loading="lazy">
+          <div class="req-popup-card-info">
+            <div class="req-popup-card-name">${esc(match.title || '???')}</div>
+            <div class="req-popup-card-meta">${esc(match.year || '')}</div>
+            <div class="req-popup-card-badge">✅ Disponible</div>
+          </div>
+          <div class="req-popup-card-arrow">→</div>
+        </div>`;
+        showReqPopup('exists', '✅', 'Déjà sur le site !', 'Ce jeu est déjà dans le catalogue. Clique pour y accéder.', cardHtml);
       }
     } catch(e) { /* non-blocking */ }
 
@@ -2162,7 +2325,16 @@ async function reqSelect(appId) {
             const matchReq = reqs.find(r => r.appId === appId || (r.name && _reqSelected.name && r.name.toLowerCase().trim() === _reqSelected.name.toLowerCase().trim()));
             if (matchReq) {
               duplicateFound = true;
-              showReqPopup('pending', '⏳', 'Déjà demandé !', 'On s\'en occupe déjà, pas besoin de redemander 👍', '');
+              const cardImg = matchReq.img || '';
+              const cardHtml = `<div class="req-popup-card">
+                <img class="req-popup-card-img" src="${esc(cardImg)}" onerror="this.style.display='none'" loading="lazy">
+                <div class="req-popup-card-info">
+                  <div class="req-popup-card-name">${esc(matchReq.name || '???')}</div>
+                  <div class="req-popup-card-meta">${esc(matchReq.release || '')}</div>
+                  <div class="req-popup-card-badge">⏳ En attente</div>
+                </div>
+              </div>`;
+              showReqPopup('pending', '⏳', 'Déjà demandé !', 'On s\'en occupe déjà, pas besoin de redemander 👍', cardHtml);
             }
           }
         }
