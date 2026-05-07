@@ -4,11 +4,11 @@
     "appId": 521890,
     "url": "https://store.steampowered.com/app/521890",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/521890/header.jpg?t=1777368129",
-    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant ÃÂÃÂ  pÃÂÃÂ©nÃÂÃÂ©trer en cachette dans la maison du voisin pour dÃÂÃÂ©couvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancÃÂÃÂ©e qui apprend de chacun de vos mouvements. Passez ÃÂÃÂ  travers les fenÃÂÃÂªtres. DÃÂÃÂ©jouez les piÃÂÃÂ¨ges ÃÂÃÂ  ours. Vous essayez de vous ÃÂÃÂ©chapper? Trouvez un raccourci.",
+    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant ÃÂÃÂÃÂÃÂ  pÃÂÃÂÃÂÃÂ©nÃÂÃÂÃÂÃÂ©trer en cachette dans la maison du voisin pour dÃÂÃÂÃÂÃÂ©couvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancÃÂÃÂÃÂÃÂ©e qui apprend de chacun de vos mouvements. Passez ÃÂÃÂÃÂÃÂ  travers les fenÃÂÃÂÃÂÃÂªtres. DÃÂÃÂÃÂÃÂ©jouez les piÃÂÃÂÃÂÃÂ¨ges ÃÂÃÂÃÂÃÂ  ours. Vous essayez de vous ÃÂÃÂÃÂÃÂ©chapper? Trouvez un raccourci.",
     "developers": "Dynamic Pixels",
-    "genres": "Aventure, IndÃÂÃÂ©pendant, StratÃÂÃÂ©gie",
-    "release": "8 dÃÂÃÂ©c. 2017",
-    "price": "28,99ÃÂ¢ÃÂÃÂ¬",
+    "genres": "Aventure, IndÃÂÃÂÃÂÃÂ©pendant, StratÃÂÃÂÃÂÃÂ©gie",
+    "release": "8 dÃÂÃÂÃÂÃÂ©c. 2017",
+    "price": "28,99ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¬",
     "id": "movowauyfzo7",
     "requested_at": "2026-05-07T16:17:35.482Z"
   },
@@ -17,12 +17,25 @@
     "appId": 418370,
     "url": "https://store.steampowered.com/app/418370",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/418370/header.jpg?t=1770931202",
-    "desc": "Le danger et l'isolement menacent derrière les murs vétustes d'une ferme abandonnée d'Amérique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inédite pour le joueur avec la &quot;vue isolée&quot;. Portée par le moteur RE, l'horreur atteint de nouveaux sommets de réalisme.",
+    "desc": "Le danger et l'isolement menacent derriÃ¨re les murs vÃ©tustes d'une ferme abandonnÃ©e d'AmÃ©rique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inÃ©dite pour le joueur avec la &quot;vue isolÃ©e&quot;. PortÃ©e par le moteur RE, l'horreur atteint de nouveaux sommets de rÃ©alisme.",
     "developers": "CAPCOM Co., Ltd.",
     "genres": "Action, Aventure",
     "release": "23 janv. 2017",
-    "price": "19,99€",
+    "price": "19,99â¬",
     "id": "movqall3avso",
     "requested_at": "2026-05-07T16:56:42.183Z"
+  },
+  {
+    "name": "Fallout 4",
+    "appId": 377160,
+    "url": "https://store.steampowered.com/app/377160",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/377160/header.jpg?t=1764687456",
+    "desc": "Fallout 4 a été créé par Bethesda Game Studios, les créateurs primés de Starfield et The Elder Scrolls V: Skyrim. Véritable référence du jeu de rôle en monde ouvert, il a reçu plus de 200 distinctions, dont celles de jeu de l'année par DICE et BAFTA.",
+    "developers": "Bethesda Game Studios",
+    "genres": "RPG",
+    "release": "9 nov. 2015",
+    "price": "19,99€",
+    "id": "movqlvgoyefk",
+    "requested_at": "2026-05-07T17:05:28.200Z"
   }
 ]
