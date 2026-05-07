@@ -2520,5 +2520,27 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-07T19:55:38.792Z"
+  },
+  {
+    "title": "The Quarry",
+    "year": "9 juin 2022",
+    "description": "Alors que s'acheve la derniere journee de leur camp de vacances, neuf jeunes moniteurs vont vivre une nuit de cauchemar inattendue. Il n'existe qu'une chose pire que les inconnus couverts de sang et les creatures qui les traquent : les choix impossibles que vous devrez faire pour survivre.",
+    "categories": [
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1577120/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1577120/library_hero.jpg",
+    "ytb_id": "PNDn8OhUMuI",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:a89b750392a1e98f438a650a2577b76bcc3d7265&dn=The%20Quarry&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "45.1 GB",
+        "source": "By Crackuzu",
+        "name": "The.Quarry.Build.31012023-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-07T22:14:51.427Z"
   }
 ]
