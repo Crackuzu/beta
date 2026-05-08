@@ -2763,9 +2763,8 @@
     "year": "9 avr. 2025",
     "description": "Un jeu cooperatif dans lequel vous devez faire rouler un rocher jusqu'en haut d'une montagne avec vos amis, inspire de l'ancien mythe de Sisyphe.",
     "categories": [
-      "Action",
-      "Aventure",
-      "Simulation"
+      "Multijoueur",
+      "Plateforme"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3298460/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3298460/library_hero.jpg",
@@ -2780,6 +2779,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T20:19:19.035Z"
+    "added_at": "2026-05-08T20:19:42.168Z"
   }
 ]
