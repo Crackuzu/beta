@@ -4,12 +4,25 @@
     "appId": 2198510,
     "url": "https://store.steampowered.com/app/2198510",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2198510/header.jpg?t=1770912209",
-    "desc": "New Cycle est un jeu de gestion de ville basé autour de la survie. Après une apocalypse déclenchée par une série d'éruptions solaires, les humains sont au bord de l'extinction. Établissez une colonie et développez-la pour créer une métropole industrielle.",
+    "desc": "New Cycle est un jeu de gestion de ville basÃ© autour de la survie. AprÃ¨s une apocalypse dÃ©clenchÃ©e par une sÃ©rie d'Ã©ruptions solaires, les humains sont au bord de l'extinction. Ãtablissez une colonie et dÃ©veloppez-la pour crÃ©er une mÃ©tropole industrielle.",
     "developers": "Core Engage",
-    "genres": "Indépendant, Simulation, Stratégie, Accès anticipé",
+    "genres": "IndÃ©pendant, Simulation, StratÃ©gie, AccÃ¨s anticipÃ©",
     "release": "18 janv. 2024",
-    "price": "29,99€",
+    "price": "29,99â¬",
     "id": "mowg63l5c0yx",
     "requested_at": "2026-05-08T05:01:02.249Z"
+  },
+  {
+    "name": "METAL GEAR SOLID - Master Collection Version",
+    "appId": 2131630,
+    "url": "https://store.steampowered.com/app/2131630",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2131630/header.jpg?t=1737564028",
+    "desc": "Premier titre en 3D de la série METAL GEAR et pionnier du genre action/infiltration avec des séquences filmées et des scènes cinématiques ponctuant un gameplay innovant.",
+    "developers": "KONAMI",
+    "genres": "Action",
+    "release": "24 oct. 2023",
+    "price": "19,99€",
+    "id": "mox9sdy6ut4t",
+    "requested_at": "2026-05-08T18:50:10.974Z"
   }
 ]
