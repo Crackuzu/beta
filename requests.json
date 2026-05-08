@@ -4,11 +4,11 @@
     "appId": 2198510,
     "url": "https://store.steampowered.com/app/2198510",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2198510/header.jpg?t=1770912209",
-    "desc": "New Cycle est un jeu de gestion de ville basÃ© autour de la survie. AprÃ¨s une apocalypse dÃ©clenchÃ©e par une sÃ©rie d'Ã©ruptions solaires, les humains sont au bord de l'extinction. Ãtablissez une colonie et dÃ©veloppez-la pour crÃ©er une mÃ©tropole industrielle.",
+    "desc": "New Cycle est un jeu de gestion de ville basÃÂ© autour de la survie. AprÃÂ¨s une apocalypse dÃÂ©clenchÃÂ©e par une sÃÂ©rie d'ÃÂ©ruptions solaires, les humains sont au bord de l'extinction. ÃÂtablissez une colonie et dÃÂ©veloppez-la pour crÃÂ©er une mÃÂ©tropole industrielle.",
     "developers": "Core Engage",
-    "genres": "IndÃ©pendant, Simulation, StratÃ©gie, AccÃ¨s anticipÃ©",
+    "genres": "IndÃÂ©pendant, Simulation, StratÃÂ©gie, AccÃÂ¨s anticipÃÂ©",
     "release": "18 janv. 2024",
-    "price": "29,99â¬",
+    "price": "29,99Ã¢ÂÂ¬",
     "id": "mowg63l5c0yx",
     "requested_at": "2026-05-08T05:01:02.249Z"
   },
@@ -17,12 +17,25 @@
     "appId": 2131630,
     "url": "https://store.steampowered.com/app/2131630",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2131630/header.jpg?t=1737564028",
-    "desc": "Premier titre en 3D de la série METAL GEAR et pionnier du genre action/infiltration avec des séquences filmées et des scènes cinématiques ponctuant un gameplay innovant.",
+    "desc": "Premier titre en 3D de la sÃ©rie METAL GEAR et pionnier du genre action/infiltration avec des sÃ©quences filmÃ©es et des scÃ¨nes cinÃ©matiques ponctuant un gameplay innovant.",
+    "developers": "KONAMI",
+    "genres": "Action",
+    "release": "24 oct. 2023",
+    "price": "19,99â¬",
+    "id": "mox9sdy6ut4t",
+    "requested_at": "2026-05-08T18:50:10.974Z"
+  },
+  {
+    "name": "METAL GEAR SOLID 2: Sons of Liberty - Master Collection Version",
+    "appId": 2131640,
+    "url": "https://store.steampowered.com/app/2131640",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2131640/header.jpg?t=1737564625",
+    "desc": "Quatrième titre de la série METAL GEAR , le jeu se déroule entre 2007 et 2009, met en scène Solid Snake et Raiden et propose de nouvelles fonctionnalités de gameplay.",
     "developers": "KONAMI",
     "genres": "Action",
     "release": "24 oct. 2023",
     "price": "19,99€",
-    "id": "mox9sdy6ut4t",
-    "requested_at": "2026-05-08T18:50:10.974Z"
+    "id": "mox9snp4y4vc",
+    "requested_at": "2026-05-08T18:50:23.608Z"
   }
 ]
