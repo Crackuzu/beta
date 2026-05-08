@@ -822,6 +822,29 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
   .pc{transition-duration:.2s!important}
 }
 
+/* Hamburger & Mobile menu */
+.hamburger{display:none;flex-direction:column;gap:4px;width:36px;height:36px;align-items:center;justify-content:center;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);cursor:pointer;transition:all .3s}
+.hamburger span{display:block;width:16px;height:2px;background:#fff;border-radius:1px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mob-search{display:none}
+.mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);padding:0;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.mobile-menu.open{max-height:300px;padding:1rem 0}
+.mob-nav-a{display:block;width:100%;padding:1rem 1.5rem;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;text-align:left;transition:all .2s}
+.mob-nav-a:hover,.mob-nav-a.active{color:#fff;background:rgba(255,255,255,.05)}
+
+@media(max-width:1024px){
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .search-pill{display:none!important}
+  .mob-search{display:flex!important}
+}
+@media(min-width:1024px){
+  .mobile-menu{display:none!important}
+  .hamburger{display:none!important}
+}
+
 /* Touch: no hover effects */
 @media(hover:none){
   .pc:hover{width:120px!important;box-shadow:none!important;border-color:rgba(255,255,255,.05)!important;z-index:0!important}
@@ -1243,10 +1266,22 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
           <span>Rechercher</span>
         </button>
+        <button class="icon-btn mob-search" onclick="openSrch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        </button>
         <button class="icon-btn" onclick="">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
         </button>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mob-nav-a" id="mnav-accueil" onclick="nav('accueil');closeMobileMenu()">Accueil</button>
+      <button class="mob-nav-a" id="mnav-catalogue" onclick="nav('catalogue');closeMobileMenu()">Catalogue</button>
+      <button class="mob-nav-a" id="mnav-demande" onclick="nav('demande');closeMobileMenu()">Demande</button>
+      <button class="mob-nav-a" id="mnav-admin" onclick="nav('admin');closeMobileMenu()">Admin</button>
     </div>
   </div>
 </header>
@@ -2094,6 +2129,9 @@ function nav(page, param) {
     document.querySelectorAll('.nav-a').forEach(el => el.classList.remove('active'));
     const activeNav = document.getElementById('nav-' + page);
     if (activeNav) activeNav.classList.add('active');
+    document.querySelectorAll('.mob-nav-a').forEach(el => el.classList.remove('active'));
+    const activeMobNav = document.getElementById('mnav-' + page);
+    if (activeMobNav) activeMobNav.classList.add('active');
 
     // Cacher/montrer footer sur admin
     document.getElementById('site-footer').style.display = page === 'admin' ? 'none' : '';
@@ -3237,6 +3275,8 @@ function closeMod(){
 /* search */
 function openSrch(){_srchMode='local';document.getElementById('sinput').placeholder='Chercher un jeu…';document.getElementById('sov').classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('sinput').focus(),50);}
 function closeSrch(){document.getElementById('sov').classList.remove('open');document.body.style.overflow='';document.getElementById('sinput').value='';document.getElementById('sres').innerHTML='';_srchMode='local';document.getElementById('sinput').placeholder='Chercher un jeu…';}
+function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
 function doSrch(q){
   if(_srchMode==='steam'){reqDebounce(q);return;}
   const r=document.getElementById('sres');
