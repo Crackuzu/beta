@@ -1,6 +1,7 @@
 [
   {
     "title": "Detroit: Become Human",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201584/ljuokhxzmdkrfreded3m.png",
     "year": "2020",
     "description": "Detroit: Become Human puts the destiny of both mankind and androids in your hands, taking you to a near future where machines have become more intelligent than humans. Every choice you make affects the outcome of the game, with one of the most intricately branching narratives ever created.",
     "categories": [
@@ -33,11 +34,12 @@
         "type": "magnet"
       }
     ],
-    "added_by": "admin",
-    "added_at": "2026-04-16T21:11:04.446Z"
+    "added_by": "admin-local",
+    "added_at": "2026-05-08T01:51:36.194Z"
   },
   {
     "title": "Resident Evil Requiem",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201553/auhoyqtqjnnabjw1sdvi.png",
     "year": "Feb 26, 2026",
     "description": "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
     "categories": [
@@ -57,10 +59,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T17:30:25.945Z"
+    "added_at": "2026-05-08T01:51:04.532Z"
   },
   {
     "title": "DRAGON BALL FighterZ",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201511/ogcjfolikzmqcjoj48fw.png",
     "year": "2018",
     "description": "DRAGON BALL FighterZ is born from what makes the DRAGON BALL series so loved and famous: endless spectacular fights with its all-powerful fighters.",
     "categories": [
@@ -79,10 +82,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T17:29:33.776Z"
+    "added_at": "2026-05-08T01:50:23.254Z"
   },
   {
     "title": "Resident Evil Village",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201494/qigka8i05eofrlfvslt5.png",
     "year": "2021",
     "description": "Experience survival horror like never before in the 8th major installment in the Resident Evil franchise - Resident Evil Village. With detailed graphics, intense first-person action and masterful storytelling, the terror has never felt more realistic.",
     "categories": [
@@ -115,10 +119,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-21T02:49:16.296Z"
+    "added_at": "2026-05-08T01:50:05.427Z"
   },
   {
     "title": "Chained Together",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201474/qps2hazmiyl5cgugvs1c.png",
     "year": "2024",
     "description": "From the depths of hell, climb chained to your friends through diverse worlds. Solo or co-op, try to reach the summit and discover what awaits you there...",
     "categories": [
@@ -139,10 +144,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:48:11.144Z"
+    "added_at": "2026-05-08T01:49:45.777Z"
   },
   {
     "title": "The Last of Us Part I",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201449/cmg0oqc2cjpnylg7hsvl.png",
     "year": "28 Mar, 2023",
     "description": "Discover the award-winning game that inspired the critically acclaimed television show. Guide Joel and Ellie through a post-apocalyptic America, and encounter unforgettable allies and enemies in The Last of Us.",
     "categories": [
@@ -161,10 +167,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:13:51.746Z"
+    "added_at": "2026-05-08T01:49:21.657Z"
   },
   {
     "title": "The Last of Us Part II Remastered",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201424/lruj8bairscinrdunxvr.png",
     "year": "3 Apr, 2025",
     "description": "Experience the winner of over 300 Game of the Year awards, now on PC. Discover Ellie and Abby's story with graphical enhancements, gameplay modes like the roguelike survival experience No Return, and more.",
     "categories": [
@@ -183,10 +190,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:21:50.403Z"
+    "added_at": "2026-05-08T01:48:55.556Z"
   },
   {
     "title": "Marvel's Spider-Man: Miles Morales",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201396/wilyspwut8gfqtj3sako.png",
     "year": "18 Nov, 2022",
     "description": "After the events of Marvel's Spider-Man Remastered, teenage Miles Morales is adjusting to his new home while following in the footsteps of his mentor, Peter Parker, as a new Spider-Man. When a fierce power struggle threatens to destroy his home, Miles must take up the mantle of Spider-Man and own it",
     "categories": [
@@ -219,10 +227,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:24:21.331Z"
+    "added_at": "2026-05-08T01:48:27.671Z"
   },
   {
     "title": "Marvel's Spider-Man Remastered",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201372/razvnnpzhz5nfx5olz37.png",
     "year": "12 Aug, 2022",
     "description": "In Marvel's Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel's New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
     "categories": [
@@ -255,10 +264,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:29:32.817Z"
+    "added_at": "2026-05-08T01:48:04.166Z"
   },
   {
     "title": "Dispatch",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201350/tssauubapt6sfmd6jmle.png",
     "year": "22 Oct, 2025",
     "description": "Dispatch is a superhero workplace comedy where choices matter. Manage a dysfunctional team of misfit heroes and strategize who to send to emergencies around the city, all while balancing office politics, personal relationships, and your own quest to become a hero. All episodes out now!",
     "categories": [
@@ -279,10 +289,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T19:04:34.833Z"
+    "added_at": "2026-05-08T01:47:42.139Z"
   },
   {
     "title": "Red Dead Redemption 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201330/upmbvvyy4tmgiyk3mtzi.png",
     "year": "Dec 5, 2019",
     "description": "Arthur Morgan and the Van der Linde Gang are outlaws on the run. With federal agents and bounty hunters massing on their heels, the gang must rob, steal, and fight their way across the rugged heartland in order to survive.",
     "categories": [
@@ -315,10 +326,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:35:10.735Z"
+    "added_at": "2026-05-08T01:47:21.663Z"
   },
   {
     "title": "Hollow Knight: Silksong",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201312/etnws8inkduntdxjzrlw.png",
     "year": "4 Sep, 2025",
     "description": "Discover a vast, haunted kingdom in Hollow Knight: Silksong! Explore, fight and survive as you ascend to the peak of a land ruled by silk and song.",
     "categories": [
@@ -337,10 +349,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:37:10.822Z"
+    "added_at": "2026-05-08T01:47:04.308Z"
   },
   {
     "title": "God of War",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201286/kzxkr3cuwfzsa3nkdbvm.png",
     "year": "14 Jan, 2022",
     "description": "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive... and teach his son to do the same.",
     "categories": [
@@ -374,10 +387,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-21T02:54:24.157Z"
+    "added_at": "2026-05-08T01:46:37.936Z"
   },
   {
     "title": "Forza Horizon 5",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201266/ynwzvcq8jbijcasqwvko.png",
     "year": "8 Nov, 2021",
     "description": "Explore the vibrant open world landscapes of Mexico with limitless, fun driving action in the world's greatest cars.",
     "categories": [
@@ -419,10 +433,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T02:54:42.642Z"
+    "added_at": "2026-05-08T01:46:17.612Z"
   },
   {
     "title": "Resident Evil 4 Remake",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201151/oidt8qzx18trh9jhdrp3.png",
     "year": "23 Mar, 2023",
     "description": "Survival is just the beginning. Six years have passed since the biological disaster in Raccoon City. Leon S. Kennedy, one of the survivors, tracks the president's kidnapped daughter to a secluded European village, where there is something terribly wrong with the locals.",
     "categories": [
@@ -448,10 +463,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:02:25.418Z"
+    "added_at": "2026-05-08T01:44:23.593Z"
   },
   {
     "title": "R.E.P.O.",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201080/vinftqothfpvl4lbqzgy.png",
     "year": "26 Feb, 2025",
     "description": "An online co-op horror game with up to 6 players. Locate valuable, fully physics-based objects and handle them with care as you retrieve and extract to satisfy your creator's desires.",
     "categories": [
@@ -472,10 +488,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:46:58.359Z"
+    "added_at": "2026-05-08T01:43:12.197Z"
   },
   {
     "title": "Little Nightmares",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201055/c74zzi3n5uunftxmmnwm.png",
     "year": "27 Apr, 2017",
     "description": "Take on the role of Six, a lone child lost in a massive metal vessel known as the Maw, surrounded by dangerous, distorted versions of adults. You'll need to do your best to escape in one piece or your fate will be worse than you ever dared dream.",
     "categories": [
@@ -501,10 +518,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:15:47.376Z"
+    "added_at": "2026-05-08T01:42:47.401Z"
   },
   {
     "title": "Little Nightmares II",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201011/jjxmgnpjlqepxgf6ls15.png",
     "year": "10 Feb, 2021",
     "description": "Little Nightmares II is the second game in a series that has thrilled and captivated millions of players worldwide since 2017. Now it's your turn to try to survive this critically acclaimed entry in the most charming horror series ever made.",
     "categories": [
@@ -530,10 +548,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:15:45.592Z"
+    "added_at": "2026-05-08T01:42:02.704Z"
   },
   {
     "title": "Little Nightmares III",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200993/k0i0c9xfsuhc8e5f09ri.png",
     "year": "9 Oct, 2025",
     "description": "Little Nightmares III is an atmospheric adventure game in which you follow the journey of Low and Alone, two best friends in search of a way out of the Nowhere. In 2 players online cooperation or solo with an A.I., work together to solve puzzles and survive in this nightmarish world.",
     "categories": [
@@ -553,10 +572,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:47:05.113Z"
+    "added_at": "2026-05-08T01:41:45.129Z"
   },
   {
     "title": "UNCHARTED: Legacy of Thieves Collection",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200971/vx33drr9j0t0yhmyh2x0.png",
     "year": "19 Oct, 2022",
     "description": "Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thief's End and UNCHARTED: The Lost Legacy.",
     "categories": [
@@ -589,10 +609,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T03:20:32.346Z"
+    "added_at": "2026-05-08T01:41:23.194Z"
   },
   {
     "title": "Palworld",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200951/dpuseplkhevyh7ty8kbh.png",
     "year": "18 janv. 2024",
     "description": "Un tout nouveau jeu de survie multijoueur en monde ouvert ou le but est de collectionner de mysterieuses creatures, les Pals, afin de les faire combattre, batir des structures, travailler dans les champs et faire tourner vos usines.",
     "categories": [
@@ -614,10 +635,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T15:00:36.551Z"
+    "added_at": "2026-05-08T01:41:03.335Z"
   },
   {
     "title": "Minecraft",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200922/p1jo1abjsxw9b7usjckf.png",
     "year": "17 may ,2009",
     "description": "Minecraft is a video game that allows users to build structures and explore areas in a block-based world. Minecraft holds the record for the best-selling game of all time, and despite its release in 2011, it remains the third most played game in the world.",
     "categories": [
@@ -639,10 +661,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:48:00.924Z"
+    "added_at": "2026-05-08T01:40:38.745Z"
   },
   {
     "title": "Cuphead",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200841/cbugyvivpoapvuoifdl3.png",
     "year": "29 Sep, 2017",
     "description": "Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era, i.e. traditional hand drawn cel animation, watercolor backgrounds, and original jazz recordings.",
     "categories": [
@@ -683,10 +706,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-18T04:27:49.250Z"
+    "added_at": "2026-05-08T01:39:12.808Z"
   },
   {
     "title": "ELDEN RING NIGHTREIGN",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200781/gxeondrt6vzyajqrcs31.png",
     "year": "29 May, 2025",
     "description": "ELDEN RING NIGHTREIGN is a standalone adventure within the ELDEN RING universe, crafted to offer players a new gaming experience by reimagining the game's core design.",
     "categories": [
@@ -706,10 +730,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T18:10:08.879Z"
+    "added_at": "2026-05-08T01:38:13.385Z"
   },
   {
     "title": "Backrooms: Escape Together",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200759/e48dtxztsdcipctbz9yn.png",
     "year": "18 Oct, 2022",
     "description": "A visually lifelike co-op horror for 1-6 people. Journey through 10 procedurally generated levels, using what's available to survive and progress deeper into the Backrooms.",
     "categories": [
@@ -729,10 +754,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T17:33:53.597Z"
+    "added_at": "2026-05-08T01:37:50.893Z"
   },
   {
     "title": "REANIMAL",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200718/pwcdklulj0lkxpms85la.png",
     "year": "13 févr. 2026",
     "description": "Les createurs de Little Nightmares I et II vous emmenent accomplir un voyage tenebreux et terrifiant. Dans ce jeu d'aventure et d'horreur, un frere et une sœur traversent l'enfer pour sauver leurs amis disparus et s'echapper de l'ile qui etait autrefois leur demeure.",
     "categories": [
@@ -751,10 +777,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-20T19:45:31.581Z"
+    "added_at": "2026-05-08T01:37:10.079Z"
   },
   {
     "title": "Subnautica",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200694/zzv2vjlxenwtdyz4x0hp.png",
     "year": "23 janv. 2018",
     "description": "Descendez dans les profondeurs d'un monde sous-marin etranger plein de merveilles et perils. Concevez des equipements, pilotez des sous-marins, terraformez un terrain voxel, et adaptez-vous a la vie sauvage afin d'explorer le monde, tout en essayant de survivre.",
     "categories": [
@@ -780,10 +807,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-20T23:47:17.893Z"
+    "added_at": "2026-05-08T01:36:45.936Z"
   },
   {
     "title": "FINAL FANTASY X/X-2 HD Remaster",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200662/tkzvltfiy92ajsq3os3a.png",
     "year": "12 mai 2016",
     "description": "FINAL FANTASY X/X-2 HD Remaster rend hommage a deux des opus preferes des fans de la franchise mondialement connue, entierement remasterises en HD pour PC/Windows !",
     "categories": [
@@ -804,10 +832,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-20T23:49:03.553Z"
+    "added_at": "2026-05-08T01:36:13.628Z"
   },
   {
     "title": "Amnesia: The Bunker",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200525/gwro3csgjmp2mcp3oful.png",
     "year": "6 juin 2023",
     "description": "Amnesia: The Bunker est un jeu d'horreur a la premiere personne qui se deroule dans un bunker de la Premiere Guerre mondiale. Faites face aux dangers tapis dans l'ombre. Trouvez les outils et les armes a votre disposition, et gardez les lampes allumees pour esperer survivre.",
     "categories": [
@@ -834,10 +863,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-20T23:59:28.346Z"
+    "added_at": "2026-05-08T01:33:56.744Z"
   },
   {
     "title": "Ghostrunner",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200505/tkswpmskztstdpq0zgud.png",
     "year": "27 oct. 2020",
     "description": "Ghostrunner offre une experience unique en solo : des combats violents et rapides, et un cadre original melant science-fiction a des themes post-apocalyptiques. Il raconte l'histoire d'un monde deja termine et de ses habitants qui luttent pour survivre.",
     "categories": [
@@ -856,10 +886,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-21T01:33:15.814Z"
+    "added_at": "2026-05-08T01:33:37.503Z"
   },
   {
     "title": "PEAK",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196795/axscfvywf6dacfylo9y8.png",
     "year": "16 juin 2025",
     "description": "PEAK est un jeu d'escalade en cooperation, ou le moindre faux pas peut etre fatal ! Apres un accident d'avion, vous vous retrouvez sur une ile mysterieuse. En solo ou avec une troupe de scouts, vous n'avez qu'une solution : vous diriger avec le sommet de la montagne. Atteindrez-vous le Pic ?",
     "categories": [
@@ -880,10 +911,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:47:50.017Z"
+    "added_at": "2026-05-08T00:31:48.178Z"
   },
   {
     "title": "Twelve Minutes",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200466/kxv8vvdvzqxifxmprc1s.png",
     "year": "19 aout 2021",
     "description": "Un thriller interactif sur un homme enferme dans une boucle temporelle. Avec James McAvoy, Daisy Ridley et Willem Dafoe.",
     "categories": [
@@ -909,10 +941,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-21T01:50:34.511Z"
+    "added_at": "2026-05-08T01:32:58.207Z"
   },
   {
     "title": "Super Battle Golf",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200400/aimnggjq8m62awcqit0y.png",
     "year": "19 févr. 2026",
     "description": "Un jeu de golf en ligne de 1 a 8 joueurs ou tout le monde joue en meme temps. Faites des swings, tirez, sabotez, et terminez premier par tous les moyens dans cette course effrenee vers le trou en mode chacun pour soi.",
     "categories": [
@@ -931,10 +964,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T17:13:38.664Z"
+    "added_at": "2026-05-08T01:31:52.066Z"
   },
   {
     "title": "Heavy Rain",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200379/phcf0pdmgx0jc01ixff8.png",
     "year": "18 juin 2020",
     "description": "Decouvrez un thriller psychologique aux nombreux rebondissements. Vous etes a la poursuite du Tueur aux origamis. Alternez entre quatre personnages differents, chacun avec ses propres pistes, pour empecher le tueur de faire une nouvelle victime.",
     "categories": [
@@ -961,10 +995,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-21T17:45:24.518Z"
+    "added_at": "2026-05-08T01:31:31.002Z"
   },
   {
     "title": "DRAGON BALL XENOVERSE 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200145/vcjir1xgenpebto8nmw4.png",
     "year": "27 oct. 2016",
     "description": "DRAGON BALL XENOVERSE 2 suit les traces du titre a succes DRAGON BALL XENOVERSE, avec des graphismes ameliores pour procurer au joueur encore plus d'immersion dans l'univers Dragon Ball le plus vaste et le mieux detaille a ce jour.",
     "categories": [
@@ -985,10 +1020,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T21:19:19.726Z"
+    "added_at": "2026-05-08T01:27:36.870Z"
   },
   {
     "title": "In Silence",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200111/u1codlt06a4rewgkxlkw.png",
     "year": "29 oct. 2021",
     "description": "In Silence est un jeu d'horreur multijoueur. Un joueur joue le role du monstre qui a des capacites auditives hypersensibles et presque completement aveugle. Les autres joueurs (2-6) jouent en tant que survivants, essayant de s'echapper ou de chasser le monstre.",
     "categories": [
@@ -1009,10 +1045,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-22T22:08:06.331Z"
+    "added_at": "2026-05-08T01:27:03.314Z"
   },
   {
     "title": "Lunch Lady",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199799/ocha8mrq5cnf2mbublmd.png",
     "year": "15 avr. 2021",
     "description": "Lunch Lady est un jeu de survie et d'horreur en cooperative en ligne de 1 a 4 joueurs. Les examens finaux de l'ecole approchent et la meilleure idee que toi et tes amis avez eue est de voler les reponses des tests. Trouve les 10 pages et ne te fais pas attraper par la meurtriere Lunch Lady !",
     "categories": [
@@ -1032,10 +1069,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-22T22:31:14.345Z"
+    "added_at": "2026-05-08T01:21:51.674Z"
   },
   {
     "title": "The Outlast Trials",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199764/ihej7c1fos6uznmert7s.png",
     "year": "5 mars 2024",
     "description": "Red Barrels invites you to experience mind-numbing terror, this time with friends. Whether you go through the trials alone or in teams, if you survive long enough and complete the therapy, Murkoff will happily let you leave... but will you be the same?",
     "categories": [
@@ -1055,10 +1093,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-24T21:27:19.963Z"
+    "added_at": "2026-05-08T01:21:16.584Z"
   },
   {
     "title": "Dark Hours",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199731/wmg44rfxfh3etagiqu0p.png",
     "year": "23 oct. 2025",
     "description": "Dark Hours est un survival-horror en coop pour 1 a 4 joueurs. Votre cambriolage est interrompu par un evenement surnaturel et votre equipe de voleurs se retrouve piegee avec un monstre. Oubliez votre plan, votre mission: survivre ! Explorez et cooperez pour vous echapper.",
     "categories": [
@@ -1079,10 +1118,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T19:37:46.867Z"
+    "added_at": "2026-05-08T01:20:50.115Z"
   },
   {
     "title": "Gang Beasts",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199703/hysu1xgo5yotddmr2ia0.png",
     "year": "12 déc. 2017",
     "description": "Gang Beasts est un jeu multijoueur loufoque avec des personnages gelatineux hargneux, des combats brutalo-comiques, et des lieux absurdement dangereux situes dans la cite de Ville-bœuf.",
     "categories": [
@@ -1104,10 +1144,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:47:29.658Z"
+    "added_at": "2026-05-08T01:20:15.635Z"
   },
   {
     "title": "Schedule I",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199651/fydmflrqwvq3ljn4y7je.png",
     "year": "24 mars 2025",
     "description": "From small-time dope pusher to kingpin - manufacture and distribute a range of drugs throughout the grungy city of Hyland Point. Expand your empire with properties, businesses, employees and more.",
     "categories": [
@@ -1128,10 +1169,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:08:40.612Z"
+    "added_at": "2026-05-08T01:19:22.912Z"
   },
   {
     "title": "A Plague Tale: Innocence",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199628/cf547zhpvuk63pouw0ev.png",
     "year": "14 mai 2019",
     "description": "Vivez le recit dechirant d'Amicia et de son petit frere Hugo, livres a eux-memes au cœur des heures les plus sombres de l'Histoire.",
     "categories": [
@@ -1158,10 +1200,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:08:52.669Z"
+    "added_at": "2026-05-08T01:19:00.198Z"
   },
   {
     "title": "SILENT HILL f",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199598/nbskjmguhelobdnfirgs.png",
     "year": "24 sept. 2025",
     "description": "Hinako voit sa ville natale engloutie dans la brume, la mettant face a des monstres grotesques et des enigmes deroutantes. Decouvrez la beaute troublante enfouie derriere l'atrocite.",
     "categories": [
@@ -1182,10 +1225,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:44:24.668Z"
+    "added_at": "2026-05-08T01:18:30.289Z"
   },
   {
     "title": "ELDEN RING",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199568/q3potfxv3zn7er4eyliu.png",
     "year": "24 févr. 2022",
     "description": "LE RPG D'ACTION FANTASTIQUE ACCLAME PAR LA CRITIQUE. Levez-vous, Sans-eclat, et puisse la grace guider vos pas. Brandissez la puissance du Cercle d'Elden. Devenez Seigneur de l'Entre-terre.",
     "categories": [
@@ -1214,10 +1258,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:32:10.548Z"
+    "added_at": "2026-05-08T01:18:00.230Z"
   },
   {
     "title": "The Witcher 3: Wild Hunt",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199530/rwicnepq2woxcqfhpwrx.png",
     "year": "18 mai 2015",
     "description": "Vous incarnez Geralt de Riv, un tueur de monstres. Devant vous s'etend un continent en guerre, infeste de monstres, a explorer a votre guise. Votre contrat actuel ? Retrouver Ciri, l'enfant de la prophetie, une arme vivante capable de changer le monde.",
     "categories": [
@@ -1243,10 +1288,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:24:50.522Z"
+    "added_at": "2026-05-08T01:17:21.988Z"
   },
   {
     "title": "Horizon Forbidden West Complete Edition",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199505/j1xd3zawulmprhlgckaa.png",
     "year": "21 mars 2024",
     "description": "Profitez de l'experience Horizon Forbidden West complete grace a du contenu bonus et l'extension Burning Shores. L'extension Burning Shores inclut du contenu additionnel, avec des quetes, personnages et experiences inedits dans une nouvelle zone aussi magnifique qu'impitoyable.",
     "categories": [
@@ -1274,10 +1320,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:25:52.079Z"
+    "added_at": "2026-05-08T01:16:57.502Z"
   },
   {
     "title": "Ghost of Tsushima DIRECTOR'S CUT",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199474/yobnednknyl8hr31ydbe.png",
     "year": "16 mai 2024",
     "description": "Une tempete approche. Decouvrez l'edition complete de Ghost of Tsushima DIRECTOR'S CUT sur PC. Tracez votre propre voie dans ce jeu d'action-aventure en monde ouvert et decouvrez tous ses secrets. Un titre Sucker Punch Productions, Nixxes Software et PlayStation Studios.",
     "categories": [
@@ -1312,10 +1359,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:27:41.791Z"
+    "added_at": "2026-05-08T01:16:33.668Z"
   },
   {
     "title": "The Outer Worlds",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199446/dn4suuw7xpbvtmylqitr.png",
     "year": "23 oct. 2020",
     "description": "The Outer Worlds est un RPG prime en solo d'Obsidian Entertainment et de Private Division. Vos choix determineront le deroulement de cette histoire centree sur les decisions du joueur. Dans l'equation parfaite calculee pour la colonie, vous etes la variable imprevue.",
     "categories": [
@@ -1342,10 +1390,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:28:52.769Z"
+    "added_at": "2026-05-08T01:15:57.591Z"
   },
   {
     "title": "DEATH STRANDING DIRECTOR'S CUT",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199413/vrzk09z5gyqjpnasgxyc.png",
     "year": "30 mars 2022",
     "description": "L'experience revolutionnaire du legendaire Hideo Kojima revient encore plus etoffee dans l'edition ultime DIRECTOR'S CUT. Sam Bridges a pour mission de donner de l'espoir a l'humanite en reconnectant tous les survivants d'une Amerique decimee. Parviendrez-vous a reunifier ce monde dechire ?",
     "categories": [
@@ -1372,10 +1421,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:29:46.314Z"
+    "added_at": "2026-05-08T01:15:25.461Z"
   },
   {
     "title": "Hogwarts Legacy : L'Heritage de Poudlard",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199365/ard7rgy1vvejklq8rrzs.png",
     "year": "10 févr. 2023",
     "description": "Hogwarts Legacy : L'Heritage de Poudlard est un RPG d'action-aventure immersif en monde ouvert. Vous pouvez prendre le controle et vous retrouver au centre de votre propre aventure dans le Monde des sorciers.",
     "categories": [
@@ -1396,10 +1446,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-25T23:31:31.863Z"
+    "added_at": "2026-05-08T01:14:37.618Z"
   },
   {
     "title": "A Plague Tale: Requiem",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199340/yy6g1vi5g9nwn6dchmja.png",
     "year": "17 oct. 2022",
     "description": "Vivez une aventure poignante dans un monde brutal. Frappez dans l'ombre ou dechainez les enfers grace a un arsenal fourni d'equipement et de pouvoirs surnaturels... et decouvrez le prix a payer pour sauver les etres qui vous sont chers.",
     "categories": [
@@ -1426,10 +1477,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:15:02.610Z"
+    "added_at": "2026-05-08T01:14:12.273Z"
   },
   {
     "title": "WUCHANG: Fallen Feathers",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199295/dvoablescz4osr08zicy.png",
     "year": "23 juil. 2025",
     "description": "RPG d'action soulslike, WUCHANG: Fallen Feathers vous fera decouvrir la sombre et chaotique periode de la fin de la dynastie Ming dans la region de Shu, gangrenee par les guerres et une mysterieuse epidemie faisant naitre des creatures monstrueuses.",
     "categories": [
@@ -1452,10 +1504,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:38:53.193Z"
+    "added_at": "2026-05-08T01:13:36.135Z"
   },
   {
     "title": "Nioh: Complete Edition",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199256/x8k2io2nphbgglpebxtb.png",
     "year": "7 nov. 2017",
     "description": "Pret a mourir ? Venez decouvrir le nouveau jeu d'action estampille Team NINJA et Koei Tecmo Games. Incarnez William qui debarque sur les cotes du Japon feodale et decouvrez un pays infeste de guerriers et de yokai surnaturels qu'il vous faudra battre pour trouver ce que vous etes venu chercher.",
     "categories": [
@@ -1482,10 +1535,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:32:36.006Z"
+    "added_at": "2026-05-08T01:12:48.282Z"
   },
   {
     "title": "Nioh 2 - The Complete Edition",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199165/aqqakaiyl01fymvx3epj.png",
     "year": "5 févr. 2021",
     "description": "Combattez des hordes de yokai dans ce jeu de role d'action ultra exigeant. Creez votre protagoniste et embarquez pour une aventure a travers le Japon de l'epoque Sengoku. Servez-vous de votre nouvelle competence Mutation yokai pour vaincre les plus feroces yokai, et preparez-vous a braver les Royaumes obscurs crees par vos ennemis.",
     "categories": [
@@ -1512,10 +1566,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T01:09:35.906Z"
+    "added_at": "2026-05-08T01:12:03.741Z"
   },
   {
     "title": "Nioh 3",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199123/igiillngbtzvffsl5elx.png",
     "year": "5 févr. 2026",
     "description": "Nioh est le troisieme titre de la sombre serie de RPG d'action avec des samourais. Vous devrez y utiliser les modes de combat samourai et ninja dans vos affrontements contre de terribles yokai tout en explorant un terrain ouvert palpitant.",
     "categories": [
@@ -1535,10 +1590,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T00:36:17.744Z"
+    "added_at": "2026-05-08T01:10:35.591Z"
   },
   {
     "title": "Wo Long: Fallen Dynasty",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199095/amwszvhqguwzfnpnfonh.png",
     "year": "3 mars 2023",
     "description": "Un nouvel action RPG dans une dark fantasy des Trois royaumes par Team NINJA, les devs de Nioh.",
     "categories": [
@@ -1559,10 +1615,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T01:16:17.398Z"
+    "added_at": "2026-05-08T01:10:07.591Z"
   },
   {
     "title": "Assassin's Creed Mirage",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778199041/j0zknektl0cdunbegqmq.png",
     "year": "17 oct. 2024",
     "description": "Devenez un Maitre Assassin redoutable dans ce jeu d'action-aventure. Incarnez Basim et explorez les rues de Bagdad en plein IXe siecle. Eliminez vos cibles tout en faisant regner la justice au nom de Ceux qu'on ne voit pas.",
     "categories": [
@@ -1589,10 +1646,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T02:19:48.921Z"
+    "added_at": "2026-05-08T01:09:14.551Z"
   },
   {
     "title": "Raft",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198951/bosx9jtxjvmlqyxftr0h.png",
     "year": "20 juin 2022",
     "description": "Raft throws you and your friends into an epic oceanic adventure! Alone or together, players battle to survive a perilous voyage across a vast sea! Gather debris, scavenge reefs and build your own floating home, but be wary of the man-eating sharks!",
     "categories": [
@@ -1613,10 +1671,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T14:46:49.912Z"
+    "added_at": "2026-05-08T01:07:48.808Z"
   },
   {
     "title": "SILENT HILL 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198933/ghn1hmn14qxi6dylxzgw.png",
     "year": "7 oct. 2024",
     "description": "\"Mon nom est... Maria,\" dit la femme en souriant. Son visage, sa voix... Elle lui ressemble tellement.",
     "categories": [
@@ -1643,10 +1702,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-27T14:11:07.954Z"
+    "added_at": "2026-05-08T01:07:25.273Z"
   },
   {
     "title": "The Binding of Isaac: Rebirth",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198859/upo5mav1x9sztxdrubzc.png",
     "year": "4 nov. 2014",
     "description": "The Binding of Isaac: Rebirth is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac's form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.",
     "categories": [
@@ -1668,10 +1728,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:06:58.874Z"
+    "added_at": "2026-05-08T01:06:38.260Z"
   },
   {
     "title": "SpeedRunners",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198806/oopbduruouny4tqowcgd.png",
     "year": "19 avr. 2016",
     "description": "Un jeu de course multijoueur a couper le souffle qui oppose 4 joueurs les uns contre les autres, en local et/ou en ligne. Courez, sautez et balancez-vous, utilisez des armes sournoises et des gadgets pour ejecter vos adversaires hors de l'ecran !",
     "categories": [
@@ -1693,10 +1754,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:09:45.627Z"
+    "added_at": "2026-05-08T01:05:18.617Z"
   },
   {
     "title": "The Forest",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198786/eczted37nknn5ylzemcc.png",
     "year": "30 avr. 2018",
     "description": "As the lone survivor of a passenger jet crash, you find yourself in a mysterious forest battling to stay alive against a society of cannibalistic mutants. Build, explore, survive in this terrifying first person survival horror simulator.",
     "categories": [
@@ -1719,10 +1781,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:12:42.238Z"
+    "added_at": "2026-05-08T01:04:57.706Z"
   },
   {
     "title": "The Headliners",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198714/i3dtdyvbhk4s2ffucrzq.png",
     "year": "30 janv. 2025",
     "description": "Un jeu d'horreur cooperatif ou vous incarnez une equipe de 1 a 8 journalistes, prets a explorer New York envahie par des creatures mortelles pour capturer des images spectaculaires. Votre seul objectif : faire la une... et rester en vie pour la lire.",
     "categories": [
@@ -1743,10 +1806,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:25:30.899Z"
+    "added_at": "2026-05-08T01:04:04.658Z"
   },
   {
     "title": "Liar's Bar",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198650/ze2vo5nxll2frug5rdpc.png",
     "year": "2 oct. 2024",
     "description": "Dive into this multiplayer online experience set in a sketchy bar where the games are as dangerous as the patrons. Join a table of 4 and test your skills in Liar's Dice and Liar's Deck, where lying and bluffing are key to victory. Ready for a night at Liar's Bar?",
     "categories": [
@@ -1767,10 +1831,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:28:49.913Z"
+    "added_at": "2026-05-08T01:02:41.831Z"
   },
   {
     "title": "Escape the Backrooms",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198622/dp9btvjys25efzhxkjas.png",
     "year": "23 oct. 2025",
     "description": "Escape the Backrooms est un jeu d'exploration et d'horreur jouable de 1 a 4 en coop. Traversez plus de 30 etages inquietants tout en evitant les entites et autres dangers. Essayez de vous enfuir, mais sachez ceci : votre survie n'est pas garantie.",
     "categories": [
@@ -1792,10 +1857,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-26T15:36:33.943Z"
+    "added_at": "2026-05-08T01:02:14.425Z"
   },
   {
     "title": "Phasmophobia",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198597/dwsk13pbiny6lasjnsa0.png",
     "year": "18 sept. 2020",
     "description": "Phasmophobia is a 4 player online co-op psychological horror. Paranormal activity is on the rise and it's up to you and your team to use all the ghost-hunting equipment at your disposal in order to gather as much evidence as you can.",
     "categories": [
@@ -1816,10 +1882,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T02:55:16.033Z"
+    "added_at": "2026-05-08T01:01:49.028Z"
   },
   {
     "title": "Undertale",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198506/wu4cn6239xm0wqnumkel.png",
     "year": "15 sept. 2015",
     "description": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
     "categories": [
@@ -1840,10 +1907,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T03:04:40.338Z"
+    "added_at": "2026-05-08T01:00:18.470Z"
   },
   {
     "title": "OneShot",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198465/tr8fgdethqddg8p12xkw.png",
     "year": "8 déc. 2016",
     "description": "OneShot est un jeu d'aventure/d'enigmes surrealiste en vue du dessus et dote d'un gameplay unique. Vous devez guider un enfant dans sa mission a travers un monde mysterieux : restaurer un soleil eteint depuis bien longtemps. Le monde vous attend.",
     "categories": [
@@ -1863,10 +1931,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T03:05:19.678Z"
+    "added_at": "2026-05-08T00:59:38.325Z"
   },
   {
     "title": "ULTRAKILL",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198413/qv1nbwny6psp3qcek4fz.png",
     "year": "3 sept. 2020",
     "description": "ULTRAKILL is a fast-paced ultra-violent retro FPS that combines the skill-based style scoring of character action games with the unadulterated carnage inspired by the best shooters of the '90s. Rip apart your foes with varied destructive weaponry and shower in their blood to regain your health.",
     "categories": [
@@ -1885,10 +1954,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-28T16:03:46.592Z"
+    "added_at": "2026-05-08T00:58:58.200Z"
   },
   {
     "title": "PICO PARK 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198388/g3o0tqzfno2ohqdm7zpj.png",
     "year": "12 sept. 2024",
     "description": "PICO PARK est de retour avec de nouveaux niveaux ! Jouez de 2 a 8 joueurs localement ou en ligne dans ce jeu cooperatif de puzzle et d'action !",
     "categories": [
@@ -1910,10 +1980,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-28T23:27:29.268Z"
+    "added_at": "2026-05-08T00:58:20.271Z"
   },
   {
     "title": "Assetto Corsa",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198273/q5e3jhpjlcw6pozn07nz.png",
     "year": "19 déc. 2014",
     "description": "Assetto Corsa v1.16 introduces the new \"Laguna Seca\" laser-scanned track, 7 new cars among which the eagerly awaited Alfa Romeo Giulia Quadrifoglio! Check the changelog for further info!",
     "categories": [
@@ -1934,10 +2005,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T15:33:31.844Z"
+    "added_at": "2026-05-08T00:56:25.092Z"
   },
   {
     "title": "Monster Hunter Wilds",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198203/fdl3cydkqq9t4mkljumh.png",
     "year": "27 févr. 2025",
     "description": "Arpentez des environnements qui se transforment radicalement d'un moment a l'autre sous l'effet de la force indomptable d'une nature sans cesse dechainee. Plongez dans une histoire de monstres et d'humains luttant pour vivre en harmonie dans un monde de dualites. (PAS ONLINE)",
     "categories": [
@@ -1958,10 +2030,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:07:41.064Z"
+    "added_at": "2026-05-08T00:55:15.383Z"
   },
   {
     "title": "Black Myth: Wukong",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198155/apkakqdrdlxrzrgj0yix.png",
     "year": "19 aout 2024",
     "description": "Black Myth: Wukong est un jeu action-RPG inspire de la mythologie chinoise. Vous y incarnerez le Predestine et prendrez part a une epopee merveilleuse au cours de laquelle vous devrez affronter maints perils pour decouvrir la sombre verite d'une legende glorieuse.",
     "categories": [
@@ -1982,10 +2055,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:14:01.302Z"
+    "added_at": "2026-05-08T00:54:44.342Z"
   },
   {
     "title": "The Sims 4",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198128/kascltfzk3vdhvvhnvsj.png",
     "year": "18 juin 2020",
     "description": "Profitez du pouvoir de creer et de controler des personnages dans un monde virtuel ou il n'y a aucune regle. Soyez puissant et libre, amusez-vous et jouez avec la vie !",
     "categories": [
@@ -2005,10 +2079,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:19:27.624Z"
+    "added_at": "2026-05-08T00:53:59.862Z"
   },
   {
     "title": "Satisfactory",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198101/c8tufpofehldsfzx2snr.png",
     "year": "10 sept. 2024",
     "description": "Satisfactory est un jeu de construction d'usines en vue a la premiere personne dans un monde ouvert avec une touche d'exploration et de combats. Jouez seul ou entre amis, explorez une planete inconnue, construisez des usines a plusieurs niveaux et des tapis roulants a l'infini !",
     "categories": [
@@ -2029,10 +2104,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:26:05.602Z"
+    "added_at": "2026-05-08T00:53:33.260Z"
   },
   {
     "title": "Microsoft Flight Simulator 2024",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198060/ec9nrzslql6vxkudfjpm.png",
     "year": "19 nov. 2024",
     "description": "Parcours le monde dans notre plus grande flotte d'avions et observe la simulation atteindre de nouveaux sommets tout en te faisant une place dans le monde de l'aviation dans Microsoft Flight Simulator 2024.",
     "categories": [
@@ -2051,10 +2127,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:28:15.946Z"
+    "added_at": "2026-05-08T00:52:51.815Z"
   },
   {
     "title": "Euro Truck Simulator 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198031/hur5xwphwptiw2ilgei7.png",
     "year": "12 oct. 2012",
     "description": "Voyagez a travers l'Europe en tant que roi de la route, un camionneur qui livre d'importantes marchandises sur des distances impressionnantes ! Avec des dizaines de villes a explorer, votre endurance, vos competences et votre vitesse seront poussees a leurs limites.",
     "categories": [
@@ -2073,10 +2150,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-04-29T16:39:33.820Z"
+    "added_at": "2026-05-08T00:52:23.075Z"
   },
   {
     "title": "Lethal Company",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778198000/dm5518kkh4gde41xiajv.png",
     "year": "23 oct. 2023",
     "description": "A co-op horror about scavenging at abandoned moons to sell scrap to the Company.",
     "categories": [
@@ -2097,10 +2175,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-02T16:02:16.818Z"
+    "added_at": "2026-05-08T00:51:51.660Z"
   },
   {
     "title": "Beyond: Two Souls",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196830/rxanontankzsrapvqzpv.png",
     "year": "18 juin 2020",
     "description": "Thriller psychologique unique et rempli d'action mettant en scene les acteurs Elliot PAGE et Willem DAFOE, Beyond: Two Souls vous embarque dans une aventure passionnante a travers le monde, en immersion dans l'incroyable vie de Jodie Holmes.",
     "categories": [
@@ -2121,10 +2200,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-02T16:07:39.544Z"
+    "added_at": "2026-05-08T00:32:22.368Z"
   },
   {
     "title": "Ready or Not",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197892/tsctolilgdhduleza4gh.png",
     "year": "13 déc. 2023",
     "description": "Los Suenos : la police fait face a une flambee de violence et de crime a travers toute la metropole. Les unites SWAT ont ete envoyees pour desamorcer de nombreuses situations a risque : prises d'otage, alertes a la bombe, forcenes retranches... Civils : restez chez vous.",
     "categories": [
@@ -2144,10 +2224,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-03T23:01:34.430Z"
+    "added_at": "2026-05-08T00:50:21.630Z"
   },
   {
     "title": "Bean There, Won That",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197823/kcyverqi69hragmfgemf.png",
     "year": "25 sept. 2024",
     "description": "Bean There, Won That est un party game base sur la physique, concu pour tester vos competences et amities ! Participez a des mini-jeux dejantes en tirant, bottant et cognant jusqu'au sommet ! En ligne ou ecran partage, ecrasez vos amis chez vous ou dans le monde entier.",
     "categories": [
@@ -2167,10 +2248,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-03T17:35:51.057Z"
+    "added_at": "2026-05-08T00:48:56.084Z"
   },
   {
     "title": "Clair Obscur: Expedition 33",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197770/zsjzl2sd6j4hdvenlztg.png",
     "year": "24 avr. 2025",
     "description": "A la tete de l'Expedition 33, partez eliminer la Peintresse pour que plus jamais elle ne peigne la mort. Explorez un monde rappelant la France de la Belle Epoque et affrontez des ennemis uniques dans ce RPG au tour par tour avec mecaniques de temps reel.",
     "categories": [
@@ -2190,10 +2272,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-04T03:46:30.583Z"
+    "added_at": "2026-05-08T00:48:02.182Z"
   },
   {
     "title": "Lies of P",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197727/yhivu1lfqm0ojrt38xqt.png",
     "year": "18 sept. 2023",
     "description": "Lies of P est un jeu soulslike trepidant qui part de l'histoire de Pinocchio et la detourne totalement en la deroulant dans le decor sombre et elegant de la Belle Epoque.",
     "categories": [
@@ -2214,10 +2297,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-04T03:51:12.510Z"
+    "added_at": "2026-05-08T00:47:19.088Z"
   },
   {
     "title": "Overcooked! 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197510/zaqqm7bnrvkwcbmlrdoj.png",
     "year": "7 aout 2018",
     "description": "Overcooked revient avec une toute nouvelle portion d'action culinaire chaotique ! Retournez dans le royaume Oignon et reunissez votre equipe de chefs dans ce jeu de cooperation locale ou en ligne jusqu'a 4 joueurs. A vos tabliers... il est l'heure de sauver le monde (encore une fois !)",
     "categories": [
@@ -2238,10 +2322,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-04T03:55:01.343Z"
+    "added_at": "2026-05-08T00:43:53.129Z"
   },
   {
     "title": "Fast Food Simulator",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197584/ekopjavsvcoyymvbbkcb.png",
     "year": "10 déc. 2024",
     "description": "Bienvenue dans l'endroit le plus chaotique du monde ! Jouez en solo ou en cooperation jusqu'a 6 joueurs. Dirigez un fast-food et travaillez avec vos amis pour developper votre entreprise. Prenez les commandes, preparez les hamburgers et augmentez vos revenus en traitant avec les clients.",
     "categories": [
@@ -2261,10 +2346,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T01:01:37.870Z"
+    "added_at": "2026-05-08T00:44:56.536Z"
   },
   {
     "title": "Gamble With Your Friends",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197549/ypa0rxucqrqtzdablagf.png",
     "year": "1 mai 2026",
     "description": "An online 1-6 player co-op \"casino crawler\" where you and your friends share one bank account and one massive debt. Gamble, buy sketchy items, make terrible decisions, and climb an ominous casino tower to hit your loan shark's daily quota in 5 minutes - or face the consequences.",
     "categories": [
@@ -2284,10 +2370,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T01:20:19.105Z"
+    "added_at": "2026-05-08T00:44:20.812Z"
   },
   {
     "title": "Roadside Research",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197429/txb6fymluokql6te6roc.png",
     "year": "12 févr. 2026",
     "description": "Roadside Research est une simulation de station-service de 1 a 4 joueurs. Sauf que vous etes des aliens, en mission d'infiltration. Faites des trucs tres humains, comme reapprovisionner les rayons, tout en preparant une invasion. Mais... ne vous faites pas prendre.",
     "categories": [
@@ -2307,10 +2394,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T01:22:23.225Z"
+    "added_at": "2026-05-08T00:42:21.376Z"
   },
   {
     "title": "Labyrinthine",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197050/eifrh9nf33ej7zlu7vqg.png",
     "year": "18 aout 2023",
     "description": "Decouvrez les sombres secrets d'un labyrinthe envahi par la vegetation avec des amis en ligne alors que vous essayez d'echapper aux horreurs qui s'y trouvent. Resolvez des enigmes, trouvez des objets et fuir les habitants assoiffes de sang du labyrinthe pour tenter d'en sortir vivants...",
     "categories": [
@@ -2331,10 +2419,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T01:23:05.897Z"
+    "added_at": "2026-05-08T00:36:11.925Z"
   },
   {
-    "title": "Road 96 🛣️",
+    "title": "Road 96",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197405/ipnl1njplrsso5enyivh.png",
     "year": "16 aout 2021",
     "description": "Trace ta route en stop dans ce Road Trip procedural delirant cree par le studio inde francais DigixArt. Personne ne prendra la meme route !",
     "categories": [
@@ -2354,10 +2443,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T05:35:31.690Z"
+    "added_at": "2026-05-08T00:41:57.604Z"
   },
   {
     "title": "Human Fall Flat",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197294/akpairmkc5i0qasfbgyx.png",
     "year": "22 juil. 2016",
     "description": "Human Fall Flat est un jeu de plates-formes drole et divertissant situe dans des paysages oniriques, jouable seul ou avec jusqu'a 8 amis en ligne. Des niveaux gratuits recompensent sa communaute.",
     "categories": [
@@ -2377,10 +2467,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T05:48:29.069Z"
+    "added_at": "2026-05-08T00:40:06.478Z"
   },
   {
     "title": "7 Days to Die",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197268/hgaapfe0jnil1ap2l4zg.png",
     "year": "25 juil. 2024",
     "description": "7 Days est un jeu a monde ouvert entre le jeu de tir a la premiere personne, le survival horror, le tower defense et le RPG. Il inclut de la fabrication, de l'acquisition de butin, de l'extraction miniere, de l'exploration, et permet a votre personnage de progresser.",
     "categories": [
@@ -2403,10 +2494,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T15:01:10.576Z"
+    "added_at": "2026-05-08T00:39:40.391Z"
   },
   {
     "title": "Cursed Companions",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197227/ev2dsblfdtuwdkod0pax.png",
     "year": "20 nov. 2025",
     "description": "Si nous prononcons les mauvais mots... NOUS MOURONS ! Ce jeu vous tue avec votre propre voix ! Un mode cooperatif en ligne ou chacun recoit un mot interdit : dites-le, et vous tuez vos amis. Explorez des donjons effrayants, jetez des sorts et battez des monstres grace a votre voix.",
     "categories": [
@@ -2428,10 +2520,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:17:07.367Z"
+    "added_at": "2026-05-08T00:38:58.919Z"
   },
   {
     "title": "Dangerous Mountain Together",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197005/vdigfh3hawqysmf8fy4n.png",
     "year": "3 avr. 2026",
     "description": "Faites equipe dans cette aventure automobile cooperative chaotique a 2-4 joueurs ! Naviguez sur des routes de montagne dangereuses tout en etant attaches l'un a l'autre, vous tirant mutuellement de la catastrophe. Gravissez des pentes raides, survivez aux intemperies et atteignez le sommet sans tomber dans l'abime !",
     "categories": [
@@ -2451,10 +2544,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:39:09.148Z"
+    "added_at": "2026-05-08T00:35:16.539Z"
   },
   {
     "title": "Invincible VS",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778197192/hrwhvixxxjgzqof8csgn.png",
     "year": "30 avr. 2026",
     "description": "Invincible VS est un jeu de combat de super-heros brutal en 3 contre 3 dans l'univers d'Invincible, ou vous vous constituez une equipe de vos personnages preferes pour vous battre jusqu'a la mort dans des lieux emblematiques.",
     "categories": [
@@ -2474,10 +2568,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:38:52.144Z"
+    "added_at": "2026-05-08T00:38:23.607Z"
   },
   {
     "title": "The Dark Pictures Anthology: Man of Medan",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196887/l4nb0or53u14a5qdr7al.png",
     "year": "29 aout 2019",
     "description": "L'anthologie The Dark Pictures est une serie de jeux d'horreur autonomes a embranchements, egalement jouables en ligne avec un ami. Dans Man of Medan, cinq amis partent plonger en mer. Mais leurs vacances se transforment bientot en cauchemar.",
     "categories": [
@@ -2497,10 +2592,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:56:11.041Z"
+    "added_at": "2026-05-08T00:33:19.803Z"
   },
   {
     "title": "Until Dawn",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196964/g5k6oswlisypqtedwi7v.png",
     "year": "4 oct. 2024",
     "description": "Refondu et ameliore pour PC, Until Dawn vous invite a revivre le cauchemar et a vous immerger dans un slasher angoissant ou chaque decision peut faire toute la difference entre la vie et la mort.",
     "categories": [
@@ -2519,10 +2615,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T19:55:38.792Z"
+    "added_at": "2026-05-08T00:34:36.681Z"
   },
   {
     "title": "The Quarry",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196744/tqwrzw4j11kp1hxdcoyk.png",
     "year": "9 juin 2022",
     "description": "Alors que s'acheve la derniere journee de leur camp de vacances, neuf jeunes moniteurs vont vivre une nuit de cauchemar inattendue. Il n'existe qu'une chose pire que les inconnus couverts de sang et les creatures qui les traquent : les choix impossibles que vous devrez faire pour survivre.",
     "categories": [
@@ -2541,10 +2638,11 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T22:14:51.427Z"
+    "added_at": "2026-05-08T00:30:56.122Z"
   },
   {
     "title": "The Dark Pictures Anthology: House of Ashes",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778196715/zm4irmxrmu6gz8gytwni.png",
     "year": "21 oct. 2021",
     "description": "A la fin de la guerre d'Irak, les Forces speciales, a la recherche d'armes de destruction massive, trouvent quelque chose de bien plus dangereux : un temple sumerien enfoui, ou nichent des creatures. Pour survivre a cette nuit sous terre, ils doivent s'allier avec leurs ennemis a la surface.",
     "categories": [
@@ -2564,6 +2662,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-07T22:20:17.564Z"
+    "added_at": "2026-05-08T00:30:28.096Z"
   }
 ]
