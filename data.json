@@ -366,7 +366,7 @@
   },
   {
     "title": "Resident Evil 2",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778280122/pa1xmrmqcmrizpkzv9oh.png",
     "year": "24 janv. 2019",
     "description": "Sorti a l'origine en 1998, Resident Evil 2, l'un des jeux les plus emblematiques de son epoque, revient dans une version entierement revisee pour les consoles nouvelles generations.",
     "categories": [
@@ -387,7 +387,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T23:33:37.208Z"
+    "added_at": "2026-05-08T23:40:32.033Z"
   },
   {
     "title": "Clair Obscur: Expedition 33",
@@ -2783,7 +2783,7 @@
   },
   {
     "title": "Resident Evil 3",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778279911/vffzi8mciohqynwnvli4.png",
     "year": "2 avr. 2020",
     "description": "Jill Valentine fait partie des derniers temoins des atrocites commises par Umbrella a Raccoon City. Pour l'empecher de parler, Umbrella a fait appel a son arme secrete, Nemesis ! Comprend egalement Resident Evil Resistance, un nouveau jeu multijoueurs a 1 contre 4.",
     "categories": [
@@ -2802,6 +2802,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T23:30:45.857Z"
+    "added_at": "2026-05-08T23:37:03.937Z"
   }
 ]
