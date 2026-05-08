@@ -2759,7 +2759,7 @@
   },
   {
     "title": "Pushing it! Together - Sisyphus Co-op",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778268048/zgdtx34v0canzesaxaof.png",
     "year": "9 avr. 2025",
     "description": "Un jeu cooperatif dans lequel vous devez faire rouler un rocher jusqu'en haut d'une montagne avec vos amis, inspire de l'ancien mythe de Sisyphe.",
     "categories": [
@@ -2780,6 +2780,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T20:18:45.287Z"
+    "added_at": "2026-05-08T20:19:19.035Z"
   }
 ]
