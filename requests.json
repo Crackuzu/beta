@@ -1,15 +1,41 @@
 [
   {
-    "name": "Draw & Guess",
-    "appId": 1483870,
-    "url": "https://store.steampowered.com/app/1483870",
-    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1483870/header.jpg?t=1750853008",
-    "desc": "Un jeu de dessin et de devinette multijoueur en ligne qui peut accueillir jusqu'à 16 artistes et qui comprend plusieurs modes. Montrez-nous vos meilleurs (ou vos pires) dessins et essayez de deviner le mieux possible ceux des autres !",
-    "developers": "Acureus",
-    "genres": "Occasionnel, Indépendant",
-    "release": "12 mars 2021",
-    "price": "2,99€",
-    "id": "mowdjetnqyj0",
-    "requested_at": "2026-05-08T03:47:24.491Z"
+    "name": "Dispatch Madness Playtest",
+    "appId": 3231940,
+    "url": "https://store.steampowered.com/app/3231940",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3231940/header.jpg?t=1738859828",
+    "desc": "",
+    "developers": "",
+    "genres": "",
+    "release": "3 oct. 2024",
+    "price": "",
+    "id": "1778131760xgzy",
+    "requested_at": "2026-05-07T05:29:20Z"
+  },
+  {
+    "name": "Hello Neighbor",
+    "appId": 521890,
+    "url": "https://store.steampowered.com/app/521890",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/521890/header.jpg?t=1777368129",
+    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant à pénétrer en cachette dans la maison du voisin pour découvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancée qui apprend de chacun de vos mouvements. Passez à travers les fenêtres. Déjouez les pièges à ours. Vous essayez de vous échapper? Trouvez un raccourci.",
+    "developers": "Dynamic Pixels",
+    "genres": "Aventure, Indépendant, Stratégie",
+    "release": "8 déc. 2017",
+    "price": "28,99€",
+    "id": "1778173833qlxt",
+    "requested_at": "2026-05-07T17:10:33Z"
+  },
+  {
+    "name": "Hello Neighbor",
+    "appId": 521890,
+    "url": "https://store.steampowered.com/app/521890",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/521890/header.jpg?t=1777368129",
+    "desc": "Hello Neighbor est un jeu d'horreur en mode furtif consistant à pénétrer en cachette dans la maison du voisin pour découvrir ce qu'il cache dans son sous-sol. Jouez contre une IA avancée qui apprend de chacun de vos mouvements. Passez à travers les fenêtres. Déjouez les pièges à ours. Vous essayez de vous échapper? Trouvez un raccourci.",
+    "developers": "Dynamic Pixels",
+    "genres": "Aventure, Indépendant, Stratégie",
+    "release": "8 déc. 2017",
+    "price": "28,99€",
+    "id": "1778214057guec",
+    "requested_at": "2026-05-08T04:20:57Z"
   }
 ]
