@@ -1249,7 +1249,7 @@
       "Action",
       "Aventure"
     ],
-    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778272762/x1c4sgqtimj35iih3x2o.png",
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1850570/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1850570/library_hero.jpg",
     "ytb_id": "s2GUQcbz_8Q",
     "magnets": [
@@ -1269,7 +1269,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T20:39:27.808Z"
+    "added_at": "2026-05-08T01:15:25.461Z"
   },
   {
     "title": "The Outer Worlds",
@@ -2756,5 +2756,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-08T20:05:03.591Z"
+  },
+  {
+    "title": "Pushing it! Together - Sisyphus Co-op",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778268048/zgdtx34v0canzesaxaof.png",
+    "year": "9 avr. 2025",
+    "description": "Un jeu cooperatif dans lequel vous devez faire rouler un rocher jusqu'en haut d'une montagne avec vos amis, inspire de l'ancien mythe de Sisyphe.",
+    "categories": [
+      "Multijoueur",
+      "Plateforme"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/3298460/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3298460/library_hero.jpg",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:3dbfe2dfccdecaa1f69beec578b21fe625c77529&dn=Pushing%20it!%20Together%20Sisyphus%20Co-op&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "1.3 GB",
+        "source": "By Crackuzu",
+        "name": "Pushing.it!.Together.Sisyphus.Co-op.v1.03-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-08T20:19:42.168Z"
   }
 ]
