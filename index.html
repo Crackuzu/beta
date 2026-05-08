@@ -721,6 +721,121 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
 .not-found p{font-size:1.25rem;color:var(--w40);margin-bottom:2rem}
 
 /* ══════════════════════════════════════════════════════════
+   MOBILE — max-width:640px
+══════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+  /* Header */
+  .nav-inner{height:56px;padding:0 1rem}
+  .logo-text{font-size:1.35rem}
+  .icon-btn{width:36px;height:36px}
+
+  /* Hero */
+  .hero-body{padding-bottom:10rem;align-items:flex-end!important}
+  .hero-inner{padding:0 1rem}
+  .hero-title{font-size:1.75rem}
+  .hero-title-img{max-height:90px}
+  .hero-title-wrap{min-height:100px}
+  .hero-meta{gap:.6rem}
+  .hm{font-size:9px}
+  .hero-actions{gap:.5rem;flex-wrap:wrap}
+  .btn-orange,.btn-ghost{padding:.6rem 1.25rem;font-size:10px;flex:1;justify-content:center}
+  .hero-dots{bottom:1.5rem;left:1rem}
+  .dot{width:28px;height:4px}
+
+  /* Sections */
+  .section{padding:1.5rem 0}
+  .sw{padding:0 1rem}
+  .se{font-size:9px;letter-spacing:.3em}
+  .st{font-size:1.1rem}
+
+  /* Scroll row arrows hidden on mobile */
+  .ra{display:none!important}
+
+  /* Portrait cards — no hover expand on mobile */
+  .pc{width:120px;border-radius:.875rem}
+  .pc:hover{width:120px!important;box-shadow:none!important;border-color:rgba(255,255,255,.05)!important;z-index:0!important}
+  .pc:hover .pc-img{aspect-ratio:2/3!important}
+  .pc:hover .pc-img .pc-land{display:none!important}
+  .pc:hover .pc-img .pc-port{opacity:1!important}
+  .pc:hover .pc-title-img{display:none!important}
+  .pc:hover .pc-info{opacity:0!important}
+  .pc:hover .pc-name.has-title-img{display:-webkit-box!important}
+
+  /* Grid — 2 cols on mobile */
+  .grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
+
+  /* Catalogue page */
+  .page-head{margin-bottom:1.5rem}
+  .page-title{font-size:2rem}
+  .page-sub{font-size:.875rem;margin-top:.5rem}
+  .container{padding:1.5rem 1rem 3rem}
+
+  /* Filters */
+  .filters{gap:.75rem}
+  .genre-bar{gap:.3rem;padding:.3rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .gtab{padding:.35rem .75rem;font-size:10px;min-width:auto;letter-spacing:.15em}
+  .filter-row{flex-direction:column;align-items:stretch;gap:.75rem}
+  .fl-left{flex-direction:column;align-items:stretch;width:100%;gap:.5rem}
+  .inline-srch{max-width:none}
+  .fl-right{justify-content:flex-start}
+  .filter-btn,.qbit-btn{padding:.5rem 1rem;font-size:11px}
+  .qbit-btn span{display:none}
+  .qbit-btn svg{color:#0085f7;width:20px;height:20px}
+
+  /* Pagination */
+  .pag{gap:.25rem;margin-top:2rem;padding-top:1.5rem}
+  .pb{min-width:32px;height:32px;font-size:11px;border-radius:.375rem}
+
+  /* Search overlay */
+  .sov{padding:5rem 1rem 1.5rem}
+  .sinput{padding:1rem 3.5rem 1rem 3rem;font-size:1rem;border-radius:1rem}
+  .sico{left:1rem}
+  .sx{right:.75rem;width:32px;height:32px}
+  .sres{grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.25rem}
+
+  /* Modal */
+  .modal{border-radius:1rem;max-height:85vh}
+  .m-banner{border-radius:1rem 1rem 0 0;aspect-ratio:16/10}
+  .m-close{top:.5rem;right:.5rem;width:30px;height:30px}
+  .m-body{padding:1rem 1.25rem 1.5rem}
+  .m-title{font-size:1.25rem;margin-bottom:.5rem}
+  .m-actions{gap:.5rem}
+  .btn-w,.btn-p{padding:.6rem 1.25rem;font-size:9px;letter-spacing:.15em;border-radius:.625rem;flex:1;justify-content:center}
+
+  /* Jeu page */
+  .hero{min-height:70vh;padding:18rem 0 3rem}
+  .back-btn{top:72px;left:1rem;padding:.5rem 1rem;font-size:10px}
+  .jeu-hero-title{font-size:1.75rem}
+  .jeu-hero-title-img{max-height:120px;max-width:100%}
+  .genre{padding:.35rem .75rem;font-size:9px}
+  .meta{gap:.75rem;font-size:12px;margin-bottom:1.25rem}
+
+  /* Footer */
+  .site-footer{padding:2rem 1rem}
+  .ft{font-size:1.25rem}
+  .fts{font-size:11px}
+
+  /* Reduce animations */
+  .slide img{transition:transform .5s ease-out!important}
+  .morph-clone{transition-duration:.4s!important}
+  .card{animation-duration:.3s!important}
+  .pc{transition-duration:.2s!important}
+}
+
+/* Touch: no hover effects */
+@media(hover:none){
+  .pc:hover{width:120px!important;box-shadow:none!important;border-color:rgba(255,255,255,.05)!important;z-index:0!important}
+  .pc:hover .pc-img{aspect-ratio:2/3!important}
+  .pc:hover .pc-img .pc-land{display:none!important}
+  .pc:hover .pc-img .pc-port{opacity:1!important}
+  .pc:hover .pc-title-img{display:none!important}
+  .pc:hover .pc-info{opacity:0!important}
+  .pc:hover .pc-name.has-title-img{display:-webkit-box!important}
+  .card:hover{transform:none!important;box-shadow:0 8px 24px rgba(0,0,0,.5)!important}
+  .card:hover .card-img img{transform:none!important}
+}
+
+/* ══════════════════════════════════════════════════════════
    CSS — ADMIN
 ══════════════════════════════════════════════════════════ */
         body{font-family:Inter,system-ui,-apple-system,sans-serif;background:#000;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
