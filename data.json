@@ -2946,5 +2946,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-09T16:34:58.654Z"
+  },
+  {
+    "title": "Who's Your Daddy?!",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778345423/iv3olalgxcagdkkumekt.png",
+    "year": "13 mai 2016",
+    "description": "Who's Your Daddy est un jeu multijoueur decontracte mettant en scene un pere sans indice tentant d'empecher son jeune fils de mourir. Jouez avec jusqu'a 7 de vos amis et testez vos competences parentales dans une configuration competitive avec une physique loufoque et plus de 69 objets menagers potentiellement menacants.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/427730/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/427730/library_hero.jpg",
+    "ytb_id": "ixKIRD63rUk",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:4d750ea18d16a24779a1c2c4bd564e3bead32ac3&dn=Whos%20Your%20Daddy&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "2.9 GB",
+        "source": "By Crackuzu",
+        "name": "Whos.Your.Daddy.Build.16032022-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T17:48:52.616Z"
   }
 ]
