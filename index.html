@@ -4938,19 +4938,21 @@ function initJeu(gameId) {
 
       try {
         const formData = new FormData();
-        formData.append('reqtype', 'fileupload');
         formData.append('fileToUpload', _torrentFileData.file);
 
-        // Upload directly to catbox — no Worker needed (catbox allows CORS)
-        const response = await fetch('https://catbox.moe/user/api.php', {
+        const WORKER_URL = window.location.port === '3000'
+          ? 'http://localhost:3000'
+          : 'https://crackuzu-api.crackuzu.workers.dev';
+
+        const response = await fetch(`${WORKER_URL}/api/catbox-upload`, {
           method: 'POST',
           body: formData
         });
 
-        const text = await response.text();
+        const data = await response.json();
 
-        if (text && text.trim().startsWith('http')) {
-          document.getElementById('m-url').value = text.trim();
+        if (data.url) {
+          document.getElementById('m-url').value = data.url;
           document.getElementById('m-name').value = _torrentFileData.file.name.replace('.torrent', '');
           document.getElementById('m-size').value = formatSize(_torrentFileData.totalSize);
           document.getElementById('m-type').value = 'torrent';
@@ -4959,8 +4961,8 @@ function initJeu(gameId) {
           return;
         }
 
-        status.textContent = '❌ ' + (text || 'Upload échoué');
-        showToast(text || 'Upload échoué', 'error');
+        status.textContent = '❌ ' + (data.error || 'Upload échoué');
+        showToast(data.error || 'Upload échoué', 'error');
       } catch (e) {
         console.error('Catbox upload error:', e);
         status.textContent = '❌ Erreur réseau';
