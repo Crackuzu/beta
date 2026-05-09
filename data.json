@@ -2325,15 +2325,15 @@
     "ytb_id": "6XGeJwsUP9c",
     "magnets": [
       {
-        "url": "https://litter.catbox.moe/jw742w.torrent",
-        "size": "4.1 GB",
-        "source": "BY CRACKUZU",
-        "name": "Hollow-Knight-Silksong",
-        "type": "torrent"
+        "url": "magnet:?xt=urn:btih:7564ec79e74e72f7aadd1824f3a29c605588c229&dn=Hollow%20Knight%20Silksong&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "2.2 GB",
+        "source": "By Crackuzu",
+        "name": "Hollow.Knight.Silksong.v1.0.28324-OFME",
+        "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T01:47:04.308Z"
+    "added_at": "2026-05-09T01:37:01.547Z"
   },
   {
     "title": "Red Dead Redemption 2",
@@ -2826,5 +2826,51 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-08T23:43:09.466Z"
+  },
+  {
+    "title": "Mall Rivals",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778287607/dclkoppip6ghwepjao69.png",
+    "year": "23 mars 2026",
+    "description": "Competitive mall simulation. 1-8 players open stores in the same mall, fight for customers, crush rivals. Team up or go solo. Fair play or dirty tricks? Your call. Procedural maps, employee system,mall cops, smugglers and physical mechanics.",
+    "categories": [
+      "Simulation"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778287515/bxablqlu7joh11ixtet1.png",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4090330/73a4bcf7654e302b608407bb082f8834231c5765/ss_73a4bcf7654e302b608407bb082f8834231c5765.1920x1080.jpg?t=1774316585",
+    "ytb_id": "_4Lv47IuL3c",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:bbcdd3b282bb1ff273e64699d9430f7b20f53e43&dn=Mall%20Rivals&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "903.4 MB",
+        "source": "By Crackuzu",
+        "name": "Mall.Rivals.v0.2.119-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T01:45:17.159Z"
+  },
+  {
+    "title": "Supermarket Simulator",
+    "title_img": "",
+    "year": "19 juin 2025",
+    "description": "Gerez votre supermarche : approvisionnez, fixez les prix, encaissez, embauchez, agrandissez, luttez contre le vol, organisez l'espace, achetez en ligne ou au marche, et livrez les commandes vous-meme !",
+    "categories": [
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2670630/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2670630/library_hero.jpg",
+    "ytb_id": "4nrqHP8cdrQ",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:296b3207923a010bf4f3997adfe082ec6b311d72&dn=Supermarket%20Simulator&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "1.2 GB",
+        "source": "By Crackuzu",
+        "name": "Supermarket.Simulator.v1.28.186-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T01:49:06.256Z"
   }
 ]
