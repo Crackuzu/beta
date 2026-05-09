@@ -4938,7 +4938,6 @@ function initJeu(gameId) {
 
       try {
         const formData = new FormData();
-        formData.append('reqtype', 'fileupload');
         formData.append('fileToUpload', _torrentFileData.file);
 
         const WORKER_URL = window.location.port === '3000'
