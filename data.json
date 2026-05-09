@@ -2852,7 +2852,7 @@
   },
   {
     "title": "Supermarket Simulator",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778301246/zfasdffojqn0dsa2cxli.png",
     "year": "19 juin 2025",
     "description": "Gerez votre supermarche : approvisionnez, fixez les prix, encaissez, embauchez, agrandissez, luttez contre le vol, organisez l'espace, achetez en ligne ou au marche, et livrez les commandes vous-meme !",
     "categories": [
@@ -2871,6 +2871,30 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-09T01:49:06.256Z"
+    "added_at": "2026-05-09T05:32:36.113Z"
+  },
+  {
+    "title": "The Exit 8",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778301202/lc6g7mfpehn8yqczwevi.png",
+    "year": "29 nov. 2023",
+    "description": "Vous vous retrouvez coince(e) dans un passage souterrain infini. Observez bien ce qui vous entoure pour atteindre la sortie 8.",
+    "categories": [
+      "Puzzle",
+      "Strategie"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2653790/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2653790/library_hero.jpg",
+    "ytb_id": "pDTFOTTlw7I",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:FDFC8E0CA8FB1015F2FA33F81F5DEFFDB9EF4DFE&dn=The+Exit+8+%28%2B+Windows+7+Fix%2C+ENG%2FJAP%29+%5BFitGirl+Repack%5D&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=http%3A%2F%2Fopen.acgtracker.com%3A1096%2Fannounce&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce",
+        "size": "839.4 MB",
+        "source": "FitGirl",
+        "name": "The Exit 8 (+ Windows 7 Fix, ENG/JAP) [FitGirl Repack]",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T05:31:53.227Z"
   }
 ]
