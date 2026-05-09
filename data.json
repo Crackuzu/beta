@@ -2856,7 +2856,8 @@
     "year": "19 juin 2025",
     "description": "Gerez votre supermarche : approvisionnez, fixez les prix, encaissez, embauchez, agrandissez, luttez contre le vol, organisez l'espace, achetez en ligne ou au marche, et livrez les commandes vous-meme !",
     "categories": [
-      "Simulation"
+      "Simulation",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2670630/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2670630/library_hero.jpg",
@@ -2871,7 +2872,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-09T05:32:36.113Z"
+    "added_at": "2026-05-09T05:33:05.216Z"
   },
   {
     "title": "The Exit 8",
