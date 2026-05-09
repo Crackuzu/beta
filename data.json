@@ -2953,7 +2953,8 @@
     "year": "13 mai 2016",
     "description": "Who's Your Daddy est un jeu multijoueur decontracte mettant en scene un pere sans indice tentant d'empecher son jeune fils de mourir. Jouez avec jusqu'a 7 de vos amis et testez vos competences parentales dans une configuration competitive avec une physique loufoque et plus de 69 objets menagers potentiellement menacants.",
     "categories": [
-      "Action"
+      "Multijoueur",
+      "Strategie"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/427730/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/427730/library_hero.jpg",
@@ -2968,6 +2969,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-09T17:48:52.616Z"
+    "added_at": "2026-05-09T23:12:55.396Z"
   }
 ]
