@@ -2897,5 +2897,54 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-09T05:31:53.227Z"
+  },
+  {
+    "title": "Slime Rancher",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778340974/gaa51xdfr0slzznxj5jt.png",
+    "year": "1 aout 2017",
+    "description": "Slime Rancher raconte l'histoire de Beatrix LeBeau, une jeune eleveuse de Slimes courageuse, qui part vivre sa vie a plus de mille annees-lumiere de la Terre, sur Far, Far Ouest, ou elle tente de vivre grace a l'elevage de Slimes.",
+    "categories": [
+      "Aventure",
+      "Monde ouvert"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/433340/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/433340/library_hero.jpg",
+    "ytb_id": "oOL-dsa79Xs",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/f1wre2.torrent",
+        "size": "904.4 MB",
+        "source": "By Crackuzu",
+        "name": "Slime-Rancher",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T16:34:43.263Z"
+  },
+  {
+    "title": "Slime Rancher 2",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778340989/hxn1tleefuzz3aawwtow.png",
+    "year": "23 sept. 2025",
+    "description": "Reprenez les aventures de Beatrix LeBeau, tandis qu'elle traverse la Mer des Slimes pour rejoindre l'Ile Arc-en-Ciel, une terre qui regorge de mysteres anciens et de nouveaux slimes fretillants a attraper, dans cette suite du succes qu'etait Slime Rancher.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Simulation"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1657630/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1657630/library_hero.jpg",
+    "ytb_id": "wQXXXtOXvfE",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:d277e91db8cd2bd0c4a07ad5aa217cd3da715cc7&dn=Slime%20Rancher%202&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "2.3 GB",
+        "source": "By Crackuzu",
+        "name": "Slime.Rancher.2.v1.0.2-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-09T16:34:58.654Z"
   }
 ]
