@@ -4949,7 +4949,12 @@ function initJeu(gameId) {
           body: formData
         });
 
-        const data = await response.json();
+        let data;
+        try { data = await response.json(); } catch(e) {
+          status.textContent = '❌ Erreur serveur';
+          showToast('Erreur serveur', 'error');
+          return;
+        }
 
         if (data.url) {
           document.getElementById('m-url').value = data.url;
