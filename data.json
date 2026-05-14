@@ -2973,7 +2973,7 @@
   },
   {
     "title": "Subnautica 2",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778790743/p39ydjfvggmpeqbjzjae.png",
     "year": "14 mai 2026",
     "description": "Subnautica 2 est un jeu d'aventure et de survie sous-marine dans un monde oceanique inedit, developpe par Unknown Worlds. Jouez en solo ou jusqu'a 4 joueurs en coop. Adaptez-vous pour survivre en construisant des bases et des outils. Explorez l'inconnu et decouvrez les mysteres des profondeurs.",
     "categories": [
@@ -2993,6 +2993,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-14T21:29:20.750Z"
+    "added_at": "2026-05-14T21:30:39.750Z"
   }
 ]
