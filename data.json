@@ -2970,5 +2970,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-09T23:29:34.812Z"
+  },
+  {
+    "title": "Subnautica 2",
+    "title_img": "",
+    "year": "14 mai 2026",
+    "description": "Subnautica 2 est un jeu d'aventure et de survie sous-marine dans un monde oceanique inedit, developpe par Unknown Worlds. Jouez en solo ou jusqu'a 4 joueurs en coop. Adaptez-vous pour survivre en construisant des bases et des outils. Explorez l'inconnu et decouvrez les mysteres des profondeurs.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1962700/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1962700/library_hero.jpg",
+    "ytb_id": "6t2nDHldoSk",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:5740ea588ba4e6b2da4a1d9d3d4b72ef7ae60900&dn=Subnautica%202&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "13.4 GB",
+        "source": "By Crackuzu",
+        "name": "Subnautica.2.v0.10.0.113109-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-14T21:29:20.750Z"
   }
 ]
