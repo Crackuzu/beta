@@ -2978,7 +2978,8 @@
     "description": "Subnautica 2 est un jeu d'aventure et de survie sous-marine dans un monde oceanique inedit, developpe par Unknown Worlds. Jouez en solo ou jusqu'a 4 joueurs en coop. Adaptez-vous pour survivre en construisant des bases et des outils. Explorez l'inconnu et decouvrez les mysteres des profondeurs.",
     "categories": [
       "Action",
-      "Aventure"
+      "Aventure",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1962700/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1962700/library_hero.jpg",
@@ -2993,6 +2994,22 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-14T21:30:39.750Z"
+    "added_at": "2026-05-15T09:06:03.951Z"
+  },
+  {
+    "title": "Forza Horizon 6",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778835878/gdp9256pwqm52dfljsah.png",
+    "year": "18 mai 2026",
+    "description": "Decouvrez les paysages a couper le souffle du Japon au volant de plus de 550 voitures reelles et devenez une legende de la course automobile dans la plus grande aventure motorisee Forza Horizon a ce jour.",
+    "categories": [
+      "Simulation",
+      "Sport"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778835844/acglf9epzplgra1a1tds.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2483190/library_hero.jpg",
+    "ytb_id": "oYhaW-Vr4wg",
+    "magnets": [],
+    "added_by": "admin-local",
+    "added_at": "2026-05-15T09:04:40.268Z"
   }
 ]
