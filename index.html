@@ -1643,21 +1643,21 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
       
       <!-- EXPORT BAR -->
       <div class="export-bar">
-        <button class="export-btn primary" onclick="pullFromGitHub()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="17,8 12,3 7,8"/>
-            <line x1="12" y1="3" x2="12" y2="15"/>
-          </svg>
-          📥 Pull from GitHub
-        </button>
-        <button class="export-btn secondary" onclick="pushToGitHub()">
+        <button class="export-btn primary" onclick="pushToGitHub()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7,10 12,15 17,10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
           🚀 Push to GitHub
+        </button>
+        <button class="export-btn secondary" onclick="pullFromGitHub()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17,8 12,3 7,8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          📥 Pull from GitHub
         </button>
         <input type="file" id="importFile" accept=".json" style="display:none" onchange="importDataJson(this)">
         <button class="export-btn secondary" onclick="document.getElementById('importFile').click()">
