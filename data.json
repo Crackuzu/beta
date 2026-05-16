@@ -1765,15 +1765,15 @@
     "ytb_id": "D6io5XZWBHk",
     "magnets": [
       {
-        "url": "https://files.catbox.moe/730hb9.torrent",
-        "size": "1.98 GB",
-        "source": "BY CRACKUZU",
-        "name": "Online-fix",
-        "type": "torrent"
+        "url": "magnet:?xt=urn:btih:513a74e0ce2b2b4a8393300ed156c79275b7d1d9&dn=PEAK&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "2.0 GB",
+        "source": "By Crackuzu",
+        "name": "PEAK.v1.61.a-OFME",
+        "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T00:31:48.178Z"
+    "added_at": "2026-05-16T06:13:08.032Z"
   },
   {
     "title": "Ghostrunner",
@@ -2230,7 +2230,7 @@
   },
   {
     "title": "Forza Horizon 5",
-    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778201266/ynwzvcq8jbijcasqwvko.png",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778911361/f62uo1ipy5es7aigzppe.png",
     "year": "8 Nov, 2021",
     "description": "Explore the vibrant open world landscapes of Mexico with limitless, fun driving action in the world's greatest cars.",
     "categories": [
@@ -2272,7 +2272,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T01:46:17.612Z"
+    "added_at": "2026-05-16T06:02:43.731Z"
   },
   {
     "title": "God of War",
@@ -2998,20 +2998,19 @@
   },
   {
     "title": "Forza Horizon 6",
-    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778844896/rck7kx8nbd9maj3vusar.png",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778911424/eyvwnhxuszcpxg2pnndq.png",
     "year": "18 mai 2026",
     "description": "Decouvrez les paysages a couper le souffle du Japon au volant de plus de 550 voitures reelles et devenez une legende de la course automobile dans la plus grande aventure motorisee Forza Horizon a ce jour.",
     "categories": [
       "Simulation",
-      "Sport",
-      "Multijoueur",
-      "Course"
+      "Course",
+      "Multijoueur"
     ],
-    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778835844/acglf9epzplgra1a1tds.png",
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778911924/okwagyxs0snhx968heyw.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2483190/library_hero.jpg",
-    "ytb_id": "oYhaW-Vr4wg",
+    "ytb_id": "p1wFbZwegpk",
     "magnets": [],
     "added_by": "admin-local",
-    "added_at": "2026-05-15T11:57:17.107Z"
+    "added_at": "2026-05-16T06:12:06.324Z"
   }
 ]
