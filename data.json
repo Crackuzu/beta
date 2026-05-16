@@ -2241,9 +2241,17 @@
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1551360/library_hero.jpg",
     "ytb_id": "Rv7xLt5yNsM",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:858248d844bbbf02434d9fc59bb4a3de98046f16&dn=Forza%20Horizon%205&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "168.5 GB",
+        "source": "By Crackuzu",
+        "name": "Forza.Horizon.5.v1.685.421.0-OFME",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-05-16T06:31:14.937Z"
+    "added_at": "2026-05-16T06:35:15.004Z"
   },
   {
     "title": "God of War",
