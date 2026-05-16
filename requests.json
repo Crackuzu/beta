@@ -4,12 +4,25 @@
     "appId": 1557740,
     "url": "https://store.steampowered.com/app/1557740",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1557740/header.jpg?t=1759328419",
-    "desc": "Rounds est un rogue-lite en 1 contre 1 où chaque manche est plus intense que la précédente. Le perdant de chaque manche débloque des pouvoirs sensationnels pour améliorer son build et parvenir à vaincre son adversaire.",
+    "desc": "Rounds est un rogue-lite en 1 contre 1 oÃ¹ chaque manche est plus intense que la prÃ©cÃ©dente. Le perdant de chaque manche dÃ©bloque des pouvoirs sensationnels pour amÃ©liorer son build et parvenir Ã  vaincre son adversaire.",
     "developers": "Landfall",
-    "genres": "Action, Indépendant",
+    "genres": "Action, IndÃ©pendant",
     "release": "1 avr. 2021",
-    "price": "5,49€",
+    "price": "5,49â¬",
     "id": "mp8w2irfge86",
     "requested_at": "2026-05-16T21:59:23.259Z"
+  },
+  {
+    "name": "Stick Fight: The Game",
+    "appId": 674940,
+    "url": "https://store.steampowered.com/app/674940",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/674940/header.jpg?t=1730715399",
+    "desc": "Stick Fight is a physics-based couch/online fighting game where you battle it out as the iconic stick figures from the golden age of the internet.",
+    "developers": "Landfall West",
+    "genres": "Action, Occasionnel, Indépendant",
+    "release": "28 sept. 2017",
+    "price": "4,75€",
+    "id": "mp8w2qbo7pyn",
+    "requested_at": "2026-05-16T21:59:33.060Z"
   }
 ]
