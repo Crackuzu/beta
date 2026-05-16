@@ -3330,7 +3330,7 @@ async function loadGame() {
       console.log('📦 Jeux chargés depuis localStorage:', games.length);
     } else {
       // Fallback to data.json
-      const res = await fetch('data.json');
+      const res = await fetch('data.json?t=' + Date.now());
       if (!res.ok) throw new Error('Failed to load');
       games = await res.json();
     }
@@ -3901,7 +3901,7 @@ function initJeu(gameId) {
           updateStatusBadge();
         } else {
           // Otherwise load from data.json file
-          const res = await fetch('data.json');
+          const res = await fetch('data.json?t=' + Date.now());
           if (res.ok) {
             state.games = await res.json();
           } else {
@@ -3937,7 +3937,7 @@ function initJeu(gameId) {
       if (!confirm('⚠️ Cela va remplacer toutes les modifications locales par le data.json original. Continuer ?')) return;
       
       try {
-        const res = await fetch('data.json');
+        const res = await fetch('data.json?t=' + Date.now());
         if (res.ok) {
           state.games = await res.json();
           localStorage.removeItem('crackuzu_games');
