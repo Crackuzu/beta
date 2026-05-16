@@ -2095,6 +2095,34 @@ function timeAgo(s){if(!s)return'';const d=new Date(s),now=new Date(),diff=Math.
 function esc(str){if(!str)return'';return String(str).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 function escapeHtml(str){if(!str)return'';return str.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
 
+// ── CONFIG ET DONNÉES LIVE ───────────────────────────────────────────────────
+const WORKER_URL = window.location.port === '3000' ? 'http://localhost:3000' : 'https://crackuzu-api.crackuzu.workers.dev';
+
+function base64ToUtf8(base64) {
+  const binaryString = atob(base64.replace(/\s/g, ''));
+  const bytes = new Uint8Array(binaryString.length);
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return new TextDecoder().decode(bytes);
+}
+
+async function fetchLatestGames() {
+  try {
+    const res = await fetch(`${WORKER_URL}/api/github-pull`);
+    if (!res.ok) throw new Error('Worker failed');
+    const data = await res.json();
+    const games = JSON.parse(base64ToUtf8(data.content));
+    console.log('⚡ Données live récupérées via Worker:', games.length, 'jeux');
+    return games;
+  } catch (e) {
+    console.warn('⚠️ Fetch via Worker échoué, repli sur data.json statique:', e.message);
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('Static fallback failed');
+    return await res.json();
+  }
+}
+
 // ── ROUTEUR SPA ──────────────────────────────────────────────────────────────
 let _currentPage = '';
 let _prevPage = 'accueil';
@@ -2615,12 +2643,9 @@ async function initAccueil(){
       console.log('Loaded', games.length, 'games from localStorage');
     }
     
-    // If localStorage empty, fallback to data.json
+    // If localStorage empty, fallback to Live data via Worker
     if (!games || games.length === 0) {
-      const r = await fetch('data.json?t=' + Date.now());
-      if (!r.ok) throw new Error(r.status);
-      games = await r.json();
-      console.log('Loaded', games.length, 'games from data.json');
+      games = await fetchLatestGames();
     }
     
     proc(games);
@@ -3063,10 +3088,8 @@ async function initCatalogue(){
       return;
     }
 
-    // Fallback to data.json
-    const r=await fetch('data.json?t='+Date.now());
-    if(!r.ok)throw new Error(r.status);
-    catProc(await r.json());
+    // Fallback to Live data via Worker
+    catProc(await fetchLatestGames());
   }catch(err){
     console.error('Erreur chargement:', err);
     document.getElementById('grid').innerHTML=
@@ -3329,10 +3352,8 @@ async function loadGame() {
       games = JSON.parse(localData);
       console.log('📦 Jeux chargés depuis localStorage:', games.length);
     } else {
-      // Fallback to data.json
-      const res = await fetch('data.json?t=' + Date.now());
-      if (!res.ok) throw new Error('Failed to load');
-      games = await res.json();
+      // Fallback to Live data via Worker
+      games = await fetchLatestGames();
     }
     
     let game;
@@ -3900,13 +3921,8 @@ function initJeu(gameId) {
           state.isModified = true;
           updateStatusBadge();
         } else {
-          // Otherwise load from data.json file
-          const res = await fetch('data.json?t=' + Date.now());
-          if (res.ok) {
-            state.games = await res.json();
-          } else {
-            state.games = [];
-          }
+          // Otherwise load from Live data via Worker
+          state.games = await fetchLatestGames();
         }
         displayRecentGames();
         displayRequests();
@@ -3937,9 +3953,7 @@ function initJeu(gameId) {
       if (!confirm('⚠️ Cela va remplacer toutes les modifications locales par le data.json original. Continuer ?')) return;
       
       try {
-        const res = await fetch('data.json?t=' + Date.now());
-        if (res.ok) {
-          state.games = await res.json();
+        state.games = await fetchLatestGames();
           localStorage.removeItem('crackuzu_games');
           displayRecentGames();
           displayAllGames();
