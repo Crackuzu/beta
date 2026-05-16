@@ -2991,5 +2991,54 @@
     "magnets": [],
     "added_by": "admin-local",
     "added_at": "2026-05-16T06:12:06.324Z"
+  },
+  {
+    "title": "ROUNDS",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778968872/vvr2sbyfnwkgiytnjgay.png",
+    "year": "1 avr. 2021",
+    "description": "Rounds est un rogue-lite en 1 contre 1 ou chaque manche est plus intense que la precedente. Le perdant de chaque manche debloque des pouvoirs sensationnels pour ameliorer son build et parvenir a vaincre son adversaire.",
+    "categories": [
+      "Action",
+      "Multijoueur",
+      "Combat"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1557740/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1557740/library_hero.jpg",
+    "ytb_id": "aX4E3XgABwE",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:ff8be479113bfc12c84bc18bebd8cde139477363&dn=ROUNDS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969",
+        "size": "372.2 MB",
+        "source": "By Crackuzu",
+        "name": "ROUNDS.Build.15032024-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-16T22:01:10.449Z"
+  },
+  {
+    "title": "Stick Fight: The Game",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778968932/qyrpycjz4p33hdt0nmpu.png",
+    "year": "28 sept. 2017",
+    "description": "Stick Fight is a physics-based couch/online fighting game where you battle it out as the iconic stick figures from the golden age of the internet.",
+    "categories": [
+      "Multijoueur",
+      "Combat"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/674940/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/674940/library_hero.jpg",
+    "ytb_id": "kgKGxQ6Ro_A",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:7e35be7955373b628ba41dabf9902c28a36f2b53&dn=Stick%20Fight%20The%20Game&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce",
+        "size": "116.6 MB",
+        "source": "By Crackuzu",
+        "name": "Stick.Fight.The.Game.Build.12062019-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-16T22:02:18.904Z"
   }
 ]
