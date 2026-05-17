@@ -4,11 +4,11 @@
     "appId": 1557740,
     "url": "https://store.steampowered.com/app/1557740",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1557740/header.jpg?t=1759328419",
-    "desc": "Rounds est un rogue-lite en 1 contre 1 oÃ¹ chaque manche est plus intense que la prÃ©cÃ©dente. Le perdant de chaque manche dÃ©bloque des pouvoirs sensationnels pour amÃ©liorer son build et parvenir Ã  vaincre son adversaire.",
+    "desc": "Rounds est un rogue-lite en 1 contre 1 oÃÂ¹ chaque manche est plus intense que la prÃÂ©cÃÂ©dente. Le perdant de chaque manche dÃÂ©bloque des pouvoirs sensationnels pour amÃÂ©liorer son build et parvenir ÃÂ  vaincre son adversaire.",
     "developers": "Landfall",
-    "genres": "Action, IndÃ©pendant",
+    "genres": "Action, IndÃÂ©pendant",
     "release": "1 avr. 2021",
-    "price": "5,49â¬",
+    "price": "5,49Ã¢ÂÂ¬",
     "id": "mp8w2irfge86",
     "requested_at": "2026-05-16T21:59:23.259Z"
   },
@@ -19,10 +19,23 @@
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/674940/header.jpg?t=1730715399",
     "desc": "Stick Fight is a physics-based couch/online fighting game where you battle it out as the iconic stick figures from the golden age of the internet.",
     "developers": "Landfall West",
-    "genres": "Action, Occasionnel, Indépendant",
+    "genres": "Action, Occasionnel, IndÃ©pendant",
     "release": "28 sept. 2017",
-    "price": "4,75€",
+    "price": "4,75â¬",
     "id": "mp8w2qbo7pyn",
     "requested_at": "2026-05-16T21:59:33.060Z"
+  },
+  {
+    "name": "Shieldwall",
+    "appId": 1216320,
+    "url": "https://store.steampowered.com/app/1216320",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1216320/header.jpg?t=1683086427",
+    "desc": "Shieldwall est un simulateur de bataille tactique amusant à la troisième personne, incorporant des éléments de stratégie, qui vous donne la sensation d'être un chef de section sur le champ de bataille.",
+    "developers": "Nezon Production",
+    "genres": "Action, Occasionnel, Indépendant, Simulation, Stratégie",
+    "release": "18 avr. 2023",
+    "price": "4,96€",
+    "id": "mp91lv0k5aa7",
+    "requested_at": "2026-05-17T00:34:23.684Z"
   }
 ]
