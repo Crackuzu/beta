@@ -2964,9 +2964,17 @@
     "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1778911924/okwagyxs0snhx968heyw.png",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2483190/library_hero.jpg",
     "ytb_id": "p1wFbZwegpk",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:d5ee1966417f34186c83422049299a160f6fafcf&dn=Forza%20Horizon%206&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "146.6 GB",
+        "source": "By Crackuzu",
+        "name": "Forza.Horizon.6.v354.221-OFME",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-05-16T06:12:06.324Z"
+    "added_at": "2026-05-18T05:46:30.485Z"
   },
   {
     "title": "ROUNDS",
