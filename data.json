@@ -3048,5 +3048,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-16T23:05:07.510Z"
+  },
+  {
+    "title": "LEGO Batman : L'Heritage du Chevalier Noir",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1779739617/hc0pnlwdzvwy943kit0k.png",
+    "year": "22 mai 2026",
+    "description": "Deviens le Chevalier noir et vis l'histoire mythique de Batman dans une aventure pleine d'action et de combats acharnes. Explore Gotham City en monde ouvert dans le style LEGO bien connu et apprecie des fans.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1779739543/nataki5tghhqynucmefl.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2215200/library_hero.jpg",
+    "ytb_id": "",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/xhv82p.torrent",
+        "size": "38.0 GB",
+        "source": "By Crackuzu",
+        "name": "LEGO Batman Legacy of the Dark Knight V-B 23222834",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-25T20:08:19.260Z"
   }
 ]
