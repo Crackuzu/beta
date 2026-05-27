@@ -1,27 +1,14 @@
 [
   {
-    "name": "ROUNDS",
-    "appId": 1557740,
-    "url": "https://store.steampowered.com/app/1557740",
-    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1557740/header.jpg?t=1759328419",
-    "desc": "Rounds est un rogue-lite en 1 contre 1 oÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¹ chaque manche est plus intense que la prÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©cÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©dente. Le perdant de chaque manche dÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©bloque des pouvoirs sensationnels pour amÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©liorer son build et parvenir ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ  vaincre son adversaire.",
-    "developers": "Landfall",
-    "genres": "Action, IndÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©pendant",
-    "release": "1 avr. 2021",
-    "price": "5,49ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¬",
-    "id": "mp8w2irfge86",
-    "requested_at": "2026-05-16T21:59:23.259Z"
-  },
-  {
     "name": "Resident Evil 7 Biohazard",
     "appId": 418370,
     "url": "https://store.steampowered.com/app/418370",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/418370/header.jpg?t=1778464947",
-    "desc": "Le danger et l'isolement menacent derriÃÂ¨re les murs vÃÂ©tustes d'une ferme abandonnÃÂ©e d'AmÃÂ©rique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inÃÂ©dite pour le joueur avec la &quot;vue isolÃÂ©e&quot;. PortÃÂ©e par le moteur RE, l'horreur atteint de nouveaux sommets de rÃÂ©alisme.",
+    "desc": "Le danger et l'isolement menacent derriÃÂÃÂ¨re les murs vÃÂÃÂ©tustes d'une ferme abandonnÃÂÃÂ©e d'AmÃÂÃÂ©rique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inÃÂÃÂ©dite pour le joueur avec la &quot;vue isolÃÂÃÂ©e&quot;. PortÃÂÃÂ©e par le moteur RE, l'horreur atteint de nouveaux sommets de rÃÂÃÂ©alisme.",
     "developers": "CAPCOM Co., Ltd.",
     "genres": "Action, Aventure",
     "release": "23 janv. 2017",
-    "price": "19,99Ã¢ÂÂ¬",
+    "price": "19,99ÃÂ¢ÃÂÃÂ¬",
     "id": "mpn2d5bd8ehs",
     "requested_at": "2026-05-26T20:04:23.209Z"
   }
