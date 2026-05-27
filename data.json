@@ -444,7 +444,8 @@
     "description": "Los Suenos : la police fait face a une flambee de violence et de crime a travers toute la metropole. Les unites SWAT ont ete envoyees pour desamorcer de nombreuses situations a risque : prises d'otage, alertes a la bombe, forcenes retranches... Civils : restez chez vous.",
     "categories": [
       "FPS",
-      "Action"
+      "Action",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1144200/library_hero.jpg",
@@ -459,7 +460,7 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T00:50:21.630Z"
+    "added_at": "2026-05-27T17:03:00.423Z"
   },
   {
     "title": "Beyond: Two Souls",
@@ -3072,5 +3073,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-25T20:08:19.260Z"
+  },
+  {
+    "title": "Resident Evil 7 Biohazard",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1779825920/eph4n5bwg7qqq0iordr5.png",
+    "year": "23 janv. 2017",
+    "description": "Le danger et l'isolement menacent derriere les murs vetustes d'une ferme abandonnee d'Amerique du Sud. \"7\" marque le renouveau du jeu de survie et propose une perspective inedite pour le joueur avec la \"vue isolee\". Portee par le moteur RE, l'horreur atteint de nouveaux sommets de realisme.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/418370/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/418370/library_hero.jpg",
+    "ytb_id": "RgYqQsbKn6w",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/th99q9.torrent",
+        "size": "59.8 GB",
+        "source": "By Crackuzu",
+        "name": "Resident-Evil-7-Biohazard",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-05-26T20:07:37.116Z"
   }
 ]
