@@ -4,12 +4,25 @@
     "appId": 418370,
     "url": "https://store.steampowered.com/app/418370",
     "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/418370/header.jpg?t=1778464947",
-    "desc": "Le danger et l'isolement menacent derriÃÂÃÂ¨re les murs vÃÂÃÂ©tustes d'une ferme abandonnÃÂÃÂ©e d'AmÃÂÃÂ©rique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inÃÂÃÂ©dite pour le joueur avec la &quot;vue isolÃÂÃÂ©e&quot;. PortÃÂÃÂ©e par le moteur RE, l'horreur atteint de nouveaux sommets de rÃÂÃÂ©alisme.",
+    "desc": "Le danger et l'isolement menacent derriÃÂÃÂÃÂÃÂ¨re les murs vÃÂÃÂÃÂÃÂ©tustes d'une ferme abandonnÃÂÃÂÃÂÃÂ©e d'AmÃÂÃÂÃÂÃÂ©rique du Sud. &quot;7&quot; marque le renouveau du jeu de survie et propose une perspective inÃÂÃÂÃÂÃÂ©dite pour le joueur avec la &quot;vue isolÃÂÃÂÃÂÃÂ©e&quot;. PortÃÂÃÂÃÂÃÂ©e par le moteur RE, l'horreur atteint de nouveaux sommets de rÃÂÃÂÃÂÃÂ©alisme.",
     "developers": "CAPCOM Co., Ltd.",
     "genres": "Action, Aventure",
     "release": "23 janv. 2017",
-    "price": "19,99ÃÂ¢ÃÂÃÂ¬",
+    "price": "19,99ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¬",
     "id": "mpn2d5bd8ehs",
     "requested_at": "2026-05-26T20:04:23.209Z"
+  },
+  {
+    "name": "NINJA GAIDEN Σ [NINJA GAIDEN: Master Collection]",
+    "appId": 1580780,
+    "url": "https://store.steampowered.com/app/1580780",
+    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/header.jpg?t=1760595484",
+    "desc": "3 jeux à l'action ninja ultra rapide désormais disponibles en un seul pack !",
+    "developers": "KOEI TECMO GAMES CO., LTD.",
+    "genres": "Action, Aventure",
+    "release": "9 juin 2021",
+    "price": "39,99€",
+    "id": "mppqiov4qwta",
+    "requested_at": "2026-05-28T16:56:04.960Z"
   }
 ]
