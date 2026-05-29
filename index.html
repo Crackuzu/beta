@@ -944,10 +944,10 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
     .source-name{font-size:.875rem;font-weight:600}
 
     /* ─── REQUEST CARDS ─── */
-    .req-list{display:flex;flex-direction:column;gap:.75rem;max-height:500px;overflow-y:auto;padding-right:.25rem}
+    .req-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1rem;max-height:600px;overflow-y:auto;padding-right:.5rem;align-content:start}
     .req-list::-webkit-scrollbar{width:4px}
     .req-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:99px}
-    .req-card{display:flex;gap:1rem;padding:1rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+    .req-card{display:flex;gap:1rem;padding:1rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .25s;position:relative;overflow:hidden;flex-shrink:0}
     .req-card:hover{background:rgba(249,115,22,.06);border-color:rgba(249,115,22,.25);transform:translateX(4px)}
     .req-card-img{width:56px;height:80px;border-radius:.75rem;object-fit:cover;background:#1a1a1a;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
     .req-card-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.35rem}
