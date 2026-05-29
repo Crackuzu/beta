@@ -5382,17 +5382,17 @@ function initJeu(gameId) {
         }
 
         container.innerHTML = _discordRequests.map((req, idx) => {
-          const genres = (req.genres || '').split(',').map(g => g.trim()).filter(Boolean);
-          const priceClass = (!req.price || req.price === '0' || req.price.toLowerCase().includes('free')) ? 'free' : '';
-          const priceText = (!req.price || req.price === '0') ? 'Gratuit' : req.price;
+          const name = cleanText(req.name || '');
+          const dev = cleanText(req.developers || '');
+          const genres = (req.genres || '').split(',').map(g => cleanText(g.trim())).filter(Boolean);
           return `
           <div class="req-card" onclick="loadRequestIntoForm(${idx})">
             <img class="req-card-img" src="${esc(req.img || (req.appId ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${req.appId}/header.jpg` : ''))}" onerror="this.src='';this.style.background='rgba(255,255,255,.05)'" loading="lazy">
             <div class="req-card-body">
               <div class="req-card-top">
-
+                <div class="req-card-name">${esc(name || 'Sans titre')}</div>
               </div>
-              ${req.developers ? `<div class="req-card-dev">${esc(req.developers)}</div>` : ''}
+              ${dev ? `<div class="req-card-dev">${esc(dev)}</div>` : ''}
               ${genres.length ? `<div class="req-card-tags">${genres.slice(0,4).map(g => `<span class="req-card-tag">${esc(g)}</span>`).join('')}</div>` : ''}
               <div class="req-card-bottom">
                 <div class="req-card-date">${timeAgo(req.requested_at)}</div>
