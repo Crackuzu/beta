@@ -1763,23 +1763,6 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
             </div>
           </div>
 
-          <!-- GAME REQUESTS -->
-          <div class="panel-card">
-            <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between">
-              <div style="display:flex;align-items:center;gap:.5rem">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
-                📩 Demandes <span style="display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 .4rem;border-radius:99px;background:rgba(249,115,22,.15);color:#f97316;font-size:.7rem;font-weight:800" id="reqCount">0</span>
-              </div>
-              <div style="display:flex;gap:.35rem">
-                <button class="recent-btn" onclick="displayRequests()" title="Rafraîchir" style="font-size:.75rem">🔄</button>
-                <button class="recent-btn delete" onclick="clearAllRequests()" title="Tout supprimer" style="font-size:.7rem">🗑️</button>
-              </div>
-            </div>
-            <div class="req-list" id="requestList"></div>
-          </div>
-
           <!-- RECENT GAMES -->
           <div class="panel-card">
             <div class="panel-title">
@@ -1804,7 +1787,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
             <button class="tab active" onclick="switchTab('infos')" id="tab-btn-infos">📋 Infos</button>
             <button class="tab" onclick="switchTab('images')" id="tab-btn-images">🖼️ Images</button>
             <button class="tab" onclick="switchTab('magnets')" id="tab-btn-magnets">🧲 Magnets</button>
-            <button class="tab" onclick="switchTab('notifs')" id="tab-btn-notifs">🔔 Notifs</button>
+            <button class="tab" onclick="switchTab('demandes')" id="tab-btn-demandes">📩 Demandes</button>
           </div>
 
           <!-- TAB: INFOS -->
@@ -1951,6 +1934,27 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem;background
                   <button class="magnet-btn" onclick="addManualMagnet()">➕ Ajouter</button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- TAB: DEMANDES -->
+          <div id="tab-demandes" style="display:none">
+            <div class="form-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>Demandes en attente</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 .5rem;border-radius:99px;background:rgba(249,115,22,.15);color:#f97316;font-size:.8rem;font-weight:800;margin-left:.5rem" id="reqCount">0</span>
+              </div>
+              <div style="display:flex;gap:.5rem">
+                <button class="action-btn btn-save" onclick="displayRequests()" style="padding:.5rem 1rem;font-size:.8rem">🔄 Rafraîchir</button>
+                <button class="action-btn btn-delete" onclick="clearAllRequests()" style="display:flex;padding:.5rem 1rem;font-size:.8rem">🗑️ Tout supprimer</button>
+              </div>
+            </div>
+            
+            <div style="background:var(--w3);border:1px solid var(--w10);border-radius:1rem;padding:1.5rem;min-height:300px">
+              <div class="req-list" id="requestList" style="max-height:600px;overflow-y:auto;padding-right:.5rem"></div>
             </div>
           </div>
 
@@ -5641,6 +5645,7 @@ function initJeu(gameId) {
       document.getElementById('tab-infos').style.display = tab === 'infos' ? 'block' : 'none';
       document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
       document.getElementById('tab-magnets').style.display = tab === 'magnets' ? 'block' : 'none';
+      document.getElementById('tab-demandes').style.display = tab === 'demandes' ? 'block' : 'none';
     }
 
     // ═══════════════════════════════════════════════════════════
