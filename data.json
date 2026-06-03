@@ -3332,5 +3332,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-05-29T12:03:50.170Z"
+  },
+  {
+    "title": "God of War Ragnarok",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/logo.png",
+    "year": "19 sept. 2024",
+    "description": "Kratos et Atreus partent en quete de reponses avant l'arrivee du Ragnarok, desormais sur PC.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2322010/library_hero.jpg",
+    "ytb_id": "g1wr0DfV73E",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/20bv23.torrent",
+        "size": "112.5 GB",
+        "source": "By Crackuzu",
+        "name": "God-of-War-Ragnarok",
+        "type": "torrent"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-06-03T22:17:27.035Z"
   }
 ]
