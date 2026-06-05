@@ -3357,5 +3357,37 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-06-03T22:17:27.035Z"
+  },
+  {
+    "title": "Lords of the Fallen",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1501750/logo.png",
+    "year": "13 oct. 2023",
+    "description": "Un vaste monde vous attend dans le RPG d'action dark fantasy Lords of the Fallen. Incarnez un Noir-Croise et embarquez dans une quete epique pour renverser Adyr, le dieu demon. La derniere mise a jour, Version 2.5, est disponible : des combats de boss encore plus sanglants et le nouveau Mode Veteran",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1501750/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1501750/library_hero.jpg",
+    "ytb_id": "DQLHSGUemfk",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/ur9e37.torrent",
+        "size": "33.7 GB",
+        "source": "By Crackuzu",
+        "name": "Lords-of-the-Fallen",
+        "type": "torrent"
+      },
+      {
+        "url": "https://files.catbox.moe/r8zoh7.rar",
+        "size": "33.9 MB",
+        "source": "By Crackuzu",
+        "name": "Online Fix Repair",
+        "type": "direct"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-06-05T16:45:36.465Z"
   }
 ]
