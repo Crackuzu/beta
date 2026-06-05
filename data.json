@@ -3373,21 +3373,21 @@
     "ytb_id": "DQLHSGUemfk",
     "magnets": [
       {
-        "url": "https://files.catbox.moe/ur9e37.torrent",
-        "size": "33.7 GB",
-        "source": "By Crackuzu",
-        "name": "Lords-of-the-Fallen",
-        "type": "torrent"
-      },
-      {
         "url": "https://files.catbox.moe/r8zoh7.rar",
         "size": "33.9 MB",
         "source": "By Crackuzu",
         "name": "Online Fix Repair",
         "type": "direct"
+      },
+      {
+        "url": "https://gofile.io/d/1n8wDu",
+        "size": "33.7 GB",
+        "source": "By Crackuzu",
+        "name": "Lords-of-the-Fallen",
+        "type": "direct"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-06-05T16:45:36.465Z"
+    "added_at": "2026-06-05T19:32:45.235Z"
   }
 ]
