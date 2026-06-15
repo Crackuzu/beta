@@ -3412,5 +3412,29 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-06-14T19:32:25.701Z"
+  },
+  {
+    "title": "007 First Light",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1781562679/yeqwsiyghktnyvxojwju.png",
+    "year": "26 mai 2026",
+    "description": "Gagnez le matricule. 007 First Light est un jeu d'action-aventure et d'espionnage palpitant signe IO Interactive. Suivez un jeune James Bond malin, et parfois temeraire, durant son entrainement au MI6, et decouvrez l'histoire des origines du plus celebre des agents secrets.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1781562618/kfn4kr4hamvlooyyni6l.png",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/3768760/library_hero.jpg",
+    "ytb_id": "gDvbGANDH4E",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/pe9e3d.torrent",
+        "size": "50.3 GB",
+        "source": "By Crackuzu",
+        "name": "007-First-Light",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-06-15T22:31:20.594Z"
   }
 ]
