@@ -3182,5 +3182,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-06-15T22:31:20.594Z"
+  },
+  {
+    "title": "Geometry Dash",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/322170/logo.png",
+    "year": "22 déc. 2014",
+    "description": "Jump and fly your way through danger in this rhythm-based action platformer!",
+    "categories": [
+      "Plateforme"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/322170/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/322170/library_hero.jpg",
+    "ytb_id": "gSV400IkFO0",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/3g0let.torrent",
+        "size": "298.5 MB",
+        "source": "By Crackuzu",
+        "name": "Geometry-Dash-v2.2081",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-06-18T01:25:36.002Z"
   }
 ]
