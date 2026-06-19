@@ -3214,7 +3214,8 @@
     "categories": [
       "Action",
       "Aventure",
-      "RPG"
+      "RPG",
+      "Multijoueur"
     ],
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2444750/library_600x900.jpg",
     "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2444750/library_hero.jpg",
@@ -3229,6 +3230,6 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-06-19T21:46:10.599Z"
+    "added_at": "2026-06-19T21:47:29.203Z"
   }
 ]
