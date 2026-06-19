@@ -3205,5 +3205,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-06-18T01:25:36.002Z"
+  },
+  {
+    "title": "Shape of Dreams",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/2444750/logo.png",
+    "year": "10 sept. 2025",
+    "description": "Shape of Dreams est un jeu unique qui melange action roguelite et style MOBA. Partez a l'aventure dans le monde des reves, modifiez les souvenirs des heros et creez votre propre champion. Affrontez seul tous les defis ou jouez avec vos amis en cooperation jusqu'a 4 joueurs.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "RPG"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2444750/library_600x900.jpg",
+    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/2444750/library_hero.jpg",
+    "ytb_id": "sUfcplBV6WU",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:53903b761c0cb3cbad0c9d9a40e15722917002c3&dn=Shape%20of%20Dreams&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "6.7 GB",
+        "source": "By Crackuzu",
+        "name": "Shape.of.Dreams.Build.17032026-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-06-19T21:46:10.599Z"
   }
 ]
