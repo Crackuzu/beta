@@ -1879,30 +1879,30 @@
     "added_at": "2026-05-08T01:40:38.745Z"
   },
   {
-    "title": "Palworld",
-    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1778200951/dpuseplkhevyh7ty8kbh.png",
-    "year": "18 janv. 2024",
-    "description": "Un tout nouveau jeu de survie multijoueur en monde ouvert ou le but est de collectionner de mysterieuses creatures, les Pals, afin de les faire combattre, batir des structures, travailler dans les champs et faire tourner vos usines.",
+    "title": "Library Of Ruina",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1788619269/mxxrkouk3vv2eyqwglwl.png",
+    "year": "2021",
+    "description": "\"May you find your book in this place.\" Combat between the guests and the librarians breaks out as if it were on a stage. Defeated guests turn into books, and the Library grows onward. And eventually, get your hands on... The one singular, perfect book.",
     "categories": [
       "RPG",
-      "Multijoueur",
-      "Monde ouvert",
-      "Aventure"
+      "Aventure",
+      "Action",
+      "Strategie"
     ],
-    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/library_600x900.jpg",
-    "banner_url": "https://cdn.akamai.steamstatic.com/steam/apps/1623730/library_hero.jpg",
-    "ytb_id": "ZPu9yAOEYkQ",
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1788619153/mbrquaiazvimn8xxruou.png",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1788619153/mbrquaiazvimn8xxruou.png",
+    "ytb_id": "XPLRzHzp3qo",
     "magnets": [
       {
-        "url": "magnet:?xt=urn:btih:53cb4f2b8d8c33535ee491b300c662d1cff84365&dn=Palworld&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
-        "size": "25.37 GB",
-        "source": "BY CRACKUZU",
-        "name": "Palworld.v0.7.3.90464-OFME",
+        "url": "https://files.catbox.moe/vyc5hx.torrent",
+        "size": "5.2 GB",
+        "source": "By Crackuzu",
+        "name": "Library-Of-Ruina",
         "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-05-08T01:41:03.335Z"
+    "added_at": "2026-09-05T14:41:13.630Z"
   },
   {
     "title": "UNCHARTED: Legacy of Thieves Collection",
