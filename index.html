@@ -1,0 +1,891 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CRACKUZU – Répertoire de jeux PC via Crackuzu.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="logo.png">
+<title>CRACKUZU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Feuilles de styles modulaires -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/pages/accueil.css">
+<link rel="stylesheet" href="css/pages/catalogue.css">
+<link rel="stylesheet" href="css/pages/jeu.css">
+<link rel="stylesheet" href="css/pages/demande.css">
+<link rel="stylesheet" href="css/pages/admin.css">
+</head>
+<body>
+<!-- ═══════════════════════════════════════════════════════
+     HEADER PERMANENT
+════════════════════════════════════════════════════════ -->
+<header class="header" id="hdr">
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="logo-link" onclick="nav('accueil')">
+        <div class="logo-text"><span>Crack</span><span class="logo-dim">uzu</span></div>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><button class="nav-a" id="nav-accueil"  onclick="nav('accueil')">Accueil</button></li>
+          <li><button class="nav-a" id="nav-catalogue" onclick="nav('catalogue')">Catalogue</button></li>
+          <li><button class="nav-a" id="nav-demande" onclick="nav('demande')">Demande</button></li>
+          <li><button class="nav-a" id="nav-admin"    onclick="nav('admin')">Admin</button></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <button class="search-pill" onclick="openSrch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span>Rechercher</span>
+        </button>
+        <button class="icon-btn mob-search" onclick="openSrch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        </button>
+        <div class="notif-wrapper">
+          <button class="icon-btn" id="notifBtn" onclick="toggleNotifs(event)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="notif-badge" id="notifBadge"></span>
+          </button>
+          <div class="notif-dropdown" id="notifDropdown">
+            <div class="notif-header">
+              <span>Notifications</span>
+            </div>
+            <div class="notif-list" id="notifList">
+              <div class="notif-empty">Chargement…</div>
+            </div>
+          </div>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mob-nav-a" id="mnav-accueil" onclick="nav('accueil');closeMobileMenu()">Accueil</button>
+      <button class="mob-nav-a" id="mnav-catalogue" onclick="nav('catalogue');closeMobileMenu()">Catalogue</button>
+      <button class="mob-nav-a" id="mnav-demande" onclick="nav('demande');closeMobileMenu()">Demande</button>
+      <button class="mob-nav-a" id="mnav-admin" onclick="nav('admin');closeMobileMenu()">Admin</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     ZONE DE CONTENU (swapée par le routeur)
+════════════════════════════════════════════════════════ -->
+<div id="spa-view"></div>
+
+<!-- SEARCH OVERLAY (permanent, shared with Demande) -->
+<div class="sov" id="sov" onclick="if(event.target===this)closeSrch()">
+  <div class="sbox">
+    <span class="sico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg></span>
+    <input class="sinput" id="sinput" type="text" placeholder="Chercher un jeu…" autocomplete="off" oninput="doSrch(this.value)">
+    <button class="sx" onclick="closeSrch()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  </div>
+  <div class="sres" id="sres"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER PERMANENT
+════════════════════════════════════════════════════════ -->
+<footer class="site-footer" id="site-footer">
+  <div class="ft"><span>Crack</span><span class="dim">uzu</span></div>
+  <p class="fts">Répertoire non officiel.</p>
+  <p class="ftn">Made by CHVRUZU</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     TEMPLATES DE PAGES (cachés)
+════════════════════════════════════════════════════════ -->
+<template id="tpl-accueil">
+<!-- MODAL -->
+<div class="mov" id="mov" onclick="movck(event)">
+  <div class="modal">
+    <div class="mcw" style="position:relative">
+      <button class="mcx" onclick="closeMod()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      <img id="mcov" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover">
+      <div id="mnocov" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);align-items:center;justify-content:center;font-size:4rem">🎮</div>
+      <div class="mcgrad"></div>
+    </div>
+    <div class="mbody">
+      <div class="mname" id="mname"></div>
+      <div class="mpills">
+        <span id="mv" class="mpv"></span>
+        <span id="msrc" class="mps"></span>
+        <span class="msep">•</span>
+        <span id="msz" class="mp"></span>
+        <span class="msep">•</span>
+        <span id="mdt" class="mp"></span>
+      </div>
+      <div class="mact" id="mact">
+        <a id="mmag" href="#" class="btn-orange" style="flex:1;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
+          Télécharger
+        </a>
+        <button class="btn-ghost" onclick="closeMod()" style="padding:.75rem 1rem">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <p class="mhint">Ouvre Crackuzu pour télécharger via magnet</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="hv">
+  <section class="hero">
+    <div class="hero-slides" id="hslides"></div>
+    <div class="hero-gl"></div><div class="hero-gb"></div><div class="hero-gt"></div>
+    <div class="hero-body">
+      <div class="hero-inner">
+        <div class="hero-info" id="hinfo">
+          <div class="hero-badges">
+            <div class="badge-new">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color:#f97316"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>Nouveau</span>
+            </div>
+            <span class="badge-src" id="hbsrc">—</span>
+          </div>
+          <div class="hero-title-wrap">
+            <h2 class="hero-title" id="htitle">Chargement…</h2>
+          </div>
+          <div class="hero-meta">
+            <span class="hm" id="hver"></span>
+            <span class="hsep" id="hvsep"></span>
+            <span class="hm" id="hsz"></span>
+            <span class="hsep">•</span>
+            <span class="hm" id="hdt"></span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-orange" id="hmag" href="#" onclick="openHeroDownload(event)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+              Télécharger
+            </a>
+            <a class="btn-ghost" href='#' onclick="nav('catalogue');return false" style="text-decoration:none;display:inline-flex;align-items:center;gap:.5rem">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Voir le catalogue
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots" id="hdots"></div>
+  </section>
+
+  <div class="content">
+    <section class="section">
+      <div class="sw">
+        <div class="sh">
+          <div class="sl"><span class="se">Derniers ajouts</span><h2 class="st">Récents</h2></div>
+          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.15em" id="rcnt"></span>
+        </div>
+        <div class="row-wrap">
+          <button class="ra ra-l" onclick="sl('rrow')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button class="ra ra-r" onclick="sr('rrow')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+          <div class="row-track" id="rrow"><div class="ldr"><div class="spin"></div><span class="ltxt">Chargement…</span></div></div>
+        </div>
+      </div>
+    </section>
+    <div id="srcrows"></div>
+  </div>
+</div>
+
+</template>
+
+<template id="tpl-catalogue">
+<div class="glow-l"></div>
+<div class="glow-r"></div>
+
+<!-- MODAL -->
+<div class="mov" id="mov" onclick="if(event.target===this)closeMod()">
+  <div class="modal" id="modal-box">
+    <div class="m-banner">
+      <button class="m-close" onclick="closeMod()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      <img id="m-img" src="" alt="" style="display:none">
+      <div id="m-trailer" style="display:none;width:100%;height:100%"></div>
+      <div id="m-noimg" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#1a1210,#0a0a0a);align-items:center;justify-content:center;font-size:5rem">🎮</div>
+      <div class="m-banner-grad"></div>
+      <div class="m-yt-btn" id="m-ytbtn" style="display:none" onclick="openTrailer()">
+        <div class="m-yt-inner">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="m-body">
+      <div class="m-title" id="m-title"></div>
+      <div class="m-pills" id="m-pills"></div>
+      <div class="m-desc" id="m-desc"></div>
+      <div class="m-actions" id="m-actions"></div>
+      <div class="m-mag-sec" id="m-mag-sec" style="display:none">
+        <div class="m-mag-lbl">Télécharger via Crackuzu</div>
+        <div class="m-mag-list" id="m-mag-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="page">
+  <div class="container">
+
+    <div class="page-head">
+      <h1 class="page-title"><span class="page-title-inner">Catalogue</span><span class="orange">.</span></h1>
+      <p class="page-sub">Tous les jeux disponibles — télécharge via Crackuzu.</p>
+    </div>
+
+    <div class="filters">
+      <div class="filter-row">
+        <div class="fl-left">
+          <div class="sort-pill">
+            <button class="stab on" id="sort-new" onclick="setSort('new')">Récents</button>
+            <button class="stab" id="sort-az"  onclick="setSort('az')">A–Z</button>
+          </div>
+          <div class="inline-srch">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+            <input type="text" id="cq" placeholder="Filtrer par nom…" oninput="applyFilters()">
+          </div>
+        </div>
+        <div class="fl-right">
+          <button class="filter-btn" id="filterBtn" onclick="toggleFilterDropdown()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            <span>Filtres</span>
+          </button>
+          <div class="filter-dropdown" id="filterDropdown">
+            <div class="filter-dropdown-header">
+              <span>Catégories</span>
+            </div>
+            <div class="filter-dropdown-body" id="filterCats"></div>
+            <div class="filter-dropdown-footer">
+              <button class="filter-reset" onclick="clearCategoryFilter()">Réinitialiser tout</button>
+              <button class="filter-apply" onclick="closeFilterDropdown()">Appliquer les filtres</button>
+            </div>
+          </div>
+          <span class="res-count" id="res-count"></span>
+        </div>
+        <button class="qbit-btn" onclick="dlQbit()" title="Télécharger qBittorrent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>qBittorrent</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid">
+      <div class="loader"><div class="spin"></div><span class="spin-txt">Chargement…</span></div>
+    </div>
+    <div class="pag" id="pag"></div>
+
+  </div>
+</main>
+
+</template>
+
+<template id="tpl-jeu">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg">
+    <img src="" alt="" id="heroImg">
+  </div>
+  
+  <a onclick="nav('catalogue')" class="back-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    Retour
+  </a>
+  
+  <div class="hero-content">
+    <div class="genres" id="genres"></div>
+    <h1 class="jeu-hero-title" id="gameTitle">Chargement...</h1>
+    <img class="jeu-hero-title-img" id="gameTitleImg" src="" alt="" style="display:none">
+    
+    <div class="meta" id="meta">
+      <div class="meta-item yellow" id="rating" style="display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span id="ratingValue"></span>
+      </div>
+      <div class="meta-item" id="yearItem" style="display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+        <span id="yearValue"></span>
+      </div>
+      <div class="meta-item" id="catItem" style="display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+        <span id="catValue"></span>
+      </div>
+    </div>
+    
+    <div class="actions" id="actions" style="display:none">
+      <button class="btn-primary" id="downloadBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+        Télécharger
+      </button>
+      <button class="btn-secondary" id="trailerBtn" title="Bande-annonce" style="display:none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+    
+    <div class="synopsis" id="synopsis">
+      <p id="descText">Chargement des données...</p>
+    </div>
+    
+    <div class="info-grid" id="infoGrid" style="display:none">
+      <div class="info-item">
+        <div class="info-label" id="label1">Source</div>
+        <div class="info-value" id="sourceValue">-</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Type</div>
+        <div class="info-value" id="typeValue">-</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label" id="label3">Taille</div>
+        <div class="info-value" id="sizeValue">-</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YouTube Player Modal -->
+<div id="trailerOverlay" style="display:none;opacity:0;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9999;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;transition:opacity .4s ease" onclick="closeTrailer(event)">
+  <div id="trailerBox" style="position:relative;width:95vw;max-width:1400px;aspect-ratio:16/9;background:#000;border-radius:1.5rem;overflow:hidden;box-shadow:0 0 100px rgba(249,115,22,.3),0 0 200px rgba(0,0,0,.8);transform:scale(.8);opacity:0;transition:all .5s cubic-bezier(.34,1.56,.64,1)" onclick="event.stopPropagation()">
+    <iframe id="trailerFrame" style="width:100%;height:100%;border:0;display:block" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+    <button onclick="closeTrailer()" style="position:absolute;top:1.5rem;right:1.5rem;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(10px)" onmouseover="this.style.background='rgba(249,115,22,.8)';this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.transform='scale(1)'">×</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container" id="content" style="display:none">
+</div>
+
+<!-- Download Menu Modal -->
+<div id="downloadModal" style="display:none;opacity:0;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.15);backdrop-filter:blur(25px);z-index:9998;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;transition:opacity .3s ease" onclick="closeDownloadMenu(event)">
+  <div id="downloadBox" style="position:relative;width:100%;max-width:600px;max-height:80vh;overflow-y:auto;background:rgba(15,15,15,.7);border-radius:1.5rem;border:1px solid rgba(249,115,22,.3);box-shadow:0 25px 50px rgba(0,0,0,.3);transform:scale(.9);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1)" onclick="event.stopPropagation()">
+    <div style="padding:2rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+        <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:0">Télécharger</h2>
+        <button onclick="closeDownloadMenu()" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.background='rgba(249,115,22,.8)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">×</button>
+      </div>
+      <div id="downloadList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <span>Chargement du jeu...</span>
+</div>
+
+<!-- NOT FOUND -->
+<div class="not-found" id="notFound" style="display:none">
+  <h1>404</h1>
+  <p>Jeu non trouvé</p>
+  <button class="btn-primary" onclick="location.href='#' onclick="nav('accueil');return false"">Retour à l'accueil</button>
+</div>
+</template>
+
+<template id="tpl-admin">
+<!-- DISCORD AUTH OVERLAY -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-box" style="position:relative">
+      <div class="auth-title">Accès Restreint</div>
+      <div class="auth-subtitle">Connexion avec Discord requise pour accéder à l'administration CRACKUZU</div>
+      <button class="discord-btn" onclick="loginWithDiscord()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Se connecter avec Discord
+      </button>
+      <div class="auth-error" id="authError"></div>
+      <div class="auth-footer">Seuls les administrateurs autorisés peuvent accéder à cette page</div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- YOUTUBE MODAL -->
+  <div class="yt-modal" id="ytModal">
+    <div class="yt-content">
+      <div class="yt-header">
+        <div class="yt-title">🎬 Sélectionner une bande-annonce</div>
+        <button class="yt-close" onclick="closeYtModal()">✕</button>
+      </div>
+      <div class="yt-list" id="ytList"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20,6 9,17 4,12"/>
+    </svg>
+    <span id="toastMsg">Sauvegardé!</span>
+  </div>
+<!-- MAIN PAGE -->
+  <main class="page" id="mainApp">
+    <div class="glow"></div>
+    <div class="glow2"></div>
+    <div class="wrap">
+      
+      <!-- EXPORT BAR -->
+      <div class="export-bar">
+        <button class="export-btn primary" onclick="pushToGitHub()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7,10 12,15 17,10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          🚀 Push to GitHub
+        </button>
+        <button class="export-btn secondary" onclick="pullFromGitHub()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17,8 12,3 7,8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          📥 Pull from GitHub
+        </button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importDataJson(this)">
+        <button class="export-btn secondary" onclick="document.getElementById('importFile').click()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17,8 12,3 7,8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          📥 Importer JSON
+        </button>
+        <button class="export-btn secondary" onclick="loadFromLocalStorage()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23,4 23,10 17,10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          🔄 Charger sauvegarde locale
+        </button>
+        <button class="export-btn secondary" onclick="resetToOriginal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3,6 6,3 9,6"/>
+            <path d="M6 3v12a9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9"/>
+          </svg>
+          ↩️ Reset (original)
+        </button>
+        <button class="export-btn secondary" onclick="window.open('https://catbox.moe', '_blank')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+          </svg>
+          🐱 Catbox.moe
+        </button>
+        <div class="status-badge" id="statusBadge">
+          <span>🟢</span> data.json original
+        </div>
+      </div>
+
+      <div class="main-grid">
+        <!-- LEFT PANEL -->
+        <aside class="left-panel">
+          <!-- STEAM SEARCH -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              Recherche Steam
+            </div>
+            <div class="search-box">
+              <div style="position:relative;flex:1">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input" id="steamSearch" placeholder="Nom du jeu..." onkeydown="if(event.key==='Enter')searchSteam()">
+              </div>
+              <button class="search-btn" onclick="searchSteam()">Rechercher</button>
+            </div>
+            <div class="search-results" id="steamResults"></div>
+          </div>
+
+          <!-- MAGNET SOURCES (Hydra) -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M2 12h20"/>
+              </svg>
+              🔍 Sources Magnets
+            </div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;padding:.5rem">
+              Clique sur l'onglet 🧲 Magnets pour voir les résultats
+            </div>
+          </div>
+
+          <!-- RECENT GAMES -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20v-6M6 20V10M18 20V4"/>
+              </svg>
+              Jeux récents (<span id="gameCount">0</span>)
+            </div>
+            <div class="recent-list" id="recentGames"></div>
+          </div>
+        </aside>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+          <div class="form-title">
+            <span id="formTitleIcon">➕</span>
+            <span id="formTitleText">Nouveau jeu</span>
+          </div>
+
+          <!-- TABS -->
+          <div class="tabs">
+            <button class="tab active" onclick="switchTab('infos')" id="tab-btn-infos">📋 Infos</button>
+            <button class="tab" onclick="switchTab('images')" id="tab-btn-images">🖼️ Images</button>
+            <button class="tab" onclick="switchTab('magnets')" id="tab-btn-magnets">🧲 Magnets</button>
+            <button class="tab" onclick="switchTab('demandes')" id="tab-btn-demandes">📩 Demandes</button>
+          </div>
+
+          <!-- TAB: INFOS -->
+          <div id="tab-infos">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Titre du jeu *</label>
+                <input type="text" class="form-input" id="f-title" placeholder="The Last of Us Part II...">
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Image du titre (PNG) <span style="font-weight:400;color:var(--w40)">— optionnel, remplace le texte</span></label>
+                <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                  <button type="button" onclick="pasteTitleImg()" style="padding:.4rem .8rem;border-radius:.375rem;background:var(--w10);border:1px solid var(--w20);color:var(--w60);cursor:pointer;font-size:.8rem;white-space:nowrap">📋 Coller du presse-papier</button>
+                  <span id="titleImgStatus" style="font-size:.75rem;color:var(--w40)"></span>
+                </div>
+                <div id="titleImgPreview" style="display:none;margin-top:.5rem;position:relative">
+                  <img id="titleImgPreviewImg" src="" alt="" style="max-height:60px;max-width:300px;object-fit:contain;border-radius:.375rem;border:1px solid var(--w20)">
+                  <button type="button" onclick="removeTitleImg()" style="position:absolute;top:-.25rem;right:-.25rem;width:20px;height:20px;border-radius:50%;background:rgba(239,68,68,.8);border:none;color:#fff;font-size:.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">✕</button>
+                </div>
+                <input type="hidden" id="f-title-img" value="">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Année</label>
+                <input type="text" class="form-input" id="f-year" placeholder="2024">
+              </div>
+              <div class="form-group">
+                <label class="form-label">ID YouTube (Bande-annonce)</label>
+                <div style="display:flex;gap:.5rem">
+                  <input type="text" class="form-input" id="f-ytb" placeholder="dQw4w9WgXcQ" style="flex:1">
+                  <button class="search-btn" onclick="openYtModal()" title="Rechercher sur YouTube">🔍</button>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Description</label>
+                <textarea class="form-input" id="f-desc" placeholder="Description du jeu..."></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Catégories</label>
+                <div class="category-grid" id="categoryGrid"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: IMAGES -->
+          <div id="tab-images" style="display:none">
+            <!-- Portrait Gallery -->
+            <div class="gallery-section">
+              <div class="gallery-title">🎴 Portrait (600x900)</div>
+              <div class="gallery-grid" id="portraitGallery"></div>
+            </div>
+            
+            <!-- Banner Gallery -->
+            <div class="gallery-section">
+              <div class="gallery-title">🖼️ Bannière (16:9)</div>
+              <div class="banner-grid" id="bannerGallery"></div>
+            </div>
+
+            <!-- Upload -->
+            <div class="gallery-section">
+              <div class="gallery-title">☁️ Upload Cloudinary</div>
+              <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+                <div class="upload-text">
+                  <span>Clique pour upload</span> ou glisse-dépose<br>
+                  <small style="color:rgba(255,255,255,.4)">Tu peux aussi coller une image (Ctrl+V)</small>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleImageUpload(this)">
+                <div class="upload-preview" id="uploadPreview">
+                  <img id="uploadPreviewImg" src="" alt="">
+                  <div class="upload-actions">
+                    <button class="magnet-btn" onclick="useAsPortrait();event.stopPropagation()">Utiliser comme Portrait</button>
+                    <button class="magnet-btn" onclick="useAsBanner();event.stopPropagation()">Utiliser comme Bannière</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manual URLs -->
+            <div class="gallery-section">
+              <div class="gallery-title">🔗 URLs manuelles</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">URL Portrait</label>
+                  <input type="text" class="form-input" id="f-portrait" placeholder="https://..." onchange="state.selectedPortrait=this.value">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">URL Bannière</label>
+                  <input type="text" class="form-input" id="f-banner" placeholder="https://..." onchange="state.selectedBanner=this.value">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: MAGNETS -->
+          <div id="tab-magnets" style="display:none">
+            <!-- Source Results -->
+            <div id="sourceResults" style="max-height:400px;overflow-y:auto;margin-bottom:1.5rem;display:none"></div>
+            <div id="sourceStatus" style="margin-bottom:1rem;font-size:.75rem;color:rgba(255,255,255,.4);text-align:center"></div>
+            
+            <!-- Search Button -->
+            <button class="search-btn" onclick="searchAllSources()" style="width:100%;margin-bottom:.5rem" id="btn-search-all">
+              🔍 Chercher dans les sources JSON
+            </button>
+            <button class="search-btn" onclick="openOnlineFix()" style="width:100%;margin-bottom:1.5rem;background:linear-gradient(135deg,#22c55e,#16a34a);border-color:rgba(34,197,94,.3)" id="btn-search-onlinefix">
+              🌐 Chercher sur Online-Fix.me
+            </button>
+            
+            <div class="magnet-list" id="magnetList"></div>
+            
+            <!-- Upload .torrent -->
+            <div style="margin:1rem 0;padding:1rem;border:1px dashed var(--w20);border-radius:.5rem;background:var(--w5)">
+              <div style="font-size:.8rem;font-weight:600;color:var(--w60);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em">
+                📤 Importer un .torrent
+              </div>
+              <input type="file" id="torrentFile" accept=".torrent" style="display:none" onchange="onTorrentFileSelected(this)">
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                <button onclick="document.getElementById('torrentFile').click()" style="padding:.4rem .8rem;border-radius:.375rem;background:var(--w10);border:1px solid var(--w20);color:var(--w60);cursor:pointer;font-size:.8rem">Choisir un fichier</button>
+                <button id="btnTorrentCatbox" onclick="uploadTorrentToCatbox()" style="display:none;padding:.4rem .8rem;border-radius:.375rem;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);color:#f97316;cursor:pointer;font-size:.8rem;font-weight:600">☁️ Upload Catbox</button>
+                <button id="btnTorrentMagnet" onclick="convertTorrentToMagnet()" style="display:none;padding:.4rem .8rem;border-radius:.375rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#22c55e;cursor:pointer;font-size:.8rem;font-weight:600">🧲 Convertir en magnet</button>
+                <span id="torrentUploadStatus" style="font-size:.8rem;color:var(--w40)"></span>
+              </div>
+              <div id="torrentPreview" style="display:none;margin-top:.75rem;padding:.5rem .75rem;border-radius:.375rem;background:var(--w3);border:1px solid var(--w10);font-size:.75rem;color:var(--w50)"></div>
+            </div>
+            
+            <div id="manualMagnetInput">
+              <div class="magnet-item">
+                <div class="magnet-row">
+                  <input type="text" class="magnet-input" id="m-url" placeholder="magnet:?xt=urn:btih:... ou https://..." style="font-family:monospace;font-size:.85rem">
+                </div>
+                <div class="magnet-row">
+                  <input type="text" class="magnet-input" id="m-name" placeholder="Source (ex: FitGirl, DODI, 1337x...)" style="flex:2">
+                  <input type="text" class="magnet-input" id="m-size" placeholder="Taille (ex: 15.2 GB)" style="flex:1">
+                  <select class="magnet-select" id="m-type">
+                    <option value="magnet">🧲 Magnet</option>
+                    <option value="direct">⬇️ Direct</option>
+                    <option value="torrent">📄 .torrent</option>
+                  </select>
+                  <button class="magnet-btn" onclick="addManualMagnet()">➕ Ajouter</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: DEMANDES -->
+          <div id="tab-demandes" style="display:none">
+            <div class="form-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>Demandes en attente</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 .5rem;border-radius:99px;background:rgba(249,115,22,.15);color:#f97316;font-size:.8rem;font-weight:800;margin-left:.5rem" id="reqCount">0</span>
+              </div>
+              <div style="display:flex;gap:.5rem">
+                <button class="action-btn btn-save" onclick="displayRequests()" style="padding:.5rem 1rem;font-size:.8rem">🔄 Rafraîchir</button>
+                <button class="action-btn btn-delete" onclick="clearAllRequests()" style="display:flex;padding:.5rem 1rem;font-size:.8rem">🗑️ Tout supprimer</button>
+              </div>
+            </div>
+            
+            <div style="background:var(--w3);border:1px solid var(--w10);border-radius:1rem;padding:1.5rem;min-height:300px">
+              <div class="req-list" id="requestList" style="max-height:600px;overflow-y:auto;padding-right:.5rem"></div>
+            </div>
+          </div>
+
+          <!-- ACTION BAR -->
+          <div class="action-bar">
+            <button class="action-btn btn-clear" onclick="clearForm()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+              </svg>
+              Effacer
+            </button>
+            <button class="action-btn btn-delete" id="deleteBtn" onclick="deleteCurrentGame()" style="display:none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+              </svg>
+              Supprimer
+            </button>
+            <button class="action-btn btn-save" onclick="saveGame()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <path d="M17 21v-8H7v8"/>
+                <path d="M7 3v5h8"/>
+              </svg>
+              Sauvegarder (local)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALL GAMES SECTION -->
+      <div class="games-section" style="margin-top:2rem">
+        <div class="panel-card">
+          <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+            <div style="display:flex;align-items:center;gap:.5rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              🎮 Tous les jeux (<span id="allGamesCount">0</span>)
+            </div>
+            <div class="search-box" style="max-width:300px">
+              <div style="position:relative;flex:1">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input" id="gamesSearch" placeholder="Rechercher un jeu..." oninput="filterGames()">
+              </div>
+            </div>
+          </div>
+          <div class="games-grid" id="allGamesGrid"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</template>
+
+<template id="tpl-demande">
+<div class="req-page">
+
+  <div class="req-form" id="reqForm">
+    <h1 class="req-title">Demander un jeu</h1>
+    <p class="req-sub">Cherche un jeu sur Steam et envoie ta demande. On l'ajoutera dès que possible 🎮</p>
+
+    <!-- How it works -->
+    <div class="req-steps">
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        </div>
+        <div class="req-step-num">1</div>
+        <div class="req-step-label">Cherche ton jeu</div>
+      </div>
+      <div class="req-step-line"></div>
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        </div>
+        <div class="req-step-num">2</div>
+        <div class="req-step-label">Envoie ta demande</div>
+      </div>
+      <div class="req-step-line"></div>
+      <div class="req-step">
+        <div class="req-step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="req-step-num">3</div>
+        <div class="req-step-label">On l'ajoute !</div>
+      </div>
+    </div>
+
+    <!-- Live Stats -->
+    <div class="req-stats" id="reqStats">
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatGames">—</div>
+        <div class="req-stat-lbl">Jeux dispo</div>
+      </div>
+      <div class="req-stat-sep"></div>
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatPending">—</div>
+        <div class="req-stat-lbl">En attente</div>
+      </div>
+      <div class="req-stat-sep"></div>
+      <div class="req-stat">
+        <div class="req-stat-val" id="reqStatAdded">—</div>
+        <div class="req-stat-lbl">Ajoutés</div>
+      </div>
+    </div>
+
+    <!-- Steam Search -->
+    <div class="req-section">
+      <div class="req-label">Rechercher sur Steam</div>
+      <div class="req-search-wrap">
+        <svg class="req-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        <input class="req-search" id="reqSearch" type="text" placeholder="Nom du jeu…" autocomplete="off" onfocus="openSrchSteam()" readonly>
+      </div>
+
+      <!-- Preview -->
+      <div class="req-preview" id="reqPreview">
+        <img class="req-preview-img" id="reqPreviewImg" src="" alt="">
+        <div class="req-preview-info">
+          <div class="req-preview-title" id="reqPreviewTitle"></div>
+          <div class="req-preview-meta" id="reqPreviewMeta"></div>
+          <div class="req-preview-desc" id="reqPreviewDesc"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duplicate popup -->
+    <div class="req-popup" id="reqPopup">
+      <div class="req-popup-backdrop" onclick="closeReqPopup()"></div>
+      <div class="req-popup-box" id="reqPopupBox">
+        <div class="req-popup-particles" id="reqPopupParticles"></div>
+        <div class="req-popup-inner">
+          <div class="req-popup-icon" id="reqPopupIcon"></div>
+          <div class="req-popup-title" id="reqPopupTitle"></div>
+          <div class="req-popup-sub" id="reqPopupSub"></div>
+          <div id="reqPopupAction"></div>
+          <button class="req-popup-close" onclick="closeReqPopup()">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="req-submit-wrap">
+      <button class="req-submit" id="reqSubmit" onclick="reqSend()" disabled>Envoyer la demande</button>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div class="req-success" id="reqSuccess">
+    <div class="req-success-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h2>Demande envoyée !</h2>
+    <p>Ta demande a été envoyée avec succès. On s'en occupe ASAP.</p>
+    <button class="req-clear" onclick="reqReset()">Faire une autre demande</button>
+  </div>
+
+</div>
+</template>
+
+<!-- Scripts JavaScript modulaires -->
+<script src="js/core/config.js"></script>
+<script src="js/core/utils.js"></script>
+<script src="js/core/search.js"></script>
+<script src="js/core/router.js"></script>
+<script src="js/pages/accueil.js"></script>
+<script src="js/pages/catalogue.js"></script>
+<script src="js/pages/jeu.js"></script>
+<script src="js/pages/demande.js"></script>
+<script src="js/pages/admin.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
