@@ -1,4 +1,4 @@
-﻿/* CrackUZU - Page Admin */
+/* CrackUZU - Page Admin */
 /* ══════════════════════════════════════════════════════════
    CSS — ADMIN
 ══════════════════════════════════════════════════════════ */
@@ -195,11 +195,7 @@
     .btn-delete{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
     .btn-delete:hover{background:rgba(239,68,68,.2)}
 
-    /* ─── TOAST ─── */
-    .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:1rem;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:.75rem;transform:translateX(400px);transition:all .3s;z-index:1000}
-    .toast.show{transform:translateX(0)}
-    .toast.success{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:#22c55e}
-    .toast.error{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:#ef4444}
+    /* ─── TOAST (styles in base.css) ─── */
 
     /* ─── YOUTUBE MODAL ─── */
     .yt-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:2rem}
@@ -251,3 +247,11 @@
     .auth-error{color:#ef4444;font-size:.875rem;margin-top:1rem;padding:.875rem 1rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:1rem;display:none}
     .auth-error.show{display:block}
     .auth-footer{color:rgba(255,255,255,.25);font-size:.75rem;margin-top:1.5rem}
+
+    /* ─── LOGO GALLERY ─── */
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem}
+    .logo-item{position:relative;height:90px;border-radius:.75rem;padding:.75rem;cursor:pointer;border:2px solid transparent;transition:all .2s;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+    .logo-item:hover{border-color:rgba(255,255,255,.3);background:rgba(0,0,0,.5)}
+    .logo-item.selected{border-color:#f97316;background:rgba(249,115,22,.1)}
+    .logo-item img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+    .mini-btn:hover{background:rgba(255,255,255,.15)!important;border-color:rgba(255,255,255,.3)!important;transform:translateY(-1px)}

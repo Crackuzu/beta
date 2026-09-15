@@ -1,22 +1,46 @@
-﻿// js/core/router.js
-// CrackUZU — Routeur SPA & Transitions Morph
+// js/core/router.js
+// CrackUZU — Routeur SPA avec liens partageables par jeu
 
 let _currentPage = '';
 let _prevPage = 'accueil';
 let _currentParam = null;
 let _prevParam = null;
 let _pageCleanup = null;  // fonction de nettoyage de la page courante
-let _morphing = false;    // flag pour empêcher nav() de gérer l'opacité pendant un morph
-let _gamesCache = null;   // cache des jeux pour préchargement
 
+// ── GESTION DU HASH (liens partageables) ─────────────────────────────────────
+// Format : #jeu/GAME_ID  |  #catalogue  |  #demande  |  #accueil (défaut)
+
+function _updateHash(page, param) {
+  if (page === 'jeu' && param) {
+    history.replaceState(null, '', '#jeu/' + encodeURIComponent(param));
+  } else if (page === 'accueil') {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  } else {
+    history.replaceState(null, '', '#' + page);
+  }
+}
+
+function _readHash() {
+  const hash = window.location.hash.slice(1); // retire le '#'
+  if (!hash) return { page: 'accueil', param: null };
+  if (hash.startsWith('jeu/')) {
+    const id = decodeURIComponent(hash.slice(4));
+    return { page: 'jeu', param: id };
+  }
+  const known = ['accueil', 'catalogue', 'demande', 'admin'];
+  if (known.includes(hash)) return { page: hash, param: null };
+  return { page: 'accueil', param: null };
+}
+
+// ── ROUTEUR PRINCIPAL ─────────────────────────────────────────────────────────
 function nav(page, param) {
-  if (page === _currentPage && !param) return;
+  if (page === _currentPage && param === _currentParam && !param) return;
 
   // Fermer la recherche si ouverte
   if (typeof closeSrch === 'function') closeSrch();
 
   const view = document.getElementById('spa-view');
-  if (!_morphing && view) view.style.opacity = '0';
+  if (view) view.style.opacity = '0';
 
   setTimeout(() => {
     // Nettoyage de l'ancienne page (timers, intervals...)
@@ -29,9 +53,10 @@ function nav(page, param) {
     window.scrollTo(0, 0);
 
     // Charger le template
-    const tpl = document.getElementById('tpl-' + (page === 'jeu' ? 'jeu' : page));
+    const tplId = 'tpl-' + (page === 'jeu' ? 'jeu' : page);
+    const tpl = document.getElementById(tplId);
     if (!tpl) {
-      console.error('Template introuvable:', page);
+      console.error('Template introuvable:', tplId);
       return;
     }
     if (view) {
@@ -43,6 +68,9 @@ function nav(page, param) {
     _prevParam = _currentParam;
     _currentPage = page;
     _currentParam = param || null;
+
+    // Mettre à jour l'URL (hash partageable)
+    _updateHash(page, param);
 
     // Mettre à jour le lien actif dans le header
     document.querySelectorAll('.nav-a').forEach(el => el.classList.remove('active'));
@@ -58,114 +86,96 @@ function nav(page, param) {
     if (footer) footer.style.display = page === 'admin' ? 'none' : '';
 
     // Lancer l'init de la page
-    if (page === 'accueil' && typeof initAccueil === 'function') { initAccueil(); }
+    if (page !== 'jeu') document.title = 'CRACKUZU';
+    if (page === 'accueil'  && typeof initAccueil  === 'function') { initAccueil(); }
     if (page === 'catalogue' && typeof initCatalogue === 'function') { initCatalogue(); }
-    if (page === 'jeu' && typeof initJeu === 'function') { initJeu(param); }
-    if (page === 'admin' && typeof initAdmin === 'function') { initAdmin(); }
-    if (page === 'demande' && typeof initDemande === 'function') { initDemande(); }
+    if (page === 'jeu'      && typeof initJeu       === 'function') { initJeu(param); }
+    if (page === 'admin'    && typeof initAdmin     === 'function') { initAdmin(); }
+    if (page === 'demande'  && typeof initDemande   === 'function') { initDemande(); }
 
-    if (!_morphing && view) view.style.opacity = '1';
+    if (view) view.style.opacity = '1';
   }, 120);
 }
 
-// ── TRANSITION MORPH ENTRE LA CARTE ET LA FICHE DU JEU ───────────────────────
-function morphToJeu(el, gameId, imgSrc) {
-  if (_currentPage === 'jeu') {
-    nav('jeu', gameId);
-    return;
-  }
+// ── NAVIGATION & PRÉCHARGEMENT VERS UN JEU ──────────────────────────────────
+const _preloadedImages = new Set();
+function preloadGameImg(url) {
+  if (!url || _preloadedImages.has(url)) return;
+  _preloadedImages.add(url);
+  const img = new Image();
+  img.src = url;
+}
 
-  const img = el.querySelector('img');
-  if (!img && !imgSrc) {
-    nav('jeu', gameId);
-    return;
-  }
-
-  _morphing = true;
-
-  const morphImgSrc = imgSrc || img.src;
-  const morphImgRect = img ? img.getBoundingClientRect() : el.getBoundingClientRect();
-
-  if (typeof closeSrch === 'function') closeSrch();
-
-  // Précharger l'image hero depuis le cache
-  if (!_gamesCache) {
-    try {
-      const d = localStorage.getItem('crackuzu_games');
-      if (d) _gamesCache = JSON.parse(d);
-    } catch (e) {}
-  }
-  let heroUrl = null;
-  if (_gamesCache) {
-    const game = _gamesCache.find(g => (g.id || g.title) == gameId);
-    if (game) heroUrl = game.banner_url || game.portrait_url || null;
-  }
-
-  const rect = morphImgRect;
-  const clone = document.createElement('div');
-  clone.className = 'morph-clone';
-  const br = (img && getComputedStyle(img).borderRadius) || '0.75rem';
-  clone.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;border-radius:${br};`;
-
-  const cloneImg = document.createElement('img');
-  cloneImg.src = morphImgSrc;
-  cloneImg.alt = '';
-  cloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;';
-  clone.appendChild(cloneImg);
-  document.body.appendChild(clone);
-
-  void clone.offsetWidth;
-
-  document.body.classList.add('morph-active');
-  nav('jeu', gameId);
-
-  const targetW = window.innerWidth;
-  const targetH = window.innerHeight;
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      clone.classList.add('morphing');
-      clone.style.left = '0';
-      clone.style.top = '0';
-      clone.style.width = targetW + 'px';
-      clone.style.height = targetH + 'px';
-      clone.style.borderRadius = '0';
-    });
-  });
-
-  setTimeout(() => {
-    const els = document.querySelectorAll('.genre,.jeu-hero-title,.jeu-hero-title-img,.meta,.synopsis,.info-item,.actions,.back-btn');
-    els.forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 35);
-    });
-  }, 400);
-
-  const crossfadeHero = () => {
-    const heroImg = document.getElementById('heroImg');
-    if (heroImg && heroImg.src && heroImg.complete && heroImg.naturalWidth > 0) {
-      clearInterval(checkImg);
-      heroImg.style.visibility = 'hidden';
-      cloneImg.style.opacity = '0';
-      const heroCloneImg = document.createElement('img');
-      heroCloneImg.src = heroImg.src;
-      heroCloneImg.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease;-webkit-transition:opacity .5s ease;position:absolute;top:0;left:0;';
-      clone.appendChild(heroCloneImg);
-      requestAnimationFrame(() => { heroCloneImg.style.opacity = '1'; });
+// Préchargement au survol des cartes
+document.addEventListener('mouseover', (e) => {
+  const card = e.target.closest('.pc, .wc, .card');
+  if (!card) return;
+  const onclickStr = card.getAttribute('onclick') || '';
+  const match = onclickStr.match(/morphToJeu\(this,\s*'([^']+)'(?:,\s*'([^']+)')?/);
+  if (match) {
+    const gameId = match[1];
+    const imgSrc = match[2];
+    if (imgSrc) preloadGameImg(imgSrc);
+    // Précharger aussi depuis la liste de jeux en mémoire
+    const pool = (typeof ALL !== 'undefined' && ALL.length) ? ALL : ((typeof CAT_ALL !== 'undefined' && CAT_ALL.length) ? CAT_ALL : []);
+    const g = pool.find(item => (item.id || item.title) == gameId);
+    if (g) {
+      if (g.banner_url) preloadGameImg(g.banner_url);
+      if (g.portrait_url) preloadGameImg(g.portrait_url);
+      if (g.title_img) preloadGameImg(g.title_img);
     }
-  };
-  const checkImg = setInterval(crossfadeHero, 50);
-  crossfadeHero();
+  }
+}, { passive: true });
 
-  const onEnd = () => {
-    clone.removeEventListener('transitionend', onEnd);
-    clearTimeout(endTimer);
-    clearInterval(checkImg);
-    clone.remove();
-    const heroImg = document.getElementById('heroImg');
-    if (heroImg) heroImg.style.visibility = 'visible';
-    document.body.classList.remove('morph-active');
-    _morphing = false;
-  };
-  clone.addEventListener('transitionend', onEnd);
-  const endTimer = setTimeout(onEnd, 900);
+function morphToJeu(el, gameId, imgSrc) {
+  if (imgSrc) preloadGameImg(imgSrc);
+  nav('jeu', gameId);
+}
+
+// ── BOUTON « COPIER LE LIEN » sur la fiche jeu ────────────────────────────────
+function _doToast(msg) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    toast.innerHTML = '<div class="toast-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20,6 9,17 4,12"/></svg></div><span id="toastMsg"></span>';
+    document.body.appendChild(toast);
+  }
+  const msgEl = document.getElementById('toastMsg');
+  if (msgEl) msgEl.textContent = msg;
+  clearTimeout(toast._t);
+  toast.className = 'toast success show';
+  toast._t = setTimeout(() => {
+    toast.classList.add('hide');
+    setTimeout(() => { toast.className = 'toast'; }, 300);
+  }, 2400);
+}
+
+function copyJeuLink() {
+  const base = window.location.origin + window.location.pathname;
+  const url  = base + '#jeu/' + encodeURIComponent(_currentParam || '');
+
+  // Fallback textarea silencieux
+  function fallback() {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      _doToast('Lien du jeu copie !');
+    } catch(e) { console.warn('copy failed', e); }
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => {
+      _doToast('Lien du jeu copie !');
+    }).catch(fallback);
+  } else {
+    fallback();
+  }
 }

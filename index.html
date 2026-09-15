@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -298,8 +298,11 @@
   
   <div class="hero-content">
     <div class="genres" id="genres"></div>
-    <h1 class="jeu-hero-title" id="gameTitle">Chargement...</h1>
-    <img class="jeu-hero-title-img" id="gameTitleImg" src="" alt="" style="display:none">
+    <div class="logo-particle-container" id="logoParticleContainer" style="position:relative;display:inline-block;max-width:100%">
+      <canvas id="logoParticleCanvas" style="position:absolute;top:0;left:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .4s ease"></canvas>
+      <h1 class="jeu-hero-title" id="gameTitle">Chargement...</h1>
+      <img class="jeu-hero-title-img" id="gameTitleImg" src="" alt="" style="display:none">
+    </div>
     
     <div class="meta" id="meta">
       <div class="meta-item yellow" id="rating" style="display:none">
@@ -324,6 +327,9 @@
       <button class="btn-secondary" id="trailerBtn" title="Bande-annonce" style="display:none">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </button>
+      <button class="btn-secondary" id="shareBtn" title="Copier le lien du jeu" style="display:none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
     </div>
     
     <div class="synopsis" id="synopsis">
@@ -347,25 +353,95 @@
   </div>
 </section>
 
-<!-- YouTube Player Modal -->
-<div id="trailerOverlay" style="display:none;opacity:0;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9999;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;transition:opacity .4s ease" onclick="closeTrailer(event)">
-  <div id="trailerBox" style="position:relative;width:95vw;max-width:1400px;aspect-ratio:16/9;background:#000;border-radius:1.5rem;overflow:hidden;box-shadow:0 0 100px rgba(249,115,22,.3),0 0 200px rgba(0,0,0,.8);transform:scale(.8);opacity:0;transition:all .5s cubic-bezier(.34,1.56,.64,1)" onclick="event.stopPropagation()">
+<!-- YouTube Player Modal (Compact & Fixé) -->
+<div id="trailerOverlay" style="display:none;opacity:0;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;box-sizing:border-box;transition:opacity .35s ease" onclick="closeTrailer(event)">
+  <div id="trailerBox" style="position:relative;width:90vw;max-width:960px;aspect-ratio:16/9;background:#000;border-radius:1.5rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 60px rgba(249,115,22,.2),0 20px 80px rgba(0,0,0,.9);transform:scale(.85);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1)" onclick="event.stopPropagation()">
     <iframe id="trailerFrame" style="width:100%;height:100%;border:0;display:block" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-    <button onclick="closeTrailer()" style="position:absolute;top:1.5rem;right:1.5rem;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(10px)" onmouseover="this.style.background='rgba(249,115,22,.8)';this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.transform='scale(1)'">×</button>
+    <button type="button" id="trailerCloseBtn" onclick="closeTrailer(event)" title="Fermer (Échap)" style="position:absolute;top:1rem;right:1rem;width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(10px);z-index:10;line-height:1" onmouseover="this.style.background='rgba(249,115,22,.9)';this.style.borderColor='rgba(249,115,22,1)';this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(0,0,0,.65)';this.style.borderColor='rgba(255,255,255,.2)';this.style.transform='scale(1)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- CONTENT (Captures d'écran & Configuration requise) -->
 <div class="container" id="content" style="display:none">
+  <!-- SECTION 1 : Aperçu & Captures d'écran -->
+  <section class="section" id="gameScreenshotsSection" style="display:none">
+    <div class="section-head-wrap">
+      <div class="section-title">
+        <span class="section-title-icon">📸</span>
+        <span>Aperçu du jeu</span>
+      </div>
+      <span class="screenshot-counter-badge" id="screenshotCounterBadge"></span>
+    </div>
+    
+    <div class="screenshot-showcase">
+      <!-- Grande vue principale -->
+      <div class="screenshot-main-card" id="screenshotMainCard" onclick="openScreenshotLightbox()">
+        <img id="screenshotMainImg" src="" alt="Capture d'écran">
+        <div class="screenshot-main-overlay">
+          <span class="screenshot-zoom-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+            Plein écran
+          </span>
+        </div>
+      </div>
+      
+      <!-- Ruban des vignettes -->
+      <div class="screenshot-thumbnails-wrap">
+        <button class="thumb-nav-btn prev" onclick="scrollScreenshots(-1)" title="Précédent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="screenshot-thumbnails-track" id="screenshotThumbsTrack"></div>
+        <button class="thumb-nav-btn next" onclick="scrollScreenshots(1)" title="Suivant"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 : Configuration requise PC -->
+  <section class="section" id="gameSpecsSection" style="display:none">
+    <div class="section-head-wrap">
+      <div class="section-title">
+        <span class="section-title-icon">⚙️</span>
+        <span>Configuration requise PC</span>
+      </div>
+    </div>
+    
+    <div class="specs-grid" id="specsGrid">
+      <!-- Colonne Minimale -->
+      <div class="spec-card" id="specCardMin">
+        <div class="spec-card-header min">
+          <div class="spec-badge min">Minimale</div>
+          <span class="spec-sub">Pour faire tourner le jeu</span>
+        </div>
+        <div class="spec-items-list" id="specMinItems"></div>
+      </div>
+      
+      <!-- Colonne Recommandée -->
+      <div class="spec-card" id="specCardRec">
+        <div class="spec-card-header rec">
+          <div class="spec-badge rec">Recommandée</div>
+          <span class="spec-sub">Pour une expérience optimale et fluide</span>
+        </div>
+        <div class="spec-items-list" id="specRecItems"></div>
+      </div>
+    </div>
+  </section>
 </div>
 
+<!-- LIGHTBOX PLEIN ÉCRAN POUR CAPTURES -->
+<div id="screenshotLightbox" class="screenshot-lightbox" style="display:none;opacity:0" onclick="closeScreenshotLightbox(event)">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightboxImg" src="" alt="Capture plein écran">
+    <button class="lightbox-close" onclick="closeScreenshotLightbox()" title="Fermer (Échap)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    <button class="lightbox-nav prev" onclick="navigateLightbox(-1)" title="Précédente (←)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="lightbox-nav next" onclick="navigateLightbox(1)" title="Suivante (→)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+  </div>
+</div>
 <!-- Download Menu Modal -->
 <div id="downloadModal" style="display:none;opacity:0;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.15);backdrop-filter:blur(25px);z-index:9998;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;transition:opacity .3s ease" onclick="closeDownloadMenu(event)">
   <div id="downloadBox" style="position:relative;width:100%;max-width:600px;max-height:80vh;overflow-y:auto;background:rgba(15,15,15,.7);border-radius:1.5rem;border:1px solid rgba(249,115,22,.3);box-shadow:0 25px 50px rgba(0,0,0,.3);transform:scale(.9);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1)" onclick="event.stopPropagation()">
     <div style="padding:2rem">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
         <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:0">Télécharger</h2>
-        <button onclick="closeDownloadMenu()" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.background='rgba(249,115,22,.8)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">×</button>
+        <button onclick="closeDownloadMenu()" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.background='rgba(249,115,22,.8)'" onmouseout="this.style.background='rgba(255,255,255,.1)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
       </div>
       <div id="downloadList"></div>
     </div>

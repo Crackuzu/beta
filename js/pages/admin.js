@@ -1,4 +1,4 @@
-﻿// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
     // DISCORD AUTH CONFIG
     // ═══════════════════════════════════════════════════════════
     // DISCORD_CONFIG is configured in js/core/config.js
@@ -122,6 +122,7 @@
       selectedMagnets: [],
       selectedPortrait: '',
       selectedBanner: '',
+      selectedLogo: '',
       steamData: {},
       editingIndex: -1,
       uploadedImageUrl: '',
@@ -523,30 +524,38 @@
     let searchTimeout;
     let currentSearchId = 0;
 
-    // Fast CORS proxy with fallback
+    // CORS proxy — endpoint dédié sur notre Worker CF
+    const CORS_PROXY = CONFIG.WORKER_URL + '/api/proxy';
     async function fetchWithProxy(url) {
       const proxies = [
-        { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct' },
-        { name: 'allorigins', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins' }
+        // 1. Notre Worker Cloudflare dédié
+        { name: 'cf-proxy', url: `${CORS_PROXY}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 6000 },
+        // 2. Allorigins /raw
+        { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
+        // 3. Allorigins /get
+        { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 }
       ];
 
       for (const proxy of proxies) {
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 8000);
+          const timeoutId = setTimeout(() => controller.abort(), proxy.timeout);
 
           const res = await fetch(proxy.url, { signal: controller.signal });
           clearTimeout(timeoutId);
 
-          if (!res.ok) continue;
+          if (!res.ok) {
+            console.warn(`Proxy ${proxy.name}: HTTP ${res.status}`);
+            continue;
+          }
 
           if (proxy.parse === 'allorigins') {
             const result = await res.json();
-            return JSON.parse(result.contents);
+            return typeof result.contents === 'string' ? JSON.parse(result.contents) : result.contents;
           }
           return await res.json();
         } catch (e) {
-          console.log(`Proxy ${proxy.name} failed:`, e.message);
+          console.warn(`Proxy ${proxy.name} failed:`, e.message);
           continue;
         }
       }
@@ -603,7 +612,6 @@
     async function selectSteamGame(appid) {
       showLoading(true);
       try {
-        // Use proxy fallback for Steam API
         const data = await fetchWithProxy(`https://store.steampowered.com/api/appdetails?appids=${appid}&l=french&cc=FR`);
         const game = data[appid]?.data;
         
@@ -612,18 +620,24 @@
           return;
         }
 
+        // Garde TOUTES les captures d'écran et métadonnées d'images Steam
         state.steamData = {
-          screenshots: game.screenshots?.map(s => s.path_full) || [],
-          background: game.background
+          screenshots: (game.screenshots || []).map(s => s.path_full).filter(Boolean),
+          background: game.background,
+          background_raw: game.background_raw,
+          header_image: game.header_image,
+          capsule_image: game.capsule_image,
+          movies: game.movies || []
         };
 
         document.getElementById('f-title').value = cleanText(game.name);
         
-        const logoUrl = `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo.png`;
+        // Logo HD par défaut
+        const logoUrl = `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo_2x.png`;
         document.getElementById('f-title-img').value = logoUrl;
         document.getElementById('titleImgPreviewImg').src = logoUrl;
         document.getElementById('titleImgPreview').style.display = 'block';
-        document.getElementById('titleImgStatus').textContent = '✅ Logo Steam chargé';
+        document.getElementById('titleImgStatus').textContent = '✅ Logo Steam HD chargé';
 
         document.getElementById('f-year').value = game.release_date?.date?.split('/').pop() || 
                                                    game.release_date?.date?.split(' ').pop() || '';
@@ -635,8 +649,13 @@
         });
         renderCategories();
         
-        updateGalleries(appid);
-        searchYouTubeTrailer(game.name);
+        updateGalleries(appid, game.name);
+
+        // Recherche trailer : utilise le nom du premier trailer officiel Steam si dispo
+        const trailerQuery = (game.movies && game.movies.length > 0 && game.movies[0].name)
+          ? game.movies[0].name
+          : (game.name + ' launch trailer');
+        searchYouTubeTrailer(trailerQuery);
         
         showToast('Données Steam chargées !', 'success');
       } catch (e) {
@@ -648,70 +667,139 @@
     }
 
     // ═══════════════════════════════════════════════════════════
-    // IMAGE GALLERIES
+    // IMAGE GALLERIES (Logos, Portraits, Bannières & Captures)
     // ═══════════════════════════════════════════════════════════
-    function updateGalleries(appid) {
-      // All Steam portrait options
-      const portraits = [
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/portrait.png`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero_portrait.png`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/hero_capsule.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_467x181.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_616x353.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/store_capsule_vertical.jpg`
+    function updateGalleries(appid, gameName) {
+      // ── 1. LOGOS (PNG transparents) ──
+      const logos = [
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo_2x.png`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo.png`,
+        `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appid}/logo.png`,
+        `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${appid}/logo.png`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`
       ];
 
-      document.getElementById('portraitGallery').innerHTML = portraits.map((url, i) => `
-        <div class="img-item ${state.selectedPortrait === url ? 'selected' : ''}" onclick="selectPortrait('${url}', this)">
-          <img src="${url}" alt="" loading="lazy" onerror="this.style.opacity='0'">
+      const logoGalleryEl = document.getElementById('logoGallery');
+      if (logoGalleryEl) {
+        state.selectedLogo = logos[0];
+        logoGalleryEl.innerHTML = logos.map((url, i) => `
+          <div class="logo-item ${i === 0 ? 'selected' : ''}" onclick="selectLogo('${url}', this)">
+            <img src="${url}" alt="Logo" loading="lazy" onerror="this.parentElement.remove()">
+          </div>
+        `).join('');
+      }
+
+      // ── 2. PORTRAITS (Covers verticales) ──
+      const portraits = [
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
+        `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appid}/library_600x900.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/hero_capsule.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_616x353.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`,
+        state.steamData?.capsule_image,
+        state.steamData?.header_image
+      ].filter(Boolean);
+
+      // Dé-doublonnage
+      const uniquePortraits = [...new Set(portraits)];
+
+      document.getElementById('portraitGallery').innerHTML = uniquePortraits.map((url, i) => `
+        <div class="img-item ${i === 0 ? 'selected' : ''}" onclick="selectPortrait('${url}', this)">
+          <img src="${url}" alt="Portrait" loading="lazy" onerror="this.parentElement.remove()">
           <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         </div>
       `).join('');
 
-      if (!state.selectedPortrait && portraits[0]) {
-        state.selectedPortrait = portraits[0];
+      if (uniquePortraits[0]) {
+        state.selectedPortrait = uniquePortraits[0];
+        document.getElementById('f-portrait').value = uniquePortraits[0];
       }
 
-      // All Steam banner options + API data
+      // ── 3. BANNIÈRES & CAPTURES D'ÉCRAN (TOUTES les images !) ──
       const banners = [
-        `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero.jpg`,
-        `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_bg_raw.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_background_generated.jpg`,
-        `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_blur.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero.jpg`,
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_bg_generated_v6b.jpg`,
         `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_616x353.jpg`,
-        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_467x181.jpg`,
-        state.steamData.background,
-        ...state.steamData.screenshots.slice(0, 4)
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
+        state.steamData?.background,
+        state.steamData?.background_raw,
+        state.steamData?.header_image,
+        // TOUTES les captures d'écran Steam en 1080p
+        ...(state.steamData?.screenshots || []),
+        // Miniatures de trailers
+        ...(state.steamData?.movies?.map(m => m.thumbnail) || [])
       ].filter(Boolean);
 
-      document.getElementById('bannerGallery').innerHTML = banners.map((url, i) => `
-        <div class="banner-item ${state.selectedBanner === url ? 'selected' : ''}" onclick="selectBanner('${url}', this)">
-          <img src="${url}" alt="" loading="lazy" onerror="this.style.opacity='0'">
+      const uniqueBanners = [...new Set(banners)];
+
+      document.getElementById('bannerGallery').innerHTML = uniqueBanners.map((url, i) => `
+        <div class="banner-item ${i === 0 ? 'selected' : ''}" onclick="selectBanner('${url}', this)">
+          <img src="${url}" alt="Bannière" loading="lazy" onerror="this.parentElement.remove()">
           <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         </div>
       `).join('');
 
-      if (banners[0]) state.selectedBanner = banners[0];
+      if (uniqueBanners[0]) {
+        state.selectedBanner = uniqueBanners[0];
+        document.getElementById('f-banner').value = uniqueBanners[0];
+      }
+    }
+
+    function selectLogo(url, el) {
+      state.selectedLogo = url;
+      document.querySelectorAll('#logoGallery .logo-item').forEach(i => i.classList.remove('selected'));
+      if (el) el.classList.add('selected');
+      document.getElementById('f-title-img').value = url;
+      document.getElementById('titleImgPreviewImg').src = url;
+      document.getElementById('titleImgPreview').style.display = 'block';
+      document.getElementById('titleImgStatus').textContent = '✅ Logo sélectionné';
+      showToast('Logo sélectionné !', 'success');
     }
 
     function selectPortrait(url, el) {
       state.selectedPortrait = url;
       document.querySelectorAll('#portraitGallery .img-item').forEach(i => i.classList.remove('selected'));
-      el.classList.add('selected');
+      if (el) el.classList.add('selected');
       document.getElementById('f-portrait').value = url;
     }
 
     function selectBanner(url, el) {
       state.selectedBanner = url;
       document.querySelectorAll('#bannerGallery .banner-item').forEach(i => i.classList.remove('selected'));
-      el.classList.add('selected');
+      if (el) el.classList.add('selected');
       document.getElementById('f-banner').value = url;
     }
+
+    // ── Outils de recherche externe (Google Images transparent & SteamGridDB) ──
+    function openLogoSearch(type) {
+      const title = (document.getElementById('f-title').value || '').trim();
+      if (!title) return showToast('Entre un titre de jeu d\'abord', 'error');
+      if (type === 'google') {
+        window.open(`https://www.google.com/search?tbm=isch&tbs=ic:trans&q=${encodeURIComponent(title + ' steam game logo png')}`, '_blank');
+      } else if (type === 'sgdb') {
+        window.open(`https://www.steamgriddb.com/search/grids?term=${encodeURIComponent(title)}`, '_blank');
+      }
+    }
+
+    function openMediaSearch(type) {
+      const title = (document.getElementById('f-title').value || '').trim();
+      if (!title) return showToast('Entre un titre de jeu d\'abord', 'error');
+      if (type === 'sgdb-grids') {
+        window.open(`https://www.steamgriddb.com/search/grids?term=${encodeURIComponent(title)}`, '_blank');
+      } else if (type === 'sgdb-heroes') {
+        window.open(`https://www.steamgriddb.com/search/heroes?term=${encodeURIComponent(title)}`, '_blank');
+      }
+    }
+
+    // Expose aux handlers inline HTML
+    window.selectLogo = selectLogo;
+    window.selectPortrait = selectPortrait;
+    window.selectBanner = selectBanner;
+    window.openLogoSearch = openLogoSearch;
+    window.openMediaSearch = openMediaSearch;
 
     // ═══════════════════════════════════════════════════════════
     // LOAD EXISTING IMAGES FOR EDIT
@@ -740,79 +828,89 @@
         }
       }
 
-      // Build portrait gallery with current selected + Steam options
-      const portraits = [];
-      if (game.portrait_url && !game.portrait_url.includes('steam/apps/')) {
-        // Custom portrait (non-Steam)
-        portraits.push({ url: game.portrait_url, selected: true, label: 'Custom' });
+      // ── Build logo gallery for edit ──
+      const logos = [];
+      if (game.title_img) {
+        logos.push({ url: game.title_img, selected: true });
       }
       if (appid) {
-        // Steam portraits - plus d'options
+        const steamLogos = [
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo_2x.png`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/logo.png`,
+          `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appid}/logo.png`,
+          `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${appid}/logo.png`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`
+        ];
+        steamLogos.forEach(url => {
+          if (url !== game.title_img) {
+            logos.push({ url: url, selected: false });
+          }
+        });
+      }
+      const logoGalleryEl = document.getElementById('logoGallery');
+      if (logoGalleryEl) {
+        logoGalleryEl.innerHTML = logos.map(l => `
+          <div class="logo-item ${l.selected ? 'selected' : ''}" onclick="selectLogo('${l.url}', this)">
+            <img src="${l.url}" alt="Logo" loading="lazy" onerror="this.parentElement.remove()">
+          </div>
+        `).join('');
+      }
+
+      // Build portrait gallery with current selected + Steam options
+      const portraits = [];
+      if (game.portrait_url) {
+        portraits.push({ url: game.portrait_url, selected: true });
+      }
+      if (appid) {
         const steamPortraits = [
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
           `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900_2x.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/portrait.png`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero_portrait.png`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`,
+          `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appid}/library_600x900.jpg`,
           `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/hero_capsule.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_467x181.jpg`,
           `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_616x353.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/store_capsule_vertical.jpg`
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`
         ];
         steamPortraits.forEach(url => {
-          portraits.push({
-            url: url,
-            selected: game.portrait_url === url,
-            label: 'Steam'
-          });
+          if (url !== game.portrait_url) {
+            portraits.push({ url: url, selected: false });
+          }
         });
-      } else if (game.portrait_url) {
-        // No Steam appid but has portrait - just show it
-        portraits.push({ url: game.portrait_url, selected: true, label: 'Current' });
       }
 
       document.getElementById('portraitGallery').innerHTML = portraits.map(p => `
         <div class="img-item ${p.selected ? 'selected' : ''}" onclick="selectPortrait('${p.url}', this)">
-          <img src="${p.url}" alt="" loading="lazy" onerror="this.style.opacity='0'">
+          <img src="${p.url}" alt="" loading="lazy" onerror="this.parentElement.remove()">
           <div class="img-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         </div>
       `).join('');
 
-      // Build banner gallery with current selected + Steam options + screenshots
+      // Build banner gallery with current selected + Steam options + ALL screenshots
       const banners = [];
-      if (game.banner_url && !game.banner_url.includes('steam/apps/') && !game.banner_url.includes('akamai.steamstatic')) {
-        // Custom banner (non-Steam)
-        banners.push({ url: game.banner_url, selected: true, label: 'Custom' });
+      if (game.banner_url) {
+        banners.push({ url: game.banner_url, selected: true });
       }
       if (appid) {
-        // Steam banners - plus d'options
         const steamBanners = [
-          `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero.jpg`,
-          `https://cdn.akamai.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_bg_raw.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_background_generated.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero_blur.jpg`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero_2x.jpg`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_hero.jpg`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/page_bg_generated_v6b.jpg`,
           `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_616x353.jpg`,
-          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_467x181.jpg`,
+          `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`,
           steamBackground,
-          ...steamScreenshots.slice(0, 4)
+          // TOUTES les captures d'écran disponibles
+          ...steamScreenshots
         ].filter(Boolean);
         steamBanners.forEach(url => {
-          banners.push({
-            url: url,
-            selected: game.banner_url === url,
-            label: 'Steam'
-          });
+          if (url !== game.banner_url) {
+            banners.push({ url: url, selected: false });
+          }
         });
-      } else if (game.banner_url) {
-        // No Steam appid but has banner - just show it
-        banners.push({ url: game.banner_url, selected: true, label: 'Current' });
       }
 
       document.getElementById('bannerGallery').innerHTML = banners.map(b => `
         <div class="banner-item ${b.selected ? 'selected' : ''}" onclick="selectBanner('${b.url}', this)">
-          <img src="${b.url}" alt="" loading="lazy" onerror="this.style.opacity='0'">
+          <img src="${b.url}" alt="" loading="lazy" onerror="this.parentElement.remove()">
           <div class="img-check" style="top:auto;bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         </div>
       `).join('');
@@ -995,9 +1093,9 @@
     async function searchYouTubeTrailer(query) {
       document.getElementById('f-ytb').value = 'Recherche...';
       
-      const trailers = await searchYouTubeAPI(query + ' launch trailer');
+      const trailers = await searchYouTubeAPI(query);
       
-      if (trailers.length > 0) {
+      if (trailers && trailers.length > 0) {
         document.getElementById('f-ytb').value = trailers[0].id;
         showToast('Bande-annonce trouvée !', 'success');
       } else {
@@ -1006,35 +1104,58 @@
     }
 
     async function searchYouTubeAPI(query) {
-      const instances = [
-        'https://iv.datura.network',
-        'https://iv.melmac.space',
-        'https://iv.nboeck.de',
-        'https://yt.artemislena.eu'
-      ];
-      
-      for (const base of instances) {
-        try {
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 5000);
-          
-          const res = await fetch(`${base}/api/v1/search?q=${encodeURIComponent(query)}&type=video`, {
-            signal: controller.signal
-          });
-          clearTimeout(timeout);
-          
-          if (res.ok) {
-            const data = await res.json();
-            return data.slice(0, 5).map(v => ({
-              id: v.videoId,
+      if (!query) return [];
+
+      let q = query;
+      if (!q.toLowerCase().includes('trailer')) {
+        q += ' launch trailer';
+      }
+
+      // ── 1. API Cloudflare Worker dédiée (YouTube Innertube) ──
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 6000);
+
+        const res = await fetch(`${CONFIG.WORKER_URL}/api/youtube-search?q=${encodeURIComponent(q)}`, {
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            return data.slice(0, 6).map(v => ({
+              id: v.id,
               title: v.title,
-              author: v.author
+              author: v.author,
+              thumb: v.thumb || `https://img.youtube.com/vi/${v.id}/mqdefault.jpg`
             }));
           }
-        } catch (e) {
-          console.log(`Instance ${base} failed:`, e.message);
         }
+      } catch (e) {
+        console.warn('Worker YouTube search failed, trying fallback:', e.message);
       }
+
+      // ── 2. Fallback via proxy CORS vers recherche YouTube HTML ──
+      try {
+        const searchHtmlUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+        const proxyHtml = await fetchWithProxy(searchHtmlUrl);
+        if (typeof proxyHtml === 'string') {
+          const matches = [...proxyHtml.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)];
+          const ids = [...new Set(matches.map(m => m[1]))];
+          if (ids.length > 0) {
+            return ids.slice(0, 5).map(id => ({
+              id: id,
+              title: q,
+              author: 'YouTube',
+              thumb: `https://img.youtube.com/vi/${id}/mqdefault.jpg`
+            }));
+          }
+        }
+      } catch (e) {
+        console.warn('Fallback YouTube search failed:', e.message);
+      }
+
       return [];
     }
 
@@ -1042,21 +1163,24 @@
       const title = document.getElementById('f-title').value || 'game';
       showLoading(true);
       
-      const results = await searchYouTubeAPI(title + ' launch trailer');
+      const results = await searchYouTubeAPI(title);
       
       const list = document.getElementById('ytList');
       if (!results || results.length === 0) {
         list.innerHTML = `
-          <div style="grid-column:1/-1;text-align:center;padding:3rem 2rem;color:rgba(255,255,255,.5)">
-            <div style="font-size:3rem;margin-bottom:1rem">😕</div>
-            <div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem">Aucune bande-annonce trouvée</div>
-            <div style="font-size:.875rem">Les serveurs Invidious sont peut-être indisponibles.<br>Tu peux entrer l'ID YouTube manuellement dans le champ.</div>
+          <div style="grid-column:1/-1;text-align:center;padding:3rem 2rem;color:rgba(255,255,255,.7)">
+            <div style="font-size:3rem;margin-bottom:1rem">🎬</div>
+            <div style="font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Recherche directe sur YouTube</div>
+            <div style="font-size:.875rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5)">Ouvre la recherche YouTube pour ce jeu, choisis la vidéo et colle simplement son lien ou son ID :</div>
+            <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(title + ' launch trailer')}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:#ef4444;color:#fff;border-radius:.75rem;font-weight:700;text-decoration:none;transition:all .2s">
+              ▶ Chercher "${esc(title)}" sur YouTube
+            </a>
           </div>
         `;
       } else {
         list.innerHTML = results.map(r => `
           <div class="yt-item" onclick="selectYt('${r.id}')">
-            <img class="yt-thumb" src="https://img.youtube.com/vi/${r.id}/mqdefault.jpg">
+            <img class="yt-thumb" src="${r.thumb || 'https://img.youtube.com/vi/' + r.id + '/mqdefault.jpg'}">
             <div class="yt-info">
               <div class="yt-video-title">${esc(r.title)}</div>
               <div class="yt-channel">${esc(r.author)}</div>
@@ -1839,6 +1963,7 @@
       state.selectedMagnets = [];
       state.selectedPortrait = '';
       state.selectedBanner = '';
+      state.selectedLogo = '';
       state.steamData = {};
       state.uploadedImageUrl = '';
       
@@ -1854,6 +1979,8 @@
       document.getElementById('f-banner').value = '';
       document.getElementById('steamSearch').value = '';
       document.getElementById('steamResults').innerHTML = '';
+      const lg = document.getElementById('logoGallery');
+      if (lg) lg.innerHTML = '';
       document.getElementById('portraitGallery').innerHTML = '';
       document.getElementById('bannerGallery').innerHTML = '';
       document.getElementById('uploadPreview').style.display = 'none';

@@ -1,4 +1,4 @@
-﻿// js/app.js
+// js/app.js
 // CrackUZU — Point d'entrée principal & Écouteurs globaux
 
 let _srchMode = 'local'; // 'local' ou 'steam'
@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Page d'accueil par défaut
-  nav('accueil');
+  // Lire le hash de l'URL pour naviguer directement vers la bonne page
+  // Ex : https://crackuzu.github.io/beta/#jeu/Elden%20Ring
+  const { page, param } = _readHash();
+  nav(page, param);
 });
+

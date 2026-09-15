@@ -1,4 +1,4 @@
-﻿// js/core/utils.js
+// js/core/utils.js
 // CrackUZU — Utilitaires partagés
 
 // ── FORMATAGE DE DATE ────────────────────────────────────────────────────────
@@ -84,17 +84,17 @@ function base64ToUtf8(base64) {
   return new TextDecoder().decode(bytes);
 }
 
-// ── PROXY UNIFIÉ (Cloudflare Worker direct + Replis multiples) ───────────────
+// ── PROXY UNIFIÉ (CF Worker dédié + fallbacks) ───────────────────────────────
+const CORS_PROXY_URL = CONFIG.WORKER_URL + '/api/proxy';
+
 async function fetchWithProxy(url) {
   const proxies = [
-    // 1. Worker Cloudflare personnel (Ultra-rapide, zéro blocage)
-    { name: 'cf-worker', url: `${CONFIG.WORKER_URL}/api/proxy?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 4000 },
-    // 2. Corsproxy.io (repli 1)
-    { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 7000 },
-    // 3. Allorigins (repli 2)
-    { name: 'allorigins', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 7000 },
-    // 4. Codetabs (repli 3)
-    { name: 'codetabs', url: `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`, parse: 'direct', timeout: 7000 }
+    // 1. Notre propre Worker Cloudflare (ultra-rapide, fiable, pas de rate-limit)
+    { name: 'cf-proxy', url: `${CORS_PROXY_URL}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 6000 },
+    // 2. Allorigins /raw — fallback gratuit
+    { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
+    // 3. Allorigins /get — enveloppe {contents: "..."}, dernier recours
+    { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 }
   ];
 
   for (const proxy of proxies) {
@@ -105,7 +105,10 @@ async function fetchWithProxy(url) {
       const res = await fetch(proxy.url, { signal: controller.signal });
       clearTimeout(timeoutId);
 
-      if (!res.ok) continue;
+      if (!res.ok) {
+        console.warn(`Proxy ${proxy.name}: HTTP ${res.status}`);
+        continue;
+      }
 
       if (proxy.parse === 'allorigins') {
         const result = await res.json();
@@ -113,7 +116,7 @@ async function fetchWithProxy(url) {
       }
       return await res.json();
     } catch (e) {
-      // Échec silencieux, passe au proxy suivant
+      console.warn(`Proxy ${proxy.name} échoué:`, e.message);
       continue;
     }
   }
@@ -125,12 +128,25 @@ const reqFetchProxy = fetchWithProxy;
 
 // ── UI HELPERS (Toast & Loading) ─────────────────────────────────────────────
 function showToast(msg, type = 'success') {
-  const toast = document.getElementById('toast');
-  const msgEl = document.getElementById('toastMsg');
-  if (!toast) return;
+  let toast = document.getElementById('toast');
+  let msgEl = document.getElementById('toastMsg');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20,6 9,17 4,12"/>
+      </svg>
+      <span id="toastMsg"></span>
+    `;
+    document.body.appendChild(toast);
+    msgEl = toast.querySelector('#toastMsg');
+  }
   if (msgEl) msgEl.textContent = msg;
   toast.className = `toast ${type} show`;
-  setTimeout(() => toast.classList.remove('show'), 3000);
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2600);
 }
 
 function showLoading(show) {
