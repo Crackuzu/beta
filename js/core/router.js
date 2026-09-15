@@ -133,23 +133,18 @@ function morphToJeu(el, gameId, imgSrc) {
 }
 
 // ── BOUTON « COPIER LE LIEN » sur la fiche jeu ────────────────────────────────
-function _doToast(msg) {
-  let toast = document.getElementById('toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toast';
-    toast.className = 'toast';
-    toast.innerHTML = '<div class="toast-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20,6 9,17 4,12"/></svg></div><span id="toastMsg"></span>';
-    document.body.appendChild(toast);
-  }
-  const msgEl = document.getElementById('toastMsg');
-  if (msgEl) msgEl.textContent = msg;
-  clearTimeout(toast._t);
-  toast.className = 'toast success show';
-  toast._t = setTimeout(() => {
-    toast.classList.add('hide');
-    setTimeout(() => { toast.className = 'toast'; }, 300);
-  }, 2400);
+function _expandShareBtn() {
+  const btn = document.getElementById('shareBtn');
+  const label = document.getElementById('shareBtnLabel');
+  if (!btn || !label) return;
+
+  label.textContent = 'Lien copie !';
+  btn.classList.add('copied');
+
+  clearTimeout(btn._shareTimer);
+  btn._shareTimer = setTimeout(() => {
+    btn.classList.remove('copied');
+  }, 3000);
 }
 
 function copyJeuLink() {
@@ -167,13 +162,13 @@ function copyJeuLink() {
       ta.select();
       document.execCommand('copy');
       document.body.removeChild(ta);
-      _doToast('Lien du jeu copie !');
+      _expandShareBtn();
     } catch(e) { console.warn('copy failed', e); }
   }
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url).then(() => {
-      _doToast('Lien du jeu copie !');
+      _expandShareBtn();
     }).catch(fallback);
   } else {
     fallback();

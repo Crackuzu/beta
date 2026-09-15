@@ -421,6 +421,60 @@
 }
 .btn-secondary:active { transform: scale(.94) rotate(0deg); }
 
+/* ─── Share button expand animation ─── */
+#shareBtn {
+  transition:
+    background .25s,
+    border-color .25s,
+    width .4s cubic-bezier(.34,1.56,.64,1),
+    padding .4s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .25s,
+    transform .25s cubic-bezier(.34,1.56,.64,1);
+  white-space: nowrap;
+  overflow: hidden;
+  justify-content: center;
+  gap: 0;
+}
+
+#shareBtn.copied {
+  width: 160px;
+  padding: 0 1.1rem;
+  gap: .55rem;
+  border-color: rgba(249,115,22,.55);
+  background: rgba(249,115,22,.12);
+  box-shadow: 0 0 20px rgba(249,115,22,.2);
+  transform: scale(1) rotate(0deg) !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+#shareBtn.copied:hover {
+  transform: scale(1) rotate(0deg);
+}
+
+#shareBtnLabel {
+  font-size: .82rem;
+  font-weight: 600;
+  color: #f97316;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width .35s cubic-bezier(.34,1.56,.64,1),
+    opacity .25s ease;
+  white-space: nowrap;
+}
+
+#shareBtn.copied #shareBtnLabel {
+  max-width: 120px;
+  opacity: 1;
+}
+
+#shareBtn.copied #shareBtnIcon {
+  color: #f97316;
+  flex-shrink: 0;
+}
+
 /* ─── Synopsis ─── */
 .synopsis {
   max-width: 600px;
