@@ -3328,5 +3328,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-09-16T00:32:07.926Z"
+  },
+  {
+    "title": "Metro Exodus",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/logo_2x.png",
+    "year": "14 févr. 2020",
+    "description": "Echappez-vous des ruines du metro de Moscou et embarquez pour une aventure a travers le territoire russe dans un univers post-apocalyptique. Explorez des niveaux non lineaires, tentez de survivre dans un monde ouvert immersif et suivez une trame narrative qui s'etend sur une annee dans le meilleur opus de la saga Metro.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/library_600x900_2x.jpg",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/library_hero.jpg",
+    "ytb_id": "cW9sX3vB4lU",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/p8fiiz.torrent",
+        "size": "102.0 GB",
+        "source": "By Crackuzu",
+        "name": "Metro-Exodus",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-16T00:51:40.939Z"
   }
 ]
