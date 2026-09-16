@@ -3280,5 +3280,53 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-09-16T00:10:31.075Z"
+  },
+  {
+    "title": "CONTROL Ultimate Edition",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/870780/logo_2x.png",
+    "year": "27 aout 2020",
+    "description": "Laureat de plus de 80 prix et recompenses, CONTROL est un jeu d'action-aventure a la 3eme personne qui vous tiendra en haleine.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/870780/library_600x900_2x.jpg",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/870780/library_hero.jpg",
+    "ytb_id": "slP3He5U89g",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/a5avfr.torrent",
+        "size": "23.4 GB",
+        "source": "By Crackuzu",
+        "name": "Control-Ultimate-Edition",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-16T00:20:47.173Z"
+  },
+  {
+    "title": "HITMAN World of Assassination",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/logo_2x.png",
+    "year": "20 janv. 2022",
+    "description": "Entrez dans le monde de l'assassin ultime. HITMAN le monde de l'assassinat regroupe le meilleur de HITMAN, HITMAN 2 et HITMAN 3, y compris la campagne principale, les modes Contrat, Escalade, Cible fugitive et Freelance, le mode de jeu inspire du genre roguelike.",
+    "categories": [
+      "Action",
+      "Aventure"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/library_600x900_2x.jpg",
+    "banner_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659040/ss_691a534e333e33a4d6b994c9d63be26c83a687d7.1920x1080.jpg?t=1788336082",
+    "ytb_id": "W0Dz8l8RHAc",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/udb742.torrent",
+        "size": "77.4 GB",
+        "source": "By Crackuzu",
+        "name": "HITMAN World of Assassination (les 3)",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-16T00:32:07.926Z"
   }
 ]
