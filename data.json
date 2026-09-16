@@ -3269,8 +3269,16 @@
     "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/library_600x900_2x.jpg",
     "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/library_hero_2x.jpg",
     "ytb_id": "65913uDtGaE",
-    "magnets": [],
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/q87xfa.torrent",
+        "size": "8.4 GB",
+        "source": "By Crackuzu",
+        "name": "Red-Dead-Redemption",
+        "type": "magnet"
+      }
+    ],
     "added_by": "admin-local",
-    "added_at": "2026-09-16T00:07:52.222Z"
+    "added_at": "2026-09-16T00:10:31.075Z"
   }
 ]
