@@ -3257,5 +3257,20 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-06-19T21:47:29.203Z"
+  },
+  {
+    "title": "Red Dead Redemption",
+    "title_img": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/logo_2x.png",
+    "year": "29 oct. 2024",
+    "description": "Vivez l'histoire de John Marston, un ancien hors-la-loi qui traque les derniers membres de la celebre bande de Van der Linde avec l'arrivee sur PC de l'illustre predecesseur de Red Dead Redemption 2.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/library_600x900_2x.jpg",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/library_hero_2x.jpg",
+    "ytb_id": "65913uDtGaE",
+    "magnets": [],
+    "added_by": "admin-local",
+    "added_at": "2026-09-16T00:07:52.222Z"
   }
 ]
