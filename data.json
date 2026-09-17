@@ -3366,14 +3366,14 @@
     "ytb_id": "u5qW1gMMSVI",
     "magnets": [
       {
-        "url": "https://uploads.online-fix.me:2053/torrents/BOMBANANA!/",
+        "url": "magnet:?xt=urn:btih:67f058f01610440f512e956e1ae72c590baa4ce7&dn=BOMBANANA!&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
         "size": "308.9 MB",
         "source": "By Crackuzu",
-        "name": "Online-Fix",
+        "name": "BOMBANANA!.v1.0.0-OFME",
         "type": "magnet"
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-09-17T00:33:48.311Z"
+    "added_at": "2026-09-17T00:39:09.596Z"
   }
 ]
