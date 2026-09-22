@@ -3400,5 +3400,28 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-09-17T19:01:12.414Z"
+  },
+  {
+    "title": "BALL x PIT",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1790116203/djfrk90m3qmqvo7o9k1v.png",
+    "year": "15 oct. 2025",
+    "description": "BALL x PIT est un survival-roguelite qui melange casse-brique, fusion de boules et construction de base. Affrontez des hordes d'ennemis et utilisez le butin pour etendre votre domaine, generer des ressources et recruter des heros.",
+    "categories": [
+      "Action"
+    ],
+    "portrait_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2062430/5e7885a3802fe7d38b92fdeb44888b4828a842ba/header_alt_assets_2.jpg?t=1789453342",
+    "banner_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2062430/library_hero_2x.jpg",
+    "ytb_id": "TPiV_NSXS_o",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/l9yus4.torrent",
+        "size": "370.8 MB",
+        "source": "By Crackuzu",
+        "name": "BALL-x-PIT",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-22T22:30:05.145Z"
   }
 ]
