@@ -3423,5 +3423,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-09-24T20:45:48.301Z"
+  },
+  {
+    "title": "Dawson Oaks Trailer Park",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1790288901/qzgmdmm5yxvrppwrlykk.png",
+    "year": "17 sep. 2026",
+    "description": "A proximity voice chat social deduction game where criminals must commit secret crimes while a Supervisor hunts them, and a hidden Snitch betrays them from within.",
+    "categories": [
+      "RPG",
+      "Simulation",
+      "Multijoueur"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790288743/exj2qnxgm5pq81ibtdst.png",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790288810/wqrdr5x0x7bs8zegxpls.png",
+    "ytb_id": "012-SXGK-08",
+    "magnets": [
+      {
+        "url": "magnet:?xt=urn:btih:eb2d84c74989052f1b57fffa8dd6cfb186782d91&dn=Dawson%20Oaks%20Trailer%20Park&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337",
+        "size": "921.9 MB",
+        "source": "By Crackuzu",
+        "name": "Dawson.Oaks.Trailer.Park.v1.0.4-OFME",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-24T22:28:20.705Z"
   }
 ]
