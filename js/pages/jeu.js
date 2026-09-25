@@ -453,7 +453,8 @@ async function loadSteamMediaAndSpecs(game) {
   try {
     // 1. DÃ©tection de l'AppID Steam
     let appId = null;
-    const urlMatch = (game.portrait_url || '' + game.banner_url || '').match(/steam\/apps\/(\d+)/);
+    const _urlSrc = game.portrait_url || game.banner_url || '';
+    const urlMatch = _urlSrc.match(/steam\/apps\/(\d+)/);
     if (urlMatch) {
       appId = urlMatch[1];
     } else {

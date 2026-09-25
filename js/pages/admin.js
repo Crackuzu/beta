@@ -533,7 +533,9 @@
         // 2. Allorigins /raw
         { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
         // 3. Allorigins /get
-        { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 }
+        { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 },
+        // 4. corsproxy.io
+        { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 12000 }
       ];
 
       for (const proxy of proxies) {
@@ -1472,11 +1474,33 @@
         try {
           let rawData = sourceCache[key];
           if (!rawData) {
-            // Use CORS proxy to access GitHub raw files
-            const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(CONFIG.SOURCES[key].url)}`;
-            const res = await fetch(proxyUrl);
-            if (!res.ok) throw new Error('Failed');
-            rawData = await res.json();
+            // Essai direct d'abord (GitHub raw n'a pas de CORS si même domaine)
+            // puis fallbacks proxy
+            const targetUrl = CONFIG.SOURCES[key].url;
+            const proxyList = [
+              { url: targetUrl, direct: true },
+              { url: `${CONFIG.WORKER_URL}/api/proxy?url=${encodeURIComponent(targetUrl)}` },
+              { url: `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}` },
+              { url: `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`, allorigins: true }
+            ];
+            let loaded = false;
+            for (const p of proxyList) {
+              try {
+                const ctrl = new AbortController();
+                const tid = setTimeout(() => ctrl.abort(), 10000);
+                const res = await fetch(p.url, { signal: ctrl.signal });
+                clearTimeout(tid);
+                if (!res.ok) continue;
+                if (p.allorigins) {
+                  const wrap = await res.json();
+                  rawData = typeof wrap.contents === 'string' ? JSON.parse(wrap.contents) : wrap.contents;
+                } else {
+                  rawData = await res.json();
+                }
+                if (rawData) { loaded = true; break; }
+              } catch(e2) { continue; }
+            }
+            if (!loaded) throw new Error('Tous les proxies ont échoué');
             sourceCache[key] = rawData;
           }
 

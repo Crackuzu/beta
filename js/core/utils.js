@@ -94,7 +94,9 @@ async function fetchWithProxy(url) {
     // 2. Allorigins /raw — fallback gratuit
     { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
     // 3. Allorigins /get — enveloppe {contents: "..."}, dernier recours
-    { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 }
+    { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 },
+    // 4. corsproxy.io — dernier recours
+    { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 12000 }
   ];
 
   for (const proxy of proxies) {
