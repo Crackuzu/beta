@@ -527,22 +527,35 @@
     // CORS proxy — endpoint dédié sur notre Worker CF
     const CORS_PROXY = CONFIG.WORKER_URL + '/api/proxy';
     async function fetchWithProxy(url) {
+      // raw.githubusercontent.com a CORS natif — fetch direct, pas besoin de proxy
+      if (url.includes('raw.githubusercontent.com') || url.includes('api.github.com')) {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 8000);
+        try {
+          const res = await fetch(url, { signal: ctrl.signal });
+          clearTimeout(tid);
+          if (res.ok) {
+            const text = await res.text();
+            try { return JSON.parse(text); } catch { return text; }
+          }
+        } catch(e) { console.warn('Direct fetch failed:', e.message); }
+      }
+
       const proxies = [
-        // 1. Notre Worker Cloudflare dédié
-        { name: 'cf-proxy', url: `${CORS_PROXY}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 6000 },
+        // 1. Notre Worker Cloudflare dédié (CORS *, ultra-fiable)
+        { name: 'cf-proxy', url: `${CORS_PROXY}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 5000 },
         // 2. Allorigins /raw
-        { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
-        // 3. Allorigins /get
-        { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 },
-        // 4. corsproxy.io
-        { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 12000 }
+        { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 8000 },
+        // 3. corsproxy.io
+        { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 8000 },
+        // 4. Allorigins /get (enveloppe JSON)
+        { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 10000 }
       ];
 
       for (const proxy of proxies) {
         try {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), proxy.timeout);
-
           const res = await fetch(proxy.url, { signal: controller.signal });
           clearTimeout(timeoutId);
 
@@ -551,11 +564,18 @@
             continue;
           }
 
+          // Lire comme texte d'abord — évite le crash si Steam retourne du HTML
+          const text = await res.text();
+          if (!text || text.trim().startsWith('<')) {
+            console.warn(`Proxy ${proxy.name}: returned HTML instead of JSON`);
+            continue;
+          }
+
           if (proxy.parse === 'allorigins') {
-            const result = await res.json();
+            const result = JSON.parse(text);
             return typeof result.contents === 'string' ? JSON.parse(result.contents) : result.contents;
           }
-          return await res.json();
+          return JSON.parse(text);
         } catch (e) {
           console.warn(`Proxy ${proxy.name} failed:`, e.message);
           continue;

@@ -89,14 +89,14 @@ const CORS_PROXY_URL = CONFIG.WORKER_URL + '/api/proxy';
 
 async function fetchWithProxy(url) {
   const proxies = [
-    // 1. Notre propre Worker Cloudflare (ultra-rapide, fiable, pas de rate-limit)
-    { name: 'cf-proxy', url: `${CORS_PROXY_URL}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 6000 },
-    // 2. Allorigins /raw — fallback gratuit
-    { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 10000 },
-    // 3. Allorigins /get — enveloppe {contents: "..."}, dernier recours
-    { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 12000 },
-    // 4. corsproxy.io — dernier recours
-    { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 12000 }
+    // 1. Notre propre Worker Cloudflare (CORS *, ultra-rapide)
+    { name: 'cf-proxy', url: `${CORS_PROXY_URL}?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 5000 },
+    // 2. Allorigins /raw
+    { name: 'allorigins-raw', url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, parse: 'direct', timeout: 8000 },
+    // 3. corsproxy.io
+    { name: 'corsproxy', url: `https://corsproxy.io/?${encodeURIComponent(url)}`, parse: 'direct', timeout: 8000 },
+    // 4. Allorigins /get — enveloppe JSON
+    { name: 'allorigins-get', url: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, parse: 'allorigins', timeout: 10000 }
   ];
 
   for (const proxy of proxies) {
@@ -112,11 +112,18 @@ async function fetchWithProxy(url) {
         continue;
       }
 
+      // Lire comme texte pour éviter crash si Steam retourne HTML
+      const text = await res.text();
+      if (!text || text.trim().startsWith('<')) {
+        console.warn(`Proxy ${proxy.name}: HTML au lieu de JSON`);
+        continue;
+      }
+
       if (proxy.parse === 'allorigins') {
-        const result = await res.json();
+        const result = JSON.parse(text);
         return typeof result.contents === 'string' ? JSON.parse(result.contents) : result.contents;
       }
-      return await res.json();
+      return JSON.parse(text);
     } catch (e) {
       console.warn(`Proxy ${proxy.name} échoué:`, e.message);
       continue;
