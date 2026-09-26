@@ -3448,5 +3448,30 @@
     ],
     "added_by": "admin-local",
     "added_at": "2026-09-24T22:35:21.088Z"
+  },
+  {
+    "title": "Sifu",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1790381265/okfdxqstayadunqirvlf.png",
+    "year": "28 mars 2023",
+    "description": "Sifu est un jeu de combat realiste a la troisieme personne, avec des mecaniques pointues de kung-fu et une action digne des films d'arts martiaux qui vous entraine dans une quete de vengeance.",
+    "categories": [
+      "Action",
+      "Aventure",
+      "Combat"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790381217/robr8qcjrmkl6dkk3jvw.png",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790381321/myb3oaczkbxfga889arj.webp",
+    "ytb_id": "Kx3R2CNhLWA",
+    "magnets": [
+      {
+        "url": "https://files.catbox.moe/dc7fxb.torrent",
+        "size": "25.1 GB",
+        "source": "By Crackuzu",
+        "name": "Sifu",
+        "type": "magnet"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-26T00:09:48.014Z"
   }
 ]
