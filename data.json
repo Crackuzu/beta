@@ -3476,14 +3476,14 @@
   },
   {
     "title": "TEKKEN 8",
-    "title_img": "",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1790459146/br3o0ibq5utjtqavoa04.png",
     "year": "26 janv. 2024",
     "description": "TEKKEN 8 est le dernier opus de la franchise TEKKEN, l'apogee du jeu de combat en 3D. Incarnez plus de 32 personnages et decouvrez toutes les nouveautes du dernier titre de cette saga epique. Preparez-vous au meilleur jeu TEKKEN jamais developpe !",
     "categories": [
       "Combat"
     ],
-    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790458962/g1pjbwsszs1jhphpan0f.png",
-    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790459010/bugvras7yjp2b5p790va.png",
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790524895/axhm1ybnc2nzh24risv6.png",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790524817/it0ffqpxywarmvupfkju.png",
     "ytb_id": "_MM4clV2qjE",
     "magnets": [
       {
@@ -3495,6 +3495,29 @@
       }
     ],
     "added_by": "admin-local",
-    "added_at": "2026-09-26T21:44:51.935Z"
+    "added_at": "2026-09-27T16:01:36.739Z"
+  },
+  {
+    "title": "DEAD OR ALIVE 6 Last Round",
+    "title_img": "https://res.cloudinary.com/dijopwaix/image/upload/v1790525065/fpsziuzb5hrhnlbspgbh.png",
+    "year": "25 Jun, 2026",
+    "description": "Fan-favorite 3D fighting game DEAD OR ALIVE 6 is back with stylish moves, striking animations, and a cast of colorful characters to go head-to-head in the fighting game world's most extreme battles!",
+    "categories": [
+      "Combat"
+    ],
+    "portrait_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790524958/xanykyk9omo5yomnhoqa.png",
+    "banner_url": "https://res.cloudinary.com/dijopwaix/image/upload/v1790524562/kxycvameohtwrxqa0aip.png",
+    "ytb_id": "9X8-kxbk2UU",
+    "magnets": [
+      {
+        "url": "https://ts.bzzhr.to/d/lo8igge0t76q?v=2E95FZhPOutgnTdN6e9Pba6oeTq0Mq9ugaG2Vt88oelotnlqsIclqg9efdlN1J1lStQZl0EPB52NM-W_EgS2QLbHrzCS-5gZVhy_XRwn_YRbuTLTE4IHVaroW7ACVcQtbFbAhOTqhOFyhr05KJ-DzQe0oBTo26Ft4cLlF6gumVP_pNKpIp_t9YCYdc_4PNcxMsg-C31fdl1gHTV0tPaQk7vqSLq3-pOy4BTjSahqbqZXBL0jFAhDTRPqkhEDu6j320nX",
+        "size": "82.8 GB",
+        "source": "By Crackuzu",
+        "name": "DEAD OR ALIVE 6 Last Round",
+        "type": "direct"
+      }
+    ],
+    "added_by": "admin-local",
+    "added_at": "2026-09-27T16:04:27.272Z"
   }
 ]
